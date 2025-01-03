@@ -1,12 +1,14 @@
 nav {
   background-color: #ffffff;
   position: fixed;
-  bottom: 0;
+  bottom: 1;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 100%;
   align-items: center;
   height: 78px;
+  gap: 26px;
+  padding: 0 0 0 10px;
 }
 
 .nav-buttons {
