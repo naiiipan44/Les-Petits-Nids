@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import bookIcon from "/public/books.svg";
-import favoriteIcon from "/public/favorite-icon.svg";
+import favoriteIcon from "/public/favorite.svg";
 import mapIcon from "/public/map.svg";
 import searchIcon from "/public/search.svg";
 import profilIcon from "/public/user.svg";
+
+import "./nav-bar.css";
 
 function NavBar() {
   return (
