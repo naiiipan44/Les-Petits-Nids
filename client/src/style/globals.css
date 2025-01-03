@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+	
+  --mainColor: linear-gradient(
+    90deg,
+    rgba(118, 163, 246, 1) 3%,
+    rgba(148, 185, 255, 0.94) 43%,
+    rgba(205, 252, 255, 0.91) 98%
+  );
+  --shadowColor: rgb(0 0 0 / 25%);
+  --secondaryColor: #133F63;
+	--tertiaryColor: #FFFFFF;
+	--general-font: "Nunito", sans-serif;
+  --button-font: "Nunito", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--general-font);
+}
+
+.button-primary {
+  background: var(--secondaryColor);
+	color: var(--tertiaryColor);
+  cursor: pointer;
+  height: 50px;
+  border-radius: 10px;
+  font-family: var(--button-font);
+  font-size: 16px;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  padding: 10px 40px;
+	border:none;
+	font-weight:bold;
+}
+
+.button-secondary {
+	background: var(--tertiaryColor);
+	color: var(--secondaryColor);
+  cursor: pointer;
+  height: 50px;
+  border-radius: 10px;
+  font-family: var(--button-font);
+  font-size: 16px;
+  padding: 10px 40px;
+	box-shadow: 0 2px 6px var(--shadowColor);
+	border: none;
+	font-weight: bold; 
+}
+
+.button-primary:hover { 
+  box-shadow: 0 4px 12px var(--shadowColor); 
+}
+.button-secondary:hover { 
+  box-shadow: 0 4px 12px var(--shadowColor); 
+}
+
+
