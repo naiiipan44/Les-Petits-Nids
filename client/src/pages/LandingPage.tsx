@@ -1,5 +1,12 @@
 function LandingPage() {
-  return <h1>Ici c'est la landing page</h1>;
+  return (
+    <div className="landing-page">
+      <figure>
+        <img src="" alt="" />
+        <figcaption>Les petits nids</figcaption>
+      </figure>
+    </div>
+  );
 }
 
 export default LandingPage;
