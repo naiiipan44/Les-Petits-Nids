@@ -7,7 +7,7 @@ function SearchPage() {
   return (
     <>
       <header className="head-section">
-        {/* Should be replace by FilterBar component in the futur*/}
+        {/* Should be replaced by FilterBar component in the futur*/}
         <section className="filter-head-section">
           <img src={searchIcon} alt="magnifying glass" />
           <input type="text" />
@@ -30,6 +30,8 @@ function SearchPage() {
 
       <main>
         <article className="nursery-section">
+          {/* Should be replaced by the Nursery component: will include a map function to pass
+          props previously fetched */}
           <figure>
             <img src={exempleNursery} alt="example of the nursery" />
             <figcaption>
