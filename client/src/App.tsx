@@ -1,10 +1,10 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
       <h1>Ici c'est App</h1>
-      <p>C'est chouette</p>
+      <Outlet />
     </>
   );
 }
