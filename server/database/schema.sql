@@ -86,3 +86,38 @@ CREATE TABLE parent (
   p_mail VARCHAR(100) NOT NULL,
   p_birth_date DATE NOT NULL
 );
+
+INSERT INTO parent
+  (
+id
+p_first_name,
+p_last_name,
+p_job,
+p_address,
+p_zip_code,
+p_num_tel,
+p_mail,
+p_birth_date
+)
+VALUES
+(
+1,
+"Deschamps",
+"Paula",
+"Conseillère bancaire",
+"20, allée des Dhuys",
+"44000",
+"06 32 00 00 00",
+"paula.deschamps@gmail.com",
+"01-01-1986"
+),
+(
+"Després",
+"Alexis",
+"Maquettiste",
+"53, boulevard Malesherbes",
+"44300",
+"07 55 00 00 00",
+"alexis.despres@yahoo.fr",
+"07-05-1974"
+);
