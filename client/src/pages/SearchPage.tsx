@@ -4,18 +4,33 @@ import exempleNursery from "/aurelie_faugere_assistante_maternelle.svg";
 import funnelIcon from "/funnel.svg";
 
 function SearchPage() {
-  // const fakeNurse = [
-  //   {
-  //     id: 1,
-  //     name: "Aurélie Faugère",
-  //     type: "Assistante maternelle",
-  //     img: exempleNursery,
-  //     heart: "❤️",
-  //     rate: "4.8",
-  //     location: "Bordeaux, à 500m",
-  //     openHours: "Horaires : Lundi - Samedi : 9h-16h",
-  //   },
-  // ];
+  /* Object to test the nurse displays, will be removed once we fetch the data */
+  const fakeNurse = [
+    {
+      id: 1,
+      name: "Aurélie Faugère",
+      type: "Assistante maternelle",
+      img: exempleNursery,
+      heart: "❤️",
+      rate: "4.8",
+      location: "Bordeaux, à 500m",
+      openHours: "Horaires : Lundi - Samedi : 9h-16h",
+      phoneNumber: "Téléphone : 05 56 56 56 56",
+      mail: "Mail : contact@contact.fr",
+    },
+    {
+      id: 2,
+      name: "Picoti Picota",
+      type: "Crèche maternelle",
+      img: exempleNursery,
+      heart: "❤️",
+      rate: "4.8",
+      location: "Bordeaux, à 500m",
+      openHours: "Horaires : Lundi - Samedi : 9h-16h",
+      phoneNumber: "Téléphone : 05 56 56 56 56",
+      mail: "Mail : contact@contact.fr",
+    },
+  ];
 
   return (
     <>
@@ -42,41 +57,27 @@ function SearchPage() {
       </header>
 
       <main>
-        <article className="nursery-section">
-          {/* Should be replaced by the Nursery component: will include a map function to pass
-          props previously fetched */}
-          <figure>
-            <img src={exempleNursery} alt="example of the nursery" />
-            <figcaption>
-              Aurélie Faugère
-              <br />
-              Assistante maternelle
-            </figcaption>
-            <p>❤️</p>
-            <p>4.8</p>
-          </figure>
-          <h3>Bordeaux, à 500m</h3>
-          <p>Horaires : Lundi - Samedi : 9h-16h</p>
-          <p>Téléphone : 05 56 56 56 56</p>
-          <p>Mail : contact@contact.fr</p>
-        </article>
-
-        <article className="nursery-section">
-          <figure>
-            <img src={exempleNursery} alt="example of the nursery" />
-            <figcaption>
-              Crèche Picoti Picota
-              <br />
-              Crèche parentale
-            </figcaption>
-            <p>❤️</p>
-            <p>4.8</p>
-          </figure>
-          <h3>Bordeaux, à 500m</h3>
-          <p>Horaires : Lundi - Samedi : 9h-16h</p>
-          <p>Téléphone : 05 56 56 56 56</p>
-          <p>Mail : contact@contact.fr</p>
-        </article>
+        {fakeNurse.map((nurse) => {
+          return (
+            /* will be replaced by the Nursery component */
+            <article className="nursery-section" key={nurse.id}>
+              <figure>
+                <img src={exempleNursery} alt="example of the nursery" />
+                <figcaption>
+                  {nurse.name}
+                  <br />
+                  {nurse.type}
+                </figcaption>
+                <p>{nurse.heart}</p>
+                <p>{nurse.rate}</p>
+              </figure>
+              <h3>{nurse.location}</h3>
+              <p>{nurse.openHours}</p>
+              <p>{nurse.phoneNumber}</p>
+              <p>{nurse.mail}</p>
+            </article>
+          );
+        })}
       </main>
     </>
   );
