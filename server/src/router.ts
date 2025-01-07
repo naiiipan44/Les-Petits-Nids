@@ -15,4 +15,10 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 
+// get nursery  from database
+
+import nurseryActions from "./modules/nursery/nurseryActions";
+
+router.get("/api/nursery", nurseryActions.browse);
+
 export default router;
