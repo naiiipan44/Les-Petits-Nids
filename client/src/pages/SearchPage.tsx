@@ -4,6 +4,19 @@ import exempleNursery from "/aurelie_faugere_assistante_maternelle.svg";
 import funnelIcon from "/funnel.svg";
 
 function SearchPage() {
+  // const fakeNurse = [
+  //   {
+  //     id: 1,
+  //     name: "Aurélie Faugère",
+  //     type: "Assistante maternelle",
+  //     img: exempleNursery,
+  //     heart: "❤️",
+  //     rate: "4.8",
+  //     location: "Bordeaux, à 500m",
+  //     openHours: "Horaires : Lundi - Samedi : 9h-16h",
+  //   },
+  // ];
+
   return (
     <>
       <header className="head-section">
@@ -15,11 +28,11 @@ function SearchPage() {
         <section className="options-head-section">
           <section className="filter-and-sort-options">
             {/* Both figures above should triger a modal to fill filter or sort criteria*/}
-            <figure className="options">
+            <figure>
               <img src={funnelIcon} alt="funnel" />
               <figcaption>Filtrer</figcaption>
             </figure>
-            <figure className="options">
+            <figure>
               <img src={funnelIcon} alt="funnel" />
               <figcaption>Trier</figcaption>
             </figure>
