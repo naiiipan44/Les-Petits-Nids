@@ -82,14 +82,14 @@ CREATE TABLE parent (
   p_job VARCHAR(80),
   p_address VARCHAR(120) NOT NULL,
   p_zip_code INT NOT NULL,
-  p_num_tel INT,
+  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
   p_mail VARCHAR(100) NOT NULL,
   p_birth_date DATE NOT NULL
 );
 
 INSERT INTO parent
   (
-id
+id,
 p_first_name,
 p_last_name,
 p_job,
@@ -107,9 +107,9 @@ VALUES
 "Conseillère bancaire",
 "20 ALLEE DES DHUYS",
 44000,
-0632000000,
+"0632000000",
 "paula.deschamps@gmail.com",
-"01-01-1986"
+"1986-01-01" -- Correct date format (YYYY-MM-DD)
 ),
 (
   2,
@@ -118,7 +118,7 @@ VALUES
 "Maquettiste",
 "53 BOULEVARD MALESHERBES",
 44300,
-0755000000,
+"0755000000",
 "alexis.despres@yahoo.fr",
-"07-05-1974"
+"1974-05-07"
 );
