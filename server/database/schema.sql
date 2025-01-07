@@ -73,3 +73,16 @@ VALUES
     "15 AVENUE FONTAINE MOUTON",
     "https://www.ville-antony.fr/images/Petite-Enfance/photos_multi-accueils/la_comptine/int/farandole/farandole_int_1_500.jpg"
   );
+
+
+CREATE TABLE parent (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  p_first_name VARCHAR(80) NOT NULL,
+  p_last_name VARCHAR(80) NOT NULL,
+  p_job VARCHAR(80),
+  p_address VARCHAR(120) NOT NULL,
+  p_zip_code INT NOT NULL,
+  p_num_tel INT,
+  p_mail VARCHAR(100) NOT NULL,
+  p_birth_date DATE NOT NULL
+);
