@@ -1,1 +1,1 @@
-GET http://localhost:3310/api/nursery
+GET  http://localhost:3310/api/parent
