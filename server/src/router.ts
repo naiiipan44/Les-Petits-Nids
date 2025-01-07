@@ -21,4 +21,12 @@ import nurseryActions from "./modules/nursery/nurseryActions";
 
 router.get("/api/nursery", nurseryActions.browse);
 
+/* ************************************************************************* */
+
+// get parent  from database
+
+import parentActions from "./modules/parent/parentActions";
+
+router.get("/api/parent", parentActions.browse);
+
 export default router;

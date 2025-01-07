@@ -105,19 +105,20 @@ VALUES
 "Deschamps",
 "Paula",
 "Conseillère bancaire",
-"20, allée des Dhuys",
-"44000",
-"06 32 00 00 00",
+"20 ALLEE DES DHUYS",
+44000,
+0632000000,
 "paula.deschamps@gmail.com",
 "01-01-1986"
 ),
 (
+  2,
 "Després",
 "Alexis",
 "Maquettiste",
-"53, boulevard Malesherbes",
-"44300",
-"07 55 00 00 00",
+"53 BOULEVARD MALESHERBES",
+44300,
+0755000000,
 "alexis.despres@yahoo.fr",
 "07-05-1974"
 );
