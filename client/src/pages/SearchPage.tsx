@@ -1,6 +1,6 @@
 import searchIcon from "/search.svg";
 import "./search-page.css";
-import exempleNursery from "/aurelie_faugere_assistante_maternelle.svg";
+import exempleNursery from "/aurelie_faugere_assistante_maternelle.jpg";
 import funnelIcon from "/funnel.svg";
 
 function SearchPage() {
