@@ -11,8 +11,21 @@ import "./search-page.css";
 // Import components
 import Nursery from "../components/Nursery";
 
+import { useEffect, useState } from "react";
+import NurseryCard from "../components/NurseryCard";
+
+import type { NurseryData } from "../types/nursery";
+// import type { RawNurseryData } from "../types/nursery";
+
 function SearchPage() {
   /* Object to test the nurse displays, will be removed once we fetch the data */
+  const [data, setData] = useState<null | NurseryData[]>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/nursery/")
+      .then((response) => response.json())
+      .then((nursery) => setData(nursery));
+  }, []);
 
   return (
     <>
@@ -39,6 +52,16 @@ function SearchPage() {
       </header>
 
       <main>
+        {data?.map((el) => (
+          <NurseryCard
+            key={el.id}
+            id={el.id}
+            ns_name={el.ns_name}
+            ns_image={el.ns_image}
+            ns_capacity={el.ns_capacity}
+            ns_address={el.ns_address}
+          />
+        ))}
         {fakeNurse.map((nurse) => {
           return (
             <Nursery
