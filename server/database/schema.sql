@@ -122,3 +122,20 @@ VALUES
 "alexis.despres@yahoo.fr",
 "1974-05-07"
 );
+
+ALTER TABLE nursery 
+ADD ( 
+ns_type VARCHAR(80) NOT NULL, 
+ns_mail VARCHAR(100) NOT NULL,
+ns_zip_postal INT NOT NULL,
+ns_num_tel VARCHAR(20),
+ns_nb_place_dispo INT NOT NULL,
+ns_type_gestion BOOLEAN DEFAULT FALSE,
+ns_age_min INT NOT NULL,
+ns_age_max INT NOT NULL,
+ns_disabled BOOLEAN DEFAULT FALSE,
+ns_coord_long DECIMAL(10,6) NOT NULL,
+ns_coord_lat DECIMAL(10,6) NOT NULL,
+ns_description VARCHAR(255),
+ns_price DECIMAL(10,2) NOT NULL
+);
