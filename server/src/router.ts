@@ -20,6 +20,7 @@ router.post("/api/items", itemActions.add);
 import nurseryActions from "./modules/nursery/nurseryActions";
 
 router.get("/api/nursery", nurseryActions.browse);
+router.get("/api/nursery/:id", nurseryActions.read);
 
 /* ************************************************************************* */
 
