@@ -3,7 +3,7 @@ import funnelIcon from "/funnel.svg";
 import searchIcon from "/search.svg";
 
 // Import style
-import "./search-page.css";
+import "./SearchPage.css";
 
 // Import components
 import Nursery from "../components/Nursery";

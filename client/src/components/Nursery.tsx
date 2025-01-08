@@ -1,5 +1,5 @@
 // Import style
-import "./nursery.css";
+import "./Nursery.css";
 
 // Import interface
 import type { NurseryData } from "../types/nursery";
