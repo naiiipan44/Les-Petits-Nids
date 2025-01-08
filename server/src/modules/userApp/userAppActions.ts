@@ -1,8 +1,8 @@
 import type { RequestHandler } from "express";
 
-import userRepository from "./userRepository";
+import userAppRepository from "./userAppRepository";
 const browse: RequestHandler = async (req, res) => {
-  const user = await userRepository.readAll();
+  const user = await userAppRepository.readAll();
 
   res.json(user);
 };

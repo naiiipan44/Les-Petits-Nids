@@ -23,10 +23,10 @@ router.get("/api/nursery", nurseryActions.browse);
 
 /* ************************************************************************* */
 
-// get user  from database
+// get userApp  from database
 
-import userActions from "./modules/user/userActions";
+import userAppActions from "./modules/userApp/userAppActions";
 
-router.get("/api/user", userActions.browse);
+router.get("/api/userApp", userAppActions.browse);
 
 export default router;
