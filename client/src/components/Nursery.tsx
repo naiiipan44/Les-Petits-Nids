@@ -2,36 +2,19 @@
 import "./nursery.css";
 
 // Import interface
-import type { DataNursery } from "../types/DataNursery";
+import type { NurseryData } from "../types/nursery";
 
-function Nursery(dataNursery: DataNursery) {
-  const {
-    id,
-    name,
-    type,
-    image,
-    rate,
-    location,
-    openHours,
-    phoneNumber,
-    mail,
-  } = dataNursery;
+function Nursery(dataNursery: NurseryData) {
+  const { ns_name, ns_image, ns_capacity, ns_address } = dataNursery;
   return (
     <>
-      <article className="nursery-section" key={id}>
+      <article className="nursery-section">
         <figure>
-          <img src={image} alt="example of the nursery" />
-          <figcaption>
-            {name}
-            <br />
-            {type}
-          </figcaption>
-          <p>{rate}</p>
+          <img src={ns_image} alt="example of the nursery" />
+          <figcaption>{ns_name}</figcaption>
+          <p>{`Capacité d'accueil : ${ns_capacity}`}</p>
         </figure>
-        <h3>{location}</h3>
-        <p>{openHours}</p>
-        <p>{phoneNumber}</p>
-        <p>{mail}</p>
+        <h3>{`Adress de l'établissement ${ns_address}`}</h3>
       </article>
     </>
   );

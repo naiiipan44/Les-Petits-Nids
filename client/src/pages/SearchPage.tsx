@@ -1,6 +1,3 @@
-// Import fake data
-import { fakeNurse } from "../assets/fakeNurseData";
-
 // Import images from /public
 import funnelIcon from "/funnel.svg";
 import searchIcon from "/search.svg";
@@ -12,10 +9,12 @@ import "./search-page.css";
 import Nursery from "../components/Nursery";
 
 import { useEffect, useState } from "react";
-import NurseryCard from "../components/NurseryCard";
 
+// Import Interface
 import type { NurseryData } from "../types/nursery";
-// import type { RawNurseryData } from "../types/nursery";
+
+// Import React components
+import { Link } from "react-router-dom";
 
 function SearchPage() {
   /* Object to test the nurse displays, will be removed once we fetch the data */
@@ -53,31 +52,16 @@ function SearchPage() {
 
       <main>
         {data?.map((el) => (
-          <NurseryCard
-            key={el.id}
-            id={el.id}
-            ns_name={el.ns_name}
-            ns_image={el.ns_image}
-            ns_capacity={el.ns_capacity}
-            ns_address={el.ns_address}
-          />
-        ))}
-        {fakeNurse.map((nurse) => {
-          return (
+          <Link to={`/search/${el.id}`} key={el.id}>
             <Nursery
-              key={nurse.id}
-              id={nurse.id}
-              image={nurse.image}
-              name={nurse.name}
-              type={nurse.type}
-              rate={nurse.rate}
-              location={nurse.location}
-              openHours={nurse.openHours}
-              phoneNumber={nurse.phoneNumber}
-              mail={nurse.mail}
+              id={el.id}
+              ns_name={el.ns_name}
+              ns_image={el.ns_image}
+              ns_capacity={el.ns_capacity}
+              ns_address={el.ns_address}
             />
-          );
-        })}
+          </Link>
+        ))}
       </main>
     </>
   );
