@@ -1,0 +1,107 @@
+/* Header */
+
+.head-section {
+  padding: 25px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-head-section {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  & input {
+    position: absolute;
+    height: 40px;
+    width: 326px;
+    border-radius: 15px;
+    opacity: 50%;
+    background: linear-gradient(
+      90deg,
+      rgba(118, 163, 246, 1) 3%,
+      rgba(148, 185, 255, 0.94) 43%,
+      rgba(205, 252, 255, 0.91) 98%
+    );
+    padding: 0 0 2px 0;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px
+      3px 7px -3px;
+  }
+
+  & img {
+    position: relative;
+    z-index: 1;
+    left: -140px;
+  }
+}
+
+.options-head-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.options-head-section p {
+  padding: 0 10px 0 0;
+}
+
+.filter-and-sort-options {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 5px;
+}
+
+.filter-and-sort-options figure {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+/* Main */
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 0 0 20px 0;
+}
+
+.nursery-section {
+  padding: 10px 0 0 10px;
+}
+
+.nursery-section > figure {
+  margin: 0;
+  padding: 0;
+  height: 150px;
+}
+
+.nursery-section > figure p {
+  width: 20px;
+}
+
+.nursery-section > figure > figcaption {
+  position: relative;
+  top: -50px;
+  padding: 0 0 0 10px;
+}
+
+.nursery-section > figure > img {
+  border-radius: 10px 10px 0 0;
+}
+
+.nursery-section > figure > p {
+  position: relative;
+  top: -120px;
+  right: -300px;
+}
+
+.nursery-section > p {
+  padding: 0;
+  margin: 0;
+}
