@@ -3,6 +3,7 @@ import type { nursery } from "../types/nursery";
 
 function NurseryPage() {
   const data = useLoaderData() as nursery;
+  console.info(data, "coucou");
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
@@ -10,10 +11,10 @@ function NurseryPage() {
 
   return (
     <>
-      <h1>Ici c'est la page de {data.name}</h1>
-      <p>Adresse : {data.address}</p>
-      <p>Capacité : {data.capacity}</p>
-      <img src={data.image} alt={`L'image de ${data.name}`} />
+      <h1>Ici c'est la page de {data.ns_name}</h1>
+      <p>Adresse : {data.ns_address}</p>
+      <p>Capacité : {data.ns_capacity}</p>
+      <img src={data.ns_image} alt={`L'image de ${data.ns_name}`} />
     </>
   );
 }

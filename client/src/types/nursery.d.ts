@@ -1,7 +1,7 @@
 export interface nursery {
   id: number;
-  name: string;
-  capacity: number;
-  address: string;
-  image: string;
+  ns_name: string;
+  ns_capacity: number;
+  ns_address: string;
+  ns_image: string;
 }

@@ -20,10 +20,10 @@ function SearchPage() {
           <NurseryCard
             key={el.id}
             id={el.id}
-            name={el.name}
-            image={el.image}
-            capacity={el.capacity}
-            address={el.address}
+            ns_name={el.ns_name}
+            ns_image={el.ns_image}
+            ns_capacity={el.ns_capacity}
+            ns_address={el.ns_address}
           />
         ))}
       </main>
