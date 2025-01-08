@@ -1,36 +1,31 @@
-import searchIcon from "/search.svg";
-import "./search-page.css";
-import exempleNursery from "/aurelie_faugere_assistante_maternelle.jpg";
+// Import fake data
+import { fakeNurse } from "../assets/fakeNurseData";
+
+// Import images from /public
 import funnelIcon from "/funnel.svg";
+import searchIcon from "/search.svg";
+
+// Import style
+import "./search-page.css";
+
+// Import components
+import Nursery from "../components/Nursery";
+
+import { useEffect, useState } from "react";
+import NurseryCard from "../components/NurseryCard";
+
+import type { NurseryData } from "../types/nursery";
+// import type { RawNurseryData } from "../types/nursery";
 
 function SearchPage() {
   /* Object to test the nurse displays, will be removed once we fetch the data */
-  const fakeNurse = [
-    {
-      id: 1,
-      name: "Aurélie Faugère",
-      type: "Assistante maternelle",
-      img: exempleNursery,
-      heart: "❤️",
-      rate: "4.8",
-      location: "Bordeaux, à 500m",
-      openHours: "Horaires : Lundi - Samedi : 9h-16h",
-      phoneNumber: "Téléphone : 05 56 56 56 56",
-      mail: "Mail : contact@contact.fr",
-    },
-    {
-      id: 2,
-      name: "Picoti Picota",
-      type: "Crèche maternelle",
-      img: exempleNursery,
-      heart: "❤️",
-      rate: "4.8",
-      location: "Bordeaux, à 500m",
-      openHours: "Horaires : Lundi - Samedi : 9h-16h",
-      phoneNumber: "Téléphone : 05 56 56 56 56",
-      mail: "Mail : contact@contact.fr",
-    },
-  ];
+  const [data, setData] = useState<null | NurseryData[]>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/nursery/")
+      .then((response) => response.json())
+      .then((nursery) => setData(nursery));
+  }, []);
 
   return (
     <>
@@ -57,25 +52,30 @@ function SearchPage() {
       </header>
 
       <main>
+        {data?.map((el) => (
+          <NurseryCard
+            key={el.id}
+            id={el.id}
+            ns_name={el.ns_name}
+            ns_image={el.ns_image}
+            ns_capacity={el.ns_capacity}
+            ns_address={el.ns_address}
+          />
+        ))}
         {fakeNurse.map((nurse) => {
           return (
-            /* will be replaced by the Nursery component */
-            <article className="nursery-section" key={nurse.id}>
-              <figure>
-                <img src={exempleNursery} alt="example of the nursery" />
-                <figcaption>
-                  {nurse.name}
-                  <br />
-                  {nurse.type}
-                </figcaption>
-                <p>{nurse.heart}</p>
-                <p>{nurse.rate}</p>
-              </figure>
-              <h3>{nurse.location}</h3>
-              <p>{nurse.openHours}</p>
-              <p>{nurse.phoneNumber}</p>
-              <p>{nurse.mail}</p>
-            </article>
+            <Nursery
+              key={nurse.id}
+              id={nurse.id}
+              image={nurse.image}
+              name={nurse.name}
+              type={nurse.type}
+              rate={nurse.rate}
+              location={nurse.location}
+              openHours={nurse.openHours}
+              phoneNumber={nurse.phoneNumber}
+              mail={nurse.mail}
+            />
           );
         })}
       </main>

@@ -20,13 +20,14 @@ router.post("/api/items", itemActions.add);
 import nurseryActions from "./modules/nursery/nurseryActions";
 
 router.get("/api/nursery", nurseryActions.browse);
+router.get("/api/nursery/:id", nurseryActions.read);
 
 /* ************************************************************************* */
 
-// get user  from database
+// get userApp  from database
 
-import userActions from "./modules/user/userActions";
+import userAppActions from "./modules/userApp/userAppActions";
 
-router.get("/api/user", userActions.browse);
+router.get("/api/userApp", userAppActions.browse);
 
 export default router;
