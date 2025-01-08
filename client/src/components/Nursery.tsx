@@ -13,8 +13,8 @@ function Nursery(dataNursery: NurseryData) {
           <img src={ns_image} alt="example of the nursery" />
           <figcaption>{ns_name}</figcaption>
           <p>{`Capacité d'accueil : ${ns_capacity}`}</p>
+          <p>{`Adress de l'établissement ${ns_address}`}</p>
         </figure>
-        <h3>{`Adress de l'établissement ${ns_address}`}</h3>
       </article>
     </>
   );

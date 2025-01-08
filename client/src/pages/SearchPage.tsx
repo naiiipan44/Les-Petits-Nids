@@ -49,7 +49,7 @@ function SearchPage() {
         </section>
       </header>
 
-      <main>
+      <main className="main-search-page">
         {data?.map((el) => (
           <Link to={`/search/${el.id}`} key={el.id}>
             <Nursery

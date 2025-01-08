@@ -61,3 +61,14 @@
   margin: 0;
   display: flex;
 }
+
+.main-search-page {
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.main-search-page a {
+  text-decoration: none;
+}
