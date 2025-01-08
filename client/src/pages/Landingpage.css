@@ -24,7 +24,7 @@
   margin: 0 auto;
 }
 
-figure {
+.landing-page > figure {
   text-align: center;
 }
 .small-not {
@@ -37,7 +37,7 @@ figure {
   margin-top: 1rem;
 }
 
-p {
+.landing-page > p {
   text-align: center;
   font-weight: bold;
   cursor: pointer;
