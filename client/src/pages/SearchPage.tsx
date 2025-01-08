@@ -17,7 +17,6 @@ import type { NurseryData } from "../types/nursery";
 import { Link } from "react-router-dom";
 
 function SearchPage() {
-  /* Object to test the nurse displays, will be removed once we fetch the data */
   const [data, setData] = useState<null | NurseryData[]>(null);
 
   useEffect(() => {
