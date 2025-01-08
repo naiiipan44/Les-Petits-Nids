@@ -1,12 +1,12 @@
 import type { RequestHandler } from "express";
 
 import nurseryRepository from "./nurseryRepository";
-const browse: RequestHandler = async (req, res) => {
+const browse: RequestHandler = async (req, res, next) => {
   try {
     const nurseries = await nurseryRepository.readAll();
     res.json(nurseries);
   } catch (err) {
-    console.error("Erreur lors de la récupération des crèches :", err);
+    next(err);
     res.status(500).json({ error: "Erreur interne du serveur" });
   }
 };

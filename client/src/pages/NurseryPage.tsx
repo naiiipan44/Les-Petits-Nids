@@ -1,9 +1,8 @@
 import { useLoaderData } from "react-router-dom";
-import type { nursery } from "../types/nursery";
+import type { NurseryData } from "../types/nursery";
 
 function NurseryPage() {
-  const data = useLoaderData() as nursery;
-  console.info(data, "coucou");
+  const data = useLoaderData() as NurseryData;
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;

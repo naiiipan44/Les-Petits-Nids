@@ -1,13 +1,13 @@
 import "./nursery-card.css";
-import { NavLink } from "react-router-dom";
-import type { nursery } from "../types/nursery";
+import { Link } from "react-router-dom";
+import type { NurseryData } from "../types/nursery";
 
-function NurseryCard({ ns_name, id }: nursery) {
+function NurseryCard({ ns_name, id }: NurseryData) {
   return (
     <>
-      <NavLink to={`/search/${id}`}>
-        <button type="button">La crèche {ns_name}</button>
-      </NavLink>
+      <Link to={`/search/${id}`}>
+        <p>La crèche {ns_name}</p>
+      </Link>
     </>
   );
 }
