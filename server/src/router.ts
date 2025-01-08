@@ -22,4 +22,12 @@ import nurseryActions from "./modules/nursery/nurseryActions";
 router.get("/api/nursery", nurseryActions.browse);
 router.get("/api/nursery/:id", nurseryActions.read);
 
+/* ************************************************************************* */
+
+// get user  from database
+
+import userActions from "./modules/user/userActions";
+
+router.get("/api/user", userActions.browse);
+
 export default router;

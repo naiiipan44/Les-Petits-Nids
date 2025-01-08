@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import bookIcon from "/public/books.svg";
-import favoriteIcon from "/public/favorite.svg";
-import mapIcon from "/public/map.svg";
-import searchIcon from "/public/search.svg";
-import profilIcon from "/public/user.svg";
+import bookIcon from "/books.svg";
+import favoriteIcon from "/favorite.svg";
+import mapIcon from "/map.svg";
+import searchIcon from "/search.svg";
+import profilIcon from "/user.svg";
 
 import "./nav-bar.css";
 
