@@ -1,28 +1,10 @@
-import { useState } from "react";
 import "./LoginPageComponent.css";
 import "../style/globals.css";
+import { Link } from "react-router-dom";
 
 function LoginPageComponent() {
-  const [activeTab, setActiveTab] = useState("parent");
   return (
     <>
-      <section className="tab-container">
-        <button
-          type="button"
-          className={`tab-button ${activeTab === "parent" ? "active-tab" : ""}`}
-          onClick={() => setActiveTab("parent")}
-        >
-          En tant que Parent
-        </button>
-        <button
-          type="button"
-          className={`tab-button ${activeTab === "creche" ? "active-tab" : ""}`}
-          onClick={() => setActiveTab("creche")}
-        >
-          En tant que Crèche
-        </button>
-      </section>
-
       <form className="login-form">
         <input
           type="email"
@@ -37,10 +19,12 @@ function LoginPageComponent() {
           className="input-field"
         />
       </form>
-      <p className="links">
-        Pas encore de compte ? Inscris-toi <br /> <br />
+      <Link to="" className="links">
+        Pas encore de compte ? Inscris-toi
+      </Link>
+      <Link to="" className="links">
         Mot de passe oublié
-      </p>
+      </Link>
     </>
   );
 }
