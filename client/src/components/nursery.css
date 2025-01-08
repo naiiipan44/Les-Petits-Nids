@@ -1,7 +1,10 @@
 .nursery-section {
-  height: 250px;
-  width: 95%;
+  height: 280px;
+  width: 90%;
   padding: 0 0 20px 0;
+  background-color: white;
+  border-radius: 15px 15px 0 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .nursery-section figure {
@@ -19,7 +22,7 @@
 
 .nursery-section figcaption {
   position: relative;
-  top: -35px;
+  top: -40px;
   padding: 0 0 0 5px;
   color: white;
   font-weight: bolder;
@@ -29,5 +32,6 @@
 .nursery-section p {
   color: black;
   margin: 0;
-  padding: 0 0 5px 0;
+  padding: 0 0 5px 5px;
+  font-size: 0.8rem;
 }
