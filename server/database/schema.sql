@@ -139,3 +139,26 @@ ns_coord_lat DECIMAL(10,6) NOT NULL,
 ns_description VARCHAR(255),
 ns_price DECIMAL(10,2) NOT NULL
 );
+
+INSERT INTO nursery
+  (
+    ns_type,
+    ns_mail,
+    ns_zip_postal,
+    ns_num_tel,
+    ns_num_place_dispo,
+    ns_type_gestion,
+    ns_age_min,
+    ns_age_max,
+    ns_disabled,
+    ns_coord_long,
+    ns_coord_lat,
+    ns_description,
+    ns_price
+  )
+  VALUES 
+    (),
+    (),
+    (),
+    (),
+    ();
