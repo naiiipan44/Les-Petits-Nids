@@ -1,2 +1,5 @@
-// GET  http://localhost:3310/api/parent
+GET  http://localhost:3310/api/parent
+
+###
+
 GET  http://localhost:3310/api/parent
