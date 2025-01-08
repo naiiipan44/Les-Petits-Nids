@@ -1,11 +1,11 @@
 import { useState } from "react";
-import RegisterPageNurseryComponent from "../components/RegisterPageNurseryComponent";
+import "./LoginPageComponent.css";
+import "../style/globals.css";
 
-function RegisterPage() {
+function LoginPageComponent() {
   const [activeTab, setActiveTab] = useState("parent");
   return (
     <>
-      <h1>Créer un compte</h1>
       <section className="tab-container">
         <button
           type="button"
@@ -23,13 +23,26 @@ function RegisterPage() {
         </button>
       </section>
 
-      <RegisterPageNurseryComponent />
-      <button className="button primary" type="button">
-        Créer un compte
-      </button>
-      <p>retour</p>
+      <form className="login-form">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          className="input-field"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Mot de passe"
+          className="input-field"
+        />
+      </form>
+      <p className="links">
+        Pas encore de compte ? Inscris-toi <br /> <br />
+        Mot de passe oublié
+      </p>
     </>
   );
 }
 
-export default RegisterPage;
+export default LoginPageComponent;

@@ -1,0 +1,48 @@
+.tab-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.tab-button {
+  padding: 10px 25px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid var(--secondaryColor);
+  background: white;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s, color 0.3s, transform 0.3s ease;
+  font-family: "Nunito", sans-serif;
+}
+
+.tab-button.active-tab {
+  background: var(--secondaryColor);
+  color: white;
+}
+
+.tab-button:first-child {
+  margin-right: -10px;
+}
+
+.tab-button:last-child {
+  margin-left: -10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--secondaryColor);
+}
+
+.links {
+  margin-bottom: 20px;
+}
