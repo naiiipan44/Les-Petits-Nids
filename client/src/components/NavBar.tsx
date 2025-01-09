@@ -5,7 +5,7 @@ import mapIcon from "/map.svg";
 import searchIcon from "/search.svg";
 import profilIcon from "/user.svg";
 
-import "./nav-bar.css";
+import "./NavBar.css";
 
 function NavBar() {
   return (
