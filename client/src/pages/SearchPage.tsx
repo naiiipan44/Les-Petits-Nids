@@ -2,6 +2,7 @@ import searchIcon from "/search.svg";
 import "./search-page.css";
 import exempleNursery from "/aurelie_faugere_assistante_maternelle.jpg";
 import funnelIcon from "/funnel.svg";
+import FilterBar from "../components/FilterBar";
 
 function SearchPage() {
   /* Object to test the nurse displays, will be removed once we fetch the data */
@@ -36,10 +37,7 @@ function SearchPage() {
     <>
       <header className="head-section">
         {/* Should be replaced by FilterBar component in the futur*/}
-        <section className="filter-head-section">
-          <img src={searchIcon} alt="magnifying glass" />
-          <input type="text" />
-        </section>
+        <FilterBar />
         <section className="options-head-section">
           <section className="filter-and-sort-options">
             {/* Both figures above should triger a modal to fill filter or sort criteria*/}
