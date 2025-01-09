@@ -1,20 +1,11 @@
-// Import images from /public
-import funnelIcon from "/funnel.svg";
-import searchIcon from "/search.svg";
-
-// Import style
+import { useEffect, useState } from "react";
+import FilterBar from "../components/FilterBar";
 import "./SearchPage.css";
 
-// Import components
-import Nursery from "../components/Nursery";
-
-import { useEffect, useState } from "react";
-
-// Import Interface
-import type { NurseryData } from "../types/nursery";
-
-// Import React components
 import { Link } from "react-router-dom";
+
+import Nursery from "../components/Nursery";
+import type { NurseryData } from "../types/nursery";
 
 function SearchPage() {
   const [data, setData] = useState<null | NurseryData[]>(null);
@@ -28,20 +19,16 @@ function SearchPage() {
   return (
     <>
       <header className="head-section">
-        {/* Should be replaced by FilterBar component in the futur*/}
-        <section className="filter-head-section">
-          <img src={searchIcon} alt="magnifying glass" />
-          <input type="text" />
-        </section>
+        <FilterBar />
         <section className="options-head-section">
           <section className="filter-and-sort-options">
             {/* Both figures above should triger a modal to fill filter or sort criteria*/}
             <figure>
-              <img src={funnelIcon} alt="funnel" />
+              <img src="/funnel.svg" alt="funnel" />
               <figcaption>Filtrer</figcaption>
             </figure>
             <figure>
-              <img src={funnelIcon} alt="funnel" />
+              <img src="/funnel.svg" alt="funnel" />
               <figcaption>Trier</figcaption>
             </figure>
           </section>
