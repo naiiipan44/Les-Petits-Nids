@@ -1,6 +1,6 @@
 import logo from "/logo.svg";
 import mother from "/mother.svg";
-import "./Landingpage.css";
+import "./LandingPage.css";
 function LandingPage() {
   return (
     <div className="landing-page">
