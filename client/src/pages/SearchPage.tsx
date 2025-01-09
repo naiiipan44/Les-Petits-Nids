@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import FilterBar from "../components/FilterBar";
-import "./search-page.css";
+import "./SearchPage.css";
 
 import { Link } from "react-router-dom";
-import funnelIcon from "/funnel.svg";
+
 import Nursery from "../components/Nursery";
 import type { NurseryData } from "../types/nursery";
 
@@ -24,11 +24,11 @@ function SearchPage() {
           <section className="filter-and-sort-options">
             {/* Both figures above should triger a modal to fill filter or sort criteria*/}
             <figure>
-              <img src={funnelIcon} alt="funnel" />
+              <img src="/funnel.svg" alt="funnel" />
               <figcaption>Filtrer</figcaption>
             </figure>
             <figure>
-              <img src={funnelIcon} alt="funnel" />
+              <img src="/funnel.svg" alt="funnel" />
               <figcaption>Trier</figcaption>
             </figure>
           </section>

@@ -1,10 +1,8 @@
-import searchIcon from "/search.svg";
-
 function FilterBar() {
   return (
     <>
       <section className="filter-head-section">
-        <img src={searchIcon} alt="magnifying glass" />
+        <img src="/search.svg" alt="magnifying glass" />
         <input type="text" />
       </section>
     </>
