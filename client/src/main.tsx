@@ -34,6 +34,19 @@ const router = createBrowserRouter([
       {
         path: "search/:id",
         element: <NurseryPage />,
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `http://localhost:3310/api/nursery/${params.id}`,
+          );
+
+          if (!response.ok) {
+            throw new Error(
+              `Erreur lors de la récupération de la crèche avec l'ID ${params.id} : ${response.statusText}`,
+            );
+          }
+
+          return response.json();
+        },
       },
       {
         path: "login",

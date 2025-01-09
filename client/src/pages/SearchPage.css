@@ -62,46 +62,13 @@
   display: flex;
 }
 
-/* Main */
-
-main {
+.main-search-page {
+  padding: 20px 0 0 25px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding: 0 0 20px 0;
+  gap: 24px;
 }
 
-.nursery-section {
-  padding: 10px 0 0 10px;
-}
-
-.nursery-section > figure {
-  margin: 0;
-  padding: 0;
-  height: 150px;
-}
-
-.nursery-section > figure p {
-  width: 20px;
-}
-
-.nursery-section > figure > figcaption {
-  position: relative;
-  top: -50px;
-  padding: 0 0 0 10px;
-}
-
-.nursery-section > figure > img {
-  border-radius: 10px 10px 0 0;
-}
-
-.nursery-section > figure > p {
-  position: relative;
-  top: -120px;
-  right: -300px;
-}
-
-.nursery-section > p {
-  padding: 0;
-  margin: 0;
+.main-search-page a {
+  text-decoration: none;
 }

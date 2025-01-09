@@ -1,10 +1,10 @@
 import type { RequestHandler } from "express";
 
-import parentRepository from "./parentRepository";
+import userAppRepository from "./userAppRepository";
 const browse: RequestHandler = async (req, res) => {
-  const parent = await parentRepository.readAll();
+  const userApp = await userAppRepository.readAll();
 
-  res.json(parent);
+  res.json(userApp);
 };
 
 export default { browse };

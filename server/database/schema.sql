@@ -75,7 +75,7 @@ VALUES
   );
 
 
-CREATE TABLE parent (
+CREATE TABLE userApp (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   p_first_name VARCHAR(80) NOT NULL,
   p_last_name VARCHAR(80) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE parent (
   p_birth_date DATE NOT NULL
 );
 
-INSERT INTO parent
+INSERT INTO userApp
   (
 id,
 p_first_name,

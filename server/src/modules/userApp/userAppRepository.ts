@@ -2,12 +2,12 @@ import databaseClient from "../../../database/client";
 
 import type { Rows } from "../../../database/client";
 
-class parentRepository {
+class userAppRepository {
   async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM parent");
+    const [rows] = await databaseClient.query<Rows>("SELECT * FROM userApp");
 
     return rows;
   }
 }
 
-export default new parentRepository();
+export default new userAppRepository();
