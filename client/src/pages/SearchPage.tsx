@@ -20,7 +20,7 @@ function SearchPage() {
   const [data, setData] = useState<null | NurseryData[]>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/nursery/")
+    fetch(`${import.meta.env.VITE_API_URL}/api/nursery/`)
       .then((response) => response.json())
       .then((nursery) => setData(nursery));
   }, []);
