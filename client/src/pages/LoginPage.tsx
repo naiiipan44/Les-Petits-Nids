@@ -12,7 +12,7 @@ function LoginPage() {
     <>
       <section className="login-page-container">
         <figure className="logo">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </figure>
         <h1 className="login-title">Se connecter</h1>
         <section className="tab-container">

@@ -7,15 +7,15 @@ function RegisterPageComponentParents() {
     <>
       <form className="login-form">
         <input
-          type="Nom"
-          name="Nom"
+          type="text"
+          name="lastName"
           placeholder="Nom"
           aria-label="Nom"
           className="input-field"
         />
         <input
-          type="Prénom"
-          name="Prénom"
+          type="text"
+          name="firstName"
           placeholder="Prénom"
           aria-label="Prénom"
           className="input-field"

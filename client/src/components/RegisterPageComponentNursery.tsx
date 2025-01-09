@@ -7,8 +7,8 @@ function RegisterPageComponentNursery() {
     <>
       <form className="login-form">
         <input
-          type="Nom de l'établissement"
-          name="Nom de l'établissement "
+          type="text"
+          name="establishmentName"
           placeholder="Nom de l'établissement "
           aria-label="Nom de l'établissement"
           className="input-field"

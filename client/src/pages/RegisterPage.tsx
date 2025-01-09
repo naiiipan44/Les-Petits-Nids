@@ -11,7 +11,7 @@ function RegisterPage() {
     <>
       <section className="login-page-container">
         <figure className="logo">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </figure>
         <h1 className="login-title">Créer un compte</h1>
         <section className="tab-container">
