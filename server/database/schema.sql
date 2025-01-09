@@ -138,8 +138,8 @@ VALUES
   2.5,
   4,
   "handicap-boolean",
-  2.289409993720274
-  48.738824991659705
+  2.289409993720274,
+  48.738824991659705,
   "https://www.ville-antony.fr/images/Petite-Enfance/photos_multi-accueils/la_comptine/int/farandole/farandole_int_1_500.jpg",
   "price"
   );
