@@ -6,9 +6,9 @@
 
   & input {
     position: absolute;
-    font-size: 1rem;
     height: 40px;
     width: 326px;
+    font-size: 1rem;
     border-radius: 15px;
     opacity: 50%;
     background: linear-gradient(
