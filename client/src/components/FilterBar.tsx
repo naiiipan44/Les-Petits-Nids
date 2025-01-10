@@ -1,5 +1,4 @@
 import type { FormEvent } from "react";
-
 import "./FilterBar.css";
 
 interface Text {
