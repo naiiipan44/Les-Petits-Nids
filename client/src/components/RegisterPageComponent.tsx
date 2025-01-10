@@ -1,12 +1,19 @@
+import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 interface ParentProps {
   isParent: boolean;
   setIsParent: (isParent: boolean) => void;
 }
 function RegisterPageComponent({ isParent }: ParentProps) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const formatedData = Object.fromEntries(form.entries());
+    console.warn(formatedData);
+  }
   return (
     <>
-      <form className="login-form">
+      <form onSubmit={onSubmit} className="login-form">
         {isParent ? (
           <div className="registration-parents">
             <input
@@ -50,10 +57,13 @@ function RegisterPageComponent({ isParent }: ParentProps) {
           aria-label="Mot de passe"
           className="input-field"
         />
+        <Link to="" className="links">
+          Vous avez déjà un compte ? Se connecter
+        </Link>
+        <button className="button-secondary" type="submit">
+          Connexion
+        </button>
       </form>
-      <Link to="" className="links">
-        Vous avez déjà un compte ? Se connecter
-      </Link>
     </>
   );
 }

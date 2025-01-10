@@ -49,9 +49,6 @@ function LoginAndRegisterPage() {
         ) : (
           <LoginPageComponent />
         )}
-        <button className="button-secondary" type="button">
-          Connexion
-        </button>
         <Link to="" className="links">
           {registration ? (
             <button
