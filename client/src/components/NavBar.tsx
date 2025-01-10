@@ -15,7 +15,7 @@ function NavBar() {
             <img src="/search.svg" alt="link to the search page" />
           </button>
         </NavLink>
-        <NavLink to="login">
+        <NavLink to="loginandregister">
           <button type="button" className="nav-buttons">
             <img src="/user.svg" alt="link to the profil of the user" />
           </button>
