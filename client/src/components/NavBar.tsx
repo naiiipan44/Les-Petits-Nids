@@ -1,10 +1,4 @@
 import { NavLink } from "react-router-dom";
-import bookIcon from "/books.svg";
-import favoriteIcon from "/favorite.svg";
-import mapIcon from "/map.svg";
-import searchIcon from "/search.svg";
-import profilIcon from "/user.svg";
-
 import "./NavBar.css";
 
 function NavBar() {
@@ -13,27 +7,27 @@ function NavBar() {
       <nav>
         <NavLink to="favorite">
           <button type="button" className="nav-buttons">
-            <img src={favoriteIcon} alt="link to the favorite page" />
+            <img src="/favorite.svg" alt="link to the favorite page" />
           </button>
         </NavLink>
         <NavLink to="search">
           <button type="button" className="nav-buttons">
-            <img src={searchIcon} alt="link to the search page" />
+            <img src="/search.svg" alt="link to the search page" />
           </button>
         </NavLink>
-        <NavLink to="login">
+        <NavLink to="loginandregister">
           <button type="button" className="nav-buttons">
-            <img src={profilIcon} alt="link to the profil of the user" />
+            <img src="/user.svg" alt="link to the profil of the user" />
           </button>
         </NavLink>
         <NavLink to="book">
           <button type="button" className="nav-buttons">
-            <img src={bookIcon} alt="link to the book page" />
+            <img src="/books.svg" alt="link to the book page" />
           </button>
         </NavLink>
         <NavLink to="map">
           <button type="button" className="nav-buttons">
-            <img src={mapIcon} alt="link to the map page" />
+            <img src="/map.svg" alt="link to the map page" />
           </button>
         </NavLink>
       </nav>

@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <NurseryPage />,
         loader: async ({ params }) => {
           const response = await fetch(
-            `http://localhost:3310/api/nursery/${params.id}`,
+            `${import.meta.env.VITE_API_URL}${params.id}`,
           );
 
           if (!response.ok) {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "login",
+        path: "loginandregister",
         element: <LoginAndRegisterPage />,
       },
     ],

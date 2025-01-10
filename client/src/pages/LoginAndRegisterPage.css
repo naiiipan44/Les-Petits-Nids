@@ -47,7 +47,7 @@
 }
 
 .button-secondary {
-  margin-top: 20px;
+  margin-top: 70px;
   width: 250px;
   height: 50px;
 }
@@ -60,7 +60,22 @@
   margin-left: 20px;
 }
 
-.arrow {
+.back-button {
+  width: 35px;
+  height: 35px;
+  background-color: var(--secondaryColor);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.back-button .arrow {
   width: 10px;
   height: 10px;
   border-left: 2px solid var(--tertiaryColor);
