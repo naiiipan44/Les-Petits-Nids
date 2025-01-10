@@ -1,8 +1,7 @@
 import "./LoginPageComponent.css";
 import "../style/globals.css";
-import { Link } from "react-router-dom";
 
-function LoginPageComponentNursery() {
+function LoginPageComponent() {
   return (
     <>
       <form className="login-form">
@@ -19,14 +18,8 @@ function LoginPageComponentNursery() {
           className="input-field"
         />
       </form>
-      <Link to="" className="links">
-        Pas encore de compte ? Inscris-toi
-      </Link>
-      <Link to="" className="links">
-        Mot de passe oublié
-      </Link>
     </>
   );
 }
 
-export default LoginPageComponentNursery;
+export default LoginPageComponent;
