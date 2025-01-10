@@ -18,14 +18,14 @@ function LoginPage() {
         <section className="tab-container">
           <button
             type="button"
-            className={`tab-button ${activeTab === false ? "active-tab" : ""}`}
+            className={`tab-button ${activeTab === true ? "active-tab" : ""}`}
             onClick={() => setActiveTab(!activeTab)}
           >
             En tant que Parent
           </button>
           <button
             type="button"
-            className={`tab-button ${activeTab === true ? "active-tab" : ""}`}
+            className={`tab-button ${activeTab === false ? "active-tab" : ""}`}
             onClick={() => setActiveTab(!activeTab)}
           >
             En tant que Crèche
@@ -36,9 +36,6 @@ function LoginPage() {
         ) : (
           <LoginPageComponentNursery />
         )}
-        <button className="button-secondary" type="button">
-          Connexion
-        </button>
       </section>
       <section className="button-return">
         <button className="back-button" type="button">
