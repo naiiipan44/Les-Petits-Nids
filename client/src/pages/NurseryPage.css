@@ -42,10 +42,6 @@
   border-top-right-radius: 4%;
 }
 
-/* .nursery-description {
-  padding: 5%;
-  box-sizing: border-box;
-} */
 .nursery-description section {
   display: flex;
   justify-content: space-evenly;
