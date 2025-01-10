@@ -5,7 +5,7 @@ import logo from "/logo.svg";
 import RegisterPageComponentNursery from "../components/RegisterPageComponentNursery";
 import RegisterPageComponentParents from "../components/RegisterPageComponentParents";
 
-function RegisterPage() {
+function LoginAndRegisterPage() {
   const [activeTab, setActiveTab] = useState(false);
   return (
     <>
@@ -46,4 +46,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default LoginAndRegisterPage;
