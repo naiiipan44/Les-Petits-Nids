@@ -1,16 +1,14 @@
-import logo from "/logo.svg";
-import mother from "/mother.svg";
 import "./LandingPage.css";
 function LandingPage() {
   return (
     <div className="landing-page">
       <figure className="logo">
-        <img src={logo} alt="" />
+        <img src="/logo.svg" alt="" />
         <figcaption className="small-not">Les petits nids</figcaption>
       </figure>
       <div className="white-painting">
         <figure className="mother">
-          <img src={mother} alt="" />
+          <img src="/mother.svg" alt="" />
           <figcaption className="welcome">
             Garde d'enfant à la demande
           </figcaption>
