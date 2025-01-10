@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../style/globals.css";
 import "./LoginPage.css";
-import logo from "/logo.svg";
 import LoginPageComponentNursery from "../components/LoginPageComponentNursery";
 import LoginPageComponentParents from "../components/LoginPageComponentParents";
 
@@ -12,7 +11,7 @@ function LoginPage() {
     <>
       <section className="login-page-container">
         <figure className="logo">
-          <img src={logo} alt="logo" />
+          <img src="/logo.svg" alt="logo" />
         </figure>
         <h1 className="login-title">Se connecter</h1>
         <section className="tab-container">

@@ -1,21 +1,21 @@
 import type { FormEvent } from "react";
 import "./FilterBar.css";
 
-interface Text {
-  text: string;
-  setText: (text: string) => void;
+interface UserEntryProps {
+  userEntry: string;
+  setUserEntry: (userEntry: string) => void;
 }
 
-function FilterBar({ text, setText }: Text) {
+function FilterBar({ userEntry, setUserEntry }: UserEntryProps) {
   function handleChange(event: FormEvent<HTMLInputElement>) {
-    setText(event.currentTarget.value);
+    setUserEntry(event.currentTarget.value);
   }
 
   return (
     <>
       <section className="filter-head-section">
         <img src="/search.svg" alt="magnifying glass" />
-        <input type="text" onChange={handleChange} value={text} />
+        <input type="text" onChange={handleChange} value={userEntry} />
       </section>
     </>
   );

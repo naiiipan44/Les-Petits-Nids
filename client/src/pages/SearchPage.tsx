@@ -10,7 +10,7 @@ import type { NurseryData } from "../types/nursery";
 function SearchPage() {
   const [data, setData] = useState<null | NurseryData[]>(null);
 
-  const [text, setText] = useState<string>("");
+  const [userEntry, setUserEntry] = useState<string>("");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/nursery/`)
@@ -19,14 +19,14 @@ function SearchPage() {
   }, []);
 
   const filteredData = data?.filter((el) => {
-    return el.ns_name.toLowerCase().includes(text.toLowerCase());
+    return el.ns_name.toLowerCase().includes(userEntry.toLowerCase());
   });
   console.warn(filteredData);
 
   return (
     <>
       <header className="head-section">
-        <FilterBar text={text} setText={setText} />
+        <FilterBar userEntry={userEntry} setUserEntry={setUserEntry} />
         <section className="options-head-section">
           <section className="filter-and-sort-options">
             {/* Both figures above should triger a modal to fill filter or sort criteria*/}
