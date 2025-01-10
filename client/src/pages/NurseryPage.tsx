@@ -5,7 +5,7 @@ import "./NurseryPage.css";
 import { useState } from "react";
 
 function NurseryPage() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => {
     setIsVisible((prevState) => !prevState);
