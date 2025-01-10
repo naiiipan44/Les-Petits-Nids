@@ -20,7 +20,11 @@ function LoginAndRegisterPage() {
         <figure className="logo">
           <img src="/logo.svg" alt="logo" />
         </figure>
-        <h1 className="login-title">Se connecter</h1>
+        {registration ? (
+          <h1 className="login-title">Création de compte</h1>
+        ) : (
+          <h1 className="login-title">Se connecter</h1>
+        )}
         <section className="tab-container">
           <button
             type="button"
@@ -49,9 +53,21 @@ function LoginAndRegisterPage() {
           Connexion
         </button>
         <Link to="" className="links">
-          <button type="button" onClick={() => setRegistration(!registration)}>
-            Pas encore de compte ? Inscris-toi
-          </button>
+          {registration ? (
+            <button
+              type="button"
+              onClick={() => setRegistration(!registration)}
+            >
+              Retour vers la connexion
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setRegistration(!registration)}
+            >
+              Pas encore de compte ? Inscris-toi
+            </button>
+          )}
         </Link>
         <Link to="" className="links">
           Mot de passe oublié
