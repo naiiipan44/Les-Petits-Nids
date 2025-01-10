@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <NurseryPage />,
         loader: async ({ params }) => {
           const response = await fetch(
-            `${import.meta.env.VITE_API_URL}${params.id}`,
+            `${import.meta.env.VITE_API_URL}/api/nursery/${params.id}`,
           );
 
           if (!response.ok) {
