@@ -1,0 +1,43 @@
+/* Header */
+
+.head-section {
+  padding: 25px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.options-head-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.options-head-section p {
+  padding: 0 10px 0 0;
+}
+
+.filter-and-sort-options {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 5px;
+}
+
+.filter-and-sort-options figure {
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.main-search-page {
+  padding: 20px 0 0 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.main-search-page a {
+  text-decoration: none;
+}

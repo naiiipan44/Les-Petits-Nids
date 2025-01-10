@@ -1,49 +1,41 @@
-// Import fake data
-import { fakeNurse } from "../assets/fakeNurseData";
-
-// Import images from /public
-import funnelIcon from "/funnel.svg";
-import searchIcon from "/search.svg";
-
-// Import style
-import "./search-page.css";
-
-// Import components
-import Nursery from "../components/Nursery";
-
 import { useEffect, useState } from "react";
-import NurseryCard from "../components/NurseryCard";
+import FilterBar from "../components/FilterBar";
+import "./SearchPage.css";
 
+import { Link } from "react-router-dom";
+
+import Nursery from "../components/Nursery";
 import type { NurseryData } from "../types/nursery";
-// import type { RawNurseryData } from "../types/nursery";
 
 function SearchPage() {
-  /* Object to test the nurse displays, will be removed once we fetch the data */
   const [data, setData] = useState<null | NurseryData[]>(null);
 
+  const [userEntry, setUserEntry] = useState<string>("");
+
   useEffect(() => {
-    fetch("http://localhost:3310/api/nursery/")
+    fetch(`${import.meta.env.VITE_API_URL}/api/nursery/`)
       .then((response) => response.json())
       .then((nursery) => setData(nursery));
   }, []);
 
+  const filteredData = data?.filter((el) => {
+    return el.ns_name.toLowerCase().includes(userEntry.toLowerCase());
+  });
+  console.warn(filteredData);
+
   return (
     <>
       <header className="head-section">
-        {/* Should be replaced by FilterBar component in the futur*/}
-        <section className="filter-head-section">
-          <img src={searchIcon} alt="magnifying glass" />
-          <input type="text" />
-        </section>
+        <FilterBar userEntry={userEntry} setUserEntry={setUserEntry} />
         <section className="options-head-section">
           <section className="filter-and-sort-options">
             {/* Both figures above should triger a modal to fill filter or sort criteria*/}
             <figure>
-              <img src={funnelIcon} alt="funnel" />
+              <img src="/funnel.svg" alt="funnel" />
               <figcaption>Filtrer</figcaption>
             </figure>
             <figure>
-              <img src={funnelIcon} alt="funnel" />
+              <img src="/funnel.svg" alt="funnel" />
               <figcaption>Trier</figcaption>
             </figure>
           </section>
@@ -51,33 +43,22 @@ function SearchPage() {
         </section>
       </header>
 
-      <main>
-        {data?.map((el) => (
-          <NurseryCard
-            key={el.id}
-            id={el.id}
-            ns_name={el.ns_name}
-            ns_image={el.ns_image}
-            ns_capacity={el.ns_capacity}
-            ns_address={el.ns_address}
-          />
-        ))}
-        {fakeNurse.map((nurse) => {
-          return (
-            <Nursery
-              key={nurse.id}
-              id={nurse.id}
-              image={nurse.image}
-              name={nurse.name}
-              type={nurse.type}
-              rate={nurse.rate}
-              location={nurse.location}
-              openHours={nurse.openHours}
-              phoneNumber={nurse.phoneNumber}
-              mail={nurse.mail}
-            />
-          );
-        })}
+      <main className="main-search-page">
+        {filteredData?.length ? (
+          filteredData.map((el) => (
+            <Link to={`/search/${el.id}`} key={el.id}>
+              <Nursery
+                id={el.id}
+                ns_name={el.ns_name}
+                ns_image={el.ns_image}
+                ns_capacity={el.ns_capacity}
+                ns_address={el.ns_address}
+              />
+            </Link>
+          ))
+        ) : (
+          <p>Aucune crèche ne correspond à votre recherche</p>
+        )}
       </main>
     </>
   );

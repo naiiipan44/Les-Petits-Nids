@@ -1,0 +1,24 @@
+import type { FormEvent } from "react";
+import "./FilterBar.css";
+
+interface UserEntryProps {
+  userEntry: string;
+  setUserEntry: (userEntry: string) => void;
+}
+
+function FilterBar({ userEntry, setUserEntry }: UserEntryProps) {
+  function handleChange(event: FormEvent<HTMLInputElement>) {
+    setUserEntry(event.currentTarget.value);
+  }
+
+  return (
+    <>
+      <section className="filter-head-section">
+        <img src="/search.svg" alt="magnifying glass" />
+        <input type="text" onChange={handleChange} value={userEntry} />
+      </section>
+    </>
+  );
+}
+
+export default FilterBar;

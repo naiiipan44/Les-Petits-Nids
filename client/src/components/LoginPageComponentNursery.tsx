@@ -2,7 +2,7 @@ import "./LoginPageComponent.css";
 import "../style/globals.css";
 import { Link } from "react-router-dom";
 
-function LoginPageComponent() {
+function LoginPageComponentNursery() {
   return (
     <>
       <form className="login-form">
@@ -29,4 +29,4 @@ function LoginPageComponent() {
   );
 }
 
-export default LoginPageComponent;
+export default LoginPageComponentNursery;
