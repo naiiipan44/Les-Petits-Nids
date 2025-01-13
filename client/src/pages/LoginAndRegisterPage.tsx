@@ -77,7 +77,6 @@ function LoginAndRegisterPage() {
         <button className="back-button" type="button">
           <span className="arrow" />
         </button>
-        <p>Retour</p>
       </section>
     </>
   );
