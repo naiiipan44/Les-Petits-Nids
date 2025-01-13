@@ -8,7 +8,7 @@ function LandingPage() {
       </figure>
       <div className="white-painting">
         <figure className="mother">
-          <img src="/mother.svg" alt="" />
+          <img src="/mother2.png" alt="" />
           <figcaption className="welcome">
             Garde d'enfant à la demande
           </figcaption>
