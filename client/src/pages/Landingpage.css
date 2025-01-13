@@ -8,6 +8,11 @@
   min-height: 100vh;
 }
 
+/*
+.nav-component {
+  display: none;
+} */
+
 .white-painting {
   background-color: white;
   margin-bottom: 5rem;
@@ -52,7 +57,7 @@
 .round-button {
   width: 50px;
   height: 50px;
-  background-color: #4caf50;
+  background-color: #133f63;
   color: white;
   border: none;
   border-radius: 50%;
@@ -65,7 +70,7 @@
 }
 
 .round-button:hover {
-  background-color: #45a049;
+  background-color: #133f64;
 }
 .button-pass {
   display: flex;
@@ -73,7 +78,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 380px), screen and (max-height: 854px) {
+@media screen and (max-width: 380px), screen /* and (max-width: 854px) */ {
   .landing-page {
     padding: 1rem;
     min-height: auto;
