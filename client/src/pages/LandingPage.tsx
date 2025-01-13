@@ -19,7 +19,6 @@ function LandingPage() {
         </p>
       </div>
       <div className="button-pass">
-        <p>Passer</p>
         <button type="button" className="round-button">
           &gt;
         </button>
