@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../style/globals.css";
 import "./LoginAndRegisterPage.css";
 
 import { Link } from "react-router-dom";
@@ -53,6 +52,7 @@ function LoginAndRegisterPage() {
           {registration ? (
             <button
               type="button"
+              className="account-button"
               onClick={() => setRegistration(!registration)}
             >
               Retour vers la connexion
@@ -60,6 +60,7 @@ function LoginAndRegisterPage() {
           ) : (
             <button
               type="button"
+              className="account-button"
               onClick={() => setRegistration(!registration)}
             >
               Pas encore de compte ? Inscris-toi
