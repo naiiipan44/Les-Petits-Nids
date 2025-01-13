@@ -16,6 +16,7 @@
 }
 
 /* Toggle button between nursery and parent display */
+
 .tab-container {
   display: flex;
   justify-content: center;
@@ -70,6 +71,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 150px;
 }
 
 .back-button {

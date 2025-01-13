@@ -20,7 +20,7 @@ function LoginAndRegisterPage() {
           <img src="/logo.svg" alt="logo" />
         </figure>
         {registration ? (
-          <h1 className="login-title">Création de compte</h1>
+          <h1 className="login-title">Créer un compte</h1>
         ) : (
           <h1 className="login-title">Se connecter</h1>
         )}
@@ -67,9 +67,11 @@ function LoginAndRegisterPage() {
             </button>
           )}
         </Link>
-        <Link to="" className="links">
-          Mot de passe oublié
-        </Link>
+        {!registration && (
+          <Link to="" className="links">
+            Mot de passe oublié
+          </Link>
+        )}
       </section>
       <section className="button-return">
         <button className="back-button" type="button">

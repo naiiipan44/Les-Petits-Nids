@@ -24,7 +24,10 @@ function LoginPageComponent() {
           placeholder="Mot de passe"
           className="input-field"
         />
-        <button className="button-secondary" type="submit">
+        <button
+          className="button-secondary form-validation-button"
+          type="submit"
+        >
           Connexion
         </button>
       </form>
