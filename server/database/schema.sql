@@ -1,8 +1,16 @@
-create table user (
+create table userLogin (
   id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+  first_name varchar(80) not null,
+  last_name varchar(80) not null,
+  email varchar(255) not null,
+  user_password varchar(255) not null
 );
+
+INSERT INTO userLogin (
+  id, first_name, last_name, email, user_password) 
+  VALUES 
+  (1, "Deschamps", "Paula", "paula.deschamps@gmail.com", "test1"), 
+  (2, "Pouet", "Castor", "castor.pouet@gmail.com", "test2");
 
 
 CREATE TABLE nursery (
