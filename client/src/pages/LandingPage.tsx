@@ -4,7 +4,7 @@ function LandingPage() {
     <div className="landing-page">
       <figure className="logo">
         <img src="/logo.svg" alt="" />
-        <figcaption className="small-not">Les petits nids</figcaption>
+        <figcaption className="small-not">Les Petits Nids</figcaption>
       </figure>
       <div className="white-painting">
         <figure className="mother">
