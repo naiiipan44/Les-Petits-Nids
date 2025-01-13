@@ -22,8 +22,33 @@ const add: RequestHandler = async (req, res, next) => {
       res.status(201).json({ insertId });
     }
   } catch (error) {
+    next(res.send(error));
+    // How to type error.message ?
+  }
+};
+
+const validation: RequestHandler = async (req, res, next) => {
+  try {
+    const newUserLogin = {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      user_password: req.body.user_password,
+    };
+
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (newUserLogin.first_name.length < 1 || newUserLogin.last_name < 1) {
+      res.send("Vueillez renseigner votre nom et votre prénom");
+    } else if (!validEmail.test(newUserLogin.email)) {
+      res.send("L'email saisi n'est pas valide");
+    } else if (newUserLogin.user_password.length <= 8) {
+      res.send("La force du mot de passe est insuffisante");
+    } else {
+      next();
+    }
+  } catch (error) {
     next(error);
   }
 };
 
-export default { browse, add };
+export default { browse, add, validation };

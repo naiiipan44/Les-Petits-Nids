@@ -2,7 +2,7 @@ create table userLogin (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
   last_name varchar(80) not null,
-  email varchar(255) not null,
+  email varchar(255) not null unique,
   user_password varchar(255) not null
 );
 

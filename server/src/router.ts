@@ -34,6 +34,10 @@ router.get("/api/userApp", userAppActions.browse);
 // Parent registration
 
 router.get("/api/userLogin", userLoginActions.browse);
-router.post("/api/userLogin", userLoginActions.add);
+router.post(
+  "/api/userLogin",
+  userLoginActions.validation,
+  userLoginActions.add,
+);
 
 export default router;
