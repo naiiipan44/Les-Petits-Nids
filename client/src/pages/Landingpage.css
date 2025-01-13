@@ -1,5 +1,5 @@
 .landing-page {
-  background: linear-gradient(#76a3f6, #83a9ef, #cdfcff);
+  /*background: linear-gradient(#76a3f6, #83a9ef, #cdfcff);*/
   margin-bottom: 9rem;
   display: flex;
   flex-direction: column;
@@ -8,10 +8,9 @@
   min-height: 100vh;
 }
 
-/*
 .nav-component {
   display: none;
-} */
+}
 
 .white-painting {
   background-color: white;
@@ -24,7 +23,7 @@
 }
 
 .logo img,
-.mother img {
+.mother2 img {
   display: block;
   margin: 0 auto;
 }
@@ -32,9 +31,12 @@
 .landing-page > figure {
   text-align: center;
 }
+
 .small-not {
   color: white;
+  font-family: "Beth Ellen", sans-serif;
 }
+
 .welcome {
   color: black;
   font-size: large;
@@ -82,7 +84,7 @@
   .landing-page {
     padding: 1rem;
     min-height: auto;
-    background: linear-gradient(#76a3f6, #83a9ef);
+    /*background: linear-gradient(#76a3f6, #83a9ef);*/
   }
 
   .white-painting {
