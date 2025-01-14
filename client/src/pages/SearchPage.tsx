@@ -21,7 +21,6 @@ function SearchPage() {
   const filteredData = data?.filter((el) => {
     return el.ns_name.toLowerCase().includes(userEntry.toLowerCase());
   });
-  console.warn(filteredData);
 
   return (
     <>
@@ -47,13 +46,12 @@ function SearchPage() {
         {filteredData?.length ? (
           filteredData.map((el) => (
             <Link to={`/search/${el.id}`} key={el.id}>
-              <Nursery
-                id={el.id}
-                ns_name={el.ns_name}
-                ns_image={el.ns_image}
-                ns_capacity={el.ns_capacity}
-                ns_address={el.ns_address}
-              />
+              <SearchPage />
+              id={el.id}
+              ns_name={el.ns_name}
+              ns_image={el.ns_image}
+              ns_capacity={el.ns_capacity}
+              ns_address={el.ns_address}
             </Link>
           ))
         ) : (
