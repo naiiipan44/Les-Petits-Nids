@@ -8,6 +8,10 @@ const browse: RequestHandler = async (req, res) => {
   res.json(userLogin);
 };
 
+interface Error {
+  code: string;
+}
+
 const add: RequestHandler = async (req, res, next) => {
   try {
     const newUserLogin = {
@@ -21,9 +25,13 @@ const add: RequestHandler = async (req, res, next) => {
     if (insertId) {
       res.status(201).json({ insertId });
     }
-  } catch (error) {
-    next(res.send(error));
-    // How to type error.message ?
+  } catch (err) {
+    const error = err as Error;
+    if (error.code) {
+      res.status(400).send("Cette adresse mail est déjà utilisée");
+    } else {
+      next(err);
+    }
   }
 };
 
