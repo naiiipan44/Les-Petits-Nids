@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import type { NurseryData } from "../types/nursery";
 import "./ModalConnexion.css";
-
-interface ModalConnexionProps {
-  onClose: () => void;
-}
+import type { ModalConnexionProps } from "../types/ModalConnexion";
 
 function ModalConnexion({ onClose }: ModalConnexionProps) {
   const data = useLoaderData() as NurseryData;
