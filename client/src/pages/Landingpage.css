@@ -5,10 +5,10 @@
   justify-content: center;
   min-height: 100vh;
 }
-/*
+
 .nav-component {
   display: none;
-}*/
+}
 
 .white-painting {
   background-color: white;
@@ -51,9 +51,6 @@
   font-weight: bold;
   color: #133f63;
 }
-.informations-security {
-  font-weight: bold;
-}
 
 .round-button {
   width: 50px;
@@ -76,6 +73,7 @@ button.round-button {
 .round-button:hover {
   background-color: #133f64;
 }
+
 .button-pass {
   display: flex;
   justify-content: center;
