@@ -10,6 +10,14 @@ function RegisterPageComponent({ isParent }: ParentProps) {
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
     console.warn(formatedData);
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/userLogin`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formatedData),
+    }).then((response) => console.warn(response, "Données envoyées"));
   }
   return (
     <>
