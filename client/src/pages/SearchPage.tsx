@@ -53,6 +53,8 @@ function SearchPage() {
                 ns_image={el.ns_image}
                 ns_capacity={el.ns_capacity}
                 ns_address={el.ns_address}
+                ns_coord_lat={el.ns_coord_lat}
+                ns_coord_long={el.ns_coord_long}
               />
             </Link>
           ))

@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
+import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
 import SearchPage from "./pages/SearchPage";
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "loginandregister",
         element: <LoginAndRegisterPage />,
+      },
+      {
+        path: "map",
+        element: <MapPage />,
       },
     ],
   },

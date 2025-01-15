@@ -6,4 +6,7 @@ export interface NurseryData {
   ns_image: string;
 }
 
-// Interface à garder pour la suite
+interface NurseryData extends InterfaceMap {
+  ns_coord_lat: number;
+  ns_coord_long: number;
+}
