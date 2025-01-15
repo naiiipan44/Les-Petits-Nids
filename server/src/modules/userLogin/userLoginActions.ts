@@ -51,7 +51,7 @@ const validation: RequestHandler = async (req, res, next) => {
     } else if (!validEmail.test(newUserLogin.email)) {
       res.send("L'email saisi n'est pas valide");
     } else if (!validPassword.test(newUserLogin.user_password)) {
-      res.send("La force du mot de passe est insuffisante");
+      res.status(403).send("La force du mot de passe est insuffisante");
     } else {
       next();
     }
