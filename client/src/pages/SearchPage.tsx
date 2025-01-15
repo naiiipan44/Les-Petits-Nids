@@ -5,10 +5,13 @@ import "./SearchPage.css";
 import { Link } from "react-router-dom";
 
 import type { NurseryData } from "../types/nursery";
-import NurseryPage from "./NurseryPage";
+
+import Nursery from "../components/Nursery";
 
 function SearchPage() {
   const [data, setData] = useState<null | NurseryData[]>(null);
+
+  console.warn(data);
 
   const [userEntry, setUserEntry] = useState<string>("");
 
@@ -46,12 +49,13 @@ function SearchPage() {
         {filteredData?.length ? (
           filteredData.map((el) => (
             <Link to={`/search/${el.id}`} key={el.id}>
-              <NurseryPage />
-              id={el.id}
-              ns_name={el.ns_name}
-              ns_image={el.ns_image}
-              ns_capacity={el.ns_capacity}
-              ns_address={el.ns_address}
+              <Nursery
+                id={el.id}
+                ns_name={el.ns_name}
+                ns_image={el.ns_image}
+                ns_capacity={el.ns_capacity}
+                ns_address={el.ns_address}
+              />
             </Link>
           ))
         ) : (

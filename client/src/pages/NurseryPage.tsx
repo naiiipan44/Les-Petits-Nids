@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
-import type { NurseryData } from "../types/nursery";
+import type { NurseryDetails } from "../types/nursery";
 import "./NurseryPage.css";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ function NurseryPage() {
     setIsVisible((prevState) => !prevState);
   };
 
-  const data = useLoaderData() as NurseryData;
+  const data = useLoaderData() as NurseryDetails;
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
