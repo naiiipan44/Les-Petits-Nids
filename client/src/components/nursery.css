@@ -17,21 +17,31 @@
   height: 150px;
   object-fit: cover;
   border-radius: 15px 15px 0 0;
-  opacity: 0.75;
+  opacity: 1;
+  filter: contrast(60%);
 }
 
 .nursery-section figcaption {
   position: relative;
-  top: -40px;
+  top: -10px;
   padding: 0 0 0 5px;
   color: white;
   font-weight: bolder;
   font-size: 1.5rem;
+  margin-top: -30px;
 }
 
-.nursery-section p {
+.nursery-type {
+  color: rgba(133, 133, 133, 0.788);
+  font-weight: 700;
+  padding-left: 3%;
+  padding-bottom: 3%;
+}
+
+.nursery-time,
+.nursery-mail,
+.nursery-tel {
   color: black;
-  margin: 0;
-  padding: 0 0 5px 5px;
-  font-size: 0.8rem;
+  padding-left: 5%;
+  padding-bottom: 1%;
 }
