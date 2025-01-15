@@ -1,10 +1,16 @@
 import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
 interface ParentProps {
   isParent: boolean;
   setIsParent: (isParent: boolean) => void;
 }
 function RegisterPageComponent({ isParent }: ParentProps) {
+  const notify = () => toast.success("Votre compte a bien été créé");
+  const error = () =>
+    toast.error("Les informations renseignées ne sont pas valides");
+
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -17,7 +23,13 @@ function RegisterPageComponent({ isParent }: ParentProps) {
         "content-type": "application/json",
       },
       body: JSON.stringify(formatedData),
-    }).then((response) => console.warn(response, "Données envoyées"));
+    }).then((response) => {
+      if (response.ok) {
+        notify();
+      } else {
+        error();
+      }
+    });
   }
   return (
     <>
