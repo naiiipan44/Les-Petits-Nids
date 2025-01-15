@@ -45,11 +45,12 @@ const validation: RequestHandler = async (req, res, next) => {
     };
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validPassword = /^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
     if (newUserLogin.first_name.length < 1 || newUserLogin.last_name < 1) {
       res.send("Vueillez renseigner votre nom et votre prénom");
     } else if (!validEmail.test(newUserLogin.email)) {
       res.send("L'email saisi n'est pas valide");
-    } else if (newUserLogin.user_password.length <= 8) {
+    } else if (!validPassword.test(newUserLogin.user_password)) {
       res.send("La force du mot de passe est insuffisante");
     } else {
       next();
