@@ -4,13 +4,17 @@ type Children = {
   children: ReactNode;
 };
 
-type UserProps = {
+export type UserProps = {
   user: UserI | null;
   setUser: (user: UserI) => void;
 };
 
-interface UserI {
-  userType: "parent" | "nursery" | "admin";
+export interface UserI {
+  firstName: string;
+  lastName: string;
+  email: string;
+  userPassword: string;
+  role: "parent" | "nursery" | "admin";
 }
 
 export const UserContext = createContext<UserProps | null>(null);

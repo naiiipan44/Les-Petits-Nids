@@ -11,6 +11,7 @@ import UserProvider from "./contexts/UserProvider";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import NurseryPage from "./pages/NurseryPage";
+import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 
 // import About from "./pages/About";
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "loginandregister",
         element: <LoginAndRegisterPage />,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
       },
     ],
   },
