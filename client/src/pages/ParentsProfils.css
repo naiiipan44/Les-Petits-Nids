@@ -1,0 +1,41 @@
+.return-form-profil {
+  color: var(--secondaryColor);
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.button-header-bookings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.button-parents {
+  background: #00cdac;
+  border: none;
+  color: white;
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+}
+
+.button-children {
+  background: #26d0fe;
+  border: none;
+  color: white;
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+}
+
+.button-reservation {
+  background: #7771af;
+  border: none;
+  color: white;
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+}

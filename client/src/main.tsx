@@ -10,6 +10,7 @@ import App from "./App";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import NurseryPage from "./pages/NurseryPage";
+import ParentsBookings from "./pages/ParentsProfils";
 import SearchPage from "./pages/SearchPage";
 
 // import About from "./pages/About";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "loginandregister",
         element: <LoginAndRegisterPage />,
+      },
+      {
+        path: "parentsbookings",
+        element: <ParentsBookings />,
       },
     ],
   },
