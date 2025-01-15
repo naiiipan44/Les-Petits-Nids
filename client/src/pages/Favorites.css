@@ -1,0 +1,17 @@
+.title-favorites {
+  color: var(--secondaryColor);
+}
+
+.back-to-search-page {
+  display: flex;
+  margin: 5%;
+  align-items: center;
+}
+
+.back-button .arrow {
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid var(--secondaryColor);
+  border-bottom: 2px solid var(--secondaryColor);
+  transform: rotate(45deg);
+}
