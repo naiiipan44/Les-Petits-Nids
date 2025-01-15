@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
 function LandingPage() {
@@ -22,13 +22,13 @@ function LandingPage() {
           garde, même pour le lendemain !
         </p>
       </section>
-      <NavLink to="search">
+      <Link to="search">
         <div className="button-pass">
           <button type="button" className="round-button">
             &gt;
           </button>
         </div>
-      </NavLink>
+      </Link>
     </section>
   );
 }
