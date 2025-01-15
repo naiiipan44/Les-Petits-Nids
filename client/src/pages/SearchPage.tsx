@@ -21,7 +21,6 @@ function SearchPage() {
   const filteredData = data?.filter((el) => {
     return el.ns_name.toLowerCase().includes(userEntry.toLowerCase());
   });
-  console.warn(filteredData);
 
   return (
     <>

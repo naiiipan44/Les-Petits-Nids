@@ -15,10 +15,10 @@ interface Error {
 const add: RequestHandler = async (req, res, next) => {
   try {
     const newUserLogin = {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
       email: req.body.email,
-      user_password: req.body.user_password,
+      user_password: req.body.password,
     };
 
     const insertId = await userLoginRepository.create(newUserLogin);
@@ -38,10 +38,10 @@ const add: RequestHandler = async (req, res, next) => {
 const validation: RequestHandler = async (req, res, next) => {
   try {
     const newUserLogin = {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
       email: req.body.email,
-      user_password: req.body.user_password,
+      user_password: req.body.password,
     };
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
