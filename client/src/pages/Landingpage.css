@@ -1,20 +1,17 @@
 .landing-page {
-  /*background: linear-gradient(#76a3f6, #83a9ef, #cdfcff);*/
-  /*margin-bottom: 20rem;*/
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
 }
-
+/*
 .nav-component {
   display: none;
-}
+}*/
 
 .white-painting {
   background-color: white;
-  /*margin-bottom: 5rem;*/
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -85,11 +82,9 @@ button.round-button {
   margin: 0;
 }
 
-@media screen and (max-width: 380px), screen /* and (max-width: 854px) */ {
+@media screen and (max-width: 380px), screen {
   .landing-page {
     padding: 1rem;
-    /*min-height: auto;*/
-    /*background: linear-gradient(#76a3f6, #83a9ef); */
   }
 
   .white-painting {
