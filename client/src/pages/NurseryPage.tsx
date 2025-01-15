@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import type { NurseryData } from "../types/nursery";
 import "./NurseryPage.css";
 import { useState } from "react";
+import ModalConnexion from "../components/ModalConnexion";
 
 function NurseryPage() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowModal(false);
+  };
+
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => {
@@ -67,7 +74,14 @@ function NurseryPage() {
             <p>
               Connectez-vous pour accéder aux disponibilités de cette crèche.
             </p>
-            <button type="button">Pas Connecté ?</button>
+            <button
+              className="not-connected"
+              onClick={() => setShowModal(true)}
+              type="button"
+            >
+              Pas Connecté ?
+            </button>
+            {showModal && <ModalConnexion onClose={handleButtonClick} />}
           </section>
         </section>
       </section>
