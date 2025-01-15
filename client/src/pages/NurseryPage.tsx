@@ -13,6 +13,7 @@ function NurseryPage() {
 
   const data = useLoaderData() as NurseryData;
 
+
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
   }
@@ -32,7 +33,9 @@ function NurseryPage() {
         <img src={data.ns_image} alt={`L'image de ${data.ns_name}`} />
         <section className="nursery-description">
           <h2 className="presentation">Présentation</h2>
-          <p>{data.ns_description}</p>
+          <p>
+            {data.ns_description}
+          </p>
           <div className={isVisible ? "hidden" : "visible"}>
             <p>Informations suplémentaire:</p>
             <p>Adresse : {data.ns_address}</p>
@@ -63,9 +66,7 @@ function NurseryPage() {
               Connectez-vous pour accéder aux disponibilités de cette crèche.
             </p>
             <Link to="/loginandregister">
-              <button className="connect-button" type="button">
-                Pas Connecté ?
-              </button>
+              <button className="connect-button" type="button">Pas Connecté ?</button>
             </Link>
           </section>
         </section>
