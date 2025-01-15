@@ -1,21 +1,6 @@
-import { type ReactNode, createContext, useState } from "react";
-
-type Children = {
-  children: ReactNode;
-};
-
-export type UserProps = {
-  user: UserI | null;
-  setUser: (user: UserI) => void;
-};
-
-export interface UserI {
-  firstName: string;
-  lastName: string;
-  email: string;
-  userPassword: string;
-  role: "parent" | "nursery" | "admin";
-}
+import { createContext, useState } from "react";
+import type { Children, UserProps } from "../types/UserContext";
+import type { UserI } from "../types/UserI";
 
 export const UserContext = createContext<UserProps | null>(null);
 

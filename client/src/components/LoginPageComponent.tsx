@@ -1,7 +1,7 @@
 import "./LoginPageComponent.css";
 import "../style/globals.css";
 import { Link } from "react-router-dom";
-import type { UserI } from "../contexts/UserProvider";
+import type { UserI } from "../types/UserI";
 import useUser from "../utils/useUser";
 
 function LoginPageComponent() {
