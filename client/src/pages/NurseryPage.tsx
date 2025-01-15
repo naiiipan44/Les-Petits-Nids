@@ -3,9 +3,16 @@ import { Link } from "react-router-dom";
 import type { NurseryData } from "../types/nursery";
 import "./NurseryPage.css";
 import { useEffect, useState } from "react";
+import ModalConnexion from "../components/ModalConnexion";
 import useStorage from "../hooks/useStorage";
 
 function NurseryPage() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowModal(false);
+  };
+
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => {
@@ -20,7 +27,7 @@ function NurseryPage() {
 
   const [isClicked, setIsClicked] = useState(false);
 
-  const { getStorage } = useStorage();
+  const { getStorage, handleStorage } = useStorage();
 
   useEffect(() => {
     const storage: NurseryData[] | null = getStorage();
@@ -29,30 +36,9 @@ function NurseryPage() {
     if (isNurseryInside) setIsClicked(true);
   }, [data.id, getStorage]);
 
-  function setStorage(nursery: NurseryData[]) {
-    return localStorage.setItem("nursery", JSON.stringify(nursery));
-  }
-
   function handleClick() {
     setIsClicked(!isClicked);
-    return handleStorage();
-  }
-
-  function handleStorage() {
-    const actualStorage: NurseryData[] | null = getStorage();
-    const { id, ns_name, ns_address, ns_capacity, ns_image } = data;
-
-    if (!actualStorage) {
-      return setStorage([{ id, ns_name, ns_address, ns_capacity, ns_image }]);
-    }
-    if (isClicked) {
-      const filteredArray = actualStorage.filter((el) => el.id !== id);
-      return setStorage(filteredArray);
-    }
-    setStorage([
-      ...actualStorage,
-      { id, ns_name, ns_address, ns_capacity, ns_image },
-    ]);
+    return handleStorage(data, isClicked);
   }
 
   return (
@@ -69,7 +55,10 @@ function NurseryPage() {
       <section className="nursery-details">
         <img src={data.ns_image} alt={`L'image de ${data.ns_name}`} />
         <button type="button" className="button-heart" onClick={handleClick}>
-          {isClicked ? "❤️" : "🤍"}{" "}
+          <img
+            src={isClicked ? "/redheart.svg" : "/blueheart.svg"}
+            alt="Heart Icon"
+          />
         </button>
         <section className="nursery-description">
           <h2 className="presentation">Présentation</h2>
@@ -108,7 +97,14 @@ function NurseryPage() {
             <p>
               Connectez-vous pour accéder aux disponibilités de cette crèche.
             </p>
-            <button type="button">Pas Connecté ?</button>
+            <button
+              className="not-connected"
+              onClick={() => setShowModal(true)}
+              type="button"
+            >
+              Pas Connecté ?
+            </button>
+            {showModal && <ModalConnexion onClose={handleButtonClick} />}
           </section>
         </section>
       </section>

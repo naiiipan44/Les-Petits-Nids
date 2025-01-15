@@ -16,6 +16,13 @@ function favorite() {
     }
   }, [getStorage]);
 
+  const removeFavorite = (id: number) => {
+    const newFavorites = data.filter((favorite) => favorite.id !== id);
+    setData(newFavorites);
+
+    localStorage.setItem("nursery", JSON.stringify(newFavorites));
+  };
+
   return (
     <main className="main-search-page">
       <section className="back-to-search-page">
@@ -24,18 +31,35 @@ function favorite() {
         </Link>
         <h1 className="title-favorites">Favoris</h1>
       </section>
-      {data.map((el) => {
-        return (
-          <Nursery
-            key={el.id}
-            ns_name={el.ns_name}
-            ns_image={el.ns_image}
-            id={el.id}
-            ns_capacity={0}
-            ns_address={""}
-          />
-        );
-      })}
+
+      <section className="card-wrapper-favorite">
+        {data.length > 0 ? (
+          data.map((el) => {
+            return (
+              <section className="button-close-favorites" key={el.id}>
+                <Link to={`/search/${el.id}`}>
+                  <Nursery
+                    ns_name={el.ns_name}
+                    ns_image={el.ns_image}
+                    id={el.id}
+                    ns_capacity={0}
+                    ns_address={""}
+                  />
+                </Link>
+                <button
+                  type="button"
+                  className="remove-favorite-button"
+                  onClick={() => removeFavorite(el.id)}
+                >
+                  <img src="/redheart.svg" alt="Remove from favorites" />
+                </button>
+              </section>
+            );
+          })
+        ) : (
+          <p>Vous n'avez aucune crèche en favoris</p>
+        )}
+      </section>
     </main>
   );
 }
