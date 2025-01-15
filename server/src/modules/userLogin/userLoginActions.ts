@@ -27,7 +27,7 @@ const add: RequestHandler = async (req, res, next) => {
     }
   } catch (err) {
     const error = err as Error;
-    if (error.code) {
+    if (error.code === "ER_DUP_ENTRY") {
       res.status(400).send("Cette adresse mail est déjà utilisée");
     } else {
       next(err);
