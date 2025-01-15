@@ -10,6 +10,25 @@ function RegisterPageComponent({ isParent }: ParentProps) {
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
     console.warn(formatedData);
+
+    // fetch(`${import.meta.env.VITE_API_URL}/api/video-game`, {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       notify();
+    //       // setTimeout(() => {
+    //       //   Navigate
+    //       // })
+    //     } else {
+    //       error();
+    //     }
+    //   })
+    //   .catch((err) => console.error(err));
   }
 
   return (
