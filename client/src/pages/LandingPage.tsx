@@ -1,4 +1,5 @@
 import "./LandingPage.css";
+
 function LandingPage() {
   return (
     <div className="landing-page">
@@ -7,7 +8,7 @@ function LandingPage() {
         <figcaption className="small-not">Les Petits Nids</figcaption>
       </figure>
       <div className="white-painting">
-        <figure className="mother">
+        <figure className="mother2">
           <img src="/mother2.png" alt="" />
 
           <figcaption className="welcome">
