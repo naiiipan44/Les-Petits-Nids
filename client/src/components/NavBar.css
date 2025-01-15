@@ -1,6 +1,6 @@
 .nav-component {
   background-color: #ffffff;
-  position: fixed;
+  position: sticky;
   bottom: 0;
   display: flex;
   justify-content: flex-start;
