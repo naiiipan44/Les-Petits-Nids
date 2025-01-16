@@ -60,7 +60,6 @@ function SearchPage() {
                 ns_address={el.ns_address}
                 ns_num_tel={el.ns_num_tel}
                 ns_mail={el.ns_mail}
-
               />
             </Link>
           ))
