@@ -27,7 +27,17 @@ router.get("/api/nursery/:id", nurseryActions.read);
 // get userApp  from database
 
 import userAppActions from "./modules/userApp/userAppActions";
+import userLoginActions from "./modules/userLogin/userLoginActions";
 
 router.get("/api/userApp", userAppActions.browse);
+
+// Parent registration
+
+router.get("/api/userLogin", userLoginActions.browse);
+router.post(
+  "/api/userLogin",
+  userLoginActions.validation,
+  userLoginActions.add,
+);
 
 export default router;
