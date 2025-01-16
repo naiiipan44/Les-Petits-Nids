@@ -20,7 +20,7 @@ function NavBar() {
             <img src="/user.svg" alt="link to the profil of the user" />
           </button>
         </NavLink>
-        <NavLink to="book">
+        <NavLink to="parentsbookings">
           <button type="button" className="nav-buttons">
             <img src="/books.svg" alt="link to the book page" />
           </button>
