@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import LeafletMap from "../components/Map";
 import "./MapPage.css";
-import type { NurseryData } from "../types/nursery";
+import type { InterfaceMap } from "../types/nursery";
 
 function MapPage() {
-  const [data, setData] = useState<null | NurseryData[]>(null);
+  const [data, setData] = useState<null | InterfaceMap[]>(null);
   const [userPosition, setUserPosition] = useState<{
     lat: number;
     lng: number;
@@ -46,7 +46,11 @@ function MapPage() {
   const markers = filteredData?.map((el) => ({
     lat: el.ns_coord_lat,
     lng: el.ns_coord_long,
-    label: el.ns_name,
+    img: el.ns_image,
+    tel: el.ns_num_tel,
+    adress: el.ns_address,
+    name: el.ns_name,
+    mail: el.ns_mail,
   }));
 
   return (
