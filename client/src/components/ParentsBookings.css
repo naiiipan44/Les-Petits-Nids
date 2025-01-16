@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 30px;
 }
 
@@ -13,6 +13,7 @@
   background: none;
   color: #7771af;
   border-radius: 10px;
+  padding: 5px;
 }
 .button-waiting {
   border-color: #ffa84c;
@@ -22,14 +23,37 @@
   background: none;
   color: #ffa84c;
   border-radius: 10px;
+  padding: 5px;
 }
 
 .button-accepted {
-  border-color: #ffa84c;
+  border-color: #2dcd7a;
   font-size: 0.8rem;
   height: 30px;
   width: auto;
   background: none;
-  color: #ffa84c;
+  color: #2dcd7a;
   border-radius: 10px;
+  padding: 5px;
+}
+
+.button-refused {
+  border-color: #ea5455;
+  font-size: 0.8rem;
+  height: 30px;
+  width: auto;
+  background: none;
+  color: #ea5455;
+  border-radius: 10px;
+  padding: 5px;
+}
+.button-cancelled {
+  border-color: #1d0042;
+  font-size: 0.8rem;
+  height: 30px;
+  width: auto;
+  background: none;
+  color: #1d0042;
+  border-radius: 10px;
+  padding: 5px;
 }

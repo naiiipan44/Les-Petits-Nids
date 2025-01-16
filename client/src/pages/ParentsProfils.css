@@ -1,3 +1,14 @@
+.header-gradient {
+  background: var(--mainColor);
+  padding: 30px;
+}
+
+.main-page {
+  background: white;
+  min-height: 100vh;
+  padding: 1px;
+}
+
 .return-form-profil {
   color: var(--secondaryColor);
   display: flex;
@@ -10,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .button-parents {
@@ -20,6 +31,12 @@
   height: 80px;
   width: 80px;
   border-radius: 20%;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  cursor: pointer;
+}
+
+.button-parents:hover {
+  background: #008b76;
 }
 
 .button-children {
@@ -29,6 +46,11 @@
   height: 80px;
   width: 80px;
   border-radius: 20%;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  cursor: pointer;
+}
+.button-children:hover {
+  background: #1684a2;
 }
 
 .button-reservation {
@@ -38,4 +60,9 @@
   height: 80px;
   width: 80px;
   border-radius: 20%;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  cursor: pointer;
+}
+.button-reservation:hover {
+  background: #4d4970;
 }
