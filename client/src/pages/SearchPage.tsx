@@ -46,15 +46,21 @@ function SearchPage() {
       <main className="main-search-page">
         {filteredData?.length ? (
           filteredData.map((el) => (
-            <Link to={`/search/${el.id}`} key={el.id}>
+            <Link
+              className="nursery-card-link"
+              to={`/search/${el.id}`}
+              key={el.id}
+            >
               <Nursery
                 id={el.id}
+                ns_type={el.ns_type}
                 ns_name={el.ns_name}
                 ns_image={el.ns_image}
                 ns_capacity={el.ns_capacity}
                 ns_address={el.ns_address}
-                ns_coord_lat={el.ns_coord_lat}
-                ns_coord_long={el.ns_coord_long}
+                ns_num_tel={el.ns_num_tel}
+                ns_mail={el.ns_mail}
+
               />
             </Link>
           ))
