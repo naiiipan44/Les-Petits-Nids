@@ -44,6 +44,7 @@ function favorite() {
                     id={el.id}
                     ns_capacity={0}
                     ns_address={""}
+                    ns_num_tel=""
                   />
                 </Link>
                 <button
