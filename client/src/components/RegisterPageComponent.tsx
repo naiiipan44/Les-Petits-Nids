@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import { type FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -6,7 +6,10 @@ interface ParentProps {
   isParent: boolean;
   setIsParent: (isParent: boolean) => void;
 }
+
 function RegisterPageComponent({ isParent }: ParentProps) {
+  const [indication, setIndication] = useState("");
+
   const notify = () => toast.success("Votre compte a bien été créé");
   const error = () =>
     toast.error("Les informations renseignées ne sont pas valides");
@@ -15,7 +18,6 @@ function RegisterPageComponent({ isParent }: ParentProps) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData);
 
     fetch(`${import.meta.env.VITE_API_URL}/api/userLogin`, {
       method: "POST",
@@ -23,17 +25,23 @@ function RegisterPageComponent({ isParent }: ParentProps) {
         "content-type": "application/json",
       },
       body: JSON.stringify(formatedData),
-    }).then((response) => {
-      if (response.ok) {
-        notify();
-      } else {
-        error();
-      }
-    });
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (!result.message) {
+          notify();
+          setIndication("");
+        } else {
+          error();
+          setIndication(result.message);
+        }
+      });
   }
+
   return (
     <>
       <form onSubmit={onSubmit} className="login-form">
+        {indication && <p>{indication}</p>}
         {isParent ? (
           <div className="registration-parents">
             <input
