@@ -18,7 +18,15 @@ function useStorage() {
     const { id, ns_name, ns_address, ns_capacity, ns_image } = data;
 
     if (!actualStorage) {
-      return setStorage([{ id, ns_name, ns_address, ns_capacity, ns_image }]);
+      return setStorage([
+        {
+          id,
+          ns_name,
+          ns_address,
+          ns_capacity,
+          ns_image,
+        },
+      ]);
     }
     if (isClicked) {
       const filteredArray = actualStorage.filter((el) => el.id !== id);
@@ -26,7 +34,13 @@ function useStorage() {
     }
     setStorage([
       ...actualStorage,
-      { id, ns_name, ns_address, ns_capacity, ns_image },
+      {
+        id,
+        ns_name,
+        ns_address,
+        ns_capacity,
+        ns_image,
+      },
     ]);
   }
 
