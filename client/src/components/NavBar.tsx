@@ -4,8 +4,8 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <>
-      <nav>
-        <NavLink to="favorites">
+      <nav className="nav-component">
+        <NavLink to="favorite">
           <button type="button" className="nav-buttons">
             <img src="/blueheart.svg" alt="link to the favorite page" />
           </button>
