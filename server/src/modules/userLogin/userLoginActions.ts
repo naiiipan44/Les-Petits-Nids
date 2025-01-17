@@ -15,10 +15,10 @@ interface Error {
 const add: RequestHandler = async (req, res, next) => {
   try {
     const newUserLogin = {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
       email: req.body.email,
-      user_password: req.body.user_password,
+      user_password: req.body.password,
     };
 
     const insertId = await userLoginRepository.create(newUserLogin);
@@ -38,19 +38,25 @@ const add: RequestHandler = async (req, res, next) => {
 const validation: RequestHandler = async (req, res, next) => {
   try {
     const newUserLogin = {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
       email: req.body.email,
-      user_password: req.body.user_password,
+      user_password: req.body.password,
     };
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validPassword = /^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
     if (newUserLogin.first_name.length < 1 || newUserLogin.last_name < 1) {
-      res.send("Vueillez renseigner votre nom et votre prénom");
+      res
+        .status(403)
+        .json({ message: "Veuillez renseigner votre nom et votre prénom" });
     } else if (!validEmail.test(newUserLogin.email)) {
-      res.send("L'email saisi n'est pas valide");
-    } else if (newUserLogin.user_password.length <= 8) {
-      res.send("La force du mot de passe est insuffisante");
+      res.status(403).json({ message: "L'email saisi n'est pas valide" });
+    } else if (!validPassword.test(newUserLogin.user_password)) {
+      res
+        .status(403)
+        .json({ message: "La force du mot de passe est insuffisante" });
     } else {
       next();
     }
