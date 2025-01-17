@@ -5,10 +5,10 @@ import "./SearchPage.css";
 import { Link } from "react-router-dom";
 
 import Nursery from "../components/Nursery";
-import type { NurseryData } from "../types/nursery";
+import type { NurseryDetails } from "../types/nursery";
 
 function SearchPage() {
-  const [data, setData] = useState<null | NurseryData[]>(null);
+  const [data, setData] = useState<null | NurseryDetails[]>(null);
 
   const [userEntry, setUserEntry] = useState<string>("");
 
