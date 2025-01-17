@@ -2,9 +2,9 @@
 import "./Nursery.css";
 
 // Import interface
-import type { NurseryData } from "../types/nursery";
+import type { NurseryDetails } from "../types/nursery";
 
-function Nursery(dataNursery: NurseryData) {
+function Nursery(dataNursery: NurseryDetails) {
   const { ns_type, ns_num_tel, ns_mail, ns_name, ns_image } = dataNursery;
   const tel = ns_num_tel.replace(/(\d{2})/g, "$1 "); // permet d'afficher le téléphone avec 1 espace chaque 2 chiffres
 

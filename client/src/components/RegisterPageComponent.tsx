@@ -1,6 +1,7 @@
 import { type FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import "./LoginPageComponent.css";
 
 interface ParentProps {
   isParent: boolean;
@@ -43,7 +44,7 @@ function RegisterPageComponent({ isParent }: ParentProps) {
       <form onSubmit={onSubmit} className="login-form">
         {indication && <p>{indication}</p>}
         {isParent ? (
-          <div className="registration-parents">
+          <div className="user-registration">
             <input
               type="text"
               name="lastName"
@@ -60,7 +61,7 @@ function RegisterPageComponent({ isParent }: ParentProps) {
             />
           </div>
         ) : (
-          <div className="registration-nursery">
+          <div className="user-registration">
             <input
               type="text"
               name="nurseryName"
