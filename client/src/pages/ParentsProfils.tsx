@@ -7,7 +7,7 @@ function ParentsProfils() {
     <main className="main-parents-profils">
       <section className="header-gradient">
         <section className="return-form-profil">
-          <Link to={""} className="back-button">
+          <Link to={"/profile"} className="back-button">
             <span className="arrow" />
           </Link>
           <h1>
