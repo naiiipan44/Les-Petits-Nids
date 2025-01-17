@@ -4,7 +4,7 @@ import ParentsBookings from "../components/Parentsbookings";
 
 function ParentsProfils() {
   return (
-    <main>
+    <main className="main-parents-profils">
       <section className="header-gradient">
         <section className="return-form-profil">
           <Link to={""} className="back-button">
@@ -26,7 +26,7 @@ function ParentsProfils() {
           </button>
         </section>
       </section>
-      <section className="main-page">
+      <section className="bottom-page">
         <ParentsBookings />
       </section>
     </main>
