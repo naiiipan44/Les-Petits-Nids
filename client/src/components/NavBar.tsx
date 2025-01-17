@@ -4,10 +4,10 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <>
-      <nav>
+      <nav className="nav-component">
         <NavLink to="favorite">
           <button type="button" className="nav-buttons">
-            <img src="/favorite.svg" alt="link to the favorite page" />
+            <img src="/blueheart.svg" alt="link to the favorite page" />
           </button>
         </NavLink>
         <NavLink to="search">
