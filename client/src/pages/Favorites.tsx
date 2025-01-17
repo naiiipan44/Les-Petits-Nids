@@ -37,7 +37,7 @@ function favorite() {
           data.map((el) => {
             return (
               <section className="button-close-favorites" key={el.id}>
-                <Link to={`/search/${el.id}`}>
+                <Link to={`/search/${el.id}`} className="favorites-button-link">
                   <Nursery
                     ns_name={el.ns_name}
                     ns_image={el.ns_image}

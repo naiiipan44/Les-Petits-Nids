@@ -7,10 +7,11 @@
   align-items: center;
 }
 
-/* .button-close-favorites {
+.button-close-favorites {
   position: relative;
   display: inline-block;
-} */
+  width: 350px;
+}
 
 .remove-favorite-button {
   position: absolute;
@@ -27,13 +28,20 @@
   height: 25px;
 }
 
-/* .card-wrapper-favorite {
+.card-wrapper-favorite {
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+  flex-direction: column;
+  gap: 20px;
+}
 
-/* .main-search-page p {
+.main-search-page p {
   font-size: 1rem;
   color: var(--secondaryColor);
-} */
+}
+
+.favorites-button-link {
+  display: inherit;
+  justify-content: center;
+}
