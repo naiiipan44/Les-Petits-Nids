@@ -2,10 +2,8 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./Map.css";
+import { Link } from "react-router-dom";
 import type { MarkerType } from "../types/nursery";
-// import { Link } from "react-router-dom";
-// import { useLoaderData } from "react-router-dom";
-// import type { NurseryData } from "../types/nursery";
 
 interface Props {
   markers: MarkerType[];
@@ -89,6 +87,7 @@ const LeafletMap: React.FC<Props> = ({ markers, userPosition }) => {
                   <p>{marker.mail}</p>
                 </li>
               </ul>
+              <Link to={`/search/${marker.id}`}>Plus d'informations</Link>
             </section>
           </Popup>
         </Marker>

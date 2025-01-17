@@ -51,6 +51,7 @@ function MapPage() {
     adress: el.ns_address,
     name: el.ns_name,
     mail: el.ns_mail,
+    id: el.id,
   }));
 
   return (

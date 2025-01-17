@@ -35,4 +35,5 @@ export interface MarkerType {
   tel: string;
   name: string;
   mail: string;
+  id: number;
 }
