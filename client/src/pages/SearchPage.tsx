@@ -11,8 +11,6 @@ import Nursery from "../components/Nursery";
 function SearchPage() {
   const [data, setData] = useState<null | NurseryData[]>(null);
 
-  console.warn(data);
-
   const [userEntry, setUserEntry] = useState<string>("");
 
   useEffect(() => {

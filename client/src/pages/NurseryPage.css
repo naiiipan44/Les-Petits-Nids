@@ -139,11 +139,8 @@
     display: block;
   }
 }
-.nursery-name > p {
-  color: white;
-  margin-left: 25%;
-}
-& h1 {
+.nursery-name > p,
+.nursery-name > h1 {
   color: white;
   margin-left: 25%;
 }
