@@ -5,13 +5,16 @@ function LandingPage() {
   return (
     <section className="landing-page">
       <figure className="logo">
-        <img src="/logo.svg" alt="logo-les-petits-nids" />
+        <img src="/logo.svg" alt="Ceci est le logo des Petits Nids" />
         <figcaption className="small-not">Les Petits Nids</figcaption>
       </figure>
 
       <section className="white-painting">
         <figure className="mother2">
-          <img src="/mother2.png" alt="Dessin Mère et Enfant" />
+          <img
+            src="/mother2.png"
+            alt="Ceci est un dessin représentant une mère et son enfant"
+          />
 
           <figcaption className="welcome">
             Garde d'enfant à la demande
