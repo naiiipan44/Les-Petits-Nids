@@ -1,9 +1,12 @@
 import type { FormEvent } from "react";
+import "./LoginPageComponent.css";
 import { Link } from "react-router-dom";
+
 interface ParentProps {
   isParent: boolean;
   setIsParent: (isParent: boolean) => void;
 }
+
 function RegisterPageComponent({ isParent }: ParentProps) {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -16,7 +19,7 @@ function RegisterPageComponent({ isParent }: ParentProps) {
     <>
       <form onSubmit={onSubmit} className="login-form">
         {isParent ? (
-          <div className="registration-parents">
+          <div className="user-registration">
             <input
               type="text"
               name="lastName"
@@ -41,7 +44,7 @@ function RegisterPageComponent({ isParent }: ParentProps) {
             />
           </div>
         ) : (
-          <div className="registration-nursery">
+          <div className="user-registration">
             <input
               type="text"
               name="nurseryName"
