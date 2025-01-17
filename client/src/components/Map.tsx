@@ -3,12 +3,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./Map.css";
 import { Link } from "react-router-dom";
-import type { MarkerType } from "../types/nursery";
-
-interface Props {
-  markers: MarkerType[];
-  userPosition: { lat: number; lng: number } | null;
-}
+import type { Props } from "../types/Map";
 
 const customIcon = new L.Icon({
   iconUrl: "/Logo-marker-icon pink.png",

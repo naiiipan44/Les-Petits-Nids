@@ -24,16 +24,3 @@ interface InterfaceMap extends NurseryData {
   ns_num_tel: string;
   ns_mail: string;
 }
-
-/* interface des props pour le components map */
-
-export interface MarkerType {
-  lat: number;
-  lng: number;
-  img: string;
-  adress: string;
-  tel: string;
-  name: string;
-  mail: string;
-  id: number;
-}
