@@ -55,6 +55,14 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
               aria-label="Prénom"
               className="input-field"
             />
+            <input
+              type="checkbox"
+              name="role"
+              aria-label="role"
+              value="parent"
+              defaultChecked
+              className="checkbox-role"
+            />
           </div>
         ) : (
           <div className="user-registration">
@@ -64,6 +72,14 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
               placeholder="Nom de l'établissement"
               aria-label="Nom de l'établissement"
               className="input-field"
+            />
+            <input
+              type="checkbox"
+              name="role"
+              aria-label="role"
+              value="nursery"
+              defaultChecked
+              className="checkbox-role"
             />
           </div>
         )}
