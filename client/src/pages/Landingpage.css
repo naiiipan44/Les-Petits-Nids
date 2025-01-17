@@ -6,10 +6,6 @@
   min-height: 100vh;
 }
 
-.nav-component {
-  display: none;
-}
-
 .white-painting {
   background-color: white;
   border-radius: 1rem;
