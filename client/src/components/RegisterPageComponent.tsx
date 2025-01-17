@@ -2,13 +2,9 @@ import { type FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
+import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
 
-interface ParentProps {
-  isParent: boolean;
-  setIsParent: (isParent: boolean) => void;
-}
-
-function RegisterPageComponent({ isParent }: ParentProps) {
+function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
   const [indication, setIndication] = useState("");
 
   const notify = () => toast.success("Votre compte a bien été créé");

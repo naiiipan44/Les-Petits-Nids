@@ -50,7 +50,7 @@ const validation: RequestHandler = async (req, res, next) => {
     if (newUserLogin.first_name.length < 1 || newUserLogin.last_name < 1) {
       res
         .status(403)
-        .json({ message: "Vueillez renseigner votre nom et votre prénom" });
+        .json({ message: "Veuillez renseigner votre nom et votre prénom" });
     } else if (!validEmail.test(newUserLogin.email)) {
       res.status(403).json({ message: "L'email saisi n'est pas valide" });
     } else if (!validPassword.test(newUserLogin.user_password)) {
