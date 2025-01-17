@@ -6,4 +6,10 @@ export interface NurseryData {
   ns_image: string;
 }
 
+interface NurseryDetails extends NurseryData {
+  ns_type?: string;
+  ns_mail?: string;
+  ns_num_tel: string;
+}
+
 // Interface à garder pour la suite

@@ -5,9 +5,9 @@ function NavBar() {
   return (
     <>
       <nav>
-        <NavLink to="favorite">
+        <NavLink to="favorites">
           <button type="button" className="nav-buttons">
-            <img src="/favorite.svg" alt="link to the favorite page" />
+            <img src="/blueheart.svg" alt="link to the favorite page" />
           </button>
         </NavLink>
         <NavLink to="search">
