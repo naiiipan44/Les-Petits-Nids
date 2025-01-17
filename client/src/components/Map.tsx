@@ -3,6 +3,9 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "./Map.css";
 import type { MarkerType } from "../types/nursery";
+// import { Link } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
+// import type { NurseryData } from "../types/nursery";
 
 interface Props {
   markers: MarkerType[];
