@@ -1,17 +1,15 @@
-create table userLogin (
+create table user (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-  user_password varchar(255) not null
+  hashed_password varchar(255) not null
 );
 
-INSERT INTO userLogin (
-  id, first_name, last_name, email, user_password) 
+INSERT INTO user
+  (id, first_name, last_name, email, hashed_password) 
   VALUES 
-  (1, "Deschamps", "Paula", "paula.deschamps@gmail.com", "test1"), 
-  (2, "Pouet", "Castor", "castor.pouet@gmail.com", "test2");
-
+  (1, "Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA");
 
 CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,

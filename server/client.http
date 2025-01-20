@@ -6,16 +6,25 @@ GET  http://localhost:3310/api/userApp
 
 ###
 
-GET http://localhost:3310/api/userLogin
-
-###
-
-POST http://localhost:3310/api/userLogin HTTP/1.1
+POST http://localhost:3310/api/user/registration HTTP/1.1
 content-type: application/json
 
 {
-  "first_name": "Léon",
-  "last_name": "Patrick",
-  "email": "leon.patrick@gmail.com",
-  "user_password": "courgette"
+  "email": "pouet@gmail.com",
+  "user_password": "pouet"
+} 
+
+###
+
+POST http://localhost:3310/api/user/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "pouet@gmail.com",
+  "user_password": "pouet"
 }
+
+###
+
+GET http://localhost:3310/api/user
+

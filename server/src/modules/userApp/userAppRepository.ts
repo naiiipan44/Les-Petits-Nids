@@ -8,6 +8,13 @@ class userAppRepository {
 
     return rows;
   }
+
+  async readEmailWithPassword(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where email = ?",
+      [email],
+    );
+  }
 }
 
 export default new userAppRepository();

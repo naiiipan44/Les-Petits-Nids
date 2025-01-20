@@ -1,11 +1,11 @@
 import type { RequestHandler } from "express";
 
-import userLoginRepository from "./userLoginRepository";
+import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res) => {
-  const userLogin = await userLoginRepository.readAll();
+  const user = await userRepository.readAll();
 
-  res.json(userLogin);
+  res.json(user);
 };
 
 interface Error {
@@ -14,14 +14,14 @@ interface Error {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const newUserLogin = {
+    const newUser = {
       first_name: req.body.firstName,
       last_name: req.body.lastName,
       email: req.body.email,
-      user_password: req.body.password,
+      hashed_password: req.body.hashed_password,
     };
 
-    const insertId = await userLoginRepository.create(newUserLogin);
+    const insertId = await userRepository.create(newUser);
     if (insertId) {
       res.status(201).json({ insertId });
     }
