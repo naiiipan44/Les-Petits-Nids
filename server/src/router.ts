@@ -43,11 +43,5 @@ router.post(
   userActions.add,
 );
 router.post("/api/user/login", authentificationActions.login);
-// router.post(
-//   "/api/userLogin",
-//   // userLoginActions.validation,
-//   authentificationActions.hashPassword,
-//   userLoginActions.add,
-// );
 
 export default router;

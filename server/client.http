@@ -10,8 +10,10 @@ POST http://localhost:3310/api/user/registration HTTP/1.1
 content-type: application/json
 
 {
-  "email": "pouet@gmail.com",
-  "user_password": "pouet"
+  "firstName": "zozo",
+  "lastName": "zozu",
+  "email": "pouetj2@gmail.com",
+  "password": "pouetMM!!56"
 } 
 
 ###
