@@ -9,7 +9,7 @@
 
 .button-close-favorites {
   position: relative;
-  display: inline-block;
+  width: 100%;
 }
 
 .remove-favorite-button {
@@ -30,6 +30,7 @@
 .card-wrapper-favorite {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
