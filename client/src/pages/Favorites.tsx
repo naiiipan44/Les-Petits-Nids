@@ -5,7 +5,7 @@ import useStorage from "../hooks/useStorage";
 import type { NurseryData } from "../types/nursery";
 import "./Favorites.css";
 
-function favorite() {
+function Favorite() {
   const [data, setData] = useState<NurseryData[]>([]);
   const { getStorage } = useStorage();
 
@@ -65,4 +65,4 @@ function favorite() {
   );
 }
 
-export default favorite;
+export default Favorite;

@@ -1,13 +1,14 @@
+import { useCallback } from "react";
 import type { NurseryData } from "../types/nursery";
 
 function useStorage() {
-  function getStorage() {
+  const getStorage = useCallback(() => {
     const actualStorage = localStorage.getItem("nursery");
     if (actualStorage) {
       return JSON.parse(actualStorage);
     }
     return null;
-  }
+  }, []);
 
   function setStorage(nursery: NurseryData[]) {
     return localStorage.setItem("nursery", JSON.stringify(nursery));

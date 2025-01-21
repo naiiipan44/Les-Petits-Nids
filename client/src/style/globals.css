@@ -23,6 +23,8 @@
 body {
   font-family: var(--general-font);
   background: var(--mainColor);
+  background-repeat: no-repeat;
+  min-height: 90vh;
 }
 
 .button-primary {
