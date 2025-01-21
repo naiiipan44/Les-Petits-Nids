@@ -5,6 +5,7 @@
 .back-to-search-page {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .button-close-favorites {
@@ -42,6 +43,7 @@
 }
 
 .favorites-button-link {
-  display: inherit;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }

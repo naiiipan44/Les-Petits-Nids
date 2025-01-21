@@ -27,6 +27,10 @@ body {
   min-height: 90vh;
 }
 
+main {
+  min-height: 90vh;
+}
+
 .button-primary {
   background: var(--secondaryColor);
   color: var(--tertiaryColor);
