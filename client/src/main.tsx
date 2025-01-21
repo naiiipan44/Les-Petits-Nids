@@ -7,6 +7,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import UserProvider from "./contexts/UserProvider";
+import Favorites from "./pages/Favorites";
+import LandingPage from "./pages/LandingPage";
+import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
+import MapPage from "./pages/MapPage";
+import NurseryPage from "./pages/NurseryPage";
+import ParentsBookings from "./pages/ParentsProfils";
+import ProfilePage from "./pages/ProfilePage";
+import SearchPage from "./pages/SearchPage";
 
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -17,6 +26,53 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    children: [
+      {
+        path: "",
+        element: <LandingPage />,
+      },
+      {
+        path: "search",
+        element: <SearchPage />,
+      },
+      {
+        path: "search/:id",
+        element: <NurseryPage />,
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/nursery/${params.id}`,
+          );
+
+          if (!response.ok) {
+            throw new Error(
+              `Erreur lors de la récupération de la crèche avec l'ID ${params.id} : ${response.statusText}`,
+            );
+          }
+
+          return response.json();
+        },
+      },
+      {
+        path: "loginandregister",
+        element: <LoginAndRegisterPage />,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
+      },
+      {
+        path: "favorites",
+        element: <Favorites />,
+      },
+      {
+        path: "parentsbookings",
+        element: <ParentsBookings />,
+      },
+      {
+        path: "map",
+        element: <MapPage />,
+      },
+    ],
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
@@ -32,7 +88,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>,
 );
 

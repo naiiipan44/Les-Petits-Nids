@@ -1,0 +1,109 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.white-painting {
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.logo > img,
+.mother2 > img {
+  display: block;
+  margin: 0 auto;
+}
+
+.landing-page > figure {
+  text-align: center;
+}
+
+.small-not {
+  color: white;
+  font-family: "Beth Ellen", sans-serif;
+}
+
+.welcome {
+  color: #133f63;
+  font-size: large;
+  font-weight: bolder;
+  margin-top: 1rem;
+}
+
+.landing-page > p {
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.account-created {
+  font-weight: bold;
+  color: #133f63;
+}
+
+.round-button {
+  width: 50px;
+  height: 50px;
+  background-color: #133f63;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+button.round-button {
+  font-size: 1.5rem;
+}
+
+.round-button:hover {
+  background-color: #133f64;
+}
+
+.button-pass {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+@media screen and (max-width: 380px), screen {
+  .landing-page {
+    padding: 1rem;
+  }
+
+  .white-painting {
+    margin-bottom: 3rem;
+    padding: 1rem;
+  }
+
+  .logo img,
+  .mother img {
+    width: 80%;
+  }
+
+  .welcome {
+    font-size: medium;
+    margin-top: 0.5rem;
+  }
+
+  .account-created {
+    font-size: small;
+    line-height: 1.4;
+  }
+
+  .round-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}

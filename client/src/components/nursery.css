@@ -1,0 +1,47 @@
+.nursery-section {
+  height: 280px;
+  width: 90%;
+  padding: 0 0 20px 0;
+  background-color: white;
+  border-radius: 15px 15px 0 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.nursery-section figure {
+  width: 100%;
+  margin: 0;
+}
+
+.nursery-section figure img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  opacity: 1;
+  filter: contrast(60%);
+}
+
+.nursery-section figcaption {
+  position: relative;
+  top: -10px;
+  padding: 0 0 0 5px;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  margin-top: -30px;
+}
+
+.nursery-type {
+  color: rgba(133, 133, 133, 0.788);
+  font-weight: 700;
+  padding-left: 3%;
+  padding-bottom: 3%;
+}
+
+.nursery-time,
+.nursery-mail,
+.nursery-tel {
+  color: black;
+  padding-left: 5%;
+  padding-bottom: 1%;
+}
