@@ -1,10 +1,10 @@
 create table children (
-id INT PRIMARY KEY AUTO INCREMENT NOT NULL
-c_first_name VARCHAR(80) NOT NULL
-c_last_name VARCHAR(80) NOT NULL
-c_gender BOOLEAN DEFAULT NULL
-c_birth_date DATE NOT NULL
-c_allergies VARCHAR(150) NULL
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+c_first_name VARCHAR(80) NOT NULL,
+c_last_name VARCHAR(80) NOT NULL,
+c_gender BOOLEAN DEFAULT NULL,
+c_birth_date DATE NOT NULL,
+c_allergies VARCHAR(150) NULL,
 parent_id INT
 );
 
