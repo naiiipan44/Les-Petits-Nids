@@ -11,6 +11,7 @@ import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
+import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
 import ParentsBookings from "./pages/ParentsProfils";
 import ProfilePage from "./pages/ProfilePage";
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "parentsbookings",
         element: <ParentsBookings />,
+      },
+      {
+        path: "map",
+        element: <MapPage />,
       },
     ],
   },
