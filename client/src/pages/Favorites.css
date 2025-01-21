@@ -5,11 +5,13 @@
 .back-to-search-page {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .button-close-favorites {
   position: relative;
   display: inline-block;
+  width: 370px;
 }
 
 .remove-favorite-button {
@@ -31,9 +33,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .main-search-page p {
   font-size: 1rem;
   color: var(--secondaryColor);
+}
+
+.favorites-button-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

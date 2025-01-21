@@ -5,7 +5,7 @@ function NavBar() {
   return (
     <>
       <nav className="nav-component">
-        <NavLink to="favorite">
+        <NavLink to="favorites">
           <button type="button" className="nav-buttons">
             <img src="/blueheart.svg" alt="link to the favorite page" />
           </button>
