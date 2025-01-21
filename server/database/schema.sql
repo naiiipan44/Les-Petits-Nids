@@ -1,3 +1,15 @@
+create table children (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+p_first_name VARCHAR(80) NOT NULL,
+p_last_name VARCHAR(80) NOT NULL,
+p_job VARCHAR(80),
+p_address VARCHAR(120) NOT NULL,
+p_zip_code INT NOT NULL, 
+p_num_tel INT,
+p_mail VARCHAR(100) NOT NULL,
+p_birth_date DATE NOT NULL
+);
+
 create table userLogin (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
