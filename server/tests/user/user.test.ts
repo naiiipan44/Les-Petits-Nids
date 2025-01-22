@@ -14,7 +14,7 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
-describe("GET /api/userLogin", () => {
+describe("GET /api/user", () => {
   it("Should return status 200", async () => {
     const rows = [] as Rows;
 
@@ -22,14 +22,14 @@ describe("GET /api/userLogin", () => {
       .spyOn(databaseClient, "query")
       .mockImplementation(async () => [rows, []]);
 
-    const response = await supertest(app).get("/api/userLogin");
+    const response = await supertest(app).get("/api/user");
 
     expect(response.status).toBe(200);
     expect(response.body).toStrictEqual(rows);
   });
 });
 
-describe("POST /api/userLogin", () => {
+describe("POST /api/user", () => {
   it("Should return status 201", async () => {
     const result = { insertId: 1 } as Result;
 
@@ -37,16 +37,14 @@ describe("POST /api/userLogin", () => {
       .spyOn(databaseClient, "query")
       .mockImplementation(async () => [result, []]);
 
-    const fakeUserLogin = {
+    const fakeUser = {
       firstName: "Jean-Claude",
       lastName: "Bauvin",
       email: "jc.bauvin@gmail.com",
       password: "1234MMMlll!!!",
     };
 
-    const response = await supertest(app)
-      .post("/api/userLogin")
-      .send(fakeUserLogin);
+    const response = await supertest(app).post("/api/user").send(fakeUser);
 
     expect(response.status).toBe(201);
     expect(response.body).toBeInstanceOf(Object);
@@ -56,11 +54,9 @@ describe("POST /api/userLogin", () => {
   it("Should fail on invalid request and return status 400", async () => {
     jest.spyOn(databaseClient, "query");
 
-    const fakeUserLogin = { firstName: "Jean-Patrick" };
+    const fakeUser = { firstName: "Jean-Patrick" };
 
-    const response = await supertest(app)
-      .post("/api/userLogin")
-      .send(fakeUserLogin);
+    const response = await supertest(app).post("/api/user").send(fakeUser);
 
     expect(response.status).toBe(400);
   });
