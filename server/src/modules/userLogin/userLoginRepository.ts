@@ -10,7 +10,7 @@ interface UserLogin {
   user_password: string;
 }
 
-class userLoginRepository {
+class UserLoginRepository {
   async readAll() {
     const [rows] = await databaseClient.query<Rows>("SELECT * FROM userLogin");
 
@@ -32,4 +32,4 @@ class userLoginRepository {
   }
 }
 
-export default new userLoginRepository();
+export default new UserLoginRepository();

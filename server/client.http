@@ -18,8 +18,8 @@ POST http://localhost:3310/api/userLogin HTTP/1.1
 content-type: application/json
 
 {
-  "first_name": "Léon",
-  "last_name": "Patrick",
-  "email": "leon.patrick@gmail.com",
-  "user_password": "courgette"
+  "firstName": "Léon",
+  "lastName": "Patrick",
+  "email": "leon.patrickdd@gmail.com",
+  "password": "courgette!!MM55"
 }

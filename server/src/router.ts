@@ -44,7 +44,7 @@ router.get("/api/userApp", userAppActions.browse);
 router.get("/api/userLogin", userLoginActions.browse);
 router.post(
   "/api/userLogin",
-  userLoginActions.validation,
+  // userLoginActions.validation,
   userLoginActions.add,
 );
 
