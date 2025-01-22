@@ -1,0 +1,13 @@
+.title-profile-children {
+  color: #76a3f6;
+}
+
+.login-form-children {
+  display: grid;
+  gap: 12px;
+  width: 80%;
+}
+.bottom-page {
+  background: white;
+  padding: 1px;
+}
