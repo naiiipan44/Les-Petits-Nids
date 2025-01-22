@@ -5,7 +5,7 @@ import useStorage from "../hooks/useStorage";
 import type { NurseryData } from "../types/nursery";
 import "./Favorites.css";
 
-function favorite() {
+function Favorite() {
   const [data, setData] = useState<NurseryData[]>([]);
   const { getStorage } = useStorage();
 
@@ -37,7 +37,7 @@ function favorite() {
           data.map((el) => {
             return (
               <section className="button-close-favorites" key={el.id}>
-                <Link to={`/search/${el.id}`}>
+                <Link to={`/search/${el.id}`} className="favorites-button-link">
                   <Nursery
                     ns_name={el.ns_name}
                     ns_image={el.ns_image}
@@ -45,6 +45,7 @@ function favorite() {
                     ns_capacity={0}
                     ns_address={""}
                     ns_num_tel=""
+                    ns_description=""
                   />
                 </Link>
                 <button
@@ -65,4 +66,4 @@ function favorite() {
   );
 }
 
-export default favorite;
+export default Favorite;
