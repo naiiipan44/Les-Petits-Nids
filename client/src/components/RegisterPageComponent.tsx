@@ -4,7 +4,9 @@ import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
 
-function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
+function RegisterPageComponent({
+  isParent,
+}: Readonly<RegisterPageComponentProps>) {
   const [indication, setIndication] = useState("");
 
   const notify = () => toast.success("Votre compte a bien été créé");
@@ -46,6 +48,7 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
             placeholder="Nom"
             aria-label="Nom"
             className="input-field"
+            pattern=".{2,}"
           />
           <input
             type="text"
@@ -54,6 +57,7 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
             aria-label="Prénom"
             className="input-field"
             defaultValue=""
+            pattern=".{2,}"
           />
           <input
             type="checkbox"
@@ -72,6 +76,7 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
             placeholder="Nom de l'établissement"
             aria-label="Nom de l'établissement"
             className="input-field"
+            pattern=".{2,}"
           />
           <input
             type="checkbox"
@@ -90,6 +95,7 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
         placeholder="Email"
         aria-label="Email"
         className="input-field"
+        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
       />
       <input
         type="password"
@@ -97,6 +103,7 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
         placeholder="Mot de passe"
         aria-label="Mot de passe"
         className="input-field"
+        pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
       <Link to="" className="links">
         Vous avez déjà un compte ? Se connecter
