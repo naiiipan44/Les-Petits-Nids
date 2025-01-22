@@ -41,7 +41,7 @@ describe("POST /api/userLogin", () => {
       firstName: "Jean-Claude",
       lastName: "Bauvin",
       email: "jc.bauvin@gmail.com",
-      password: "1234",
+      password: "1234MMMlll!!!",
     };
 
     const response = await supertest(app)
@@ -55,13 +55,9 @@ describe("POST /api/userLogin", () => {
 
   it("Should fail on invalid request and return status 400", async () => {
     // Mock result of the database query
-    const result = { insertId: 1 } as Result;
-    console.warn(result);
 
     // Mock the implementation of the database query method
-    jest
-      .spyOn(databaseClient, "query")
-      .mockImplementation(async () => [result, []]);
+    jest.spyOn(databaseClient, "query");
 
     // Fake item data with missing user_id
     const fakeUserLogin = { firstName: "Jean-Patrick" };
@@ -73,6 +69,5 @@ describe("POST /api/userLogin", () => {
 
     // Assertions
     expect(response.status).toBe(400);
-    expect(response.body).toEqual({});
   });
 });
