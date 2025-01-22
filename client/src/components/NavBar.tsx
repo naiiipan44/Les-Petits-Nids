@@ -4,10 +4,10 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <>
-      <nav>
-        <NavLink to="favorite">
+      <nav className="nav-component">
+        <NavLink to="favorites">
           <button type="button" className="nav-buttons">
-            <img src="/favorite.svg" alt="link to the favorite page" />
+            <img src="/blueheart.svg" alt="link to the favorite page" />
           </button>
         </NavLink>
         <NavLink to="search">
@@ -20,7 +20,7 @@ function NavBar() {
             <img src="/user.svg" alt="link to the profil of the user" />
           </button>
         </NavLink>
-        <NavLink to="book">
+        <NavLink to="parentsbookings">
           <button type="button" className="nav-buttons">
             <img src="/books.svg" alt="link to the book page" />
           </button>

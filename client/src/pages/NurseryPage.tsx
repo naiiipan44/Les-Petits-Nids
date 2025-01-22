@@ -1,9 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
-import type { NurseryDetails } from "../types/nursery";
+import type { NurseryData, NurseryDetails } from "../types/nursery";
 import "./NurseryPage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
+import useStorage from "../hooks/useStorage";
 
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,22 @@ function NurseryPage() {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
   }
 
+  const [isClicked, setIsClicked] = useState(false);
+
+  const { getStorage, handleStorage } = useStorage();
+
+  useEffect(() => {
+    const storage: NurseryData[] | null = getStorage();
+    if (!storage) return;
+    const isNurseryInside = storage.find((el) => el.id === data.id);
+    if (isNurseryInside) setIsClicked(true);
+  }, [data.id, getStorage]);
+
+  function handleClick() {
+    setIsClicked(!isClicked);
+    return handleStorage(data, isClicked);
+  }
+
   return (
     <>
       <section className="back-to-nursery">
@@ -37,6 +54,12 @@ function NurseryPage() {
       </section>
       <section className="nursery-details">
         <img src={data.ns_image} alt={`L'image de ${data.ns_name}`} />
+        <button type="button" className="button-heart" onClick={handleClick}>
+          <img
+            src={isClicked ? "/redheart.svg" : "/blueheart.svg"}
+            alt="Heart Icon"
+          />
+        </button>
         <section className="nursery-description">
           <h2 className="presentation">Présentation</h2>
           <p>{data.ns_description}</p>
