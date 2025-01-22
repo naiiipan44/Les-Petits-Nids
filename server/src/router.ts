@@ -24,6 +24,14 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /* ************************************************************************* */
 
+// get children from database
+
+import childrenActions from "./modules/children/childrenActions";
+
+router.get("/api/children", childrenActions.browse);
+
+/* ************************************************************************* */
+
 // get userApp  from database
 
 import parentActions from "./modules/parent/parentActions";
