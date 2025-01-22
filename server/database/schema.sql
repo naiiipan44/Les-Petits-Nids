@@ -1,3 +1,59 @@
+CREATE TABLE parent (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  p_first_name VARCHAR(80) NOT NULL,
+  p_last_name VARCHAR(80) NOT NULL,
+  p_job VARCHAR(80),
+  p_address VARCHAR(120) NOT NULL,
+  p_zip_code INT NOT NULL,
+  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
+  p_mail VARCHAR(100) NOT NULL,
+  p_birth_date DATE NOT NULL
+);
+
+INSERT INTO parent (
+  p_first_name,
+  p_last_name,
+  p_job,
+  p_address,
+  p_zip_code,
+  p_num_tel,
+  p_mail,
+  p_birth_date
+)
+VALUES
+(
+"Deschamps",
+"Paula",
+"Conseillère bancaire",
+"20 ALLEE DES DHUYS",
+44000,
+"0632000000",
+"paula.deschamps@gmail.com",
+"1986-01-01" -- Correct date format (YYYY-MM-DD)
+),
+(
+"Després",
+"Alexis",
+"Maquettiste",
+"53 BOULEVARD MALESHERBES",
+44300,
+"0755000000",
+"alexis.despres@yahoo.fr",
+"1974-05-07"
+);
+
+create table children (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+c_first_name VARCHAR(80) NOT NULL,
+c_last_name VARCHAR(80) NOT NULL,
+c_gender BOOLEAN DEFAULT NULL,
+c_birth_date DATE NOT NULL,
+c_allergies VARCHAR(150) NULL,
+parent_id INT NOT NULL,
+ FOREIGN KEY (parent_id) 
+ REFERENCES parent(id)
+);
+
 create table user (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
@@ -155,49 +211,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   );
 
 
-CREATE TABLE parent (
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  p_first_name VARCHAR(80) NOT NULL,
-  p_last_name VARCHAR(80) NOT NULL,
-  p_job VARCHAR(80),
-  p_address VARCHAR(120) NOT NULL,
-  p_zip_code INT NOT NULL,
-  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
-  p_mail VARCHAR(100) NOT NULL,
-  p_birth_date DATE NOT NULL
-);
 
-INSERT INTO parent (
-  p_first_name,
-  p_last_name,
-  p_job,
-  p_address,
-  p_zip_code,
-  p_num_tel,
-  p_mail,
-  p_birth_date
-)
-VALUES
-(
-"Deschamps",
-"Paula",
-"Conseillère bancaire",
-"20 ALLEE DES DHUYS",
-44000,
-"0632000000",
-"paula.deschamps@gmail.com",
-"1986-01-01" -- Correct date format (YYYY-MM-DD)
-),
-(
-"Després",
-"Alexis",
-"Maquettiste",
-"53 BOULEVARD MALESHERBES",
-44300,
-"0755000000",
-"alexis.despres@yahoo.fr",
-"1974-05-07"
-);
 
 
 
