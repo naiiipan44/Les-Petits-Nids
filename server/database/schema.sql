@@ -1,13 +1,25 @@
+CREATE TABLE parent (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  p_first_name VARCHAR(80) NOT NULL,
+  p_last_name VARCHAR(80) NOT NULL,
+  p_job VARCHAR(80),
+  p_address VARCHAR(120) NOT NULL,
+  p_zip_code INT NOT NULL,
+  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
+  p_mail VARCHAR(100) NOT NULL,
+  p_birth_date DATE NOT NULL
+);
+
 create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-p_first_name VARCHAR(80) NOT NULL,
-p_last_name VARCHAR(80) NOT NULL,
-p_job VARCHAR(80),
-p_address VARCHAR(120) NOT NULL,
-p_zip_code INT NOT NULL, 
-p_num_tel INT,
-p_mail VARCHAR(100) NOT NULL,
-p_birth_date DATE NOT NULL
+c_first_name VARCHAR(80) NOT NULL,
+c_last_name VARCHAR(80) NOT NULL,
+c_gender BOOLEAN DEFAULT NULL,
+c_birth_date DATE NOT NULL,
+c_allergies VARCHAR(150) NULL,
+parent_id INT NOT NULL,
+ FOREIGN KEY (parent_id) 
+ REFERENCES parent(id)
 );
 
 
@@ -176,19 +188,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   );
 
 
-CREATE TABLE userApp (
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  p_first_name VARCHAR(80) NOT NULL,
-  p_last_name VARCHAR(80) NOT NULL,
-  p_job VARCHAR(80),
-  p_address VARCHAR(120) NOT NULL,
-  p_zip_code INT NOT NULL,
-  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
-  p_mail VARCHAR(100) NOT NULL,
-  p_birth_date DATE NOT NULL
-);
-
-INSERT INTO userApp (
+INSERT INTO parent (
   id,
   p_first_name,
   p_last_name,
