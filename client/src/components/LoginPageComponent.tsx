@@ -30,7 +30,7 @@ function LoginPageComponent() {
   }
 
   return (
-    <>
+
       <form onSubmit={onSubmit} className="login-form">
         <input
           type="email"
@@ -60,7 +60,7 @@ function LoginPageComponent() {
           Connexion
         </button>
       </form>
-    </>
+
   );
 }
 

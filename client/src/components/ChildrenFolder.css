@@ -1,5 +1,39 @@
+.main-children-folder {
+  background: white;
+}
+
+.children-folder {
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
 .title-profile-children {
   color: #76a3f6;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.button-add {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--secondaryColor);
+  border-color: var(--secondaryColor);
+  margin-left: 10px;
+}
+
+.button-children-folder {
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  background-color: var(--secondaryColor);
+  color: white;
+  border: none;
+  margin-left: 60px;
 }
 
 .login-form-children {
@@ -7,7 +41,15 @@
   gap: 12px;
   width: 80%;
 }
-.bottom-page {
-  background: white;
-  padding: 1px;
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
