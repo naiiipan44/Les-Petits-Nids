@@ -10,6 +10,7 @@ CREATE TABLE parent (
   p_birth_date DATE NOT NULL
 );
 
+
 create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 c_first_name VARCHAR(80) NOT NULL,

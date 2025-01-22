@@ -45,6 +45,7 @@ function Favorite() {
                     ns_capacity={0}
                     ns_address={""}
                     ns_num_tel=""
+                    ns_description=""
                   />
                 </Link>
                 <button
