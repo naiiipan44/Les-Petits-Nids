@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nursery from "../components/Nursery";
 import useStorage from "../hooks/useStorage";
-import type { NurseryData } from "../types/nursery";
+import type { NurseryData } from "../types/Nursery";
 import "./Favorites.css";
 
 function Favorite() {
@@ -45,7 +45,6 @@ function Favorite() {
                     ns_capacity={0}
                     ns_address={""}
                     ns_num_tel=""
-                    ns_description=""
                   />
                 </Link>
                 <button
