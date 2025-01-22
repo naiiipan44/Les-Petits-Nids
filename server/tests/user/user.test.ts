@@ -54,20 +54,14 @@ describe("POST /api/userLogin", () => {
   });
 
   it("Should fail on invalid request and return status 400", async () => {
-    // Mock result of the database query
-
-    // Mock the implementation of the database query method
     jest.spyOn(databaseClient, "query");
 
-    // Fake item data with missing user_id
     const fakeUserLogin = { firstName: "Jean-Patrick" };
 
-    // Send a POST request to the /api/items endpoint with a test item
     const response = await supertest(app)
       .post("/api/userLogin")
       .send(fakeUserLogin);
 
-    // Assertions
     expect(response.status).toBe(400);
   });
 });
