@@ -10,6 +10,7 @@ p_mail VARCHAR(100) NOT NULL,
 p_birth_date DATE NOT NULL
 );
 
+
 create table userLogin (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
