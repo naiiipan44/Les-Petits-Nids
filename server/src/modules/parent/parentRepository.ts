@@ -2,19 +2,21 @@ import databaseClient from "../../../database/client";
 
 import type { Rows } from "../../../database/client";
 
-class userAppRepository {
+class ParentRepository {
   async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM userApp");
+    const [rows] = await databaseClient.query<Rows>("SELECT * FROM parent");
 
     return rows;
   }
 
   async readEmailWithPassword(email: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where email = ?",
+      "select * from parent where email = ?",
       [email],
     );
+
+    return rows;
   }
 }
 
-export default new userAppRepository();
+export default new ParentRepository();

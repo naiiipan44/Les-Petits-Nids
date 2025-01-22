@@ -3,14 +3,9 @@ import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res) => {
-  const user = await userRepository.readAll();
-
+  const user = await userRepository.read();
   res.json(user);
 };
-
-interface Error {
-  code: string;
-}
 
 const add: RequestHandler = async (req, res, next) => {
   try {
@@ -26,7 +21,7 @@ const add: RequestHandler = async (req, res, next) => {
       res.status(201).json({ insertId });
     }
   } catch (err) {
-    const error = err as Error;
+    const error = err as { code: string };
     if (error.code === "ER_DUP_ENTRY") {
       res.status(400).send("Cette adresse mail est déjà utilisée");
     } else {
@@ -45,7 +40,7 @@ const validation: RequestHandler = async (req, res, next) => {
     };
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const validPassword = /^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    const validPassword = /^(?=.*?[A-Z])(?=.*?\d)(?=.*?[#?!@$%^&*-]).{8,}$/;
 
     if (newUserLogin.first_name.length < 1 || newUserLogin.last_name < 1) {
       res

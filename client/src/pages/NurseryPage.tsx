@@ -1,6 +1,5 @@
-import { useLoaderData } from "react-router-dom";
-import { Link } from "react-router-dom";
-import type { NurseryData } from "../types/nursery";
+import { Link, useLoaderData } from "react-router-dom";
+import type { NurseryData } from "../types/Nursery";
 import "./NurseryPage.css";
 import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
@@ -19,7 +18,7 @@ function NurseryPage() {
     setIsVisible((prevState) => !prevState);
   };
 
-  const data = useLoaderData() as NurseryData;
+  const data = useLoaderData();
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;

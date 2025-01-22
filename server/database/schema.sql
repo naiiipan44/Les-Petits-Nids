@@ -7,9 +7,9 @@ create table user (
 );
 
 INSERT INTO user
-  (id, first_name, last_name, email, hashed_password) 
+  (first_name, last_name, email, hashed_password) 
   VALUES 
-  (1, "Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA");
+  ("Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA");
 
 CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -34,7 +34,6 @@ CREATE TABLE nursery (
 
 
 INSERT INTO nursery (
-  id,
   ns_name,
   ns_type,
   ns_mail,
@@ -55,7 +54,6 @@ INSERT INTO nursery (
   )
 VALUES
 (
-  1,
   "Les Passereaux", 
   "Multi-accueil", 
   "creche-les-passereaux@wanadoo.fr",
@@ -76,7 +74,6 @@ VALUES
   ),
 
   (
-  2,
   "Babilou Colombes Barbusse",
   "Multi-accueil",
   "contact@babilou.com",
@@ -98,7 +95,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   ),
 
   (
-  3,
   "Les Barbusiens",
   "Micro-crèche",
   "rpe-orves@mairie-colombes.fr",
@@ -119,7 +115,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   ),
 
   (
-  4,
   "Saint Raphaël",
   "Multi-accueil",
   "creche@association-saint-raphael.com",
@@ -140,7 +135,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   ),
 
   (
-  5,
   "La Comptine - Arc en Ciel",
   "Multi-accueil",
   "petite_enfance@ville-antony.fr",
@@ -161,7 +155,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   );
 
 
-CREATE TABLE userApp (
+CREATE TABLE parent (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   p_first_name VARCHAR(80) NOT NULL,
   p_last_name VARCHAR(80) NOT NULL,
@@ -173,8 +167,7 @@ CREATE TABLE userApp (
   p_birth_date DATE NOT NULL
 );
 
-INSERT INTO userApp (
-  id,
+INSERT INTO parent (
   p_first_name,
   p_last_name,
   p_job,
@@ -186,7 +179,6 @@ INSERT INTO userApp (
 )
 VALUES
 (
-1,
 "Deschamps",
 "Paula",
 "Conseillère bancaire",
@@ -197,7 +189,6 @@ VALUES
 "1986-01-01" -- Correct date format (YYYY-MM-DD)
 ),
 (
-2,
 "Després",
 "Alexis",
 "Maquettiste",

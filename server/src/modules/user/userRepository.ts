@@ -1,25 +1,20 @@
 import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
+import type { User } from "../../types/modules/User";
 
-export interface User {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  hashed_password: string;
-}
+class UserRepository {
+  async read() {
+    const [rows] = await databaseClient.query<Rows>(
+      "select first_name, last_name, email from user",
+    );
 
-class userLoginRepository {
-  async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM user");
-
-    return rows;
+    return rows[0] as User;
   }
 
   async readEmailWithPassword(email: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where email = ?",
+      "select first_name, last_name, email from user where email = ?",
       [email],
     );
 
@@ -36,4 +31,4 @@ class userLoginRepository {
   }
 }
 
-export default new userLoginRepository();
+export default new UserRepository();
