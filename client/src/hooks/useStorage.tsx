@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import type { NurseryData } from "../types/nursery";
+import type { NurseryData } from "../types/Nursery";
 
 function useStorage() {
   const getStorage = useCallback(() => {
