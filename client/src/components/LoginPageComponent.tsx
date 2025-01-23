@@ -1,26 +1,8 @@
 import type { FormEvent } from "react";
 import "./LoginPageComponent.css";
 import "../style/globals.css";
-import { Link } from "react-router-dom";
-import type { UserI } from "../types/UserI";
-import useUser from "../utils/useUser";
 
-function LoginPageComponent() {
-  const { user, setUser } = useUser();
-
-  const parent: UserI = {
-    firstName: "Claude",
-    lastName: "Patrick",
-    email: "claude.patrick@gmail.com",
-    userPassword: "petitponey",
-    role: "parent",
-  };
-
-  function handleUser() {
-    if (!user) {
-      setUser(parent);
-    }
-  }
+function LoginPageComponent()
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
