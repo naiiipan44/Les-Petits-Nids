@@ -12,4 +12,18 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+// const add: RequestHandler = async (req, res, next) => {
+//   try {
+//     const newItem = {
+//       title: req.body.title,
+//       user_id: req.body.user_id,
+//     };
+//     const insertId = await childrenRepository.create(newItem);
+
+//     res.status(201).json({ insertId });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
 export default { browse };
