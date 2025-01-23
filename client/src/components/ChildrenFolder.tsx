@@ -1,12 +1,31 @@
 import "../components/ChildrenFolder.css";
 import type { FormEvent } from "react";
+import { toast } from "react-toastify";
 
 function ChildrenFolder() {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData);
+    const notify = () => toast.success("Votre formulaire a été soumis");
+    const error = () =>
+      toast.error("Les informations renseignées ne sont pas valides");
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/children`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formatedData),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (!result.message) {
+          notify();
+        } else {
+          error();
+        }
+      });
   }
 
   return (

@@ -30,37 +30,32 @@ function LoginPageComponent() {
   }
 
   return (
-
-      <form onSubmit={onSubmit} className="login-form">
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="input-field"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          className="input-field"
-        />
-        <button type="button" onClick={handleUser}>
-          {user ? (
-            <Link to={"/profile"}>
-              <p>{user.role}</p>
-            </Link>
-          ) : (
-            <p>Connexion</p>
-          )}
-        </button>
-        <button
-          className="button-secondary form-validation-button"
-          type="submit"
-        >
-          Connexion
-        </button>
-      </form>
-
+    <form onSubmit={onSubmit} className="login-form">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        className="input-field"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Mot de passe"
+        className="input-field"
+      />
+      <button type="button" onClick={handleUser}>
+        {user ? (
+          <Link to={"/profile"}>
+            <p>{user.role}</p>
+          </Link>
+        ) : (
+          <p>Connexion</p>
+        )}
+      </button>
+      <button className="button-secondary form-validation-button" type="submit">
+        Connexion
+      </button>
+    </form>
   );
 }
 
