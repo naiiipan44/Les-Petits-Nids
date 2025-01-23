@@ -30,3 +30,30 @@
 .checkbox-role {
   display: none;
 }
+
+/* css conditions général */
+
+.general-conditions {
+  margin: 5% 0 3% 0;
+  display: flex;
+  align-content: center;
+  gap: 0.6rem;
+  justify-self: center;
+}
+
+.general-conditions > label > button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-family: var(--general-font);
+  font-size: 0.86rem;
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+
+.conditions-accepted {
+  font-size: 0.75rem;
+  color: green;
+  margin-bottom: 2%;
+  text-align: center;
+}

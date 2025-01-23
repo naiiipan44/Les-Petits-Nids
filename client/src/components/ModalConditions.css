@@ -1,0 +1,36 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--mainColor);
+  z-index: 0;
+}
+
+.button-back-nursery {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: var(--secondaryColor);
+  padding: 10px;
+}
+
+.button-back-nursery h1 {
+  font-size: 20px;
+}
+
+.back-button-connexion {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+}
