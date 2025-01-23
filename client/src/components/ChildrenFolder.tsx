@@ -23,31 +23,31 @@ function ChildrenFolder() {
       <section className="children-folder">
         <form onSubmit={onSubmit} className="login-form-children">
           <input
-            type="firstname"
+            type="text"
             name="firstname"
             placeholder="Prénom"
             className="input-field"
           />
           <input
-            type="lastname"
+            type="text"
             name="lastname"
             placeholder="Nom"
             className="input-field"
           />
           <input
-            type="birthdate"
+            type="date"
             name="birthdate"
             placeholder="Date de naissance"
             className="input-field"
           />
           <input
-            type="gender"
+            type="text"
             name="gender"
             placeholder="Genre"
             className="input-field"
           />
           <input
-            type="Allergies"
+            type="text"
             name="Allergies"
             placeholder="Allergies"
             className="input-field"
