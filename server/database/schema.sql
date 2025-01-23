@@ -59,13 +59,14 @@ create table user (
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-  hashed_password varchar(255) not null
+  hashed_password varchar(255) not null,
+  role varchar(80) not null
 );
 
 INSERT INTO user
-  (first_name, last_name, email, hashed_password) 
+  (first_name, last_name, email, hashed_password, role) 
   VALUES 
-  ("Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA");
+  ("Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA", "parent");
 
 CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,

@@ -3,7 +3,7 @@ import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res) => {
-  const user = await userRepository.read();
+  const user = await userRepository.readAll();
   res.json(user);
 };
 
@@ -14,7 +14,9 @@ const add: RequestHandler = async (req, res, next) => {
       last_name: req.body.lastName,
       email: req.body.email,
       hashed_password: req.body.hashed_password,
+      role: req.body.role,
     };
+    console.warn(newUser);
 
     const insertId = await userRepository.create(newUser);
     if (insertId) {
