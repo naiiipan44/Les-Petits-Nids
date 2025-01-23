@@ -54,4 +54,10 @@ router.post(
 
 router.post("/api/user/login", authentificationActions.login);
 
+/* Authentication wall */
+
+router.use(authentificationActions.verifyToken);
+
+router.delete("/api/parent/:id", parentActions.destroy);
+
 export default router;
