@@ -1,31 +1,12 @@
 import "../components/ChildrenFolder.css";
 import type { FormEvent } from "react";
-import { toast } from "react-toastify";
 
 function ChildrenFolder() {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    const notify = () => toast.success("Votre formulaire a été soumis");
-    const error = () =>
-      toast.error("Les informations renseignées ne sont pas valides");
-
-    fetch(`${import.meta.env.VITE_API_URL}/api/children`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formatedData),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (!result.message) {
-          notify();
-        } else {
-          error();
-        }
-      });
+    console.warn(formatedData);
   }
 
   return (
@@ -71,12 +52,10 @@ function ChildrenFolder() {
             placeholder="Allergies"
             className="input-field"
           />
+          <button type="submit" className="button-primary">
+            Soumettre
+          </button>
         </form>
-      </section>
-      <section className="button-submit">
-        <button type="submit" className="button-primary">
-          Soumettre
-        </button>
       </section>
     </main>
   );

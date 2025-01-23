@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./ParentsProfils.css";
-import ChildrenFolder from "../components/ChildrenFolder";
 import ParentsBookings from "../components/ParentsBookings";
 
 function ParentsProfils() {
@@ -29,9 +28,6 @@ function ParentsProfils() {
       </section>
       <section className="bottom-page">
         <ParentsBookings />
-      </section>
-      <section>
-        <ChildrenFolder />
       </section>
     </main>
   );

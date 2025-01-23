@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 30px;
 }
 
 .title-profile-children {
@@ -33,13 +33,13 @@
   background-color: var(--secondaryColor);
   color: white;
   border: none;
-  margin-left: 60px;
+  margin-left: 50px;
 }
 
 .login-form-children {
   display: grid;
   gap: 12px;
-  width: 80%;
+  width: 90%;
 }
 
 .input-container {
@@ -48,8 +48,6 @@
   gap: 10px;
 }
 
-.button-submit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.button-primary {
+  margin-top: 20px;
 }
