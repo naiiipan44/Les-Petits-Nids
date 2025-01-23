@@ -4,7 +4,7 @@ import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res) => {
   const user = await userRepository.read();
-  res.json(user);
+  res.status(200).send(user);
 };
 
 const add: RequestHandler = async (req, res, next) => {
@@ -15,6 +15,8 @@ const add: RequestHandler = async (req, res, next) => {
       email: req.body.email,
       hashed_password: req.body.hashed_password,
     };
+
+    console.warn(newUser);
 
     const insertId = await userRepository.create(newUser);
     if (insertId) {

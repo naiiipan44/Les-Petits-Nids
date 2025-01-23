@@ -23,7 +23,6 @@ describe("GET /api/user", () => {
       .mockImplementation(async () => [rows, []]);
 
     const response = await supertest(app).get("/api/user");
-
     expect(response.status).toBe(200);
     expect(response.body).toStrictEqual(rows);
   });
@@ -41,10 +40,12 @@ describe("POST /api/user", () => {
       firstName: "Jean-Claude",
       lastName: "Bauvin",
       email: "jc.bauvin@gmail.com",
-      password: "1234MMMlll!!!",
+      password: "mserdtfylkmkMM33!!",
     };
 
-    const response = await supertest(app).post("/api/user").send(fakeUser);
+    const response = await supertest(app)
+      .post("/api/user/registration")
+      .send(fakeUser);
 
     expect(response.status).toBe(201);
     expect(response.body).toBeInstanceOf(Object);
@@ -56,7 +57,9 @@ describe("POST /api/user", () => {
 
     const fakeUser = { firstName: "Jean-Patrick" };
 
-    const response = await supertest(app).post("/api/user").send(fakeUser);
+    const response = await supertest(app)
+      .post("/api/user/registration")
+      .send(fakeUser);
 
     expect(response.status).toBe(400);
   });
