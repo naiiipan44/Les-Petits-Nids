@@ -1,5 +1,4 @@
 import { type FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
@@ -105,9 +104,6 @@ function RegisterPageComponent({
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
-      <Link to="" className="links">
-        Vous avez déjà un compte ? Se connecter
-      </Link>
       <button className="button-secondary" type="submit">
         Connexion
       </button>
