@@ -51,6 +51,7 @@ router.post(
   authentificationActions.hashPassword,
   userActions.add,
 );
+
 router.post("/api/user/login", authentificationActions.login);
 
 export default router;

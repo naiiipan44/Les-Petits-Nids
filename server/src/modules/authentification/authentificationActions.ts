@@ -7,6 +7,7 @@ import userRepository from "../user/userRepository";
 const login: RequestHandler = async (req, res, next) => {
   try {
     const user = await userRepository.readEmailWithPassword(req.body.email);
+    console.warn(user);
     if (user == null) {
       res.sendStatus(422);
       return;
@@ -14,7 +15,7 @@ const login: RequestHandler = async (req, res, next) => {
 
     const isVerified = await argon2.verify(
       user.hashed_password,
-      req.body.user_password,
+      req.body.password,
     );
 
     if (isVerified) {
