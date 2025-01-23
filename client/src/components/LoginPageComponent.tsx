@@ -43,15 +43,6 @@ function LoginPageComponent() {
         placeholder="Mot de passe"
         className="input-field"
       />
-      <button type="button" onClick={handleUser}>
-        {user ? (
-          <Link to={"/profile"}>
-            <p>{user.role}</p>
-          </Link>
-        ) : (
-          <p>Connexion</p>
-        )}
-      </button>
       <button className="button-secondary form-validation-button" type="submit">
         Connexion
       </button>
