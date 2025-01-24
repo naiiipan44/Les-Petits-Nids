@@ -54,6 +54,11 @@ parent_id INT NOT NULL,
  REFERENCES parent(id)
 );
 
+insert into children 
+  (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, parent_id)
+  VALUES
+  ("Boby", "Bob", true, "2025-09-12", "patate", 1);
+
 create table user (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
@@ -222,8 +227,8 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   children_id INT NOT NULL,
   FOREIGN KEY (children_id)
   REFERENCES children(id),
-  book_date DATE NOT NULL,
-  book_range BOOLEAN NOT NULL
+  booking_date DATE NOT NULL,
+  booking_range BOOLEAN NOT NULL
 );
 
 
