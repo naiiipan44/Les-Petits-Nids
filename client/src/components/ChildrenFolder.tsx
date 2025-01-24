@@ -1,4 +1,4 @@
-import "../components/ChildrenFolder.css";
+import "./ChildrenFolder.css";
 import type { FormEvent } from "react";
 
 function ChildrenFolder() {
