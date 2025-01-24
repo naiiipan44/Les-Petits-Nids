@@ -30,8 +30,7 @@
 .nursery-details img {
   height: 50%;
   width: 100%;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
 }
 .nursery-description section {
   display: flex;
@@ -39,8 +38,7 @@
   align-items: center;
 }
 .presentation {
-  padding-left: 5%;
-  padding-top: 3%;
+  padding: 3% 0 0 5%;
 }
 .contact {
   background: linear-gradient(

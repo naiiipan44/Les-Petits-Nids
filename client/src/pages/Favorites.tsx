@@ -9,8 +9,6 @@ function Favorite() {
   const [data, setData] = useState<NurseryDetails[]>([]);
   const { getStorage } = useStorage();
 
-  console.info(data, "cc1");
-
   useEffect(() => {
     const result = getStorage();
     if (result) {
