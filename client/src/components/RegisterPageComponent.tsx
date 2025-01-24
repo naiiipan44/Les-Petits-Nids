@@ -17,7 +17,7 @@ function RegisterPageComponent({
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/userLogin`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -105,7 +105,7 @@ function RegisterPageComponent({
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
       <button className="button-secondary" type="submit">
-        Connexion
+        Inscription
       </button>
     </form>
   );

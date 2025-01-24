@@ -24,20 +24,32 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /* ************************************************************************* */
 
+// get children from database
+
+import childrenActions from "./modules/children/childrenActions";
+
+router.get("/api/children", childrenActions.browse);
+
+/* ************************************************************************* */
+
 // get userApp  from database
 
-import userAppActions from "./modules/userApp/userAppActions";
-import userLoginActions from "./modules/userLogin/userLoginActions";
+import parentActions from "./modules/parent/parentActions";
 
-router.get("/api/userApp", userAppActions.browse);
+import authentificationActions from "./modules/authentification/authentificationActions";
+import userActions from "./modules/user/userActions";
+
+router.get("/api/parent", parentActions.browse);
 
 // Parent registration
 
-router.get("/api/userLogin", userLoginActions.browse);
+router.get("/api/user", userActions.browse);
+
 router.post(
-  "/api/userLogin",
-  userLoginActions.validation,
-  userLoginActions.add,
+  "/api/user/registration",
+  authentificationActions.hashPassword,
+  userActions.add,
 );
+router.post("/api/user/login", authentificationActions.login);
 
 export default router;

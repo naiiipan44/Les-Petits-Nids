@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
-
 function LandingPage() {
   return (
     <section className="landing-page">
@@ -25,12 +24,8 @@ function LandingPage() {
           garde, même pour le lendemain !
         </p>
       </section>
-      <Link to="search">
-        <div className="button-pass">
-          <button type="button" className="round-button">
-            &gt;
-          </button>
-        </div>
+      <Link to="search" className="round-button">
+        &gt;
       </Link>
     </section>
   );

@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
-import { useLoaderData } from "react-router-dom";
-import type { NurseryData } from "../types/nursery";
+import { Link, useLoaderData } from "react-router-dom";
 import "./ModalConnexion.css";
 import type { ModalConnexionProps } from "../types/ModalConnexion";
 
-function ModalConnexion({ onClose }: ModalConnexionProps) {
-  const data = useLoaderData() as NurseryData;
+function ModalConnexion({ onClose }: Readonly<ModalConnexionProps>) {
+  const data = useLoaderData();
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
