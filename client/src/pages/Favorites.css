@@ -24,7 +24,7 @@
   z-index: 10;
 }
 
-.remove-favorite-button img {
+.remove-favorite-button > img {
   width: 25px;
   height: 25px;
 }
@@ -35,11 +35,6 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
-}
-
-.main-search-page p {
-  font-size: 1rem;
-  color: var(--secondaryColor);
 }
 
 .favorites-button-link {
