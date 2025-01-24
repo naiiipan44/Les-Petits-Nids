@@ -16,7 +16,6 @@ const add: RequestHandler = async (req, res, next) => {
       hashed_password: req.body.hashed_password,
       role: req.body.role,
     };
-    console.warn(newUser);
 
     const insertId = await userRepository.create(newUser);
     if (insertId) {

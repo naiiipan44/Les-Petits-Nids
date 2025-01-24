@@ -52,7 +52,7 @@ const verifyToken: RequestHandler = (req, res, next) => {
     }
 
     const [type, token] = authorization.split(" ");
-    console.warn(type);
+
     if (type !== "Bearer") {
       throw new Error("Bearer must be provided");
     }
