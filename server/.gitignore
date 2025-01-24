@@ -1,5 +1,5 @@
 node_modules
 coverage
 .env
-server/database/schema.sql
+schemaDB.sql
 requests.http
