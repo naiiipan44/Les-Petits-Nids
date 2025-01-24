@@ -24,7 +24,7 @@ function RegisterPageComponent({
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/userLogin`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

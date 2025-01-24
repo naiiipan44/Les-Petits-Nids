@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LeafletMap from "../components/Map";
 import "./MapPage.css";
-import type { InterfaceMap } from "../types/nursery";
+import type { InterfaceMap } from "../types/Nursery";
 
 function MapPage() {
   const [data, setData] = useState<null | InterfaceMap[]>(null);
@@ -55,15 +55,13 @@ function MapPage() {
   }));
 
   return (
-    <>
-      <main className="map-page-main">
-        {userPosition ? (
-          <LeafletMap markers={markers || []} userPosition={userPosition} />
-        ) : (
-          <p>Chargement de la géolocalisation...</p>
-        )}
-      </main>
-    </>
+    <main className="map-page-main">
+      {userPosition ? (
+        <LeafletMap markers={markers || []} userPosition={userPosition} />
+      ) : (
+        <p>Chargement de la géolocalisation...</p>
+      )}
+    </main>
   );
 }
 
