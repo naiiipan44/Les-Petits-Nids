@@ -113,14 +113,17 @@ function RegisterPageComponent({
           onChange={() => setIsChecked(!isChecked)}
         />
         <label htmlFor="terms">
-          <button
-            type="button"
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            Voir les conditions général d'utilisations
-          </button>
+          <p>
+            Accepter
+            <button
+              type="button"
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              les conditions générales d'utilisation
+            </button>
+          </p>
         </label>
       </section>
       {isChecked && (
@@ -128,8 +131,12 @@ function RegisterPageComponent({
           Vous avez accepté les conditions d'utilisation.
         </p>
       )}
-      <button className="button-secondary" type="submit">
-        Connexion
+      <button
+        className={`button-secondary-register ${isChecked ? "enabled" : ""}`}
+        type="submit"
+        disabled={!isChecked}
+      >
+        Inscription
       </button>
       {showModal && <ModalConditions onClose={handleButtonClick} />}
     </form>

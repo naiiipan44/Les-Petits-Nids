@@ -31,6 +31,24 @@
   display: none;
 }
 
+.button-secondary-register {
+  background-color: #d8d5d5;
+  color: var(--secondaryColor);
+  height: 50px;
+  border-radius: 10px;
+  font-family: var(--button-font);
+  font-size: 20px;
+  padding: 0;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  border: none;
+  font-weight: bold;
+}
+.button-secondary-register.enabled {
+  background: var(--tertiaryColor);
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+
 /* css conditions général */
 
 .general-conditions {
@@ -41,12 +59,21 @@
   justify-self: center;
 }
 
-.general-conditions > label > button {
+.general-conditions > label > p > button {
   background: none;
   border: none;
   text-decoration: underline;
   font-family: var(--general-font);
-  font-size: 0.86rem;
+  color: var(--secondaryColor);
+  font-size: 0.74rem;
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+.general-conditions > label > p {
+  background: none;
+  border: none;
+  font-family: var(--general-font);
+  font-size: 0.74rem;
   color: var(--secondaryColor);
   cursor: pointer;
 }
