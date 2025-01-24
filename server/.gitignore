@@ -1,5 +1,5 @@
 node_modules
 coverage
 .env
-test-routes.http
+schema.sql
 requests.http
