@@ -1,19 +1,3 @@
-CREATE TABLE booking (
-  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  parent_id INT NOT NULL,
-  FOREIGN KEY (parent_id)
-  REFERENCES parent(id),
-  nursery_id INT NOT NULL,
-  FOREIGN KEY (nursery_id)
-  REFERENCES nursery(id),
-  children_id INT NOT NULL,
-  FOREIGN KEY (children_id)
-  REFERENCES children(id),
-  book_date DATE NOT NULL,
-  book_range BOOLEAN NOT NULL,
-  
-)
-
 CREATE TABLE parent (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   p_first_name VARCHAR(80) NOT NULL,
@@ -225,6 +209,22 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.ville-antony.fr/images/Petite-Enfance/photos_multi-accueils/la_comptine/int/farandole/farandole_int_1_500.jpg",
   1.73
   );
+
+
+  CREATE TABLE booking (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  parent_id INT NOT NULL,
+  FOREIGN KEY (parent_id)
+  REFERENCES parent(id),
+  nursery_id INT NOT NULL,
+  FOREIGN KEY (nursery_id)
+  REFERENCES nursery(id),
+  children_id INT NOT NULL,
+  FOREIGN KEY (children_id)
+  REFERENCES children(id),
+  book_date DATE NOT NULL,
+  book_range BOOLEAN NOT NULL
+);
 
 
 

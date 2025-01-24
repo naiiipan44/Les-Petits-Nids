@@ -38,10 +38,12 @@ import parentActions from "./modules/parent/parentActions";
 
 import authentificationActions from "./modules/authentification/authentificationActions";
 import userActions from "./modules/user/userActions";
+import bookingActions from "./modules/booking/bookingActions";
 
 router.get("/api/parent", parentActions.browse);
+router.get("/api/booking", bookingActions.browse);
 
-// Parent registration
+// User registration
 
 router.get("/api/user", userActions.browse);
 
