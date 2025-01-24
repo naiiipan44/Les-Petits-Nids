@@ -1,11 +1,10 @@
 import "../components/ChildrenFolder.css";
 import type { FormEvent } from "react";
-import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
+import useToast from "../hooks/useToast";
 
 function ChildrenFolder() {
-  const notify = () => toast.success("Votre formulaire a été soumis");
-  const error = () => toast.error("Veuillez remplir tous les champs");
+  const { success, error } = useToast();
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -23,9 +22,9 @@ function ChildrenFolder() {
       },
     );
     if (response.ok) {
-      notify();
+      success("Bravo, le formulaire a été soumis ! 🎉");
     } else {
-      error();
+      error("Une erreur est survenue lors de l'enregistrement 🤔");
     }
   }
 

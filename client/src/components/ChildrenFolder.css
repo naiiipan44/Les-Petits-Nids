@@ -51,14 +51,3 @@
 .button-primary {
   margin-top: 20px;
 }
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 100px;
-}
-
-.input-field option {
-  background-color: aqua;
-}

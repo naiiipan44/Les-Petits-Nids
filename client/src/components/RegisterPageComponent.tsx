@@ -1,15 +1,12 @@
 import { type FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
+import useToast from "../hooks/useToast";
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
 
 function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
   const [indication, setIndication] = useState("");
-
-  const notify = () => toast.success("Votre compte a bien été créé");
-  const error = () =>
-    toast.error("Les informations renseignées ne sont pas valides");
+  const { success, error } = useToast();
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,10 +23,10 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
       .then((response) => response.json())
       .then((result) => {
         if (!result.message) {
-          notify();
+          success("Bravo, votre compte a été créé ! 🎉");
           setIndication("");
         } else {
-          error();
+          error("Les informations ne sont pas valides 🤔");
           setIndication(result.message);
         }
       });
