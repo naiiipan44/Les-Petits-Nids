@@ -42,6 +42,7 @@ import userActions from "./modules/user/userActions";
 
 // Booking routes
 router.get("/api/booking", bookingActions.browse);
+router.get("/api/booking/parent", bookingActions.read);
 router.post("/api/booking", bookingActions.add);
 
 // User routes

@@ -11,6 +11,16 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const read: RequestHandler = async (req, res, next) => {
+  try {
+    const bookings = await bookingRepository.readBookParentAndChildren();
+    res.json(bookings);
+  } catch (err) {
+    next(err);
+    res.status(500).json({ error: "Erreur interne du serveur" });
+  }
+};
+
 const add: RequestHandler = async (req, res, next) => {
   try {
     const newBooking = {
@@ -30,4 +40,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+export default { browse, add, read };
