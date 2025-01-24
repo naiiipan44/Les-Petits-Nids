@@ -33,6 +33,7 @@ function ChildrenFolder() {
     <main className="main-children-folder">
       <section className="header-children-folder">
         <h1 className="title-profile-children"> Dossier enfants </h1>
+
         <button type="button" className="button-children-folder">
           Enfant 1
         </button>
@@ -73,7 +74,12 @@ function ChildrenFolder() {
             placeholder="Allergies"
             className="input-field"
           />
-          <input type="text" name="parentId" className="input-field" />
+          <input
+            type="text"
+            name="parentId"
+            value="2"
+            style={{ display: "none" }}
+          />
           <button type="submit" className="button-primary">
             Soumettre
           </button>

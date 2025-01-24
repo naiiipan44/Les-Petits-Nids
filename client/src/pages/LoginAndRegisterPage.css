@@ -15,8 +15,6 @@
   color: var(--secondaryColor);
 }
 
-/* Toggle button between nursery and parent display */
-
 .tab-container {
   display: flex;
   justify-content: center;
@@ -47,8 +45,6 @@
   margin-left: -10px;
 }
 
-/* Lien cliquable */
-
 .account-button {
   padding: 20px 0 0 0;
   border: none;
@@ -64,8 +60,6 @@
   padding: 10px 0;
   color: var(--secondaryColor);
 }
-
-/* Retour en arrière */
 
 .button-return {
   display: flex;
