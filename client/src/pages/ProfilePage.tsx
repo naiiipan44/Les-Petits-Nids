@@ -5,7 +5,7 @@ function ProfilePage() {
       <figure className="profile">
         <img src="/profile.svg" alt="profile-picture" />
         <figcaption>Ed Cannon</figcaption>
-        <figcaption>Papa Poule</figcaption>
+        <h2>Papa Poule</h2>
       </figure>
       <h3>Mettez toutes les chances de votre côté</h3>
       <p>Un profil complet est nécessaire pour un accueil en crèche</p>
