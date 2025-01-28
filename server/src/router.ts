@@ -47,9 +47,17 @@ router.get("/api/user", userActions.browse);
 
 router.post(
   "/api/user/registration",
+  userActions.validation,
   authentificationActions.hashPassword,
   userActions.add,
 );
+
 router.post("/api/user/login", authentificationActions.login);
+
+/* Authentication wall */
+
+router.use(authentificationActions.verifyToken);
+
+router.delete("/api/parent/:id", parentActions.destroy);
 
 export default router;
