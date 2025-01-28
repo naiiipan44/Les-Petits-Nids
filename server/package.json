@@ -7,7 +7,8 @@
     "db:seed": "tsx ./bin/seed",
     "build": "tsx ./bin/migrate && tsc ./src/main --outDir ../dist --esModuleInterop",
     "start": "node ../dist/src/main",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "test-user": "jest ./tests/user/user.test.ts"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.7",

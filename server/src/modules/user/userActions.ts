@@ -4,7 +4,7 @@ import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res) => {
   const user = await userRepository.read();
-  res.json(user);
+  res.status(200).send(user);
 };
 
 const add: RequestHandler = async (req, res, next) => {
@@ -16,6 +16,8 @@ const add: RequestHandler = async (req, res, next) => {
       hashed_password: req.body.hashed_password,
     };
 
+    console.warn(newUser);
+
     const insertId = await userRepository.create(newUser);
     if (insertId) {
       res.status(201).json({ insertId });
@@ -25,6 +27,7 @@ const add: RequestHandler = async (req, res, next) => {
     if (error.code === "ER_DUP_ENTRY") {
       res.status(400).send("Cette adresse mail est déjà utilisée");
     } else {
+      res.status(400).send("aled");
       next(err);
     }
   }
@@ -44,13 +47,13 @@ const validation: RequestHandler = async (req, res, next) => {
 
     if (newUserLogin.first_name.length < 1 || newUserLogin.last_name < 1) {
       res
-        .status(403)
+        .status(400)
         .json({ message: "Veuillez renseigner votre nom et votre prénom" });
     } else if (!validEmail.test(newUserLogin.email)) {
-      res.status(403).json({ message: "L'email saisi n'est pas valide" });
+      res.status(400).json({ message: "L'email saisi n'est pas valide" });
     } else if (!validPassword.test(newUserLogin.user_password)) {
       res
-        .status(403)
+        .status(400)
         .json({ message: "La force du mot de passe est insuffisante" });
     } else {
       next();
