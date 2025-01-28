@@ -8,11 +8,15 @@ function App() {
   const isLandingPage = location.pathname === "/";
 
   return (
-    <>
-      <Outlet />
-      {isLandingPage ? "" : <NavBar />}
-      <ToastContainer />
-    </>
+    <section className="general-section">
+      <section className="outlet-section">
+        <Outlet />
+      </section>
+      <section className="navbar-section">
+        {isLandingPage ? "" : <NavBar />}
+        <ToastContainer />
+      </section>
+    </section>
   );
 }
 

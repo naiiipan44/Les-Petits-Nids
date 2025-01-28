@@ -38,3 +38,22 @@
   object-fit: cover;
   padding: 2px 0 0 2px;
 }
+
+.logo-navbar {
+  display: none;
+}
+@media screen and (min-width: 380px) {
+  .nav-component {
+    flex-direction: column;
+    background: none;
+  }
+  .logo-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .small-not-navbar {
+    color: white;
+    font-family: "Beth Ellen", sans-serif;
+  }
+}

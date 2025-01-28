@@ -65,3 +65,20 @@ main {
 .button-secondary:hover {
   box-shadow: 0 4px 12px var(--shadowColor);
 }
+
+@media (min-width: 380px) {
+  .general-section {
+    display: grid;
+    grid-template-columns: 15% 85%;
+  }
+  .outlet-section {
+    order: 2;
+  }
+  .navbar-section {
+    order: 1;
+    background: var(--mainColor);
+  }
+  body {
+    background: var(--tertiaryColor);
+  }
+}
