@@ -23,13 +23,10 @@ function NurseryFolder() {
             className="input-field"
           />
 
-          {/* balise select */}
-          <input
-            type="text"
-            name="type"
-            placeholder="Type"
-            className="input-field"
-          />
+          <select name="nursery-type-choice">
+            <option value="first">Micro-crèche</option>
+            <option value="second">Multi-accueil</option>
+          </select>
           <input
             type="text"
             name="address"
@@ -60,23 +57,26 @@ function NurseryFolder() {
             placeholder="Disponibilité"
             className="input-field"
           />
-          {/* balise radio */}
-          <input
-            type="checkbox"
-            id="gestion1"
-            name="gestion1"
-            value="Public"
-            className="input-field"
-          />
-          <label htmlFor="gestion1">Public</label>
-          <input
-            type="checkbox"
-            id="gestion2"
-            name="gestion2"
-            value="Privé"
-            className="input-field"
-          />
-          <label htmlFor="gestion2">Privé</label>
+
+          <fieldset>
+            <label htmlFor="is-disabled">Gestion</label>
+            <input
+              type="radio"
+              id="gestion1"
+              name="gestion1"
+              value="Public"
+              className="input-field"
+            />
+            <label htmlFor="gestion1">Public</label>
+            <input
+              type="radio"
+              id="gestion2"
+              name="gestion2"
+              value="Privé"
+              className="input-field"
+            />
+            <label htmlFor="gestion2">Privé</label>
+          </fieldset>
           <input
             type="number"
             name="min-age"
@@ -89,13 +89,14 @@ function NurseryFolder() {
             placeholder="Age maximum accueilli"
             className="input-field"
           />
-          <input
-            type="checkbox"
-            name="accueil-handicapés"
-            placeholder="Accueil enfants handicapés"
-            className="input-field"
-          />
-          <label htmlFor="is-disabled">Accueil enfants handicapés</label>
+          <fieldset>
+            <input
+              type="checkbox"
+              name="accueil-handicapés"
+              className="input-field-disabled"
+            />
+            <label htmlFor="is-disabled">Accueil enfants handicapés</label>
+          </fieldset>
           <input
             type="text"
             name="type"
