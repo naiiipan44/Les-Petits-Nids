@@ -31,6 +31,18 @@
   display: none;
 }
 
+.input-field {
+  border-color: 1px solid #ccc;
+}
+
+.input-field:valid:not(:placeholder-shown) {
+  border: 1.75px solid rgb(16, 219, 16);
+}
+
+.input-field:invalid {
+  border: 1.75px solid rgb(207, 17, 17);
+}
+
 .button-secondary-register {
   background-color: #d8d5d5;
   color: var(--secondaryColor);
