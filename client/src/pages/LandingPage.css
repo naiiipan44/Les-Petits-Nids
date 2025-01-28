@@ -2,16 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   min-height: 100vh;
 }
 
 .white-painting {
   background-color: white;
   border-radius: 1rem;
+  box-shadow: 0 1px 3px var(--shadowColor);
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 2rem;
 }
 
@@ -49,17 +49,19 @@
 }
 
 .round-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
   background-color: #133f63;
   color: white;
-  border: none;
+  text-decoration: none;
+  font-size: 1.5rem;
   border-radius: 50%;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 1px 3px var(--shadowColor);
   cursor: pointer;
+  margin-bottom: 5rem;
 }
 
 button.round-button {
@@ -70,40 +72,42 @@ button.round-button {
   background-color: #133f64;
 }
 
-.button-pass {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
 @media screen and (max-width: 380px), screen {
   .landing-page {
     padding: 1rem;
   }
 
-  .white-painting {
-    margin-bottom: 3rem;
-    padding: 1rem;
+  .landing-page > figure {
+    width: 100%;
   }
 
-  .logo img,
-  .mother img {
-    width: 80%;
+  .white-painting {
+    margin: 1.5rem;
+    padding: 3rem 0.5rem 1rem 0rem;
+  }
+
+  .logo img {
+    width: 25%;
+    margin-top: 16px;
+  }
+
+  .small-not {
+    font-size: larger;
+    word-spacing: 5px;
+    letter-spacing: 0.3em;
+    line-height: 4px;
   }
 
   .welcome {
-    font-size: medium;
-    margin-top: 0.5rem;
+    text-align: center;
+    font-size: large;
+    margin: 0 0 0.5rem 0.5rem;
   }
 
   .account-created {
-    font-size: small;
+    text-align: center;
+    font-size: large;
     line-height: 1.4;
-  }
-
-  .round-button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    margin: 1rem 0rem 3rem 0.5rem;
   }
 }

@@ -12,12 +12,6 @@ interface NurseryDetails extends NurseryData {
   ns_num_tel: string;
 }
 
-interface NurseryDetails extends NurseryData {
-  ns_type?: string;
-  ns_mail?: string;
-  ns_num_tel: string;
-}
-
 interface InterfaceMap extends NurseryData {
   ns_coord_lat: number;
   ns_coord_long: number;

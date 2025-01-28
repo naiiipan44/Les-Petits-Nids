@@ -30,3 +30,57 @@
 .checkbox-role {
   display: none;
 }
+
+.button-secondary-register {
+  background-color: #d8d5d5;
+  color: var(--secondaryColor);
+  height: 50px;
+  border-radius: 10px;
+  font-family: var(--button-font);
+  font-size: 20px;
+  padding: 0;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  border: none;
+  font-weight: bold;
+}
+.button-secondary-register.enabled {
+  background: var(--tertiaryColor);
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+
+/* css conditions général */
+
+.general-conditions {
+  margin: 5% 0 3% 0;
+  display: flex;
+  align-content: center;
+  gap: 0.6rem;
+  justify-self: center;
+}
+
+.general-conditions > label > p > button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-family: var(--general-font);
+  color: var(--secondaryColor);
+  font-size: 0.74rem;
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+.general-conditions > label > p {
+  background: none;
+  border: none;
+  font-family: var(--general-font);
+  font-size: 0.74rem;
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+
+.conditions-accepted {
+  font-size: 0.75rem;
+  color: green;
+  margin-bottom: 2%;
+  text-align: center;
+}
