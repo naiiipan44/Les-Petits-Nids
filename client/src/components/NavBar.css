@@ -42,22 +42,65 @@
 .logo-navbar {
   display: none;
 }
+
+.title-navbar {
+  display: none;
+}
+
+.menu-navbar {
+  display: none;
+}
+
 @media screen and (min-width: 380px) {
   .nav-component {
     flex-direction: column;
     background: none;
+    align-items: flex-start;
   }
   .logo-navbar {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .logo-navbar img {
     width: 100px;
   }
   .small-not-navbar {
-    color: white;
+    color: var(--secondaryColor);
     font-family: "Beth Ellen", sans-serif;
+  }
+
+  .menu-navbar {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--secondaryColor);
+  }
+
+  .nav-buttons {
+    background: none;
+    display: flex;
+
+    align-items: center;
+    width: 100%;
+  }
+  .button-navbar-text a {
+    text-decoration: none;
+  }
+
+  .nav-buttons img {
+    width: 18px;
+    margin-right: 10px;
+  }
+  .active > button {
+    background: none;
+  }
+  .title-navbar {
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--secondaryColor);
   }
 }
