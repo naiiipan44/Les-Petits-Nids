@@ -2,15 +2,22 @@ import { type FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
+import ModalConditions from "./ModalConditions";
 
 function RegisterPageComponent({
   isParent,
 }: Readonly<RegisterPageComponentProps>) {
   const [indication, setIndication] = useState("");
-
+  const [isChecked, setIsChecked] = useState(false);
   const notify = () => toast.success("Votre compte a bien été créé");
   const error = () =>
     toast.error("Les informations renseignées ne sont pas valides");
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowModal(false);
+  };
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -87,7 +94,6 @@ function RegisterPageComponent({
           />
         </div>
       )}
-
       <input
         type="email"
         name="email"
@@ -104,9 +110,41 @@ function RegisterPageComponent({
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
-      <button className="button-secondary" type="submit">
+      <section className="general-conditions">
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
+        <label htmlFor="terms">
+          <p>
+            Accepter
+            <button
+              type="button"
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              les conditions générales d'utilisation
+            </button>
+          </p>
+        </label>
+      </section>
+      {isChecked && (
+        <p className="conditions-accepted">
+          Vous avez accepté les conditions d'utilisation.
+        </p>
+      )}
+      <button
+        className={`button-secondary-register ${isChecked ? "enabled" : ""}`}
+        type="submit"
+        disabled={!isChecked}
+      >
         Inscription
       </button>
+      {showModal && <ModalConditions onClose={handleButtonClick} />}
     </form>
   );
 }
