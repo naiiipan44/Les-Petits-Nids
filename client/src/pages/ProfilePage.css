@@ -37,7 +37,7 @@
   width: 100%;
 }
 
-button {
+.profile-page > button {
   width: 100%;
   padding: 26px 0;
   font-size: 1rem;
