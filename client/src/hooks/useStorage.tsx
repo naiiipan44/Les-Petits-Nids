@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import type { NurseryData } from "../types/Nursery";
+import type { NurseryDetails } from "../types/Nursery";
 
 function useStorage() {
   const getStorage = useCallback(() => {
@@ -10,14 +10,22 @@ function useStorage() {
     return null;
   }, []);
 
-  function setStorage(nursery: NurseryData[]) {
+  function setStorage(nursery: NurseryDetails[]) {
     return localStorage.setItem("nursery", JSON.stringify(nursery));
   }
 
-  function handleStorage(data: NurseryData, isClicked: boolean) {
-    const actualStorage: NurseryData[] | null = getStorage();
-    const { id, ns_name, ns_address, ns_capacity, ns_image } = data;
-
+  function handleStorage(data: NurseryDetails, isClicked: boolean) {
+    const actualStorage: NurseryDetails[] | null = getStorage();
+    const {
+      id,
+      ns_name,
+      ns_address,
+      ns_capacity,
+      ns_image,
+      ns_num_tel,
+      ns_mail,
+      ns_type,
+    } = data;
     if (!actualStorage) {
       return setStorage([
         {
@@ -26,6 +34,9 @@ function useStorage() {
           ns_address,
           ns_capacity,
           ns_image,
+          ns_num_tel,
+          ns_mail,
+          ns_type,
         },
       ]);
     }
@@ -41,6 +52,9 @@ function useStorage() {
         ns_address,
         ns_capacity,
         ns_image,
+        ns_num_tel,
+        ns_mail,
+        ns_type,
       },
     ]);
   }

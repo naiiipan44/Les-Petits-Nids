@@ -63,11 +63,6 @@
   cursor: pointer;
   margin-bottom: 5rem;
 }
-
-button.round-button {
-  font-size: 1.5rem;
-}
-
 .round-button:hover {
   background-color: #133f64;
 }
