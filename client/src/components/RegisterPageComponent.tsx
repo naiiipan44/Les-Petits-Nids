@@ -8,6 +8,7 @@ function RegisterPageComponent({
   isParent,
 }: Readonly<RegisterPageComponentProps>) {
   const [indication, setIndication] = useState("");
+
   const [isChecked, setIsChecked] = useState(false);
   const { success, error } = useToast();
 
