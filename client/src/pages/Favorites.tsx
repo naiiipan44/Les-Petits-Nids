@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Nursery from "../components/Nursery";
 import useStorage from "../hooks/useStorage";
-import type { NurseryData } from "../types/Nursery";
+import type { NurseryDetails } from "../types/Nursery";
 import "./Favorites.css";
 import NurseryFolder from "../components/NurseryFolder";
 
 function Favorite() {
-  const [data, setData] = useState<NurseryData[]>([]);
+  const [data, setData] = useState<NurseryDetails[]>([]);
   const { getStorage } = useStorage();
 
   useEffect(() => {
@@ -45,7 +45,8 @@ function Favorite() {
                     id={el.id}
                     ns_capacity={0}
                     ns_address={""}
-                    ns_num_tel=""
+                    ns_mail={el.ns_mail}
+                    ns_num_tel={el.ns_num_tel}
                   />
                 </Link>
                 <button
