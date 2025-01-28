@@ -22,6 +22,8 @@ function NurseryFolder() {
             placeholder="Nom"
             className="input-field"
           />
+
+          {/* balise select */}
           <input
             type="text"
             name="type"
@@ -58,6 +60,7 @@ function NurseryFolder() {
             placeholder="Disponibilité"
             className="input-field"
           />
+          {/* balise radio */}
           <input
             type="checkbox"
             id="gestion1"
@@ -87,7 +90,7 @@ function NurseryFolder() {
             className="input-field"
           />
           <input
-            type="text"
+            type="checkbox"
             name="accueil-handicapés"
             placeholder="Accueil enfants handicapés"
             className="input-field"
@@ -105,6 +108,14 @@ function NurseryFolder() {
             placeholder="Description"
             className="input-field"
           />
+          <i className="fa fa-download icon" />
+          <input
+            type="text"
+            name="picture"
+            placeholder="Photo de l'établissement"
+            className="input-field"
+          />
+
           <input
             type="number"
             name="price"
