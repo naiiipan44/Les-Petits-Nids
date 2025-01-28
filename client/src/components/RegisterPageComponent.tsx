@@ -1,12 +1,21 @@
 import { type FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
 import "./LoginPageComponent.css";
 import useToast from "../hooks/useToast";
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
+import ModalConditions from "./ModalConditions";
 
-function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
+function RegisterPageComponent({
+  isParent,
+}: Readonly<RegisterPageComponentProps>) {
   const [indication, setIndication] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   const { success, error } = useToast();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
+    setShowModal(false);
+  };
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -79,7 +88,6 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
           />
         </div>
       )}
-
       <input
         type="email"
         name="email"
@@ -94,12 +102,41 @@ function RegisterPageComponent({ isParent }: RegisterPageComponentProps) {
         aria-label="Mot de passe"
         className="input-field"
       />
-      <Link to="" className="links">
-        Vous avez déjà un compte ? Se connecter
-      </Link>
-      <button className="button-secondary" type="submit">
-        Connexion
+      <section className="general-conditions">
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
+        <label htmlFor="terms">
+          <p>
+            Accepter
+            <button
+              type="button"
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              les conditions générales d'utilisation
+            </button>
+          </p>
+        </label>
+      </section>
+      {isChecked && (
+        <p className="conditions-accepted">
+          Vous avez accepté les conditions d'utilisation.
+        </p>
+      )}
+      <button
+        className={`button-secondary-register ${isChecked ? "enabled" : ""}`}
+        type="submit"
+        disabled={!isChecked}
+      >
+        Inscription
       </button>
+      {showModal && <ModalConditions onClose={handleButtonClick} />}
     </form>
   );
 }
