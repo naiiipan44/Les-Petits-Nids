@@ -48,25 +48,23 @@ function LoginAndRegisterPage() {
         ) : (
           <LoginPageComponent />
         )}
-        <Link to="" className="links">
-          {registration ? (
-            <button
-              type="button"
-              className="account-button"
-              onClick={() => setRegistration(!registration)}
-            >
-              Retour vers la connexion
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="account-button"
-              onClick={() => setRegistration(!registration)}
-            >
-              Pas encore de compte ? Inscris-toi
-            </button>
-          )}
-        </Link>
+        {registration ? (
+          <button
+            type="button"
+            className="account-button"
+            onClick={() => setRegistration(!registration)}
+          >
+            Vous avez déjà un compte ? Se connecter
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="account-button"
+            onClick={() => setRegistration(!registration)}
+          >
+            Pas encore de compte ? Inscris-toi
+          </button>
+        )}
         {!registration && (
           <Link to="" className="links">
             Mot de passe oublié
