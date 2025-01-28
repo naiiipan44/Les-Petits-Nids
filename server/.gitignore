@@ -1,5 +1,4 @@
 node_modules
 coverage
 .env
-test-routes.http
-clients.http
+requests.http
