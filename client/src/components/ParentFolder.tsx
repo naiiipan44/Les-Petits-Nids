@@ -1,8 +1,29 @@
+import { useState, type FormEvent } from "react";
+
 function ParentFolder() {
+  interface Parent {
+    firstName: string;
+    lastName: string;
+    job: string;
+    adress: string;
+    zipCode: number;
+    numTel: number;
+    mail: string;
+    birthDate: number;
+  }
+  const [user, setUser] = useState<Parent | null>(null); // Keep it until POST method
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    setUser(data as unknown as Parent); // will be replaced by fetch POST
+  }
+
   return (
     <>
-      <h3>Dossier Parent</h3>
-      <form>
+      <h3>Dossier Parent : {user ? user.firstName : ""}</h3>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Prénom"

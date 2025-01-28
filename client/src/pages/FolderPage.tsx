@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "./FolderPage.css";
-import ParentsBookings from "../components/ParentsBookings";
 import { useState } from "react";
 import ParentFolder from "../components/ParentFolder";
+import ParentsBookings from "../components/ParentsBookings";
 
 function FolderPage() {
   const [isBooking, setIsBooking] = useState(false);

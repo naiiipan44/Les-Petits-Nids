@@ -9,14 +9,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
+import FolderPage from "./pages/FolderPage";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
-import FolderPage from "./pages/FolderPage";
-
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
 
