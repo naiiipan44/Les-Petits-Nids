@@ -9,7 +9,7 @@ class UserRepository {
       "select first_name, last_name, email from user",
     );
 
-    return rows[0] as User;
+    return rows as User[];
   }
 
   async readEmailWithPassword(email: string) {

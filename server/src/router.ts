@@ -51,6 +51,7 @@ router.get("/api/user", userActions.browse);
 
 router.post(
   "/api/user/registration",
+  userActions.validation,
   authentificationActions.hashPassword,
   userActions.add,
 );
