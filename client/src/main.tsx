@@ -7,6 +7,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import NurseryBookings from "./components/NurseryBookings";
+import NurseryFolder from "./components/NurseryFolder";
 import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
 import LandingPage from "./pages/LandingPage";
@@ -17,8 +19,7 @@ import ParentsBookings from "./pages/ParentsProfils";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
+import NurseryProfile from "./pages/NurseryProfile";
 
 /* ************************************************************************* */
 
@@ -71,6 +72,17 @@ const router = createBrowserRouter([
       {
         path: "parentsbookings",
         element: <ParentsBookings />,
+      },
+      {
+        path: "nurseryprofile",
+        element: <NurseryProfile />,
+        children: [
+          {
+            path: "nurserybookings",
+            element: <NurseryBookings />,
+          },
+          { path: "nurseryfolder", element: <NurseryFolder /> },
+        ],
       },
       {
         path: "map",

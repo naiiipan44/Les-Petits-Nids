@@ -1,0 +1,53 @@
+.header-gradient-nursery {
+  background: var(--mainColor);
+  padding: 30px;
+}
+
+.bottom-page-nursery {
+  background: white;
+  padding: 1px;
+}
+
+.return-form-nursery-profil {
+  color: var(--secondaryColor);
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.button-header-nursery-bookings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.button-nursery-profile {
+  background: #26d0fe;
+  border: none;
+  color: white;
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  cursor: pointer;
+}
+
+.button-nursery-profile:hover {
+  background: #1684a2;
+}
+
+.button-demandes {
+  background: #7771af;
+  border: none;
+  color: white;
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+  box-shadow: 0 2px 6px var(--shadowColor);
+  cursor: pointer;
+}
+.button-demandes:hover {
+  background: #4d4970;
+}

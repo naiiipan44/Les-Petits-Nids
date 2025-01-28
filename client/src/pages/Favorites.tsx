@@ -4,7 +4,6 @@ import Nursery from "../components/Nursery";
 import useStorage from "../hooks/useStorage";
 import type { NurseryDetails } from "../types/Nursery";
 import "./Favorites.css";
-import NurseryFolder from "../components/NurseryFolder";
 
 function Favorite() {
   const [data, setData] = useState<NurseryDetails[]>([]);
@@ -32,7 +31,6 @@ function Favorite() {
         </Link>
         <h1 className="title-favorites">Favoris</h1>
       </section>
-      <NurseryFolder />
       <section className="card-wrapper-favorite">
         {data.length > 0 ? (
           data.map((el) => {
