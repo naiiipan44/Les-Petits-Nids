@@ -1,6 +1,7 @@
-import databaseClient from "../../../database/client";
-
-import type { Rows } from "../../../database/client";
+import databaseClient, {
+  type Result,
+  type Rows,
+} from "../../../database/client";
 
 class ParentRepository {
   async readAll() {
@@ -16,6 +17,15 @@ class ParentRepository {
     );
 
     return rows;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from parent where id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
   }
 }
 

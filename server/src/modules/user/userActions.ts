@@ -3,8 +3,8 @@ import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res) => {
-  const user = await userRepository.read();
-  res.status(200).send(user);
+  const user = await userRepository.readAll();
+  res.json(user);
 };
 
 const add: RequestHandler = async (req, res, next) => {
@@ -14,6 +14,7 @@ const add: RequestHandler = async (req, res, next) => {
       last_name: req.body.lastName,
       email: req.body.email,
       hashed_password: req.body.hashed_password,
+      role: req.body.role,
     };
 
     console.warn(newUser);

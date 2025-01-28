@@ -1,12 +1,13 @@
 import argon2 from "argon2";
 
 import type { RequestHandler } from "express";
-import { sign } from "jsonwebtoken";
+import jwt, { sign } from "jsonwebtoken";
 import userRepository from "../user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
   try {
     const user = await userRepository.readEmailWithPassword(req.body.email);
+
     if (user == null) {
       res.sendStatus(422);
       return;
@@ -14,7 +15,7 @@ const login: RequestHandler = async (req, res, next) => {
 
     const isVerified = await argon2.verify(
       user.hashed_password,
-      req.body.user_password,
+      req.body.password,
     );
 
     if (isVerified) {
@@ -42,6 +43,33 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
+const verifyToken: RequestHandler = (req, res, next) => {
+  try {
+    const authorization = req.get("Authorization");
+
+    if (!authorization) {
+      throw new Error("Authorization must be provided");
+    }
+
+    const [type, token] = authorization.split(" ");
+
+    if (type !== "Bearer") {
+      throw new Error("Bearer must be provided");
+    }
+
+    const secretKey = process.env.APP_SECRET;
+
+    if (!secretKey) {
+      throw new Error("A secret key must be provided");
+    }
+
+    jwt.verify(token, secretKey);
+    next();
+  } catch (err) {
+    res.status(400).send({ message: err });
+  }
+};
+
 const hashPassword: RequestHandler = async (req, res, next) => {
   try {
     const user_password = req.body.password;
@@ -57,4 +85,4 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { hashPassword, login };
+export default { hashPassword, login, verifyToken };
