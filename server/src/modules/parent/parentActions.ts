@@ -7,4 +7,15 @@ const browse: RequestHandler = async (req, res) => {
   res.json(userApp);
 };
 
-export default { browse };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const parentId = Number(req.params.id);
+    await parentRepository.delete(parentId);
+
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, destroy };
