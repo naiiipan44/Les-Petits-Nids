@@ -9,7 +9,6 @@ function LoginPageComponent() {
     const formatedData = Object.fromEntries(form.entries());
     console.warn(formatedData);
   }
-
   return (
     <form onSubmit={onSubmit} className="login-form">
       <input
