@@ -17,12 +17,14 @@ function LoginPageComponent() {
         name="email"
         placeholder="Email"
         className="input-field"
+        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
       />
       <input
         type="password"
         name="password"
         placeholder="Mot de passe"
         className="input-field"
+        pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
       <button className="button-secondary form-validation-button" type="submit">
         Connexion

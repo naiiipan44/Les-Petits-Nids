@@ -47,6 +47,10 @@
   text-decoration: none;
 }
 
+.main-search-page p {
+  font-size: 0.9rem;
+}
+
 .nursery-card-link {
   display: inherit;
   justify-content: center;
