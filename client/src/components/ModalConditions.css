@@ -1,0 +1,69 @@
+.conditions-modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--mainColor);
+  z-index: 0;
+  justify-items: center;
+}
+
+.button-back-general {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.877);
+  height: 30rem;
+  width: 90%;
+  padding: 0 5% 5% 5%;
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-top: 15%;
+}
+.back-button-conditions {
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--secondaryColor);
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 0;
+  width: 103%;
+}
+
+.button-back-general h1 {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.modal-body {
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-y: auto;
+  margin-top: 5%;
+  max-height: calc(95%);
+}
+.modal-body p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3.5% 0 3.5% 5%;
+  max-width: 95%;
+}
+
+.modal-body h2 {
+  font-size: 1rem;
+  margin-bottom: 2%;
+}
+
+.modal-body ul {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3.5% 0 3.5% 5%;
+  max-width: 95%;
+  list-style-position: disc;
+}
