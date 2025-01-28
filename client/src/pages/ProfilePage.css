@@ -1,0 +1,67 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+  background-color: skyblue;
+  color: white;
+}
+.profile-page p {
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.profile img {
+  outline: 5px solid #007bff;
+  outline-offset: -20px;
+  border-radius: 50%;
+}
+
+.profile figcaption,
+.profile h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.choice-button {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.profile-page > button {
+  width: 100%;
+  padding: 26px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.child-button {
+  background-color: #6ec1e4;
+  color: white;
+}
+
+.parents-button {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.reservations-button {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}

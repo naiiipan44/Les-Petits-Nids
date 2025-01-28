@@ -3,3 +3,4 @@ coverage
 .env
 test-routes.http
 requests.http
+schema.sql

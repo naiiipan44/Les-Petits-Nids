@@ -1,12 +1,24 @@
-import useUser from "../utils/useUser";
-
+import "./ProfilePage.css";
 function ProfilePage() {
-  const { user } = useUser();
   return (
-    <>
-      <h1>Page profil utilisateur</h1>
-      <p>{`Connecté en temps que : ${user ? user.role : "visteur"}`}</p>
-    </>
+    <section className="profile-page">
+      <figure className="profile">
+        <img src="/profile.svg" alt="profile-picture" />
+        <figcaption>Ed Cannon</figcaption>
+        <h2>Papa Poule</h2>
+      </figure>
+      <h3>Mettez toutes les chances de votre côté</h3>
+      <p>Un profil complet est nécessaire pour un accueil en crèche</p>
+      <button type="button" className="child-button">
+        Dossier Enfants
+      </button>
+      <button type="button" className="parents-button">
+        Dossier Parents
+      </button>
+      <button type="button" className="reservations-button">
+        Mes reservations
+      </button>
+    </section>
   );
 }
 
