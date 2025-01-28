@@ -4,3 +4,4 @@ coverage
 requests.http
 test-routes.http
 request.http
+schema.sql

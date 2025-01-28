@@ -4,8 +4,10 @@ import type { Children } from "../../types/modules/Children";
 
 class ChildrenRepository {
   async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM children");
-    return rows;
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM children LEFT JOIN parent ON children.parent_id = parent.id",
+    );
+    return rows[0];
   }
 
   async create(children: Omit<Children, "id">) {
