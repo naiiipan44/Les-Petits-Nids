@@ -13,9 +13,9 @@ import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
-import ParentsBookings from "./pages/ParentsProfils";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
+import FolderPage from "./pages/FolderPage";
 
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
@@ -31,10 +31,7 @@ const router = createBrowserRouter([
         path: "",
         element: <LandingPage />,
       },
-      {
-        path: "profile",
-        element: <ProfilePage />,
-      },
+
       {
         path: "search",
         element: <SearchPage />,
@@ -69,8 +66,8 @@ const router = createBrowserRouter([
         element: <Favorites />,
       },
       {
-        path: "parentsbookings",
-        element: <ParentsBookings />,
+        path: "folder",
+        element: <FolderPage />,
       },
       {
         path: "map",

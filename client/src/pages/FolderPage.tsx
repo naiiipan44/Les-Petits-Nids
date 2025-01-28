@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import "./ParentsProfils.css";
+import "./FolderPage.css";
 import ParentsBookings from "../components/ParentsBookings";
+import { useState } from "react";
+import ParentFolder from "../components/ParentFolder";
 
-function ParentsProfils() {
+function FolderPage() {
+  const [isBooking, setIsBooking] = useState(false);
   return (
     <main className="main-parents-profils">
       <section className="header-gradient">
@@ -21,15 +24,22 @@ function ParentsProfils() {
           <button className="button-children" type="button">
             Enfants
           </button>
-          <button className="button-reservation" type="button">
+          <button
+            className="button-reservation"
+            type="button"
+            onClick={() => {
+              setIsBooking(!isBooking);
+            }}
+          >
             Reservation
           </button>
         </section>
       </section>
       <section className="bottom-page">
-        <ParentsBookings />
+        {isBooking && <ParentsBookings />}
+        <ParentFolder />
       </section>
     </main>
   );
 }
-export default ParentsProfils;
+export default FolderPage;
