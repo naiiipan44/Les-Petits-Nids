@@ -62,27 +62,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 23px;
+    margin-top: 10px;
   }
 
-  .logo-navbar img {
-    width: 100px;
-  }
   .small-not-navbar {
-    color: var(--secondaryColor);
+    color: white;
     font-family: "Beth Ellen", sans-serif;
   }
 
   .menu-navbar {
     display: block;
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: var(--secondaryColor);
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: white;
   }
 
   .nav-buttons {
     background: none;
     display: flex;
-
     align-items: center;
     width: 100%;
   }
@@ -99,8 +98,12 @@
   }
   .title-navbar {
     display: block;
-    font-size: 12px;
+    font-size: 15px;
     text-decoration: none;
+    color: white;
+  }
+
+  .title-navbar:hover {
     color: var(--secondaryColor);
   }
 }
