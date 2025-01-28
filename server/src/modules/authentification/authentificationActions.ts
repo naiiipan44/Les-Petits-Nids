@@ -1,5 +1,4 @@
 import argon2 from "argon2";
-
 import type { RequestHandler } from "express";
 import { sign } from "jsonwebtoken";
 import userRepository from "../user/userRepository";
@@ -14,10 +13,11 @@ const login: RequestHandler = async (req, res, next) => {
 
     const isVerified = await argon2.verify(
       user.hashed_password,
-      req.body.user_password,
+      req.body.password,
     );
 
     if (isVerified) {
+      const { hashed_password, ...userWithoutHashedPassword } = user;
       const payload = {
         id: user.id,
         email: user.email,
@@ -32,7 +32,7 @@ const login: RequestHandler = async (req, res, next) => {
 
       res.json({
         token,
-        user: user.email,
+        user: userWithoutHashedPassword,
       });
     } else {
       res.sendStatus(422);
