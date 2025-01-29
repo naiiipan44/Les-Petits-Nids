@@ -21,15 +21,12 @@ function LoginAndRegisterPage() {
           <h1 className="login-title">Se connecter</h1>
         )}
 
-        {/* section bouton toggle switch parent ou crèche */}
-
         <section className="user-type-toggle">
           <input
             type="radio"
             id="user-type-parent"
             name="user-type"
             value="parent"
-            checked
           />
           <label className="radio-button" htmlFor="user-type-parent">
             {" "}
