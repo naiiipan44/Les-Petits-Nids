@@ -55,3 +55,15 @@
   display: inherit;
   justify-content: center;
 }
+
+/* @media screen and (min-width: 381px) and (max-width: 1024px) {
+} */
+
+@media screen and (min-width: 1025px) {
+  .main-search-page {
+    display: flex;
+    flex-direction: row;
+    margin: 5% 0 5% 0;
+    gap: 24px;
+  }
+}
