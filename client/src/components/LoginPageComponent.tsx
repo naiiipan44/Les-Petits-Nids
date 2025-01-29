@@ -2,6 +2,7 @@ import type { FormEvent, FormEventHandler } from "react";
 import { toast } from "react-toastify";
 
 import { useNavigate, useOutletContext } from "react-router-dom";
+
 import "./LoginPageComponent.css";
 import "../style/globals.css";
 import type { Auth } from "../types/Login";
@@ -30,10 +31,12 @@ function LoginPageComponent() {
         `${import.meta.env.VITE_API_URL}/api/user/login`,
         {
           method: "post",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: formatedData.email,
             password: formatedData.password,
+            acceptCookies: true,
           }),
         },
       );
