@@ -9,12 +9,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
+import FolderPage from "./pages/FolderPage";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
 import NurseryProfile from "./pages/NurseryProfile";
-import ParentsBookings from "./pages/ParentsProfils";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 
@@ -29,10 +29,7 @@ const router = createBrowserRouter([
         path: "",
         element: <LandingPage />,
       },
-      {
-        path: "profile",
-        element: <ProfilePage />,
-      },
+
       {
         path: "search",
         element: <SearchPage />,
@@ -67,8 +64,8 @@ const router = createBrowserRouter([
         element: <Favorites />,
       },
       {
-        path: "parentsbookings",
-        element: <ParentsBookings />,
+        path: "folder",
+        element: <FolderPage />,
       },
       {
         path: "nurseryprofile",

@@ -15,33 +15,35 @@
   color: var(--secondaryColor);
 }
 
-.tab-container {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
+.login-form {
+  margin-top: 32px;
 }
 
-.tab-button {
-  padding: 10px 25px;
-  font-size: 15px;
-  border: 2px solid var(--secondaryColor);
-  background: white;
-  position: relative;
-  transition: 1s;
-  font-family: "Nunito", sans-serif;
+/* Toggle button between nursery and parent display */
+
+.user-type-toggle {
+  background-color: var(--secondaryColor);
+  padding: 14px 5px;
+  border-radius: 30px;
+  display: inline-block;
 }
 
-.tab-button.active-tab {
-  background: var(--secondaryColor);
+.user-type-toggle [name="user-type"] {
+  display: none;
+}
+
+.user-type-toggle input[type="radio"] + label {
+  background-color: var(--secondaryColor);
   color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.tab-button:first-child {
-  margin-right: -10px;
-}
-
-.tab-button:last-child {
-  margin-left: -10px;
+.user-type-toggle input[type="radio"]:checked + label {
+  background-color: white;
+  color: var(--secondaryColor);
 }
 
 .account-button {
