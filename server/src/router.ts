@@ -37,12 +37,16 @@ router.get("/api/children", childrenActions.browse);
 import parentActions from "./modules/parent/parentActions";
 
 import authentificationActions from "./modules/authentification/authentificationActions";
+import bookingActions from "./modules/booking/bookingActions";
 import userActions from "./modules/user/userActions";
 
+// Booking routes
+router.get("/api/booking", bookingActions.browse);
+router.get("/api/booking/parent", bookingActions.read);
+router.post("/api/booking", bookingActions.add);
+
+// User routes
 router.get("/api/parent", parentActions.browse);
-
-// Parent registration
-
 router.get("/api/user", userActions.browse);
 
 router.post(
