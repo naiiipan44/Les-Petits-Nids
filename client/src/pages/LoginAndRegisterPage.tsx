@@ -9,10 +9,6 @@ function LoginAndRegisterPage() {
   const [isParent, setIsParent] = useState<boolean>(true);
   const [registration, setRegistration] = useState<boolean>(false);
 
-  function handleUser() {
-    setIsParent(!isParent);
-  }
-
   return (
     <>
       <section className="login-page-container">
@@ -24,22 +20,36 @@ function LoginAndRegisterPage() {
         ) : (
           <h1 className="login-title">Se connecter</h1>
         )}
-        <section className="tab-container">
-          <button
-            type="button"
-            className={`tab-button ${isParent === true ? "active-tab" : ""}`}
-            onClick={handleUser}
-          >
-            En tant que Parent
-          </button>
-          <button
-            type="button"
-            className={`tab-button ${isParent === false ? "active-tab" : ""}`}
-            onClick={handleUser}
-          >
-            En tant que Crèche
-          </button>
+
+        {/* section bouton toggle switch parent ou crèche */}
+
+        <section className="user-type-toggle">
+          <input
+            type="radio"
+            id="user-type-parent"
+            name="user-type"
+            value="parent"
+            checked
+          />
+          <label className="radio-button" htmlFor="user-type-parent">
+            {" "}
+            En tant que parent
+          </label>
+
+          <input
+            type="radio"
+            id="user-type-nursery"
+            name="user-type"
+            value="nursery"
+          />
+          <label className="radio-button" htmlFor="user-type-nursery">
+            {" "}
+            En tant que crèche
+          </label>
         </section>
+
+        <div id="out" />
+
         {registration ? (
           <RegisterPageComponent
             isParent={isParent}
