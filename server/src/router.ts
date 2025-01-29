@@ -57,6 +57,7 @@ router.post(
 );
 
 router.post("/api/user/login", authentificationActions.login);
+router.get("/api/user/me", authentificationActions.getUser);
 
 /* Authentication wall */
 
