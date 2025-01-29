@@ -1,16 +1,7 @@
 import { type FormEvent, useState } from "react";
+import type { Parent } from "../types/ParentFolder";
 
 function ParentFolder() {
-  interface Parent {
-    firstName: string;
-    lastName: string;
-    job: string;
-    adress: string;
-    zipCode: number;
-    numTel: number;
-    mail: string;
-    birthDate: number;
-  }
   const [user, setUser] = useState<Parent | null>(null); // Keep it until POST method
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
