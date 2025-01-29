@@ -6,7 +6,7 @@ CREATE TABLE parent (
   p_address VARCHAR(120) NOT NULL,
   p_zip_code INT NOT NULL,
   p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
-  p_mail VARCHAR(100) NOT NULL,
+  p_mail VARCHAR(100) NOT NULL UNIQUE,
   p_birth_date DATE NOT NULL
 );
 

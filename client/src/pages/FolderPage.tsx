@@ -6,7 +6,7 @@ import ParentFolder from "../components/ParentFolder";
 import ParentsBookings from "../components/ParentsBookings";
 
 function FolderPage() {
-  const [isBooking, setIsBooking] = useState(false);
+  const [isVisible, setIsVisible] = useState("parent");
   return (
     <main className="main-parents-profils">
       <section className="header-gradient">
@@ -19,17 +19,29 @@ function FolderPage() {
           </h1>
         </section>
         <section className="button-header-bookings">
-          <button className="button-parents" type="button">
+          <button
+            onClick={() => {
+              setIsVisible("parent");
+            }}
+            className="button-parents"
+            type="button"
+          >
             Parents
           </button>
-          <button className="button-children" type="button">
+          <button
+            onClick={() => {
+              setIsVisible("children");
+            }}
+            className="button-children"
+            type="button"
+          >
             Enfants
           </button>
           <button
             className="button-reservation"
             type="button"
             onClick={() => {
-              setIsBooking(!isBooking);
+              setIsVisible("booking");
             }}
           >
             Reservation
@@ -37,10 +49,14 @@ function FolderPage() {
         </section>
       </section>
       <section className="bottom-page">
-        {isBooking && <ParentsBookings />}
-        <ParentFolder />
+        {isVisible === "parent" ? (
+          <ParentFolder />
+        ) : isVisible === "children" ? (
+          <ChildrenFolder />
+        ) : (
+          <ParentsBookings />
+        )}
       </section>
-      <ChildrenFolder />
     </main>
   );
 }
