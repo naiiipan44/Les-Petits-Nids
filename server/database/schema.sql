@@ -10,6 +10,37 @@ CREATE TABLE parent (
   p_birth_date DATE NOT NULL
 );
 
+INSERT INTO parent (
+  p_first_name,
+  p_last_name,
+  p_job,
+  p_address,
+  p_zip_code,
+  p_num_tel,
+  p_mail,
+  p_birth_date
+)
+VALUES
+(
+"Deschamps",
+"Paula",
+"Conseillère bancaire",
+"20 ALLEE DES DHUYS",
+44000,
+"0632000000",
+"paula.deschamps@gmail.com",
+"1986-01-01" -- Correct date format (YYYY-MM-DD)
+),
+(
+"Després",
+"Alexis",
+"Maquettiste",
+"53 BOULEVARD MALESHERBES",
+44300,
+"0755000000",
+"alexis.despres@yahoo.fr",
+"1974-05-07"
+);
 
 create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -23,21 +54,23 @@ parent_id INT NOT NULL,
  REFERENCES parent(id)
 );
 
+insert into children 
+  (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, parent_id)
+  VALUES
+  ("Boby", "Bob", true, "2025-09-12", "patate", 1);
 
-create table userLogin (
+create table user (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-  user_password varchar(255) not null
+  hashed_password varchar(255) not null
 );
 
-INSERT INTO userLogin (
-  id, first_name, last_name, email, user_password) 
+INSERT INTO user
+  (first_name, last_name, email, hashed_password) 
   VALUES 
-  (1, "Deschamps", "Paula", "paula.deschamps@gmail.com", "test1"), 
-  (2, "Pouet", "Castor", "castor.pouet@gmail.com", "test2");
-
+  ("Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA");
 
 CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -62,7 +95,6 @@ CREATE TABLE nursery (
 
 
 INSERT INTO nursery (
-  id,
   ns_name,
   ns_type,
   ns_mail,
@@ -83,7 +115,6 @@ INSERT INTO nursery (
   )
 VALUES
 (
-  1,
   "Les Passereaux", 
   "Multi-accueil", 
   "creche-les-passereaux@wanadoo.fr",
@@ -104,7 +135,6 @@ VALUES
   ),
 
   (
-  2,
   "Babilou Colombes Barbusse",
   "Multi-accueil",
   "contact@babilou.com",
@@ -126,7 +156,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   ),
 
   (
-  3,
   "Les Barbusiens",
   "Micro-crèche",
   "rpe-orves@mairie-colombes.fr",
@@ -147,7 +176,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   ),
 
   (
-  4,
   "Saint Raphaël",
   "Multi-accueil",
   "creche@association-saint-raphael.com",
@@ -168,7 +196,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   ),
 
   (
-  5,
   "La Comptine - Arc en Ciel",
   "Multi-accueil",
   "petite_enfance@ville-antony.fr",
@@ -189,40 +216,23 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   );
 
 
-INSERT INTO parent (
-  id,
-  p_first_name,
-  p_last_name,
-  p_job,
-  p_address,
-  p_zip_code,
-  p_num_tel,
-  p_mail,
-  p_birth_date
-)
-VALUES
-(
-1,
-"Deschamps",
-"Paula",
-"Conseillère bancaire",
-"20 ALLEE DES DHUYS",
-44000,
-"0632000000",
-"paula.deschamps@gmail.com",
-"1986-01-01" -- Correct date format (YYYY-MM-DD)
-),
-(
-2,
-"Després",
-"Alexis",
-"Maquettiste",
-"53 BOULEVARD MALESHERBES",
-44300,
-"0755000000",
-"alexis.despres@yahoo.fr",
-"1974-05-07"
+  CREATE TABLE booking (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  parent_id INT NOT NULL,
+  FOREIGN KEY (parent_id)
+  REFERENCES parent(id),
+  nursery_id INT NOT NULL,
+  FOREIGN KEY (nursery_id)
+  REFERENCES nursery(id),
+  children_id INT NOT NULL,
+  FOREIGN KEY (children_id)
+  REFERENCES children(id),
+  booking_date DATE NOT NULL,
+  booking_range BOOLEAN NOT NULL
 );
+
+
+
 
 
 

@@ -1,18 +1,14 @@
-import { useLoaderData } from "react-router-dom";
-import { Link } from "react-router-dom";
-import type { NurseryData, NurseryDetails } from "../types/nursery";
+import { Link, useLoaderData } from "react-router-dom";
+import type { NurseryDetails } from "../types/Nursery";
 import "./NurseryPage.css";
 import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
 import useStorage from "../hooks/useStorage";
-
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
-
   const handleButtonClick = () => {
     setShowModal(false);
   };
-
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => {
@@ -24,30 +20,26 @@ function NurseryPage() {
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
   }
-
   const [isClicked, setIsClicked] = useState(false);
-
   const { getStorage, handleStorage } = useStorage();
 
   useEffect(() => {
-    const storage: NurseryData[] | null = getStorage();
+    const storage: NurseryDetails[] | null = getStorage();
     if (!storage) return;
     const isNurseryInside = storage.find((el) => el.id === data.id);
     if (isNurseryInside) setIsClicked(true);
   }, [data.id, getStorage]);
-
   function handleClick() {
     setIsClicked(!isClicked);
     return handleStorage(data, isClicked);
   }
-
   return (
     <>
       <section className="back-to-nursery">
         <Link to={"/search"} className="back-button">
           <span className="arrow" />
         </Link>
-        <section className="nursery-name">
+        <section>
           <h1>Crèche {data.ns_name}</h1>
           <p>Mettre type de crèche ici</p>
         </section>
@@ -62,10 +54,17 @@ function NurseryPage() {
         </button>
         <section className="nursery-description">
           <h2 className="presentation">Présentation</h2>
-          <p>{data.ns_description}</p>
+          <p>
+            La crèche « {data.ns_name} » n’est pas qu’un lieu de garde c’est
+            surtout un lieu d’échange et d’accueil des enfants et des familles
+            dans une confiance réciproque où le respect, l’autonomie et la
+            sécurité sont des références privilégiées dans notre projet.
+          </p>
           <div className={isVisible ? "hidden" : "visible"}>
             <p>Informations suplémentaire:</p>
-            <p>Adresse : {data.ns_address}</p>
+            <p>
+              <strong>address :</strong> {data.ns_address}
+            </p>
           </div>
           <section className="contact">
             <button
@@ -77,13 +76,19 @@ function NurseryPage() {
             </button>
             <ul>
               <li>
-                <p>Horaires : Lundi-Samedi : 9h-16h</p>
+                <p>
+                  <strong>Horaires :</strong> Lundi-Samedi : 9h-16h
+                </p>
               </li>
               <li>
-                <p>Numéro de téléphone : {data.ns_num_tel}</p>
+                <p>
+                  <strong>Téléphone :</strong> {data.ns_num_tel}
+                </p>
               </li>
               <li>
-                <p>mail : {data.ns_mail}</p>
+                <p>
+                  <strong>Mail :</strong> {data.ns_mail}
+                </p>
               </li>
             </ul>
           </section>
@@ -92,15 +97,13 @@ function NurseryPage() {
             <p>
               Connectez-vous pour accéder aux disponibilités de cette crèche.
             </p>
-            <Link to="/loginandregister">
-              <button
-                className="connect-button not-connected"
-                onClick={() => setShowModal(true)}
-                type="button"
-              >
-                Pas Connecté ?
-              </button>
-            </Link>
+            <button
+              className="not-connected"
+              onClick={() => setShowModal(true)}
+              type="button"
+            >
+              Pas Connecté ?
+            </button>
             {showModal && <ModalConnexion onClose={handleButtonClick} />}
           </section>
         </section>
@@ -108,5 +111,4 @@ function NurseryPage() {
     </>
   );
 }
-
 export default NurseryPage;
