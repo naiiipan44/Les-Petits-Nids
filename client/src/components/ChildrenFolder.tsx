@@ -1,18 +1,38 @@
 import "../components/ChildrenFolder.css";
 import type { FormEvent } from "react";
+import "./LoginPageComponent.css";
+import useToast from "../hooks/useToast";
 
 function ChildrenFolder() {
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  const { success, error } = useToast();
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData);
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/children`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formatedData),
+      },
+    );
+    if (response.ok) {
+      success("Bravo, le formulaire a été soumis ! 🎉");
+    } else {
+      error("Une erreur est survenue lors de l'enregistrement 🤔");
+    }
   }
 
   return (
     <main className="main-children-folder">
       <section className="header-children-folder">
         <h1 className="title-profile-children"> Dossier enfants </h1>
+
         <button type="button" className="button-children-folder">
           Enfant 1
         </button>
@@ -24,13 +44,13 @@ function ChildrenFolder() {
         <form onSubmit={onSubmit} className="login-form-children">
           <input
             type="text"
-            name="firstname"
+            name="firstName"
             placeholder="Prénom"
             className="input-field"
           />
           <input
             type="text"
-            name="lastname"
+            name="lastName"
             placeholder="Nom"
             className="input-field"
           />
@@ -40,17 +60,24 @@ function ChildrenFolder() {
             placeholder="Date de naissance"
             className="input-field"
           />
+          <select id="gender" name="gender" className="input-field">
+            <option value="" disabled selected>
+              Choisissez un genre
+            </option>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+          </select>
           <input
             type="text"
-            name="gender"
-            placeholder="Genre"
+            name="allergies"
+            placeholder="Allergies"
             className="input-field"
           />
           <input
             type="text"
-            name="Allergies"
-            placeholder="Allergies"
-            className="input-field"
+            name="parentId"
+            value="2"
+            style={{ display: "none" }}
           />
           <button type="submit" className="button-primary">
             Soumettre
