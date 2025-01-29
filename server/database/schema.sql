@@ -53,6 +53,10 @@ parent_id INT NOT NULL,
  FOREIGN KEY (parent_id) 
  REFERENCES parent(id)
 );
+INSERT INTO children
+  (c_first_name,c_last_name, c_gender, c_birth_date, c_allergies, parent_id) 
+  VALUES 
+  ("Jean-Christophe","dupont", "homme", "1678-10-22", "pain", 1);
 
 create table user (
   id int unsigned primary key auto_increment not null,

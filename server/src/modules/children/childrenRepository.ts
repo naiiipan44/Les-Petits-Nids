@@ -3,9 +3,10 @@ import type { Result, Rows } from "../../../database/client";
 import type { Children } from "../../types/modules/Children";
 
 class ChildrenRepository {
-  async readAll() {
+  async readAll(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM children LEFT JOIN parent ON children.parent_id = parent.id",
+      "SELECT c_first_name, c_last_name FROM children WHERE id = ?",
+      [id],
     );
     return rows[0];
   }

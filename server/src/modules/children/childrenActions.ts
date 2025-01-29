@@ -4,7 +4,8 @@ import childrenRepository from "./childrenRepository";
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    const childrens = await childrenRepository.readAll();
+    const childrenId = Number(req.params.id);
+    const childrens = await childrenRepository.readAll(childrenId);
     res.json(childrens);
   } catch (err) {
     next(err);
