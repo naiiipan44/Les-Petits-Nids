@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import "./style/globals.css";
 import type { Auth } from "./types/Login";
-import type { Auth } from "./types/Login";
 
 function App() {
   const location = useLocation();
