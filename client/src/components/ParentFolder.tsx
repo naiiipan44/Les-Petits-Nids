@@ -1,19 +1,31 @@
-import { type FormEvent, useState } from "react";
-import type { Parent } from "../types/ParentFolder";
+import type { FormEvent } from "react";
+import useToast from "../hooks/useToast";
 
 function ParentFolder() {
-  const [user, setUser] = useState<Parent | null>(null); // Keep it until POST method
-
+  const { success, error } = useToast();
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    setUser(data as unknown as Parent); // will be replaced by fetch POST
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        success("Bravo vous avez complété votre profil");
+      } else {
+        error("La création du profil a échoué");
+      }
+    });
   }
 
   return (
     <>
-      <h3>Dossier Parent : {user ? user.firstName : ""}</h3>
+      <h3>Dossier Parent</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
