@@ -20,7 +20,6 @@ function LoginAndRegisterPage() {
         ) : (
           <h1 className="login-title">Se connecter</h1>
         )}
-
         <section className="user-type-toggle">
           <input
             type="radio"
@@ -44,8 +43,6 @@ function LoginAndRegisterPage() {
             En tant que crèche
           </label>
         </section>
-
-        <div id="out" />
 
         {registration ? (
           <RegisterPageComponent
