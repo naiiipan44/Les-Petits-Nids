@@ -46,17 +46,18 @@ create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 c_first_name VARCHAR(80) NOT NULL,
 c_last_name VARCHAR(80) NOT NULL,
-c_gender VARCHAR(10) DEFAULT NULL,
+c_gender BOOLEAN DEFAULT NULL,
 c_birth_date DATE NOT NULL,
 c_allergies VARCHAR(150) NULL,
 parent_id INT NOT NULL,
  FOREIGN KEY (parent_id) 
  REFERENCES parent(id)
 );
-INSERT INTO children
-  (c_first_name,c_last_name, c_gender, c_birth_date, c_allergies, parent_id) 
-  VALUES 
-  ("Jean-Christophe","dupont", "homme", "1678-10-22", "pain", 1);
+
+insert into children 
+  (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, parent_id)
+  VALUES
+  ("Boby", "Bob", true, "2025-09-12", "patate", 1);
 
 create table user (
   id int unsigned primary key auto_increment not null,
@@ -213,6 +214,22 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.ville-antony.fr/images/Petite-Enfance/photos_multi-accueils/la_comptine/int/farandole/farandole_int_1_500.jpg",
   1.73
   );
+
+
+  CREATE TABLE booking (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  parent_id INT NOT NULL,
+  FOREIGN KEY (parent_id)
+  REFERENCES parent(id),
+  nursery_id INT NOT NULL,
+  FOREIGN KEY (nursery_id)
+  REFERENCES nursery(id),
+  children_id INT NOT NULL,
+  FOREIGN KEY (children_id)
+  REFERENCES children(id),
+  booking_date DATE NOT NULL,
+  booking_range BOOLEAN NOT NULL
+);
 
 
 
