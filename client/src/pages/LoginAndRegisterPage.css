@@ -46,8 +46,6 @@
   color: var(--secondaryColor);
 }
 
-/* Lien cliquable */
-
 .account-button {
   padding: 20px 0 0 0;
   border: none;
@@ -63,8 +61,6 @@
   padding: 10px 0;
   color: var(--secondaryColor);
 }
-
-/* Retour en arrière */
 
 .button-return {
   display: flex;
