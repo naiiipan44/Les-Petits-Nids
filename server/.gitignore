@@ -2,3 +2,5 @@ node_modules
 coverage
 .env
 requests.http
+schema.sql
+client2.http
