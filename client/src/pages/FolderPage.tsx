@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./FolderPage.css";
 import { useState } from "react";
+import ChildrenFolder from "../components/ChildrenFolder";
 import ParentFolder from "../components/ParentFolder";
 import ParentsBookings from "../components/ParentsBookings";
 
@@ -39,6 +40,7 @@ function FolderPage() {
         {isBooking && <ParentsBookings />}
         <ParentFolder />
       </section>
+      <ChildrenFolder />
     </main>
   );
 }

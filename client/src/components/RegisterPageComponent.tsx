@@ -1,6 +1,6 @@
 import { type FormEvent, useState } from "react";
-import { toast } from "react-toastify";
 import "./LoginPageComponent.css";
+import useToast from "../hooks/useToast";
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
 import ModalConditions from "./ModalConditions";
 
@@ -8,10 +8,9 @@ function RegisterPageComponent({
   isParent,
 }: Readonly<RegisterPageComponentProps>) {
   const [indication, setIndication] = useState("");
+
   const [isChecked, setIsChecked] = useState(false);
-  const notify = () => toast.success("Votre compte a bien été créé");
-  const error = () =>
-    toast.error("Les informations renseignées ne sont pas valides");
+  const { success, error } = useToast();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -34,10 +33,10 @@ function RegisterPageComponent({
       .then((response) => response.json())
       .then((result) => {
         if (!result.message) {
-          notify();
+          success("Bravo, votre compte a été créé ! 🎉");
           setIndication("");
         } else {
-          error();
+          error("Les informations ne sont pas valides 🤔");
           setIndication(result.message);
         }
       });

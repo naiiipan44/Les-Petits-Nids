@@ -1,5 +1,4 @@
 import argon2 from "argon2";
-
 import type { RequestHandler } from "express";
 import jwt, { sign } from "jsonwebtoken";
 import userRepository from "../user/userRepository";
@@ -19,6 +18,7 @@ const login: RequestHandler = async (req, res, next) => {
     );
 
     if (isVerified) {
+      const { hashed_password, ...userWithoutHashedPassword } = user;
       const payload = {
         id: user.id,
         email: user.email,
@@ -33,7 +33,7 @@ const login: RequestHandler = async (req, res, next) => {
 
       res.json({
         token,
-        user: user.email,
+        user: userWithoutHashedPassword,
       });
     } else {
       res.sendStatus(422);
