@@ -2,11 +2,31 @@ import type { FormEvent, FormEventHandler } from "react";
 import { toast } from "react-toastify";
 
 import { useNavigate, useOutletContext } from "react-router-dom";
+import type { FormEvent, FormEventHandler } from "react";
+import { toast } from "react-toastify";
+
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "./LoginPageComponent.css";
 import "../style/globals.css";
 import type { Auth } from "../types/Login";
+import type { Auth } from "../types/Login";
 
 function LoginPageComponent() {
+  const notify = () => toast.success("Vous vous êtes bien connecté !");
+  const error = () =>
+    toast.error("Les informations renseignées ne sont pas valides");
+
+  const { setAuth } = useOutletContext() as {
+    setAuth: (auth: Auth | null) => void;
+  };
+
+  const navigate = useNavigate();
+
+  const handleSubmit: FormEventHandler = async (
+    event: FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
   const notify = () => toast.success("Vous vous êtes bien connecté !");
   const error = () =>
     toast.error("Les informations renseignées ne sont pas valides");

@@ -15,38 +15,36 @@
   color: var(--secondaryColor);
 }
 
+.login-form {
+  margin-top: 32px;
+}
+
 /* Toggle button between nursery and parent display */
 
-.tab-container {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
+.user-type-toggle {
+  background-color: var(--secondaryColor);
+  padding: 14px 5px;
+  border-radius: 30px;
+  display: inline-block;
 }
 
-.tab-button {
-  padding: 10px 25px;
-  font-size: 15px;
-  border: 2px solid var(--secondaryColor);
-  background: white;
-  position: relative;
-  transition: 1s;
-  font-family: "Nunito", sans-serif;
+.user-type-toggle [name="user-type"] {
+  display: none;
 }
 
-.tab-button.active-tab {
-  background: var(--secondaryColor);
+.user-type-toggle input[type="radio"] + label {
+  background-color: var(--secondaryColor);
   color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.tab-button:first-child {
-  margin-right: -10px;
+.user-type-toggle input[type="radio"]:checked + label {
+  background-color: white;
+  color: var(--secondaryColor);
 }
-
-.tab-button:last-child {
-  margin-left: -10px;
-}
-
-/* Lien cliquable */
 
 .account-button {
   padding: 20px 0 0 0;
@@ -63,8 +61,6 @@
   padding: 10px 0;
   color: var(--secondaryColor);
 }
-
-/* Retour en arrière */
 
 .button-return {
   display: flex;

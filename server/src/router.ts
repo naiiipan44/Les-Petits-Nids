@@ -28,7 +28,8 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 import childrenActions from "./modules/children/childrenActions";
 
-router.get("/api/children", childrenActions.browse);
+router.get("/api/children/:id", childrenActions.browse);
+router.post("/api/children", childrenActions.add);
 
 /* ************************************************************************* */
 
@@ -47,6 +48,7 @@ router.post("/api/booking", bookingActions.add);
 
 // User routes
 router.get("/api/parent", parentActions.browse);
+router.post("/api/parent", parentActions.add);
 router.get("/api/user", userActions.browse);
 
 router.post(

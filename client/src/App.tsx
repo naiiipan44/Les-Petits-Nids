@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import "./style/globals.css";
+import type { Auth } from "./types/Login";
 import type { Auth } from "./types/Login";
 
 function App() {
@@ -38,16 +40,21 @@ function App() {
     checkUser();
   }, []);
   return (
-    <>
-      {auth ? (
-        <p>Bienvenue, {auth.user.first_name} !</p>
-      ) : (
-        <p>Vous n'êtes pas connecté.</p>
-      )}
-      <Outlet context={{ setAuth }} />
-      {isLandingPage ? "" : <NavBar />}
-      <ToastContainer />
-    </>
+    <section className="general-section">
+      <section className="outlet-section">
+        {auth ? (
+          <p>Bienvenue, {auth.user.first_name} !</p>
+        ) : (
+          <p>Vous n'êtes pas connecté.</p>
+        )}
+        <Outlet context={{ setAuth }} />
+      </section>
+      <section className="navbar-section">
+        {isLandingPage ? "" : <NavBar />}
+        <ToastContainer />
+      </section>
+      <Footer />
+    </section>
   );
 }
 

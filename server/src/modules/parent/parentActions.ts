@@ -17,5 +17,33 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const parent = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      job: req.body.job,
+      adress: req.body.adress,
+      zipCode: req.body.zipCode,
+      numTel: req.body.numTel,
+      mail: req.body.mail,
+      birthDate: req.body.birthDate,
+    };
+    const insertId = await parentRepository.create(parent);
+    if (insertId) {
+      res.status(201).json({ insertId });
+    } else {
+      res.status(400).send("les champs insérés ne sont pas valides");
+    }
+  } catch (err) {
+    const error = err as { code: string };
+    if (error.code === "ER_DUP_ENTRY") {
+      res.status(406).send("Cette adresse mail existe déjà");
+    } else {
+      res.status(404);
+      next(err);
+    }
+  }
+};
 
-export default { browse, destroy };
+export default { browse, destroy, add };
