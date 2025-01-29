@@ -1,6 +1,7 @@
 node_modules
 coverage
 .env
+test-routes.http
 requests.http
 schema.sql
 client2.http
