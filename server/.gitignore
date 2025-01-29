@@ -5,3 +5,4 @@ test-routes.http
 requests.http
 schema.sql
 request.http
+client2.http
