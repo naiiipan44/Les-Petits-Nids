@@ -1,25 +1,15 @@
-import { useRef } from "react";
-
 import type { FormEvent, FormEventHandler } from "react";
+import { toast } from "react-toastify";
 
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "./LoginPageComponent.css";
 import "../style/globals.css";
-
-type User = {
-  id: number;
-  email: string;
-  hashed_password: string;
-};
-
-type Auth = {
-  user: User;
-  token: string;
-};
+import type { Auth } from "../types/Login";
 
 function LoginPageComponent() {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const notify = () => toast.success("Vous vous êtes bien connecté !");
+  const error = () =>
+    toast.error("Les informations renseignées ne sont pas valides");
 
   const { setAuth } = useOutletContext() as {
     setAuth: (auth: Auth | null) => void;
@@ -33,7 +23,7 @@ function LoginPageComponent() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData);
+    console.warn(formatedData); // Se console warn va partir (uniquement utile pour passer biome actuellement et garder les 2 const au dessus)
 
     try {
       const response = await fetch(
@@ -42,20 +32,19 @@ function LoginPageComponent() {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: (emailRef.current as HTMLInputElement).value,
-            password: (passwordRef.current as HTMLInputElement).value,
+            email: formatedData.email,
+            password: formatedData.password,
           }),
         },
       );
 
       if (response.status === 200) {
         const user = await response.json();
-
         setAuth(user);
-
+        notify();
         navigate("/");
       } else {
-        console.info(response);
+        error();
       }
     } catch (err) {
       console.error(err);
@@ -70,7 +59,6 @@ function LoginPageComponent() {
         placeholder="Email"
         className="input-field"
         pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-        ref={emailRef}
       />
       <input
         type="password"
@@ -78,7 +66,6 @@ function LoginPageComponent() {
         placeholder="Mot de passe"
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
-        ref={passwordRef}
       />
       <button className="button-secondary form-validation-button" type="submit">
         Connexion
