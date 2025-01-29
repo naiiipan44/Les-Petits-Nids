@@ -31,16 +31,16 @@ const add: RequestHandler = async (req, res, next) => {
     };
     const insertId = await parentRepository.create(parent);
     if (insertId) {
-      res.send(201).json({ insertId });
+      res.status(201).json({ insertId });
     } else {
-      res.send("les champs insérés ne sont pas valides");
+      res.status(400).send("les champs insérés ne sont pas valides");
     }
   } catch (err) {
     const error = err as { code: string };
     if (error.code === "ER_DUP_ENTRY") {
-      res.status(400).send("Cette adresse mail existe déjà");
+      res.status(406).send("Cette adresse mail existe déjà");
     } else {
-      res.status(400);
+      res.status(404);
       next(err);
     }
   }
