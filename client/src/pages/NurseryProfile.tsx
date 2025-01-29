@@ -21,7 +21,7 @@ function NurseryProfile() {
             onClick={() => {
               setProfile(true);
             }}
-            className="button-nursery-profile"
+            className="nursery-profile"
             type="button"
           >
             Profil
@@ -31,7 +31,7 @@ function NurseryProfile() {
             onClick={() => {
               setProfile(false);
             }}
-            className="button-demandes"
+            className="booking-queries"
             type="button"
           >
             Demandes

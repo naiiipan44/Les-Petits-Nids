@@ -6,54 +6,42 @@
   margin-top: 30px;
 }
 
-.button-all-nursery {
+.button-reservation-status-nursery button {
+  height: 30px;
+  background: none;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.button-reservation-status-nursery > button:nth-of-type(2),
+.button-reservation-status-nursery > button:nth-of-type(3),
+.button-reservation-status-nursery > button:nth-of-type(4),
+.button-reservation-status-nursery > button:last-of-type {
+  font-size: 0.8rem;
+  width: auto;
+}
+
+.button-reservation-status-nursery > button:first-of-type {
   border-color: #7771af;
-  height: 30px;
   width: 50px;
-  background: none;
   color: #7771af;
-  border-radius: 10px;
-  padding: 5px;
 }
-.button-waiting-nursery {
+.button-reservation-status-nursery > button:nth-of-type(2) {
   border-color: #ffa84c;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #ffa84c;
-  border-radius: 10px;
-  padding: 5px;
 }
 
-.button-accepted-nursery {
+.button-reservation-status-nursery > button:nth-of-type(3) {
   border-color: #2dcd7a;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #2dcd7a;
-  border-radius: 10px;
-  padding: 5px;
 }
 
-.button-refused-nursery {
+.button-reservation-status-nursery > button:nth-of-type(4) {
   border-color: #ea5455;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #ea5455;
-  border-radius: 10px;
-  padding: 5px;
 }
-.button-cancelled-nursery {
+
+.button-reservation-status-nursery > button:last-of-type {
   border-color: #1d0042;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #1d0042;
-  border-radius: 10px;
-  padding: 5px;
 }
