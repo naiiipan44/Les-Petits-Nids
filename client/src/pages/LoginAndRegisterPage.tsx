@@ -39,7 +39,6 @@ function LoginAndRegisterPage() {
             value="nursery"
           />
           <label className="radio-button" htmlFor="user-type-nursery">
-            {" "}
             En tant que crèche
           </label>
         </section>
