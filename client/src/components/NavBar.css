@@ -56,18 +56,24 @@
     flex-direction: column;
     background: none;
     align-items: flex-start;
+    margin-left: 10px;
+    gap: 10px;
   }
   .logo-navbar {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 23px;
-    margin-top: 10px;
+    margin-left: 18px;
+    margin-top: 16px;
+  }
+  .logo-navbar img {
+    width: 100px;
+    height: auto;
   }
 
   .small-not-navbar {
-    color: white;
+    color: #5f7d96;
     font-family: "Beth Ellen", sans-serif;
   }
 
@@ -75,8 +81,8 @@
     display: block;
     font-size: 20px;
     margin-bottom: 20px;
-    margin-top: 20px;
-    color: white;
+    margin-top: 30px;
+    color: var(--secondaryColor);
   }
 
   .nav-buttons {
@@ -85,7 +91,7 @@
     align-items: center;
     width: 100%;
   }
-  .button-navbar-text a {
+  .nav-component a {
     text-decoration: none;
   }
 
@@ -100,7 +106,7 @@
     display: block;
     font-size: 15px;
     text-decoration: none;
-    color: white;
+    color: #5f7d96;
   }
 
   .title-navbar:hover {

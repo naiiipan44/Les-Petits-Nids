@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import "./style/globals.css";
 
@@ -16,6 +17,7 @@ function App() {
         {isLandingPage ? "" : <NavBar />}
         <ToastContainer />
       </section>
+      <Footer />
     </section>
   );
 }
