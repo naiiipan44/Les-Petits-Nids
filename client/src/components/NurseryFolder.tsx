@@ -6,7 +6,7 @@ function NurseryFolder() {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData);
+    console.warn(formatedData); // utilisé pour stocker la valeur des datas pour l'instant
   }
 
   return (
@@ -35,13 +35,13 @@ function NurseryFolder() {
           />
           <input
             type="number"
-            name="zip-code"
+            name="zipCode"
             placeholder="Code Postal"
             className="input-field"
           />
           <input
             type="tel"
-            name="phone-number"
+            name="numTel"
             placeholder="Téléphone"
             className="input-field"
           />
@@ -53,7 +53,7 @@ function NurseryFolder() {
           />
           <input
             type="number"
-            name="disponibilité"
+            name="availability"
             placeholder="Disponibilité"
             className="input-field"
           />
@@ -79,20 +79,20 @@ function NurseryFolder() {
           </fieldset>
           <input
             type="number"
-            name="min-age"
+            name="minAge"
             placeholder="Age minimum accueilli"
             className="input-field"
           />
           <input
             type="number"
-            name="max-age"
+            name="maxAge"
             placeholder="Age maximum accueilli"
             className="input-field"
           />
           <fieldset>
             <input
               type="checkbox"
-              name="accueil-handicapés"
+              name="isDisabled"
               className="input-field-disabled"
             />
             <label htmlFor="is-disabled">Accueil enfants handicapés</label>

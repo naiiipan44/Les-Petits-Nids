@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NurseryProfile.css";
 import NurseryBookings from "../components/NurseryBookings";
+import NurseryFolder from "../components/NurseryFolder";
 
 function NurseryProfile() {
+  const [profile, setProfile] = useState(true);
+
   return (
     <main className="main-nursery-profile">
       <section className="header-gradient-nursery">
@@ -13,17 +17,29 @@ function NurseryProfile() {
           <h1>Picoti Picota </h1>
         </section>
         <section className="button-header-nursery-bookings">
-          <button className="button-nursery-profile" type="button">
+          <button
+            onClick={() => {
+              setProfile(true);
+            }}
+            className="button-nursery-profile"
+            type="button"
+          >
             Profil
           </button>
 
-          <button className="button-demandes" type="button">
+          <button
+            onClick={() => {
+              setProfile(false);
+            }}
+            className="button-demandes"
+            type="button"
+          >
             Demandes
           </button>
         </section>
       </section>
       <section className="bottom-page-nursery">
-        <NurseryBookings />
+        {profile ? <NurseryFolder /> : <NurseryBookings />}
       </section>
     </main>
   );
