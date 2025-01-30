@@ -40,6 +40,7 @@ import parentActions from "./modules/parent/parentActions";
 import authentificationActions from "./modules/authentification/authentificationActions";
 import bookingActions from "./modules/booking/bookingActions";
 import userActions from "./modules/user/userActions";
+import validate, { parentFolderValidator } from "./service/validate";
 
 // Booking routes
 router.get("/api/booking", bookingActions.browse);
@@ -48,7 +49,12 @@ router.post("/api/booking", bookingActions.add);
 
 // User routes
 router.get("/api/parent", parentActions.browse);
-router.post("/api/parent", parentActions.add);
+router.post(
+  "/api/parent",
+  parentFolderValidator,
+  validate.validate,
+  parentActions.add,
+);
 router.get("/api/user", userActions.browse);
 
 router.post(
