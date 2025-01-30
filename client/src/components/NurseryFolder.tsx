@@ -1,5 +1,6 @@
 import "./NurseryFolder.css";
 import type { FormEvent } from "react";
+import { FaDownload } from "react-icons/fa";
 
 function NurseryFolder() {
   function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -109,14 +110,13 @@ function NurseryFolder() {
             placeholder="Description"
             className="input-field"
           />
-          <i className="fa fa-download icon" />
           <input
             type="text"
             name="picture"
             placeholder="Photo de l'établissement"
             className="input-field"
           />
-
+          <FaDownload />
           <input
             type="number"
             name="price"
