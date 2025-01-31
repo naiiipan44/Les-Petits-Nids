@@ -1,0 +1,47 @@
+.button-reservation-status-nursery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.button-reservation-status-nursery button {
+  height: 30px;
+  background: none;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.button-reservation-status-nursery > button:nth-of-type(2),
+.button-reservation-status-nursery > button:nth-of-type(3),
+.button-reservation-status-nursery > button:nth-of-type(4),
+.button-reservation-status-nursery > button:last-of-type {
+  font-size: 0.8rem;
+  width: auto;
+}
+
+.button-reservation-status-nursery > button:first-of-type {
+  border-color: #7771af;
+  width: 50px;
+  color: #7771af;
+}
+.button-reservation-status-nursery > button:nth-of-type(2) {
+  border-color: #ffa84c;
+  color: #ffa84c;
+}
+
+.button-reservation-status-nursery > button:nth-of-type(3) {
+  border-color: #2dcd7a;
+  color: #2dcd7a;
+}
+
+.button-reservation-status-nursery > button:nth-of-type(4) {
+  border-color: #ea5455;
+  color: #ea5455;
+}
+
+.button-reservation-status-nursery > button:last-of-type {
+  border-color: #1d0042;
+  color: #1d0042;
+}

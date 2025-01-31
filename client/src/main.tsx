@@ -15,10 +15,9 @@ import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
+import NurseryProfile from "./pages/NurseryProfile";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
 
 /* ************************************************************************* */
 
@@ -68,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "folder",
         element: <FolderPage />,
+      },
+      {
+        path: "nurseryprofile",
+        element: <NurseryProfile />,
       },
       {
         path: "map",
