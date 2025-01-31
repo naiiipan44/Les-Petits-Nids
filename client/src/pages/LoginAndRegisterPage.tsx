@@ -11,17 +11,20 @@ function LoginAndRegisterPage() {
 
   return (
     <section className="login-register-background">
-      <Link to="/search" className="link-to-search">
-        <span className="arrow" />
+      <Link to="/search">
+        <img src="/chevron.png" alt="fleche de retour" />
         <figcaption>
-          <h1>Page d'acceuil</h1>
+          <h1>Page d'accueil</h1>
           <p>Retour</p>
         </figcaption>
       </Link>
-      <section className="login-page-container">
-        <section className="section-form-login">
-          <figure className="logo">
-            <img src="/bluelogo.png" alt="logo" />
+      <section>
+        <section>
+          <figure>
+            <img
+              src="/bluelogo.png"
+              alt="Logo d'oiseau qui représente le site Les Petits Nids"
+            />
           </figure>
           {registration ? (
             <h1 className="login-title">Créer un compte</h1>
@@ -36,7 +39,6 @@ function LoginAndRegisterPage() {
               value="parent"
             />
             <label className="radio-button" htmlFor="user-type-parent">
-              {" "}
               En tant que parent
             </label>
 
@@ -78,16 +80,15 @@ function LoginAndRegisterPage() {
           )}
           {!registration && <p className="links">Mot de passe oublié</p>}
         </section>
-        <section className="section-image-login">
-          <img
-            src="LoginAndRegister-Image.png"
-            alt="Desssin d'enfants dans une crèche"
-          />
-        </section>
+        <img
+          className="section-image-login"
+          src="LoginAndRegister-Image.png"
+          alt="Desssin d'enfants dans une crèche"
+        />
       </section>
       <section className="button-return">
-        <button className="back-button" type="button">
-          <span className="arrow" />
+        <button type="button">
+          <img src="/chevron.png" alt="fleche de retour" />
         </button>
       </section>
     </section>

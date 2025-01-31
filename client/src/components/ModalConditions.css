@@ -73,7 +73,7 @@
     width: 50%;
   }
   .back-button-conditions {
-    width: 109%;
+    width: 100%;
   }
   .modal-body p {
     font-size: 1rem;
@@ -89,19 +89,17 @@
   }
 }
 
-@media screen and (max-width: 749px) {
-  @media screen and (min-width: 430px) {
-    .button-back-general {
-      width: 75%;
-    }
-    .back-button-conditions {
-      width: 103%;
-    }
-    .modal-body p {
-      font-size: 1rem;
-    }
-    .modal-body ul li {
-      font-size: 1rem;
-    }
+@media screen and (max-width: 1024px) and (min-width: 680px) {
+  .button-back-general {
+    width: 75%;
+  }
+  .back-button-conditions {
+    width: 100%;
+  }
+  .modal-body p {
+    font-size: 1rem;
+  }
+  .modal-body ul li {
+    font-size: 1rem;
   }
 }

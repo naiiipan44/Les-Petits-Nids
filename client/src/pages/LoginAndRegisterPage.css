@@ -1,9 +1,9 @@
-.logo {
-  width: 25rem;
+.login-register-background > section > section > figure > img {
+  width: 6rem;
   height: auto;
 }
 
-.login-page-container {
+.login-register-background > section:first-of-type {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,7 +74,7 @@
   margin-bottom: 150px;
 }
 
-.back-button {
+.button-return > button {
   z-index: -1;
   width: 35px;
   height: 35px;
@@ -83,42 +83,27 @@
   margin-left: 1rem;
 }
 
-.arrow {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border-left: 2px solid var(--secondaryColor);
-  border-bottom: 2px solid var(--secondaryColor);
-  transform: rotate(45deg);
-}
-
-.button-return p {
-  font-size: 16px;
-  color: var(--secondaryColor);
-  margin: 0;
-}
-
 .section-image-login {
   display: none;
 }
-.section-form-login {
+.login-register-background > section > section {
   justify-items: center;
   align-content: center;
   padding: 1rem;
   width: 100%;
 }
 
-.link-to-search {
+.login-register-background > a {
   display: none;
   text-decoration: none;
   color: var(--secondaryColor);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 680px) {
   .button-return {
     display: none;
   }
-  .link-to-search {
+  .login-register-background > a {
     display: flex;
     align-items: center;
     margin-left: 5%;
@@ -126,7 +111,7 @@
     font-size: 1.2rem;
   }
 
-  .login-page-container {
+  .login-register-background > section:first-of-type {
     display: flex;
     flex-direction: row;
     justify-self: center;
@@ -134,26 +119,23 @@
     width: 1000px;
     height: 750px;
     text-align: center;
-    margin: 0.5rem;
     background: white;
     padding: 0;
     border-radius: 15px;
+    margin: 0.5rem;
   }
-  .section-form-login {
+  .login-register-background > section > section {
     height: 100%;
     width: 50%;
-  }
-  .section-image-login img {
-    height: 100%;
-    width: 100%;
-    border-radius: 0 15px 15px 0;
-    object-fit: cover;
   }
   .section-image-login {
     display: block;
     height: 100%;
     width: 50%;
+    border-radius: 0 15px 15px 0;
+    object-fit: cover;
   }
+
   .login-register-background {
     display: block;
     align-items: center;
@@ -166,13 +148,8 @@
   }
 }
 
-@media screen and (max-width: 1025px) {
-  .arrow {
-    display: inline-block;
-    width: 20px;
-    height: 15px;
-  }
-  .link-to-search {
+@media screen and (max-width: 1024px) {
+  .login-register-background > a {
     display: flex;
     position: absolute;
     left: 0;
@@ -185,7 +162,7 @@
   .login-register-background {
     display: flex;
   }
-  .login-page-container {
+  .login-register-background > section:first-of-type {
     margin: 2rem;
   }
   .login-title {
@@ -193,11 +170,20 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 680px) {
   .login-register-background {
     display: block;
   }
   .button-return {
     display: block;
+  }
+  .login-register-background > section > section {
+    padding: 0;
+  }
+  .login-register-background > section:first-of-type {
+    margin: 0;
+  }
+  .login-register-background > a {
+    display: none;
   }
 }
