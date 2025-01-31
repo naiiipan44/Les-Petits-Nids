@@ -66,10 +66,21 @@
 .round-button:hover {
   background-color: #133f64;
 }
+.blue-logo-landing {
+  display: none;
+}
+.round-button-white {
+  display: none;
+}
 
-@media screen and (max-width: 380px), screen {
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+  .general-section {
+    display: block;
+  }
+
   .landing-page {
     padding: 1rem;
+    background: var(--mainColor);
   }
 
   .landing-page > figure {
@@ -104,5 +115,77 @@
     font-size: large;
     line-height: 1.4;
     margin: 1rem 0rem 3rem 0.5rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .general-section {
+    display: block;
+  }
+  .landing-page {
+    background: var(--mainColor);
+    justify-content: center;
+  }
+  .blue-logo-landing {
+    display: block;
+  }
+  .blue-logo-landing {
+    width: 110px;
+  }
+  .small-not-blue {
+    color: var(--secondaryColor);
+    font-family: "Beth Ellen", sans-serif;
+    word-spacing: 4px;
+    letter-spacing: 0.3em;
+    line-height: 4px;
+  }
+
+  .welcome {
+    text-align: center;
+    font-size: large;
+    margin: 0 0 0.5rem 0.5rem;
+  }
+  .white-painting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 700px;
+  }
+  .mother2 > img {
+    width: 300px;
+  }
+  .logo > img {
+    display: none;
+  }
+  .small-not {
+    display: none;
+  }
+  .account-created {
+    text-align: center;
+    font-weight: bold;
+    max-width: 85%;
+    align-self: center;
+  }
+  .round-button {
+    display: none;
+  }
+  .round-button-white {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #133f63;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    cursor: pointer;
+  }
+  .main-footer {
+    display: none;
   }
 }

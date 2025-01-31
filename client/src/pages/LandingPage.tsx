@@ -10,6 +10,13 @@ function LandingPage() {
       </figure>
 
       <section className="white-painting">
+        <img
+          src="/bluelogo.png"
+          alt="Ceci est le logo des Petits Nids"
+          className="blue-logo-landing"
+        />
+        <figcaption className="small-not-blue">Les Petits Nids</figcaption>
+
         <figure className="mother2">
           <img
             src="/mother2.png"
@@ -24,6 +31,9 @@ function LandingPage() {
           Réservez une place en moins de 60 secondes et obtenez une solution de
           garde, même pour le lendemain !
         </p>
+        <Link to="search" className="round-button-white">
+          &gt;
+        </Link>
       </section>
       <Link to="search" className="round-button">
         &gt;
