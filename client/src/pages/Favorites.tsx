@@ -31,7 +31,6 @@ function Favorite() {
         </Link>
         <h1 className="title-favorites">Favoris</h1>
       </section>
-
       <section className="card-wrapper-favorite">
         {data.length > 0 ? (
           data.map((el) => {
