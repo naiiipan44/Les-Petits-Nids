@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
+import { useAuth } from "../contexts/AuthContext";
 
 function NavBar() {
+  const { user } = useAuth();
+
   return (
     <nav className="nav-component">
       <figure className="logo-navbar">
@@ -21,12 +24,34 @@ function NavBar() {
           <h2 className="title-navbar">Page de recherche</h2>
         </button>
       </NavLink>
-      <NavLink to="loginandregister">
-        <button type="button" className="nav-buttons">
-          <img src="/user.svg" alt="lien vers la page profil" />
-          <h2 className="title-navbar">Profil</h2>
-        </button>
-      </NavLink>
+      {user ? (
+        <>
+          {user.role === "parent" && (
+            <NavLink to="profile">
+              <button type="button" className="nav-buttons">
+                <img src="/user.svg" alt="lien vers mon dossier" />
+                <h2 className="title-navbar">Profil</h2>
+              </button>
+            </NavLink>
+          )}
+
+          {user.role === "nursery" && (
+            <NavLink to="nurseryprofile">
+              <button type="button" className="nav-buttons">
+                <img src="/user.svg" alt="lien vers mon dossier" />
+                <h2 className="title-navbar">Profil</h2>
+              </button>
+            </NavLink>
+          )}
+        </>
+      ) : (
+        <NavLink to="loginandregister">
+          <button type="button" className="nav-buttons">
+            <img src="/user.svg" alt="lien vers la page profil" />
+            <h2 className="title-navbar">Profil</h2>
+          </button>
+        </NavLink>
+      )}
       <NavLink to="map">
         <button type="button" className="nav-buttons">
           <img src="/map.svg" alt="lien vers la carte" />

@@ -2,6 +2,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 
 /* ************************************************************************* */
 
@@ -89,7 +90,9 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <UserProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </UserProvider>
   </StrictMode>,
 );
