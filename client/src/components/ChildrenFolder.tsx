@@ -1,4 +1,4 @@
-import "../components/ChildrenFolder.css";
+import "./ChildrenFolder.css";
 import type { FormEvent } from "react";
 import "./LoginPageComponent.css";
 import useToast from "../hooks/useToast";
