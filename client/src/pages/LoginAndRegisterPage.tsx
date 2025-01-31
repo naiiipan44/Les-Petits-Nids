@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./LoginAndRegisterPage.css";
 
 import LoginPageComponent from "../components/LoginPageComponent";
@@ -10,6 +11,13 @@ function LoginAndRegisterPage() {
 
   return (
     <section className="login-register-background">
+      <Link to="/search" className="link-to-search">
+        <span className="arrow" />
+        <figcaption>
+          <h1>Page d'acceuil</h1>
+          <p>Retour</p>
+        </figcaption>
+      </Link>
       <section className="login-page-container">
         <section className="section-form-login">
           <figure className="logo">
