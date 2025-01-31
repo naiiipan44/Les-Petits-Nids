@@ -1,7 +1,7 @@
 import databaseClient from "../../../database/client";
 import type { Rows } from "../../../database/client";
 
-class nurseryRepository {
+class NurseryRepository {
   async readAll() {
     const [rows] = await databaseClient.query<Rows>("SELECT * FROM nursery");
     return rows;
@@ -17,4 +17,4 @@ class nurseryRepository {
   }
 }
 
-export default new nurseryRepository();
+export default new NurseryRepository();
