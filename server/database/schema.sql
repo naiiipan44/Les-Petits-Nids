@@ -9,37 +9,7 @@ CREATE TABLE parent (
   p_mail VARCHAR(100) NOT NULL UNIQUE,
   p_birth_date DATE NOT NULL
 );
-INSERT INTO parent (
-  p_first_name,
-  p_last_name,
-  p_job,
-  p_address,
-  p_zip_code,
-  p_num_tel,
-  p_mail,
-  p_birth_date
-)
-VALUES
-(
-"Deschamps",
-"Paula",
-"Conseillère bancaire",
-"20 ALLEE DES DHUYS",
-44000,
-"0632000000",
-"paula.deschamps@gmail.com",
-"1986-01-01" -- Correct date format (YYYY-MM-DD)
-),
-(
-"Després",
-"Alexis",
-"Maquettiste",
-"53 BOULEVARD MALESHERBES",
-44300,
-"0755000000",
-"alexis.despres@yahoo.fr",
-"1974-05-07"
-);
+
 create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 c_first_name VARCHAR(80) NOT NULL,
@@ -51,10 +21,7 @@ parent_id INT NOT NULL,
  FOREIGN KEY (parent_id)
  REFERENCES parent(id)
 );
-insert into children
-  (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, parent_id)
-  VALUES
-  ("Boby", "Bob", true, "2025-09-12", "patate", 1);
+
 create table user (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
@@ -63,10 +30,7 @@ create table user (
   hashed_password varchar(255) not null,
   role varchar(80) not null
 );
-INSERT INTO user
-  (first_name, last_name, email, hashed_password, role)
-  VALUES
-  ("Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA","parent");
+
 CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   ns_name VARCHAR(80) NOT NULL,
