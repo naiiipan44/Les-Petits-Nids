@@ -1,6 +1,7 @@
+import "./Footer.css";
 function Footer() {
   return (
-    <footer>
+    <footer className="main-footer">
       <p>2025 © Les Petits Nids</p>
       <p>Créé avec ❤️ Wild Code School x Les Petits Nids</p>
     </footer>
