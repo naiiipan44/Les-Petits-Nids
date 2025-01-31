@@ -111,11 +111,6 @@ header {
     box-shadow: 0 0 1px var(--shadowColor);
     border-bottom: 2px solid #ddd;
   }
-  .profile-search {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
 
   .profile-search img {
     width: 50px;
