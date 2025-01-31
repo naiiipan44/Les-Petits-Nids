@@ -48,6 +48,7 @@ router.post("/api/booking", bookingActions.add);
 
 // User routes
 router.get("/api/parent", parentActions.browse);
+router.post("/api/parent", parentActions.add);
 router.get("/api/user", userActions.browse);
 
 router.post(
@@ -58,6 +59,7 @@ router.post(
 );
 
 router.post("/api/user/login", authentificationActions.login);
+router.get("/api/user/me", authentificationActions.getUser);
 
 /* Authentication wall */
 
