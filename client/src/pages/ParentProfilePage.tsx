@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import "./FolderPage.css";
+import "./ParentProfilePage.css";
 import { useState } from "react";
 import ChildrenFolder from "../components/ChildrenFolder";
 import ParentFolder from "../components/ParentFolder";
 import ParentsBookings from "../components/ParentsBookings";
 
-function FolderPage() {
+function ParentProfilePage() {
   const [isVisible, setIsVisible] = useState("parent");
   return (
     <main className="main-parents-profils">
@@ -60,4 +60,4 @@ function FolderPage() {
     </main>
   );
 }
-export default FolderPage;
+export default ParentProfilePage;

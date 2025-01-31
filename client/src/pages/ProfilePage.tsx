@@ -1,24 +1,17 @@
+import { useState } from "react";
+import ParentProfile from "../components/ParentProfile";
 import "./ProfilePage.css";
+import NurseryProfile from "../components/NurseryProfile";
 function ProfilePage() {
+  const [isParent, setIsParent] = useState(true);
+
   return (
-    <section className="profile-page">
-      <figure className="profile">
-        <img src="/profile.svg" alt="profile-picture" />
-        <figcaption>Ed Cannon</figcaption>
-        <h2>Papa Poule</h2>
-      </figure>
-      <h3>Mettez toutes les chances de votre côté</h3>
-      <p>Un profil complet est nécessaire pour un accueil en crèche</p>
-      <button type="button" className="child-button">
-        Dossier Enfants
+    <>
+      <button type="button" onClick={() => setIsParent(!isParent)}>
+        Changer Parent/crèche
       </button>
-      <button type="button" className="parents-button">
-        Dossier Parents
-      </button>
-      <button type="button" className="reservations-button">
-        Mes reservations
-      </button>
-    </section>
+      {isParent ? <ParentProfile /> : <NurseryProfile />}
+    </>
   );
 }
 

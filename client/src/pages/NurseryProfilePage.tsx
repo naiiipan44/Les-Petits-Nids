@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./NurseryProfile.css";
+import "./NurseryProfilePage.css";
 import NurseryBookings from "../components/NurseryBookings";
 import NurseryFolder from "../components/NurseryFolder";
 
-function NurseryProfile() {
+function NurseryProfilePage() {
   const [profile, setProfile] = useState(true);
 
   return (
@@ -44,4 +44,4 @@ function NurseryProfile() {
     </main>
   );
 }
-export default NurseryProfile;
+export default NurseryProfilePage;
