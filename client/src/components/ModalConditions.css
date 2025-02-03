@@ -67,3 +67,39 @@
   max-width: 95%;
   list-style-position: disc;
 }
+
+@media screen and (min-width: 750px) {
+  .button-back-general {
+    width: 50%;
+  }
+  .back-button-conditions {
+    width: 100%;
+  }
+  .modal-body p {
+    font-size: 1rem;
+    text-align: start;
+  }
+  .modal-body ul li {
+    font-size: 1rem;
+    text-align: start;
+  }
+  .modal-body h2 {
+    font-size: 1.3rem;
+    text-align: start;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 680px) {
+  .button-back-general {
+    width: 75%;
+  }
+  .back-button-conditions {
+    width: 100%;
+  }
+  .modal-body p {
+    font-size: 1rem;
+  }
+  .modal-body ul li {
+    font-size: 1rem;
+  }
+}
