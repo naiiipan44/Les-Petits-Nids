@@ -1,17 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-type User = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  role: "parent" | "nursery" | "user";
-} | null;
-
-type AuthContextType = {
-  user: User;
-  setUser: (user: User) => void;
-};
+import type { AuthContextType, User } from "../types/AuthContext";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
