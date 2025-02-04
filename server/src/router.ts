@@ -30,6 +30,8 @@ import childrenActions from "./modules/children/childrenActions";
 
 router.get("/api/children/:id", childrenActions.browse);
 router.post("/api/children", childrenActions.add);
+router.delete("/api/children/:id", childrenActions.destroy);
+// router.put("/api/children/:id", childrenActions.edit);
 
 /* ************************************************************************* */
 

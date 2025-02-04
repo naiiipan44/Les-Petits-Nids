@@ -11,6 +11,15 @@ class ChildrenRepository {
     return rows[0];
   }
 
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from children where id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
+  }
+
   async create(children: Omit<Children, "id">) {
     const [result] = await databaseClient.query<Result>(
       "insert into children (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, parent_id) values (?, ?, ?, ?, ?, ?)",
