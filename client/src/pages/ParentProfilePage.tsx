@@ -2,8 +2,8 @@ import "./ParentProfilePage.css";
 import { useState } from "react";
 import ChildrenFolder from "../components/ChildrenFolder";
 import ParentFolder from "../components/ParentFolder";
-import ParentsBookings from "../components/ParentsBookings";
 import ParentProfile from "../components/ParentProfile";
+import ParentsBookings from "../components/ParentsBookings";
 
 function ParentProfilePage() {
   const [display, setDisplay] = useState(true);
