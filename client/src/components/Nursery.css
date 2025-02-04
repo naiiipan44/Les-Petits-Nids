@@ -45,3 +45,17 @@
   padding-left: 5%;
   padding-bottom: 1%;
 }
+
+@media (min-width: 431px) and (max-width: 1024px) {
+  .nursery-section figcaption {
+    font-size: 1.2rem;
+    margin-top: -20px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .nursery-section figcaption {
+    font-size: 1.2rem;
+    margin-top: -20px;
+  }
+}

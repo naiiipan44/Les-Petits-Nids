@@ -51,7 +51,70 @@
   display: none;
 }
 
-@media screen and (min-width: 380px) {
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+  .nav-component {
+    flex-direction: column;
+    background: none;
+    align-items: flex-start;
+    margin-left: 10px;
+    gap: 10px;
+  }
+  .logo-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18px;
+    margin-top: 16px;
+  }
+  .logo-navbar img {
+    width: 100px;
+    height: auto;
+  }
+
+  .small-not-navbar {
+    color: #5f7d96;
+    font-family: "Beth Ellen", sans-serif;
+  }
+
+  .menu-navbar {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    color: var(--secondaryColor);
+  }
+
+  .nav-buttons {
+    background: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .nav-component a {
+    text-decoration: none;
+  }
+
+  .nav-buttons img {
+    width: 18px;
+    margin-right: 10px;
+  }
+  .active > button {
+    background: none;
+  }
+  .title-navbar {
+    display: block;
+    font-size: 15px;
+    text-decoration: none;
+    color: #5f7d96;
+  }
+
+  .title-navbar:hover {
+    color: var(--secondaryColor);
+  }
+}
+
+@media screen and (min-width: 1025px) {
   .nav-component {
     flex-direction: column;
     background: none;
