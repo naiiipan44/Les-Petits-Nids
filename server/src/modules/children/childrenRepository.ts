@@ -3,7 +3,7 @@ import type { Result, Rows } from "../../../database/client";
 import type { Children } from "../../types/modules/Children";
 
 class ChildrenRepository {
-  async readAll(id: number) {
+  async readById(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT c_first_name, c_last_name FROM children WHERE id = ?",
       [id],

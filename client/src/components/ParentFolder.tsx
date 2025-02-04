@@ -3,6 +3,7 @@ import useToast from "../hooks/useToast";
 
 function ParentFolder() {
   const { success, error } = useToast();
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -14,18 +15,21 @@ function ParentFolder() {
         "content-type": "application/json",
       },
       body: JSON.stringify(data),
-    }).then((response) => {
-      if (response.ok) {
-        success("Bravo vous avez complété votre profil");
-      } else {
-        error("La création du profil a échoué");
-      }
-    });
+    })
+      .then((response) => response.json())
+      .then((message) => {
+        if (!message.errors) {
+          success("Vous avez bien complété votre dossier !");
+        } else {
+          error("Le dossier est invalide");
+        }
+      });
   }
 
   return (
     <>
       <h3>Dossier Parent</h3>
+
       <form onSubmit={handleSubmit}>
         <input
           type="text"

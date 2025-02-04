@@ -6,9 +6,10 @@ CREATE TABLE parent (
   p_address VARCHAR(120) NOT NULL,
   p_zip_code INT NOT NULL,
   p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
-  p_mail VARCHAR(100) NOT NULL,
+  p_mail VARCHAR(100) NOT NULL UNIQUE,
   p_birth_date DATE NOT NULL
 );
+
 create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 c_first_name VARCHAR(80) NOT NULL,
@@ -20,15 +21,17 @@ parent_id INT NOT NULL,
  FOREIGN KEY (parent_id)
  REFERENCES parent(id)
 );
+
 create table user (
   id int unsigned primary key auto_increment not null,
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-   hashed_password varchar(255) not null,
+  hashed_password varchar(255) not null,
   role varchar(80) not null
 );
-  CREATE TABLE nursery (
+
+CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   ns_name VARCHAR(80) NOT NULL,
   ns_type VARCHAR(80) NOT NULL,
