@@ -6,7 +6,7 @@ CREATE TABLE parent (
   p_address VARCHAR(120) NOT NULL,
   p_zip_code INT NOT NULL,
   p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
-  p_mail VARCHAR(100) NOT NULL UNIQUE,
+  p_mail VARCHAR(100) NOT NULL,
   p_birth_date DATE NOT NULL
 );
 
@@ -18,7 +18,7 @@ c_gender BOOLEAN DEFAULT NULL,
 c_birth_date DATE NOT NULL,
 c_allergies VARCHAR(150) NULL,
 parent_id INT NOT NULL,
- FOREIGN KEY (parent_id)
+ FOREIGN KEY (parent_id) 
  REFERENCES parent(id)
 );
 
@@ -27,14 +27,14 @@ create table user (
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-  hashed_password varchar(255) not null,
+   hashed_password varchar(255) not null,
   role varchar(80) not null
 );
 
-CREATE TABLE nursery (
+  CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   ns_name VARCHAR(80) NOT NULL,
-  ns_type VARCHAR(80) NOT NULL,
+  ns_type VARCHAR(80) NOT NULL, 
   ns_mail VARCHAR(100) NOT NULL,
   ns_address VARCHAR(120) NOT NULL,
   ns_zip_postal INT NOT NULL,
@@ -72,22 +72,22 @@ INSERT INTO nursery (
   )
 VALUES
 (
-  "Les Passereaux",
-  "Multi-accueil",
+  "Les Passereaux", 
+  "Multi-accueil", 
   "creche-les-passereaux@wanadoo.fr",
-  "1 RUE CESARIA EVORA",
-  92700,
-  "0147819355",
-  60,
-  2,
-  true,
-  2.5,
-  4,
-  false,
-  2.228716805365273,
+  "1 RUE CESARIA EVORA", 
+  92700, 
+  "0147819355", 
+  60, 
+  2, 
+  true, 
+  2.5, 
+  4, 
+  false, 
+  2.228716805365273, 
   48.919672135245996,
   "La crèche Les Passereaux située au 1 RUE CESARIA EVORA, COLOMBES 92700 est une crèche accueillant les enfants de 10 semaines à 3 ans. Sa capacité d’accueil est de 60. Cet établissement proposent 3 types d’accueil : régulier, occasionnel ou d’urgence. Inscrivez-vous ou connectez-vous pour avoir plus d’informations sur les tarifs et les modalités d’inscription !",
-  "https://static.wixstatic.com/media/dc445c_9fb8a975972442eab252760838e90e32~mv2.png/v1/fill/w_980,h_436,q_90/dc445c_9fb8a975972442eab252760838e90e32~mv2.png",
+  "https://static.wixstatic.com/media/dc445c_9fb8a975972442eab252760838e90e32~mv2.png/v1/fill/w_980,h_436,q_90/dc445c_9fb8a975972442eab252760838e90e32~mv2.png", 
   1.47
   ),
   (

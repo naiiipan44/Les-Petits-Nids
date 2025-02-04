@@ -4,6 +4,5 @@ coverage
 client2.http
 test-routes.http
 requests.http
-schema.sql
 request.http
 client2.http
