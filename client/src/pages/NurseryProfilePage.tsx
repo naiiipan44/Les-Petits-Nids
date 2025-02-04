@@ -1,46 +1,58 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import "./NurseryProfilePage.css";
 import NurseryBookings from "../components/NurseryBookings";
 import NurseryFolder from "../components/NurseryFolder";
+import NurseryProfile from "../components/NurseryProfile";
 
 function NurseryProfilePage() {
-  const [profile, setProfile] = useState(true);
+  const [folder, setFolder] = useState(true);
+  const [display, setDisplay] = useState(true);
 
   return (
     <main className="main-nursery-profile">
-      <section className="header-gradient-nursery">
-        <section className="return-form-nursery-profil">
-          <Link to={"/profile"} className="back-button">
-            <span className="arrow" />
-          </Link>
-          <h1>Picoti Picota </h1>
-        </section>
-        <section className="button-header-nursery-bookings">
+      {display ? (
+        <NurseryProfile
+          setDisplay={setDisplay}
+          display={display}
+          folder={folder}
+          setFolder={setFolder}
+        />
+      ) : (
+        <>
           <button
-            onClick={() => {
-              setProfile(true);
-            }}
-            className="nursery-profile"
             type="button"
+            onClick={() => setDisplay(!display)}
+            className="button-secondary"
           >
-            Profil
+            Retour
           </button>
+          <section className="button-header-nursery-bookings">
+            <button
+              onClick={() => {
+                setFolder(true);
+              }}
+              className="nursery-profile"
+              type="button"
+            >
+              Profil
+            </button>
 
-          <button
-            onClick={() => {
-              setProfile(false);
-            }}
-            className="booking-queries"
-            type="button"
-          >
-            Demandes
-          </button>
-        </section>
-      </section>
-      <section className="bottom-page-nursery">
-        {profile ? <NurseryFolder /> : <NurseryBookings />}
-      </section>
+            <button
+              onClick={() => {
+                setFolder(false);
+              }}
+              className="booking-queries"
+              type="button"
+            >
+              Demandes
+            </button>
+          </section>
+          <section className="bottom-page-nursery">
+            {folder ? <NurseryFolder /> : <NurseryBookings />}
+          </section>
+        </>
+      )}
     </main>
   );
 }

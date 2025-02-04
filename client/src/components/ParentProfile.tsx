@@ -1,10 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import "../pages/ProfilePage.css";
+import type { ParentProfileProps } from "../types/ParentProfile";
 
-function ParentProfile() {
-  const navigate = useNavigate();
-  function handleClick() {
-    navigate("/parent");
-  }
+function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
   return (
     <section className="profile-page">
       <figure className="profile">
@@ -14,16 +11,33 @@ function ParentProfile() {
       </figure>
       <h3>Mettez toutes les chances de votre côté</h3>
       <p>Un profil complet est nécessaire pour un accueil en crèche</p>
-      <button type="button" className="child-button" onClick={handleClick}>
+      <button
+        type="button"
+        className="child-button"
+        onClick={() => {
+          setDisplay(false);
+          setIsVisible("children");
+        }}
+      >
         Dossier Enfants
       </button>
-      <button type="button" className="parents-button" onClick={handleClick}>
+      <button
+        type="button"
+        className="parents-button"
+        onClick={() => {
+          setDisplay(false);
+          setIsVisible("parent");
+        }}
+      >
         Dossier Parents
       </button>
       <button
         type="button"
         className="reservations-button"
-        onClick={handleClick}
+        onClick={() => {
+          setDisplay(false);
+          setIsVisible("booking");
+        }}
       >
         Mes reservations
       </button>

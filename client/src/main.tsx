@@ -15,8 +15,8 @@ import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
 import NurseryProfilePage from "./pages/NurseryProfilePage";
-import ProfilePage from "./pages/ProfilePage";
 import ParentProfilePage from "./pages/ParentProfilePage";
+
 import SearchPage from "./pages/SearchPage";
 
 /* ************************************************************************* */
@@ -55,10 +55,6 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <LoginAndRegisterPage />,
-      },
-      {
-        path: "profile",
-        element: <ProfilePage />,
       },
       {
         path: "favorites",
