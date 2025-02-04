@@ -37,6 +37,8 @@ function LoginAndRegisterPage() {
               id="user-type-parent"
               name="user-type"
               value="parent"
+              checked={isParent} // Sélectionné par défaut
+              onChange={() => setIsParent(true)}
             />
             <label className="radio-button" htmlFor="user-type-parent">
               En tant que parent
@@ -47,6 +49,8 @@ function LoginAndRegisterPage() {
               id="user-type-nursery"
               name="user-type"
               value="nursery"
+              checked={!isParent} // Inversé par rapport à `isParent`
+              onChange={() => setIsParent(false)}
             />
             <label className="radio-button" htmlFor="user-type-nursery">
               En tant que crèche
