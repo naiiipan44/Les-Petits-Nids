@@ -5,6 +5,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 
 import "./LoginPageComponent.css";
 import "../style/globals.css";
+import { useAuth } from "../contexts/AuthContext";
 import type { Auth } from "../types/Login";
 
 function LoginPageComponent() {
@@ -15,7 +16,7 @@ function LoginPageComponent() {
   const { setAuth } = useOutletContext() as {
     setAuth: (auth: Auth | null) => void;
   };
-
+  const { setUser } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (
@@ -43,6 +44,7 @@ function LoginPageComponent() {
 
       if (response.status === 200) {
         const user = await response.json();
+        setUser(user.user);
         setAuth(user);
         notify();
         navigate("/");
