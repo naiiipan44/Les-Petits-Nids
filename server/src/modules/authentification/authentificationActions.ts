@@ -1,11 +1,11 @@
 import argon2 from "argon2";
-
 import type { RequestHandler } from "express";
 import jwt, { sign } from "jsonwebtoken";
 import userRepository from "../user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
   try {
+    const { email, password, acceptCookies } = req.body;
     const user = await userRepository.readEmailWithPassword(req.body.email);
 
     if (user == null) {
@@ -19,9 +19,12 @@ const login: RequestHandler = async (req, res, next) => {
     );
 
     if (isVerified) {
+      const { hashed_password, ...userWithoutHashedPassword } = user;
       const payload = {
         id: user.id,
         email: user.email,
+        role: user.role,
+        first_name: user.first_name,
       };
 
       const secretKey = process.env.APP_SECRET;
@@ -31,15 +34,44 @@ const login: RequestHandler = async (req, res, next) => {
 
       const token = sign(payload, secretKey, { expiresIn: "1h" });
 
+      if (acceptCookies) {
+        res.cookie("auth_token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          maxAge: 3600000,
+          sameSite: "lax",
+        });
+      }
+
       res.json({
         token,
-        user: user.email,
+        user: userWithoutHashedPassword,
       });
     } else {
       res.sendStatus(422);
     }
   } catch (err) {
     next(err);
+  }
+};
+
+const getUser: RequestHandler = (req, res): void => {
+  const token = req.cookies.auth_token;
+  if (!req.cookies.auth_token) {
+    res.status(401).json({ error: "Token manquant" });
+    return;
+  }
+
+  try {
+    const secretKey = process.env.APP_SECRET;
+    if (!secretKey) {
+      throw new Error("A secret key must be provided");
+    }
+
+    const decoded = jwt.verify(token, secretKey);
+    res.json({ user: decoded });
+  } catch (err) {
+    res.status(403).json({ message: "Token invalide" });
   }
 };
 
@@ -85,4 +117,4 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { hashPassword, login, verifyToken };
+export default { hashPassword, login, verifyToken, getUser };

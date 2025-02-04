@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
+
 function LandingPage() {
   return (
     <section className="landing-page">

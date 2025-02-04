@@ -28,7 +28,8 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 import childrenActions from "./modules/children/childrenActions";
 
-router.get("/api/children", childrenActions.browse);
+router.get("/api/children/:id", childrenActions.browse);
+router.post("/api/children", childrenActions.add);
 
 /* ************************************************************************* */
 
@@ -37,12 +38,23 @@ router.get("/api/children", childrenActions.browse);
 import parentActions from "./modules/parent/parentActions";
 
 import authentificationActions from "./modules/authentification/authentificationActions";
+import bookingActions from "./modules/booking/bookingActions";
 import userActions from "./modules/user/userActions";
+import validate, { parentFolderValidator } from "./service/validate";
 
+// Booking routes
+router.get("/api/booking", bookingActions.browse);
+router.get("/api/booking/parent", bookingActions.read);
+router.post("/api/booking", bookingActions.add);
+
+// User routes
 router.get("/api/parent", parentActions.browse);
-
-// Parent registration
-
+router.post(
+  "/api/parent",
+  parentFolderValidator,
+  validate.validate,
+  parentActions.add,
+);
 router.get("/api/user", userActions.browse);
 
 router.post(
@@ -53,6 +65,7 @@ router.post(
 );
 
 router.post("/api/user/login", authentificationActions.login);
+router.get("/api/user/me", authentificationActions.getUser);
 
 /* Authentication wall */
 
