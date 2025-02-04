@@ -188,9 +188,3 @@
     display: none;
   }
 }
-
-@media screen and (max-width: 355px) {
-  .user-type-toggle input[type="radio"] + label {
-    font-size: 13.5px;
-  }
-}
