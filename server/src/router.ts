@@ -16,13 +16,14 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import files for routes
-import parentActions from "./modules/parent/parentActions";
+
 import authentificationActions from "./modules/authentification/authentificationActions";
 import bookingActions from "./modules/booking/bookingActions";
+import childrenActions from "./modules/children/childrenActions";
+import nurseryActions from "./modules/nursery/nurseryActions";
+import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
 import validate, { parentFolderValidator } from "./service/validate";
-import nurseryActions from "./modules/nursery/nurseryActions";
-import childrenActions from "./modules/children/childrenActions";
 
 // nursery routes
 router.get("/api/nursery", nurseryActions.browse);
