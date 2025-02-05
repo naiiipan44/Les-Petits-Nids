@@ -1,6 +1,7 @@
 import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import jwt, { sign } from "jsonwebtoken";
+import parentRepository from "../parent/parentRepository";
 import userRepository from "../user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
@@ -55,23 +56,51 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
-const getUser: RequestHandler = (req, res): void => {
-  const token = req.cookies.auth_token;
-  if (!req.cookies.auth_token) {
-    res.status(401).json({ error: "Token manquant" });
-    return;
-  }
-
+const updateOrGetUserToken: RequestHandler = async (
+  req,
+  res,
+  next,
+): Promise<void> => {
   try {
-    const secretKey = process.env.APP_SECRET;
-    if (!secretKey) {
-      throw new Error("A secret key must be provided");
+    const token = req.cookies.auth_token;
+    if (!token) {
+      res.status(401).json({ error: "Token manquant" });
+      return;
     }
 
-    const decoded = jwt.verify(token, secretKey);
-    res.json({ user: decoded });
+    const secretKey = process.env.APP_SECRET;
+    if (!secretKey) {
+      throw new Error("Clé secrète JWT non définie");
+    }
+
+    const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
+    if (!decoded.id) {
+      res.status(401).json({ error: "Token invalide" });
+      return;
+    }
+
+    const parent = await parentRepository.getParentByUserId(decoded.id);
+    const parent_id = parent ? parent.id : null;
+
+    const newPayload = {
+      ...decoded,
+      parent_id,
+    };
+
+    const newToken = jwt.sign(newPayload, secretKey);
+
+    res.cookie("auth_token", newToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 3600000,
+      sameSite: "lax",
+    });
+
+    res.json({
+      user: newPayload,
+    });
   } catch (err) {
-    res.status(403).json({ message: "Token invalide" });
+    next(err);
   }
 };
 
@@ -117,4 +146,9 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { hashPassword, login, verifyToken, getUser };
+export default {
+  hashPassword,
+  login,
+  verifyToken,
+  updateOrGetUserToken,
+};

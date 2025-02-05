@@ -14,12 +14,17 @@ function ParentFolder() {
       headers: {
         "content-type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((message) => {
         if (!message.errors) {
           success("Vous avez bien complété votre dossier !");
+          fetch(`${import.meta.env.VITE_API_URL}/api/parent/me`, {
+            method: "POST",
+            credentials: "include",
+          });
         } else {
           error("Le dossier est invalide");
         }

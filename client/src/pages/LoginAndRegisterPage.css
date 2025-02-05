@@ -83,6 +83,11 @@
   border: none;
   margin-left: 1rem;
 }
+.button-return > button > img {
+  width: 2rem;
+  height: 2rem;
+  transform: rotate(90deg);
+}
 
 .section-image-login {
   display: none;
@@ -98,6 +103,12 @@
   display: none;
   text-decoration: none;
   color: var(--secondaryColor);
+}
+
+.login-register-background > a > img {
+  transform: rotate(90deg);
+  width: 2rem;
+  height: 2rem;
 }
 
 @media screen and (min-width: 680px) {

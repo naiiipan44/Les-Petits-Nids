@@ -53,6 +53,7 @@ router.post(
   parentFolderValidator,
   validate.validate,
   parentActions.add,
+  authentificationActions.verifyToken,
 );
 router.get("/api/user", userActions.browse);
 
@@ -64,7 +65,7 @@ router.post(
 );
 
 router.post("/api/user/login", authentificationActions.login);
-router.get("/api/user/me", authentificationActions.getUser);
+router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 /* Authentication wall */
 

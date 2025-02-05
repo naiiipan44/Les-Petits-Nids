@@ -17,7 +17,15 @@ class ParentRepository {
       [email],
     );
 
-    return rows;
+    return rows[0] as Parent;
+  }
+
+  async getParentByUserId(id: number) {
+    const [rows] = await databaseClient.query<Rows>("SELECT id FROM parent", [
+      id,
+    ]);
+
+    return rows[0] as Parent;
   }
 
   async delete(id: number) {
