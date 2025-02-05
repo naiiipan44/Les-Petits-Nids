@@ -9,7 +9,7 @@ import type { Auth } from "./types/Login";
 
 function App() {
   const location = useLocation();
-  const isLandingPage = location.pathname === "/";
+  const isLandingPageOrNoHeader = location.pathname === "/";
   const [auth, setAuth] = useState<Auth | null>(null);
 
   useEffect(() => {
@@ -40,9 +40,13 @@ function App() {
     checkUser();
   }, []);
   return (
-    <section className="general-section">
+    <section
+      className={
+        isLandingPageOrNoHeader ? "navbar-disabled" : "general-section"
+      }
+    >
       <section className="outlet-section">
-        <Header />
+        {!isLandingPageOrNoHeader && <Header />}
         {auth ? (
           <p>Bienvenue, {auth.user.first_name} !</p>
         ) : (
@@ -52,7 +56,7 @@ function App() {
         <Footer />
       </section>
       <section className="navbar-section">
-        {isLandingPage ? "" : <NavBar />}
+        {isLandingPageOrNoHeader ? "" : <NavBar />}
         <ToastContainer />
       </section>
     </section>

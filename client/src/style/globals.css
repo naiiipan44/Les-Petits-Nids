@@ -65,6 +65,9 @@ main {
 .button-secondary:hover {
   box-shadow: 0 4px 12px var(--shadowColor);
 }
+.navbar-disabled {
+  display: block;
+}
 
 @media (min-width: 431px) {
   body {
