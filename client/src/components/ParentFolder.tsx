@@ -1,88 +1,63 @@
-import type { FormEvent } from "react";
-import useToast from "../hooks/useToast";
+import { useEffect, useState } from "react";
+import ParentFolderCreate from "./ParentFolderCreate";
+import ParentFolderEdit from "./ParentFolderEdit";
 
 function ParentFolder() {
-  const { success, error } = useToast();
+  const [edit, setEdit] = useState(false);
+  const [parentId, setParentId] = useState<string>("");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/user/me`,
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((message) => {
-        if (!message.errors) {
-          success("Vous avez bien complété votre dossier !");
-        } else {
-          error("Le dossier est invalide");
+        if (response.status === 200) {
+          const user = await response.json();
+          if (user.user.id) {
+            setParentId(user.user.id);
+          }
         }
-      });
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération de l'utilisateur :",
+          error,
+        );
+      }
+    };
+
+    checkUser();
+  }, []);
+
+  console.warn(parentId);
+  function handleSupress() {
+    fetch(`${import.meta.env.VITE_API_URL}/api/parent/${parentId}`, {
+      method: "DELETE",
+    });
   }
 
   return (
     <>
-      <h3>Dossier Parent</h3>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Prénom"
-          className="input-field"
-          name="firstName"
-        />
-        <input
-          type="text"
-          placeholder="Nom"
-          className="input-field"
-          name="lastName"
-        />
-        <input
-          type="text"
-          placeholder="Métier"
-          className="input-field"
-          name="job"
-        />
-        <input
-          type="text"
-          placeholder="Adresse postale"
-          className="input-field"
-          name="adress"
-        />
-        <input
-          type="number"
-          placeholder="Département"
-          className="input-field"
-          name="zipCode"
-        />
-        <input
-          type="tel"
-          placeholder="Numéro de téléphone"
-          className="input-field"
-          name="numTel"
-        />
-        <input
-          type="email"
-          placeholder="email"
-          className="input-field"
-          name="mail"
-        />
-        <input
-          type="date"
-          placeholder="Date de naissance"
-          className="input-field"
-          name="birthDate"
-        />
-        <button type="submit" className="button-secondary">
-          Valider le formulaire
-        </button>
-      </form>
+      <button
+        className="button-secondary"
+        type="button"
+        onClick={() => setEdit(!edit)}
+      >
+        {edit ? "Création" : "Modification"}
+      </button>
+      {edit ? <ParentFolderEdit parentId={parentId} /> : <ParentFolderCreate />}
+      <button
+        className="button-secondary"
+        type="button"
+        onClick={handleSupress}
+      >
+        Supprimer les données
+      </button>
     </>
   );
 }
