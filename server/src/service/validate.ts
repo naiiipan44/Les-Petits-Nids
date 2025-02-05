@@ -15,6 +15,21 @@ export const parentFolderValidator = [
   body("birthDate", "should be a valid date").isDate(),
 ];
 
+export const childrenFolderValidator = [
+  body("firstName", "cannot have less than two characters").isLength({
+    min: 2,
+  }),
+  body("lastName", "cannot have less than two characters").isLength({ min: 2 }),
+  body("gender", "gender must be a boolean").isBoolean(),
+  body("birthdate", "should be a valid date").isDate(),
+  body("allergies", "cannot have less than two characters")
+    .optional()
+    .isLength({
+      min: 2,
+    }),
+  body("parentId", "should be an integer").isInt(),
+];
+
 const validate: RequestHandler = (req, res, next) => {
   try {
     const errors = validationResult(req);

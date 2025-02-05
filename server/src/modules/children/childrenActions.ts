@@ -12,6 +12,16 @@ const browse: RequestHandler = async (req, res, next) => {
     res.status(500).json({ error: "Erreur interne du serveur" });
   }
 };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const childrenId = Number(req.params.id);
+    await childrenRepository.delete(childrenId);
+
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
 
 const add: RequestHandler = async (req, res, next) => {
   try {
@@ -30,5 +40,27 @@ const add: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const newChildren = {
+      id: Number(req.params.id),
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      gender: req.body.gender,
+      birthdate: req.body.birthdate,
+      allergies: req.body.allergies,
+      parentId: req.body.parentId,
+    };
+    const editChildren = await childrenRepository.update(newChildren);
 
-export default { browse, add };
+    if (editChildren) {
+      res.sendStatus(204);
+    } else {
+      res.status(403).send("An error occured");
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { browse, add, destroy, edit };
