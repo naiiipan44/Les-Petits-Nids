@@ -7,7 +7,7 @@ function NurseryProfile({ setDisplay, setFolder }: NurseryProfileProps) {
     <section className="profile-page">
       <figure className="profile">
         {/* Renseigner ci-dessous une image de crèche */}
-        <img src="" alt="profile-picture" />
+        <img src="" alt="portrait de profil" />
         <figcaption>Picoti picota</figcaption>
       </figure>
       <h3>Mettez toutes les chances de votre côté</h3>

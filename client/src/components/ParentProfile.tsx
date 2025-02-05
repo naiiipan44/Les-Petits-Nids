@@ -5,7 +5,7 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
   return (
     <section className="profile-page">
       <figure className="profile">
-        <img src="/profile.svg" alt="profile-picture" />
+        <img src="/profile.svg" alt="portrait de profil" />
         <figcaption>Ed Cannon</figcaption>
         <h2>Papa Poule</h2>
       </figure>
