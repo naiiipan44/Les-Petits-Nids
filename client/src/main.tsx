@@ -2,6 +2,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 
 /* ************************************************************************* */
 
@@ -9,13 +10,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
-import FolderPage from "./pages/FolderPage";
+
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
-import NurseryProfile from "./pages/NurseryProfile";
-import ProfilePage from "./pages/ProfilePage";
+import NurseryProfilePage from "./pages/NurseryProfilePage";
+import ParentProfilePage from "./pages/ParentProfilePage";
+
 import SearchPage from "./pages/SearchPage";
 
 /* ************************************************************************* */
@@ -52,24 +54,20 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "loginandregister",
+        path: "login",
         element: <LoginAndRegisterPage />,
-      },
-      {
-        path: "profile",
-        element: <ProfilePage />,
       },
       {
         path: "favorites",
         element: <Favorites />,
       },
       {
-        path: "folder",
-        element: <FolderPage />,
+        path: "parent",
+        element: <ParentProfilePage />,
       },
       {
-        path: "nurseryprofile",
-        element: <NurseryProfile />,
+        path: "nursery",
+        element: <NurseryProfilePage />,
       },
       {
         path: "map",
@@ -91,9 +89,11 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <AuthProvider>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+    </AuthProvider>
   </StrictMode>,
 );
 

@@ -4,26 +4,31 @@ import "./LandingPage.css";
 function LandingPage() {
   return (
     <section className="landing-page">
-      <figure className="logo">
-        <img src="/logo.svg" alt="Ceci est le logo des Petits Nids" />
-        <figcaption className="small-not">Les Petits Nids</figcaption>
-      </figure>
+      <img
+        src="/logo-writing-white.png"
+        alt="Ceci est le logo des Petits Nids"
+        className="logo-writing-white"
+      />
 
       <section className="white-painting">
-        <figure className="mother2">
-          <img
-            src="/mother2.png"
-            alt="Ceci est un dessin représentant une mère et son enfant"
-          />
+        <img
+          src="/logo-writing.png"
+          alt="Ceci est le logo des Petits Nids"
+          className="logo-writing"
+        />
+        <img
+          src="/mother2.png"
+          alt="Ceci est un dessin représentant une mère et son enfant"
+        />
+        <figcaption>Garde d'enfant à la demande</figcaption>
 
-          <figcaption className="welcome">
-            Garde d'enfant à la demande
-          </figcaption>
-        </figure>
-        <p className="account-created">
+        <p>
           Réservez une place en moins de 60 secondes et obtenez une solution de
           garde, même pour le lendemain !
         </p>
+        <Link to="search" className="round-button-white">
+          &gt;
+        </Link>
       </section>
       <Link to="search" className="round-button">
         &gt;

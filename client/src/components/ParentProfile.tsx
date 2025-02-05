@@ -1,21 +1,11 @@
 import "../pages/ProfilePage.css";
-
-interface ParentProfileProps {
-  display: boolean;
-  setDisplay: (value: boolean) => void;
-  isVisible: string;
-  setIsVisible: (value: string) => void;
-}
+import type { ParentProfileProps } from "../types/ParentProfile";
 
 function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
   return (
     <section className="profile-page">
       <figure className="profile">
-        <img
-          src="/profile.svg"
-          alt="portrait
-         de profil"
-        />
+        <img src="/profile.svg" alt="portrait de profil" />
         <figcaption>Ed Cannon</figcaption>
         <h2>Papa Poule</h2>
       </figure>
