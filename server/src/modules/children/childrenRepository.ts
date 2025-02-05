@@ -1,14 +1,14 @@
 import databaseClient from "../../../database/client";
-import type { Result } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 import type { Children } from "../../types/modules/Children";
 
 class ChildrenRepository {
   async readById(id: number) {
-    const [row] = await databaseClient.query<Result>(
+    const [rows] = await databaseClient.query<Rows>(
       "SELECT c_first_name, c_last_name FROM children WHERE id = ?",
       [id],
     );
-    return row;
+    return rows[0] as Children;
   }
 
   async delete(id: number) {
