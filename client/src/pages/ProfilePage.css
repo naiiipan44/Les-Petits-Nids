@@ -30,13 +30,6 @@
   font-weight: bold;
 }
 
-.choice-button {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-}
-
 .profile-page > button {
   width: 100%;
   padding: 26px 0;
@@ -62,6 +55,6 @@
   color: white;
 }
 
-button:hover {
+.profile-page button:hover {
   opacity: 0.9;
 }
