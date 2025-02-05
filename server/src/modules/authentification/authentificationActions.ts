@@ -6,17 +6,14 @@ import userRepository from "../user/userRepository";
 const login: RequestHandler = async (req, res, next) => {
   try {
     const { email, password, acceptCookies } = req.body;
-    const user = await userRepository.readEmailWithPassword(req.body.email);
+    const user = await userRepository.readEmailWithPassword(email);
 
     if (user == null) {
       res.sendStatus(422);
       return;
     }
 
-    const isVerified = await argon2.verify(
-      user.hashed_password,
-      req.body.password,
-    );
+    const isVerified = await argon2.verify(user.hashed_password, password);
 
     if (isVerified) {
       const { hashed_password, ...userWithoutHashedPassword } = user;
@@ -32,7 +29,7 @@ const login: RequestHandler = async (req, res, next) => {
         throw new Error("Invalid login key");
       }
 
-      const token = sign(payload, secretKey, { expiresIn: "1h" });
+      const token = sign(payload, secretKey, { expiresIn: "4h" });
 
       if (acceptCookies) {
         res.cookie("auth_token", token, {

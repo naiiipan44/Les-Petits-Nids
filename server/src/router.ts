@@ -15,48 +15,24 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
-// get nursery  from database
-
-import nurseryActions from "./modules/nursery/nurseryActions";
-
-router.get("/api/nursery", nurseryActions.browse);
-router.get("/api/nursery/:id", nurseryActions.read);
-
-/* ************************************************************************* */
-
-// get children from database
-
-import childrenActions from "./modules/children/childrenActions";
-
-router.get("/api/children/:id", childrenActions.browse);
-router.post("/api/children", childrenActions.add);
-
-/* ************************************************************************* */
-
-// get userApp  from database
-
+// Import files for routes
 import parentActions from "./modules/parent/parentActions";
-
 import authentificationActions from "./modules/authentification/authentificationActions";
 import bookingActions from "./modules/booking/bookingActions";
 import userActions from "./modules/user/userActions";
 import validate, { parentFolderValidator } from "./service/validate";
+import nurseryActions from "./modules/nursery/nurseryActions";
+import childrenActions from "./modules/children/childrenActions";
 
-// Booking routes
-router.get("/api/booking", bookingActions.browse);
-router.get("/api/booking/parent", bookingActions.read);
-router.post("/api/booking", bookingActions.add);
+// nursery routes
+router.get("/api/nursery", nurseryActions.browse);
+router.get("/api/nursery/:id", nurseryActions.read);
 
-// User routes
-router.get("/api/parent", parentActions.browse);
-router.post(
-  "/api/parent",
-  parentFolderValidator,
-  validate.validate,
-  parentActions.add,
-);
-router.get("/api/user", userActions.browse);
+/***************************************************************/
 
+// user routes
+router.get("/api/user", userActions.browse); // only for test purposes
+// registration feature
 router.post(
   "/api/user/registration",
   userActions.validation,
@@ -64,13 +40,34 @@ router.post(
   userActions.add,
 );
 
+// login feature
 router.post("/api/user/login", authentificationActions.login);
+
+// cookie retrieving
 router.get("/api/user/me", authentificationActions.getUser);
 
-/* Authentication wall */
+/***************************************************************/
 
+/* Authentication wall */
 router.use(authentificationActions.verifyToken);
 
+// parent routes --> need to be authenticated
+router.get("/api/parent", parentActions.browse); // only for test purposes
+router.post(
+  "/api/parent",
+  parentFolderValidator,
+  validate.validate,
+  parentActions.add,
+);
 router.delete("/api/parent/:id", parentActions.destroy);
+
+// children routes --> need to be authenticated
+router.get("/api/children/:id", childrenActions.browse);
+router.post("/api/children", childrenActions.add);
+
+// Booking routes --> need to be authenticated
+router.get("/api/booking", bookingActions.browse);
+router.get("/api/booking/parent", bookingActions.read);
+router.post("/api/booking", bookingActions.add);
 
 export default router;
