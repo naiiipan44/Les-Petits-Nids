@@ -1,13 +1,31 @@
 import "./NurseryFolder.css";
 import type { FormEvent } from "react";
 import { FaDownload } from "react-icons/fa";
+import useToast from "../hooks/useToast";
 
 function NurseryFolder() {
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  const { success, error } = useToast();
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData); // utilisé pour stocker la valeur des datas pour l'instant
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/nursery`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formatedData),
+    })
+      .then((response) => response.json())
+      .then((message) => {
+        if (!message.errors) {
+          success("Vous avez bien complété votre dossier !");
+        } else {
+          error("Le dossier est invalide");
+        }
+      });
   }
 
   return (
@@ -16,7 +34,7 @@ function NurseryFolder() {
         <h1 className="title-profile-nursery">Dossier crèche</h1>
       </section>
       <section className="nursery-folder">
-        <form onSubmit={onSubmit} className="login-form-nursery">
+        <form onSubmit={handleSubmit} className="login-form-nursery">
           <input
             type="text"
             name="name"
