@@ -11,13 +11,13 @@ import App from "./App";
 import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
 
+import NotFound from "./components/NotFound";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
 import NurseryProfilePage from "./pages/NurseryProfilePage";
 import ParentProfilePage from "./pages/ParentProfilePage";
-
 import SearchPage from "./pages/SearchPage";
 
 /* ************************************************************************* */
@@ -72,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "map",
         element: <MapPage />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
