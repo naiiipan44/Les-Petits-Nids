@@ -8,7 +8,11 @@ function NavBar() {
   return (
     <nav className="nav-component">
       <figure className="logo-navbar">
-        <img src="/bluelogo.png" alt="Ceci est le logo des Petits Nids" />
+        <img
+          src="/bluelogo.png"
+          alt="Ceci est le logo des Petits Nids"
+          className="logo-navbar"
+        />
         <figcaption className="small-not-navbar">Les Petits Nids</figcaption>
       </figure>
       <h1 className="menu-navbar">Menu</h1>

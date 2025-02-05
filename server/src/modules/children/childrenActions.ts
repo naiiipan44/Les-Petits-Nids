@@ -40,23 +40,27 @@ const add: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-// const edit: RequestHandler = async (req, res, next) => {
-//   try {
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const newChildren = {
+      id: Number(req.params.id),
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      gender: req.body.gender,
+      birthdate: req.body.birthdate,
+      allergies: req.body.allergies,
+      parentId: req.body.parentId,
+    };
+    const editChildren = await childrenRepository.update(newChildren);
 
-//     const newChildren = {
-//       firstName: req.body.firstName,
-//       lastName: req.body.lastName,
-//       gender: req.body.gender,
-//       birthdate: req.body.birthdate,
-//       allergies: req.body.allergies,
-//       parentId: req.body.parentId,
-//     };
-//     const insertId = await childrenRepository.create(newChildren);
+    if (editChildren) {
+      res.sendStatus(204);
+    } else {
+      res.status(403).send("An error occured");
+    }
+  } catch (error) {
+    next(error);
+  }
+};
 
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-export default { browse, add, destroy };
+export default { browse, add, destroy, edit };
