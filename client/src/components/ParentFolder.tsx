@@ -24,8 +24,6 @@ function ParentFolder() {
           fetch(`${import.meta.env.VITE_API_URL}/api/parent/me`, {
             method: "POST",
             credentials: "include",
-          }).then(() => {
-            window.location.reload();
           });
         } else {
           error("Le dossier est invalide");
