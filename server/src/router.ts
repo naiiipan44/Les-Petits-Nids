@@ -15,6 +15,8 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
+// get userApp  from database
+
 // Import files for routes
 
 import authentificationActions from "./modules/authentification/authentificationActions";
@@ -69,6 +71,8 @@ router.post(
   validate.validate,
   childrenActions.add,
 );
+router.delete("/api/children/:id", childrenActions.destroy);
+router.put("/api/children/:id", childrenActions.edit);
 
 // Booking routes --> need to be authenticated
 router.get("/api/booking", bookingActions.browse);

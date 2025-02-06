@@ -24,7 +24,7 @@ function Favorite() {
   };
 
   return (
-    <main className="main-search-page">
+    <main className="main-search-page-favorites">
       <section className="back-to-search-page">
         <Link to={"/search"} className="back-button">
           <span className="arrow" />

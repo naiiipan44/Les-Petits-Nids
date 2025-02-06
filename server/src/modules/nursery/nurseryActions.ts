@@ -9,7 +9,7 @@ const browse: RequestHandler = async (req, res) => {
     if (nurseries.length) {
       res.status(200).json(nurseries);
     } else {
-      res.sendStatus(403);
+      res.sendStatus(403).json({ error: "Erreur interne du serveur" });
     }
   } catch (err) {
     console.error(err);
