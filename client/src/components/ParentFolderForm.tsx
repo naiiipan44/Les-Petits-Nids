@@ -1,7 +1,7 @@
 import useFetch from "../hooks/useFetch";
 
 function ParentFolderForm({ edit, parentId }: Readonly<ParentFolderProps>) {
-  const { handleEdit, handleSubmit, handleSupress, loading } =
+  const { handleEdit, handleSubmit, handleDelete, loading } =
     useFetch(parentId);
 
   return (
@@ -75,7 +75,7 @@ function ParentFolderForm({ edit, parentId }: Readonly<ParentFolderProps>) {
         <button
           className="button-secondary"
           type="button"
-          onClick={handleSupress}
+          onClick={handleDelete}
         >
           Supprimer les données
         </button>

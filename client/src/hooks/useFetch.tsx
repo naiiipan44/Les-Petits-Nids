@@ -49,7 +49,7 @@ function useFetch(parentId: number) {
     });
   }
 
-  function handleSupress() {
+  function handleDelete() {
     fetch(`${import.meta.env.VITE_API_URL}/api/parent/${parentId}`, {
       method: "DELETE",
     }).then((response) => {
@@ -61,7 +61,7 @@ function useFetch(parentId: number) {
     });
   }
 
-  return { handleEdit, handleSupress, handleSubmit, loading };
+  return { handleEdit, handleDelete, handleSubmit, loading };
 }
 
 export default useFetch;
