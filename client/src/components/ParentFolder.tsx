@@ -13,8 +13,7 @@ function ParentFolder() {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJwb3VldGoyQGdtYWlsLmNvbSIsInJvbGUiOiJwYXJlbnQiLCJmaXJzdF9uYW1lIjoiem96byIsImlhdCI6MTczODc1MTQ1MSwiZXhwIjoxNzM4NzU1MDUxfQ.GhGQAYqt8VsCMxvIAWYqcuDuk8hIUtFgw0pLtFvR9wM",
+        Authorization: "",
       },
       credentials: "include",
       body: JSON.stringify(data),
