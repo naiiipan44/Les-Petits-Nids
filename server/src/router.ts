@@ -23,7 +23,10 @@ import childrenActions from "./modules/children/childrenActions";
 import nurseryActions from "./modules/nursery/nurseryActions";
 import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
-import validate, { parentFolderValidator } from "./service/validate";
+import validate, {
+  childrenFolderValidator,
+  parentFolderValidator,
+} from "./service/validate";
 
 // nursery routes
 router.get("/api/nursery", nurseryActions.browse);
@@ -43,11 +46,7 @@ router.post(
 
 // login feature
 router.post("/api/user/login", authentificationActions.login);
-
-// cookie retrieving
-router.get("/api/user/me", authentificationActions.getUser);
-
-/***************************************************************/
+router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 /* Authentication wall */
 router.use(authentificationActions.verifyToken);
@@ -64,7 +63,12 @@ router.delete("/api/parent/:id", parentActions.destroy);
 
 // children routes --> need to be authenticated
 router.get("/api/children/:id", childrenActions.browse);
-router.post("/api/children", childrenActions.add);
+router.post(
+  "/api/children",
+  childrenFolderValidator,
+  validate.validate,
+  childrenActions.add,
+);
 
 // Booking routes --> need to be authenticated
 router.get("/api/booking", bookingActions.browse);

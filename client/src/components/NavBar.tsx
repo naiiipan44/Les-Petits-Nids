@@ -9,11 +9,10 @@ function NavBar() {
     <nav className="nav-component">
       <figure className="logo-navbar">
         <img
-          src="/bluelogo.png"
+          src="/logo-writing.png"
           alt="Ceci est le logo des Petits Nids"
           className="logo-navbar"
         />
-        <figcaption className="small-not-navbar">Les Petits Nids</figcaption>
       </figure>
       <h1 className="menu-navbar">Menu</h1>
       <NavLink to="favorites" className="nav-buttons">
@@ -41,7 +40,7 @@ function NavBar() {
           )}
         </>
       ) : (
-        <NavLink to="loginandregister" className="nav-buttons">
+        <NavLink to="login" className="nav-buttons">
           <img src="/user.svg" alt="lien vers la page profil" />
           <h2 className="title-navbar">Profil</h2>
         </NavLink>

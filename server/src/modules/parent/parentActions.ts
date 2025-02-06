@@ -24,6 +24,7 @@ const destroy: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     const parent = {
+      id: req.body.id,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       job: req.body.job,

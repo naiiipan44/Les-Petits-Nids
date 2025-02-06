@@ -1,0 +1,41 @@
+.parent-folder {
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.title-profile-parent {
+  color: #76a3f6;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.button-parent-folder {
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  background-color: var(--secondaryColor);
+  color: white;
+  border: none;
+  margin-left: 50px;
+}
+
+.login-form-parent {
+  display: grid;
+  gap: 12px;
+  width: 90%;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-secondary {
+  margin-top: 20px;
+  background-color: var(--secondaryColor);
+  color: white;
+}

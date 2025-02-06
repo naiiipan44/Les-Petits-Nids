@@ -69,7 +69,7 @@ main {
   display: block;
 }
 
-@media (min-width: 431px) {
+@media (min-width: 680px) {
   body {
     background: var(--tertiaryColor);
   }
