@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ParentFolderForm from "./ParentFolderForm";
-
+import "./ParentFolder.css";
 function ParentFolder() {
   const [edit, setEdit] = useState(false);
   const [parentId, setParentId] = useState(0);

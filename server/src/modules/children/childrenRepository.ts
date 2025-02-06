@@ -8,7 +8,16 @@ class ChildrenRepository {
       "SELECT c_first_name, c_last_name FROM children WHERE id = ?",
       [id],
     );
-    return rows[0];
+    return rows[0] as Children;
+  }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from children where id = ?",
+      [id],
+    );
+
+    return result.affectedRows;
   }
 
   async create(children: Omit<Children, "id">) {
@@ -25,6 +34,22 @@ class ChildrenRepository {
     );
 
     return result.insertId;
+  }
+
+  async update(children: Children) {
+    const [row] = await databaseClient.query<Result>(
+      "UPDATE children SET c_first_name = ?, c_last_name = ?, c_gender = ?, c_birth_date = ?, c_allergies = ?, parent_id = ? WHERE id = ?",
+      [
+        children.firstName,
+        children.lastName,
+        children.gender,
+        children.birthdate,
+        children.allergies,
+        children.parentId,
+        children.id,
+      ],
+    );
+    return row.affectedRows;
   }
 }
 
