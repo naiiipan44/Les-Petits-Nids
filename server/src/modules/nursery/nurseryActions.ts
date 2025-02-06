@@ -27,4 +27,14 @@ const read: RequestHandler = async (req, res) => {
   }
 };
 
-export default { read };
+const browse: RequestHandler = async (req, res, next) => {
+  try {
+    const nurseries = await nurseryRepository.readAll();
+    res.json(nurseries);
+  } catch (err) {
+    next(err);
+    res.status(500).json({ error: "Erreur interne du serveur" });
+  }
+};
+
+export default { read, browse };

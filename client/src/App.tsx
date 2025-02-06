@@ -10,6 +10,7 @@ import type { Auth } from "./types/Login";
 function App() {
   const location = useLocation();
   const isLandingPageOrNoHeader = location.pathname === "/";
+
   const [auth, setAuth] = useState<Auth | null>(null);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
 
     checkUser();
   }, []);
+
   return (
     <section
       className={

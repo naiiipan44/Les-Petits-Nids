@@ -17,7 +17,6 @@ function SearchPage() {
       .then((response) => response.json())
       .then((nursery) => setData(nursery));
   }, []);
-
   const filteredData = data?.filter((el) => {
     return el.ns_name.toLowerCase().includes(userEntry.toLowerCase());
   });
