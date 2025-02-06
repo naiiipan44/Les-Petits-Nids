@@ -1,7 +1,11 @@
 // Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 
 /* ************************************************************************* */
@@ -43,7 +47,12 @@ const router = createBrowserRouter([
           const response = await fetch(
             `${import.meta.env.VITE_API_URL}/api/nursery/${params.id}`,
           );
-          return response.json();
+          const data = await response.json();
+
+          if (data.error) {
+            return redirect("/not-found");
+          }
+          return data;
         },
       },
       {
