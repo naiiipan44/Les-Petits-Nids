@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
-import "./NotFound.css"; // Import du CSS
+import "./NotFound.css";
 
 const NotFound = () => {
   return (
     <section className="not-found-overlay">
-      <section className="not-found-container">
-        <h1 className="not-found-title">404</h1>
-        <p className="not-found-text">Oups ! Cette page n'existe pas.</p>
-        <p className="not-found-subtext">
+      <section>
+        <h1>404</h1>
+        <p>Oups ! Cette page n'existe pas.</p>
+        <p>
           La page que vous recherchez a peut-être été déplacée ou supprimée.
         </p>
-        <Link to="/search" className="not-found-link">
-          Retour à l'accueil
-        </Link>
+        <Link to="/search">Retour à l'accueil</Link>
       </section>
     </section>
   );
