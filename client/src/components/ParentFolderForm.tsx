@@ -1,90 +1,83 @@
-import type { FormEvent } from "react";
-import useToast from "../hooks/useToast";
+import useFetch from "../hooks/useFetch";
 
-function ParentFolderCreate() {
-  const { success, error } = useToast();
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((message) => {
-        if (!message.errors) {
-          success("Vous avez bien complété votre dossier !");
-        } else {
-          error("Le dossier est invalide");
-        }
-      });
-  }
+function ParentFolderForm({ edit, parentId }: Readonly<ParentFolderProps>) {
+  const { handleEdit, handleSubmit, handleSupress, loading } =
+    useFetch(parentId);
 
   return (
     <>
       <h3>Dossier Parent</h3>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={edit ? handleEdit : handleSubmit}>
         <input
           type="text"
           placeholder="Prénom"
           className="input-field"
           name="firstName"
+          disabled={loading}
         />
         <input
           type="text"
           placeholder="Nom"
           className="input-field"
           name="lastName"
+          disabled={loading}
         />
         <input
           type="text"
           placeholder="Métier"
           className="input-field"
           name="job"
+          disabled={loading}
         />
         <input
           type="text"
           placeholder="Adresse postale"
           className="input-field"
           name="adress"
+          disabled={loading}
         />
         <input
           type="number"
           placeholder="Département"
           className="input-field"
           name="zipCode"
+          disabled={loading}
         />
         <input
           type="tel"
           placeholder="Numéro de téléphone"
           className="input-field"
           name="numTel"
+          disabled={loading}
         />
         <input
           type="email"
           placeholder="email"
           className="input-field"
           name="mail"
+          disabled={loading}
         />
         <input
           type="date"
           placeholder="Date de naissance"
           className="input-field"
           name="birthDate"
+          disabled={loading}
         />
         <button type="submit" className="button-secondary">
-          Valider le formulaire
+          Valider
         </button>
       </form>
+      <button
+        className="button-secondary"
+        type="button"
+        onClick={handleSupress}
+      >
+        Supprimer les données
+      </button>
     </>
   );
 }
 
-export default ParentFolderCreate;
+export default ParentFolderForm;

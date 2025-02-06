@@ -1,45 +1,17 @@
 import { useEffect, useState } from "react";
-import ParentFolderCreate from "./ParentFolderCreate";
-import ParentFolderEdit from "./ParentFolderEdit";
+import ParentFolderForm from "./ParentFolderForm";
 
 function ParentFolder() {
   const [edit, setEdit] = useState(false);
-  const [parentId, setParentId] = useState<string>("");
+  const [parentId, setParentId] = useState(0);
 
   useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/user/me`,
-          {
-            method: "GET",
-            credentials: "include",
-          },
-        );
-
-        if (response.status === 200) {
-          const user = await response.json();
-          if (user.user.id) {
-            setParentId(user.user.id);
-          }
-        }
-      } catch (error) {
-        console.error(
-          "Erreur lors de la récupération de l'utilisateur :",
-          error,
-        );
-      }
-    };
-
-    checkUser();
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((parent) => setParentId(parent.user.id));
   }, []);
-
-  console.warn(parentId);
-  function handleSupress() {
-    fetch(`${import.meta.env.VITE_API_URL}/api/parent/${parentId}`, {
-      method: "DELETE",
-    });
-  }
 
   return (
     <>
@@ -50,14 +22,7 @@ function ParentFolder() {
       >
         {edit ? "Création" : "Modification"}
       </button>
-      {edit ? <ParentFolderEdit parentId={parentId} /> : <ParentFolderCreate />}
-      <button
-        className="button-secondary"
-        type="button"
-        onClick={handleSupress}
-      >
-        Supprimer les données
-      </button>
+      <ParentFolderForm edit={edit} parentId={parentId} />
     </>
   );
 }
