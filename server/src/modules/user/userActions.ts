@@ -17,8 +17,6 @@ const add: RequestHandler = async (req, res, next) => {
       role: req.body.role,
     };
 
-    console.warn(newUser);
-
     const insertId = await userRepository.create(newUser);
     if (insertId) {
       res.status(201).json({ insertId });

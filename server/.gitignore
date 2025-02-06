@@ -5,4 +5,4 @@ client2.http
 test-routes.http
 requests.http
 request.http
-client2.http
+client2.httpschema.sql

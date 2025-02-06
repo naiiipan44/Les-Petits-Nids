@@ -59,6 +59,9 @@ router.post("/api/booking", bookingActions.add);
 
 // User routes
 router.get("/api/parent", parentActions.browse);
+
+router.put("/api/parent/:id", parentActions.edit);
+
 router.post(
   "/api/parent",
   parentFolderValidator,
@@ -66,6 +69,9 @@ router.post(
   parentActions.add,
   authentificationActions.verifyToken,
 );
+
+router.delete("/api/parent/:id", parentActions.destroy);
+
 router.get("/api/user", userActions.browse);
 
 router.post(
@@ -80,8 +86,6 @@ router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 /* Authentication wall */
 
-router.use(authentificationActions.verifyToken);
-
-router.delete("/api/parent/:id", parentActions.destroy);
+// router.use(authentificationActions.verifyToken);
 
 export default router;
