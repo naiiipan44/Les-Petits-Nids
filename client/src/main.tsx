@@ -43,13 +43,6 @@ const router = createBrowserRouter([
           const response = await fetch(
             `${import.meta.env.VITE_API_URL}/api/nursery/${params.id}`,
           );
-
-          if (!response.ok) {
-            throw new Error(
-              `Erreur lors de la récupération de la crèche avec l'ID ${params.id} : ${response.statusText}`,
-            );
-          }
-
           return response.json();
         },
       },
@@ -73,11 +66,11 @@ const router = createBrowserRouter([
         path: "map",
         element: <MapPage />,
       },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);

@@ -5,13 +5,12 @@ import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import "./style/globals.css";
 import Header from "./components/Header";
-import NotFound from "./components/NotFound";
 import type { Auth } from "./types/Login";
 
 function App() {
   const location = useLocation();
   const isLandingPageOrNoHeader = location.pathname === "/";
-  const isPageNotFound = location.key === "default";
+
   const [auth, setAuth] = useState<Auth | null>(null);
 
   useEffect(() => {
@@ -41,10 +40,6 @@ function App() {
 
     checkUser();
   }, []);
-
-  if (isPageNotFound) {
-    return <NotFound />;
-  }
 
   return (
     <section
