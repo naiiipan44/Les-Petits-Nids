@@ -83,7 +83,7 @@ const updateOrGetUserToken: RequestHandler = async (
 
     if (parent_id) {
       const children = await childrenRepository.getChildrenIdWhithParentId(
-        parent.id,
+        Number(parent.id),
       );
       children_id = children ? children.id : null;
     }

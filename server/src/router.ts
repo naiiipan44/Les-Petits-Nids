@@ -15,14 +15,38 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
+// get nursery  from database
+
+import nurseryActions from "./modules/nursery/nurseryActions";
+
+router.get("/api/nursery", nurseryActions.browse);
+router.get("/api/nursery/:id", nurseryActions.read);
+router.post("/api/nursery", nurseryActions.add);
+
+/* ************************************************************************* */
+
+// get children from database
+
+import childrenActions from "./modules/children/childrenActions";
+
+router.get("/api/children/:id", childrenActions.browse);
+router.post(
+  "/api/children",
+  childrenFolderValidator,
+  validate.validate,
+  childrenActions.add,
+);
+router.delete("/api/children/:id", childrenActions.destroy);
+router.put("/api/children/:id", childrenActions.edit);
+
+/* ************************************************************************* */
+
 // get userApp  from database
 
 // Import files for routes
 
 import authentificationActions from "./modules/authentification/authentificationActions";
 import bookingActions from "./modules/booking/bookingActions";
-import childrenActions from "./modules/children/childrenActions";
-import nurseryActions from "./modules/nursery/nurseryActions";
 import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
 import validate, {
@@ -36,9 +60,23 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /***************************************************************/
 
-// user routes
-router.get("/api/user", userActions.browse); // only for test purposes
-// registration feature
+// User routes
+router.get("/api/parent", parentActions.browse);
+
+router.put("/api/parent/:id", parentActions.edit);
+
+router.post(
+  "/api/parent",
+  parentFolderValidator,
+  validate.validate,
+  parentActions.add,
+  authentificationActions.verifyToken,
+);
+
+router.delete("/api/parent/:id", parentActions.destroy);
+
+router.get("/api/user", userActions.browse);
+
 router.post(
   "/api/user/registration",
   userActions.validation,

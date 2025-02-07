@@ -36,7 +36,7 @@ class ChildrenRepository {
     return result.insertId;
   }
 
-  async getChildrenIdWhithParentId(parentId: number) {
+  async getChildrenIdWhithParentId(parentId?: number) {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT id FROM children WHERE parent_id = ?",
       [parentId],

@@ -41,4 +41,26 @@ const read: RequestHandler = async (req, res) => {
   }
 };
 
-export default { read, browse };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const newNursery = {
+      name: req.body.name,
+      address: req.body.address,
+      zipCode: req.body.zipCode,
+      phoneNumber: req.body.phoneNumber,
+      capacity: req.body.capacity,
+      availability: req.body.availability,
+      gestion: req.body.gestion,
+      minAge: req.body.minAge,
+      maxAge: req.body.maxAge,
+      isDisabled: req.body.isDisabled,
+    };
+    const insertId = await nurseryRepository.create(newNursery);
+
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, read };

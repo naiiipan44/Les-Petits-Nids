@@ -58,4 +58,46 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, destroy, add };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      job,
+      adress,
+      zipCode,
+      numTel,
+      mail,
+      birthDate,
+    } = req.body;
+
+    const { id } = req.params;
+
+    const editParent = await parentRepository.update({
+      firstName,
+      lastName,
+      job,
+      adress,
+      zipCode,
+      numTel,
+      mail,
+      birthDate,
+      id,
+    });
+    if (editParent) {
+      res.sendStatus(201);
+    } else {
+      res.status(403).send("An error occured");
+    }
+  } catch (err) {
+    const error = err as { code: string };
+    if (error.code === "ER_DUP_ENTRY") {
+      res.status(406).send("Cette adresse mail existe déjà");
+    } else {
+      res.status(404);
+      next(err);
+    }
+  }
+};
+
+export default { browse, destroy, add, edit };
