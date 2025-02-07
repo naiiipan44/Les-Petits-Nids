@@ -36,6 +36,15 @@ class ChildrenRepository {
     return result.insertId;
   }
 
+  async getChildrenIdWhithParentId(parentId?: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id FROM children WHERE parent_id = ?",
+      [parentId],
+    );
+
+    return rows[0] as Children;
+  }
+
   async update(children: Children) {
     const [row] = await databaseClient.query<Result>(
       "UPDATE children SET c_first_name = ?, c_last_name = ?, c_gender = ?, c_birth_date = ?, c_allergies = ?, parent_id = ? WHERE id = ?",
