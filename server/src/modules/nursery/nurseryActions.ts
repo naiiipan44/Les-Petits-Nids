@@ -52,6 +52,8 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     const newNursery = {
       name: req.body.name,
+      type: req.body.type,
+      mail: req.body.mail,
       address: req.body.address,
       zipCode: req.body.zipCode,
       phoneNumber: req.body.phoneNumber,
@@ -61,6 +63,11 @@ const add: RequestHandler = async (req, res, next) => {
       minAge: req.body.minAge,
       maxAge: req.body.maxAge,
       isDisabled: req.body.isDisabled,
+      coordLong: req.body.coordLong,
+      coordLat: req.body.coordLat,
+      description: req.body.description,
+      image: req.body.image,
+      price: req.body.price,
     };
     const insertId = await nurseryRepository.create(newNursery);
 
