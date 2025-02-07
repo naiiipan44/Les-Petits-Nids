@@ -11,7 +11,7 @@ class NurseryRepository {
 
   async readById(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT ns_name FROM nursery WHERE id = ?",
+      "SELECT * FROM nursery WHERE id = ?",
       [id],
     );
 

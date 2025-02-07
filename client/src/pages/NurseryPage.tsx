@@ -3,7 +3,9 @@ import type { NurseryDetails } from "../types/Nursery";
 import "./NurseryPage.css";
 import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
+import NurseryAvailabilities from "../components/NurseryAvailabilities";
 import useStorage from "../hooks/useStorage";
+
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
   const handleButtonClick = () => {
@@ -22,6 +24,8 @@ function NurseryPage() {
   }
   const [isClicked, setIsClicked] = useState(false);
   const { getStorage, handleStorage } = useStorage();
+
+  const [isLogged, setIsLogged] = useState<boolean>(false);
 
   useEffect(() => {
     const storage: NurseryDetails[] | null = getStorage();
@@ -93,19 +97,26 @@ function NurseryPage() {
             </ul>
           </section>
           <h2 className="availability">Disponibilités</h2>
-          <section className="login-text">
-            <p>
-              Connectez-vous pour accéder aux disponibilités de cette crèche.
-            </p>
-            <button
-              className="not-connected"
-              onClick={() => setShowModal(true)}
-              type="button"
-            >
-              Pas Connecté ?
-            </button>
-            {showModal && <ModalConnexion onClose={handleButtonClick} />}
-          </section>
+          <button type="button" onClick={() => setIsLogged(!isLogged)}>
+            Connectez-vous
+          </button>
+          {isLogged ? (
+            <NurseryAvailabilities />
+          ) : (
+            <section className="login-text">
+              <p>
+                Connectez-vous pour accéder aux disponibilités de cette crèche.
+              </p>
+              <button
+                className="not-connected"
+                onClick={() => setShowModal(true)}
+                type="button"
+              >
+                Pas Connecté ?
+              </button>
+              {showModal && <ModalConnexion onClose={handleButtonClick} />}
+            </section>
+          )}
         </section>
       </section>
     </>
