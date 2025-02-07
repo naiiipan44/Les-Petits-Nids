@@ -4,7 +4,10 @@ import type { Nursery } from "../../types/modules/Nursery";
 
 class NurseryRepository {
   async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM nursery");
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM nursery",
+      [],
+    );
 
     return rows;
   }
