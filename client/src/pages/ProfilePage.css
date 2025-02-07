@@ -10,8 +10,8 @@
   padding: 40px 20px;
 
   box-sizing: border-box;
-  background-color: skyblue;
-  color: white;
+  background: var(--mainColor);
+  color: var(--secondaryColor);
 }
 .profile-page p {
   font-size: 15px;
@@ -19,7 +19,7 @@
 }
 
 .profile img {
-  outline: 5px solid #007bff;
+  outline: 5px solid #7771af;
   outline-offset: -20px;
   border-radius: 50%;
 }
@@ -41,17 +41,17 @@
 }
 
 .child-button {
-  background-color: #6ec1e4;
+  background-color: #26d0fe;
   color: white;
 }
 
 .parents-button {
-  background-color: #5cb85c;
+  background-color: #00cdac;
   color: white;
 }
 
 .reservations-button {
-  background-color: #f0ad4e;
+  background-color: #7771af;
   color: white;
 }
 
