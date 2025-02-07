@@ -6,6 +6,18 @@ import ModalConnexion from "../components/ModalConnexion";
 import useStorage from "../hooks/useStorage";
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
+  const [bookingInfos, setBookingInfos] = useState();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((cookie) => setBookingInfos(cookie.user));
+  }, []);
+
+  console.warn(bookingInfos); /* pour stocker le contenu du cookie temporairement 
+  --> le console.warn() sera enlevé dans la prochaine pull request !*/
   const handleButtonClick = () => {
     setShowModal(false);
   };
