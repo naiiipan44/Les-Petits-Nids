@@ -11,10 +11,10 @@ class ParentRepository {
     return rows;
   }
 
-  async readParentId(firstName: string, lastName: string) {
+  async readParentId(mail: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT id FROM parent WHERE p_first_name = ? AND p_last_name = ?",
-      [firstName, lastName],
+      "SELECT id FROM parent WHERE p_mail = ?",
+      [mail],
     );
 
     return rows[0];
