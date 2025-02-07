@@ -1,23 +1,21 @@
 import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import jwt, { sign } from "jsonwebtoken";
+import childrenRepository from "../children/childrenRepository";
 import parentRepository from "../parent/parentRepository";
 import userRepository from "../user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
   try {
     const { email, password, acceptCookies } = req.body;
-    const user = await userRepository.readEmailWithPassword(req.body.email);
+    const user = await userRepository.readEmailWithPassword(email);
 
     if (user == null) {
       res.sendStatus(422);
       return;
     }
 
-    const isVerified = await argon2.verify(
-      user.hashed_password,
-      req.body.password,
-    );
+    const isVerified = await argon2.verify(user.hashed_password, password);
 
     if (isVerified) {
       const { hashed_password, ...userWithoutHashedPassword } = user;
@@ -33,7 +31,7 @@ const login: RequestHandler = async (req, res, next) => {
         throw new Error("Invalid login key");
       }
 
-      const token = sign(payload, secretKey, { expiresIn: "1h" });
+      const token = sign(payload, secretKey, { expiresIn: "4h" });
 
       if (acceptCookies) {
         res.cookie("auth_token", token, {
@@ -81,10 +79,19 @@ const updateOrGetUserToken: RequestHandler = async (
 
     const parent = await parentRepository.getParentByUserId(decoded.id);
     const parent_id = parent ? parent.id : null;
+    let children_id = null;
+
+    if (parent_id) {
+      const children = await childrenRepository.getChildrenIdWhithParentId(
+        Number(parent.id),
+      );
+      children_id = children ? children.id : null;
+    }
 
     const newPayload = {
       ...decoded,
       parent_id,
+      children_id,
     };
 
     const newToken = jwt.sign(newPayload, secretKey);

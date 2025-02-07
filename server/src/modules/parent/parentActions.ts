@@ -2,9 +2,13 @@ import type { RequestHandler } from "express";
 
 import parentRepository from "./parentRepository";
 const browse: RequestHandler = async (req, res) => {
-  const userApp = await parentRepository.readAll();
+  try {
+    const userApp = await parentRepository.readAll();
 
-  res.json(userApp);
+    res.json(userApp);
+  } catch (error) {
+    res.status(404).send(error);
+  }
 };
 
 const destroy: RequestHandler = async (req, res, next) => {
@@ -32,7 +36,11 @@ const add: RequestHandler = async (req, res, next) => {
     };
     const insertId = await parentRepository.create(parent);
     if (insertId) {
-      res.status(201).json({ insertId });
+      const parentId = await parentRepository.readParentId(parent.mail);
+
+      if (parentId) {
+        res.status(201).json({ parentId, insertId });
+      }
     } else {
       res.status(400).send("les champs insérés ne sont pas valides");
     }
