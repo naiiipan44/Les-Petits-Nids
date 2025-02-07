@@ -16,6 +16,7 @@ function useFetch(parentId: number) {
       headers: {
         "content-type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
@@ -39,6 +40,7 @@ function useFetch(parentId: number) {
       headers: {
         "content-type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     }).then((response) => {
       if (response.ok) {
@@ -52,6 +54,7 @@ function useFetch(parentId: number) {
   function handleDelete() {
     fetch(`${import.meta.env.VITE_API_URL}/api/parent/${parentId}`, {
       method: "DELETE",
+      credentials: "include",
     }).then((response) => {
       if (response.ok) {
         success("Vos données ont été effacées avec succès");
