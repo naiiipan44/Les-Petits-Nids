@@ -109,6 +109,11 @@ function RegisterPageComponent({
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
+      <p>
+        * Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial (!,
+        @, #, etc.)
+      </p>
+
       <section className="general-conditions">
         <input
           type="checkbox"
