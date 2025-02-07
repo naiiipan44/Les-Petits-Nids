@@ -12,6 +12,10 @@
   gap: 12px;
   width: 80%;
 }
+.login-form p {
+  font-size: 0.7rem;
+  color: grey;
+}
 
 .user-registration {
   display: grid;

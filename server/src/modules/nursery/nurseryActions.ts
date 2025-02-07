@@ -2,24 +2,17 @@ import type { RequestHandler } from "express";
 
 import nurseryRepository from "./nurseryRepository";
 
-const browse: RequestHandler = async (req, res, next) => {
+const browse: RequestHandler = async (req, res) => {
   try {
     const nurseries = await nurseryRepository.readAll();
-    res.json(nurseries);
-  } catch (err) {
-    next(err);
-    res.status(500).json({ error: "Erreur interne du serveur" });
-  }
-};
 
-const readNurseryById: RequestHandler = async (req, res, next) => {
-  try {
-    const nurseryId = Number(req.params.id);
-    const nurseries = await nurseryRepository.readById(nurseryId);
-    res.json(nurseries);
+    if (nurseries.length) {
+      res.status(200).json(nurseries);
+    } else {
+      res.sendStatus(403).json({ error: "Erreur interne du serveur" });
+    }
   } catch (err) {
-    next(err);
-    res.status(500).json({ error: "Erreur interne du serveur" });
+    console.error(err);
   }
 };
 
@@ -70,4 +63,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, readNurseryById, add, read };
+export default { browse, add, read };

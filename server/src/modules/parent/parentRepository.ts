@@ -11,6 +11,15 @@ class ParentRepository {
     return rows;
   }
 
+  async readParentId(mail: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id FROM parent WHERE p_mail = ?",
+      [mail],
+    );
+
+    return rows[0];
+  }
+
   async readEmailWithPassword(email: string) {
     const [rows] = await databaseClient.query<Rows>(
       "select * from parent where email = ?",
