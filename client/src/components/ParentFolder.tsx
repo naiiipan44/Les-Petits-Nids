@@ -1,94 +1,28 @@
-import type { FormEvent } from "react";
-import useToast from "../hooks/useToast";
+import { useEffect, useState } from "react";
+import ParentFolderForm from "./ParentFolderForm";
 import "./ParentFolder.css";
 function ParentFolder() {
-  const { success, error } = useToast();
+  const [edit, setEdit] = useState(false);
+  const [parentId, setParentId] = useState(0);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
       credentials: "include",
-      body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((message) => {
-        if (!message.errors) {
-          success("Vous avez bien complété votre dossier !");
-          fetch(`${import.meta.env.VITE_API_URL}/api/parent/me`, {
-            method: "POST",
-            credentials: "include",
-          });
-        } else {
-          error("Le dossier est invalide");
-        }
-      });
-  }
+      .then((parent) => setParentId(parent.user.id));
+  }, []);
 
   return (
     <>
-      <h3 className="title-profile-parent">Dossier Parent</h3>
-      <section className="parent-folder">
-        <form onSubmit={handleSubmit} className="login-form-parent">
-          <input
-            type="text"
-            placeholder="Prénom"
-            className="input-field"
-            name="firstName"
-          />
-          <input
-            type="text"
-            placeholder="Nom"
-            className="input-field"
-            name="lastName"
-          />
-          <input
-            type="text"
-            placeholder="Métier"
-            className="input-field"
-            name="job"
-          />
-          <input
-            type="text"
-            placeholder="Adresse postale"
-            className="input-field"
-            name="adress"
-          />
-          <input
-            type="number"
-            placeholder="Département"
-            className="input-field"
-            name="zipCode"
-          />
-          <input
-            type="tel"
-            placeholder="Numéro de téléphone"
-            className="input-field"
-            name="numTel"
-          />
-          <input
-            type="email"
-            placeholder="email"
-            className="input-field"
-            name="mail"
-          />
-          <input
-            type="date"
-            placeholder="Date de naissance"
-            className="input-field"
-            name="birthDate"
-          />
-          <button type="submit" className="button-secondary">
-            Valider le formulaire
-          </button>
-        </form>
-      </section>
+      <button
+        className="button-secondary"
+        type="button"
+        onClick={() => setEdit(!edit)}
+      >
+        {edit ? "Création" : "Modification"}
+      </button>
+      <ParentFolderForm edit={edit} parentId={parentId} />
     </>
   );
 }

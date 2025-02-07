@@ -36,6 +36,7 @@ class ParentRepository {
 
     return result.affectedRows;
   }
+
   async create(parent: Parent) {
     const {
       firstName,
@@ -52,6 +53,25 @@ class ParentRepository {
       [firstName, lastName, job, adress, zipCode, numTel, mail, birthDate],
     );
     return result.insertId;
+  }
+
+  async update(parent: Parent) {
+    const [row] = await databaseClient.query<Result>(
+      "UPDATE parent SET p_first_name = ?, p_last_name = ?, p_job = ?, p_address = ?, p_zip_code = ?, p_num_tel = ?, p_mail = ?, p_birth_date = ? WHERE id = ?",
+      [
+        parent.firstName,
+        parent.lastName,
+        parent.job,
+        parent.adress,
+        parent.zipCode,
+        parent.numTel,
+        parent.mail,
+        parent.birthDate,
+        parent.id,
+      ],
+    );
+
+    return row.affectedRows;
   }
 }
 
