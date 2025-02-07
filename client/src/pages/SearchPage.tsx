@@ -13,7 +13,7 @@ function SearchPage() {
   const [userEntry, setUserEntry] = useState<string>("");
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/nursery/`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/nursery/`, {})
       .then((response) => response.json())
       .then((nursery) => setData(nursery));
   }, []);

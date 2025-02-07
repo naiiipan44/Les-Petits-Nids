@@ -16,7 +16,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // get nursery  from database
-
+import authentificationActions from "./modules/authentification/authentificationActions";
 import nurseryActions from "./modules/nursery/nurseryActions";
 
 router.get("/api/nursery", nurseryActions.browse);
@@ -45,7 +45,6 @@ router.put("/api/children/:id", childrenActions.edit);
 
 import parentActions from "./modules/parent/parentActions";
 
-import authentificationActions from "./modules/authentification/authentificationActions";
 import bookingActions from "./modules/booking/bookingActions";
 import userActions from "./modules/user/userActions";
 import validate, {
@@ -65,6 +64,7 @@ router.put("/api/parent/:id", parentActions.edit);
 
 router.post(
   "/api/parent",
+  authentificationActions.verifyToken,
   parentFolderValidator,
   validate.validate,
   parentActions.add,

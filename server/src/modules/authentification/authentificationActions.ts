@@ -106,16 +106,10 @@ const updateOrGetUserToken: RequestHandler = async (
 
 const verifyToken: RequestHandler = (req, res, next) => {
   try {
-    const authorization = req.get("Authorization");
+    const cookie = req.cookies.auth_token;
 
-    if (!authorization) {
-      throw new Error("Authorization must be provided");
-    }
-
-    const [type, token] = authorization.split(" ");
-
-    if (type !== "Bearer") {
-      throw new Error("Bearer must be provided");
+    if (!cookie) {
+      throw new Error("Missing cookie information");
     }
 
     const secretKey = process.env.APP_SECRET;
@@ -124,7 +118,7 @@ const verifyToken: RequestHandler = (req, res, next) => {
       throw new Error("A secret key must be provided");
     }
 
-    jwt.verify(token, secretKey);
+    jwt.verify(cookie, secretKey);
     next();
   } catch (err) {
     res.status(400).send({ message: err });
