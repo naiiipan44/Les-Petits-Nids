@@ -34,6 +34,7 @@ const add: RequestHandler = async (req, res, next) => {
       mail: req.body.mail,
       birthDate: req.body.birthDate,
     };
+
     const insertId = await parentRepository.create(parent);
     if (insertId) {
       const parentId = await parentRepository.readParentId(parent.mail);

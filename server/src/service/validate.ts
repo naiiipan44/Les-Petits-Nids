@@ -30,6 +30,16 @@ export const childrenFolderValidator = [
   body("parentId", "should be an integer").isInt(),
 ];
 
+// let bookingStatus = "en attente" || "acceptée" || "refusée";
+export const bookingValidator = [
+  body("bookingDate", "Should be a valid date").isDate(),
+  body("bookingRange", "Should be a boolean").isBoolean(),
+  // body(
+  //   "status",
+  //   "Should be exact status between : en attente, acceptée, refusée",
+  // ).equals("en attente" | "acceptée" | "refusée"),
+];
+
 const validate: RequestHandler = (req, res, next) => {
   try {
     const errors = validationResult(req);
