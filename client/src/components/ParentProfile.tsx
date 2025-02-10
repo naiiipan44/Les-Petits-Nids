@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import "../pages/ProfilePage.css";
 import type { ParentProfileProps } from "../types/ParentProfile";
 
 function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user?userId=1`)
+      .then((response) => response.json())
+      .then((parent) => console.warn(parent));
+  }, []);
+
   return (
     <section className="profile-page">
       <figure className="profile">

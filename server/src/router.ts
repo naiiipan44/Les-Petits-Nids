@@ -15,39 +15,16 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
-// get nursery  from database
+// Import files for routes
 import authentificationActions from "./modules/authentification/authentificationActions";
 import nurseryActions from "./modules/nursery/nurseryActions";
-
-router.get("/api/nursery", nurseryActions.browse);
-router.get("/api/nursery/:id", nurseryActions.read);
-router.post("/api/nursery", nurseryActions.add);
-
-/* ************************************************************************* */
-
-// get children from database
-
-import childrenActions from "./modules/children/childrenActions";
-
-router.get("/api/children/:id", childrenActions.browse);
-router.post(
-  "/api/children",
-  childrenFolderValidator,
-  validate.validate,
-  childrenActions.add,
-);
-router.delete("/api/children/:id", childrenActions.destroy);
-router.put("/api/children/:id", childrenActions.edit);
-
-/* ************************************************************************* */
-
-// get userApp  from database
-
-// Import files for routes
 
 import bookingActions from "./modules/booking/bookingActions";
 import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
+
+import childrenActions from "./modules/children/childrenActions";
+
 import validate, {
   bookingValidator,
   childrenFolderValidator,
@@ -57,26 +34,13 @@ import validate, {
 // nursery routes
 router.get("/api/nursery", nurseryActions.browse);
 router.get("/api/nursery/:id", nurseryActions.read);
+router.post("/api/nursery", nurseryActions.add);
 
 /***************************************************************/
 
 // User routes
-router.get("/api/parent", parentActions.browse);
-
-router.put("/api/parent/:id", parentActions.edit);
-
-router.post(
-  "/api/parent",
-  authentificationActions.verifyToken,
-  parentFolderValidator,
-  validate.validate,
-  parentActions.add,
-  authentificationActions.verifyToken,
-);
-
-router.delete("/api/parent/:id", parentActions.destroy);
-
-router.get("/api/user", userActions.browse);
+// router.get("/api/user", userActions.browse);
+router.get("/api/user", userActions.readUserById);
 
 router.post(
   "/api/user/registration",
@@ -114,7 +78,6 @@ router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
 
 // Booking routes --> need to be authenticated
-
 router.get("/api/booking", bookingActions.browse);
 router.get("/api/booking/parent", bookingActions.read);
 router.post(
