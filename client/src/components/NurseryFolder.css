@@ -1,3 +1,12 @@
 .main-nursery-folder > section > h1 {
   color: rgba(96, 97, 252);
 }
+
+.login-form-nursery select {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  color: grey;
+  width: 100%;
+}
