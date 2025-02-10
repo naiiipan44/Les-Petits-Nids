@@ -23,20 +23,29 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const newBooking = {
-      parent_id: req.body.parentId,
-      nursery_id: req.body.nurseryId,
-      children_id: req.body.childrenId,
-      booking_date: req.body.bookingDate,
-      booking_range: req.body.bookingRange,
-    };
+    const nurseryId = Number(req.params.id);
+    const { parent_id, children_id, bookingDate, bookingRange, status } =
+      req.body;
 
-    const insertId = await bookingRepository.create(newBooking);
+    const insertId = await bookingRepository.create({
+      nurseryId,
+      parent_id,
+      children_id,
+      bookingDate,
+      bookingRange,
+      status,
+    });
     if (insertId) {
       res.status(201).json({ insertId });
     }
   } catch (err) {
-    next(err);
+    const error = err as { code: string };
+    if (error.code === "ER_DUP_ENTRY") {
+      res.status(400).send("Vous avez déjà fait une réservation à cette date");
+    } else {
+      res.sendStatus(400);
+      next(err);
+    }
   }
 };
 

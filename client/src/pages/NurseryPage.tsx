@@ -3,7 +3,9 @@ import type { NurseryDetails } from "../types/Nursery";
 import "./NurseryPage.css";
 import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
+import NurseryAvailabilities from "../components/NurseryAvailabilities";
 import useStorage from "../hooks/useStorage";
+
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
   const [bookingInfos, setBookingInfos] = useState();
@@ -16,8 +18,6 @@ function NurseryPage() {
       .then((cookie) => setBookingInfos(cookie.user));
   }, []);
 
-  console.warn(bookingInfos); /* pour stocker le contenu du cookie temporairement 
-  --> le console.warn() sera enlevé dans la prochaine pull request !*/
   const handleButtonClick = () => {
     setShowModal(false);
   };
@@ -105,19 +105,23 @@ function NurseryPage() {
             </ul>
           </section>
           <h2 className="availability">Disponibilités</h2>
-          <section className="login-text">
-            <p>
-              Connectez-vous pour accéder aux disponibilités de cette crèche.
-            </p>
-            <button
-              className="not-connected"
-              onClick={() => setShowModal(true)}
-              type="button"
-            >
-              Pas Connecté ?
-            </button>
-            {showModal && <ModalConnexion onClose={handleButtonClick} />}
-          </section>
+          {bookingInfos ? (
+            <NurseryAvailabilities bookingInfos={bookingInfos} />
+          ) : (
+            <section className="login-text">
+              <p>
+                Connectez-vous pour accéder aux disponibilités de cette crèche.
+              </p>
+              <button
+                className="not-connected"
+                onClick={() => setShowModal(true)}
+                type="button"
+              >
+                Pas Connecté ?
+              </button>
+              {showModal && <ModalConnexion onClose={handleButtonClick} />}
+            </section>
+          )}
         </section>
       </section>
     </>

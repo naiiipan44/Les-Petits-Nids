@@ -4,10 +4,11 @@ import type { Result, Rows } from "../../../database/client";
 interface Booking {
   id: number;
   parent_id: number;
-  nursery_id: number;
+  nurseryId: number;
   children_id: number;
-  booking_date: string;
-  booking_range: boolean;
+  bookingDate: string;
+  bookingRange: boolean;
+  status: string;
 }
 
 class BookingRepository {
@@ -24,11 +25,17 @@ class BookingRepository {
   }
 
   async create(booking: Omit<Booking, "id">) {
-    const { parent_id, nursery_id, children_id, booking_date, booking_range } =
-      booking;
+    const {
+      parent_id,
+      nurseryId,
+      children_id,
+      bookingDate,
+      bookingRange,
+      status,
+    } = booking;
     const [result] = await databaseClient.query<Result>(
-      "insert into booking (parent_id, nursery_id, children_id, booking_date, booking_range) values (?, ?, ?, ?, ?)",
-      [parent_id, nursery_id, children_id, booking_date, booking_range],
+      "insert into booking (parent_id, nursery_id, children_id, booking_date, booking_range, status) values (?, ?, ?, ?, ?, ?)",
+      [parent_id, nurseryId, children_id, bookingDate, bookingRange, status],
     );
 
     return result.insertId;
