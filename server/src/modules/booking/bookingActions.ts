@@ -29,6 +29,7 @@ const add: RequestHandler = async (req, res, next) => {
       children_id: req.body.childrenId,
       booking_date: req.body.bookingDate,
       booking_range: req.body.bookingRange,
+      status: req.body.status,
     };
 
     const insertId = await bookingRepository.create(newBooking);
@@ -40,4 +41,26 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, read };
+const readByParentId: RequestHandler = async (req, res, next) => {
+  try {
+    const parentId = req.body.parentId;
+    const bookings = await bookingRepository.readByParentId(parentId);
+    res.json(bookings);
+  } catch (err) {
+    next(err);
+    res.status(500).json({ error: "Erreur interne du serveur" });
+  }
+};
+
+const readByNurseryId: RequestHandler = async (req, res, next) => {
+  try {
+    const nurseryId = req.body.nurseryId;
+    const bookings = await bookingRepository.readByNurseryId(nurseryId);
+    res.json(bookings);
+  } catch (err) {
+    next(err);
+    res.status(500).json({ error: "Erreur interne du serveur" });
+  }
+};
+
+export default { browse, add, read, readByParentId, readByNurseryId };

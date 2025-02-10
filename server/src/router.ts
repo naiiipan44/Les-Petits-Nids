@@ -64,15 +64,6 @@ router.get("/api/parent", parentActions.browse);
 
 router.put("/api/parent/:id", parentActions.edit);
 
-router.post(
-  "/api/parent",
-  authentificationActions.verifyToken,
-  parentFolderValidator,
-  validate.validate,
-  parentActions.add,
-  authentificationActions.verifyToken,
-);
-
 router.delete("/api/parent/:id", parentActions.destroy);
 
 router.get("/api/user", userActions.browse);
@@ -89,14 +80,14 @@ router.post("/api/user/login", authentificationActions.login);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 /* Authentication wall */
-router.use(authentificationActions.verifyToken);
+// router.use(authentificationActions.verifyToken);
 
 // parent routes --> need to be authenticated
 router.get("/api/parent", parentActions.browse); // only for test purposes
 router.post(
   "/api/parent",
-  parentFolderValidator,
-  validate.validate,
+  // parentFolderValidator,
+  // validate.validate,
   parentActions.add,
 );
 router.delete("/api/parent/:id", parentActions.destroy);
@@ -113,8 +104,10 @@ router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
 
 // Booking routes --> need to be authenticated
-router.get("/api/booking", bookingActions.browse);
+// router.get("/api/booking", bookingActions.browse);
 router.get("/api/booking/parent", bookingActions.read);
 router.post("/api/booking", bookingActions.add);
+router.get("/api/booking", bookingActions.readByParentId);
+// router.get("/api/booking", bookingActions.readByNurseryId);
 
 export default router;
