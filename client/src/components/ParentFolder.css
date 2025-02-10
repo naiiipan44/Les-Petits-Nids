@@ -3,12 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 0 2rem 0 2rem;
 }
 
 .title-profile-parent {
   color: #76a3f6;
-  padding: 20px;
+  padding: 1rem;
   font-size: 20px;
 }
 
@@ -35,7 +35,12 @@
 }
 
 .button-secondary {
-  margin-top: 20px;
   background-color: var(--secondaryColor);
   color: white;
+}
+
+.valid-user-information {
+  border: 1.75px solid rgb(16, 219, 16);
+  color: black;
+  background-color: white;
 }

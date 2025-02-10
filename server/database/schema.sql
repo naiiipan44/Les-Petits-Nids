@@ -51,6 +51,9 @@ create table user (
   ns_image VARCHAR(260) NOT NULL,
   ns_price DECIMAL(10,2) NOT NULL
 );
+
+ALTER TABLE parent ADD COLUMN user_id INT NOT NULL;
+
 INSERT INTO nursery (
   ns_name,
   ns_type,

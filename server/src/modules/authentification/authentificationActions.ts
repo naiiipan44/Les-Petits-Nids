@@ -26,6 +26,7 @@ const login: RequestHandler = async (req, res, next) => {
         email: user.email,
         role: user.role,
         first_name: user.first_name,
+        last_name: user.last_name,
       };
 
       const secretKey = process.env.APP_SECRET;
@@ -106,25 +107,24 @@ const updateOrGetUserToken: RequestHandler = async (
 
 const verifyToken: RequestHandler = (req, res, next) => {
   try {
-    const authorization = req.get("Authorization");
+    let token = req.get("Authorization")?.split(" ")[1];
 
-    if (!authorization) {
-      throw new Error("Authorization must be provided");
+    if (!token && req.cookies.auth_token) {
+      token = req.cookies.auth_token;
     }
 
-    const [type, token] = authorization.split(" ");
-
-    if (type !== "Bearer") {
-      throw new Error("Bearer must be provided");
+    if (!token) {
+      res.status(401).send("Token manquant.");
+      return;
     }
 
     const secretKey = process.env.APP_SECRET;
-
     if (!secretKey) {
-      throw new Error("A secret key must be provided");
+      throw new Error("A secret key must be provided.");
     }
 
-    jwt.verify(token, secretKey);
+    const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
+    req.user = decoded;
     next();
   } catch (err) {
     res.status(400).send({ message: err });

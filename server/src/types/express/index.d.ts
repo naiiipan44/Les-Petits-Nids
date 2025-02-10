@@ -6,7 +6,7 @@ declare global {
     export interface Request {
       /* ************************************************************************* */
       // Add your custom properties here, for example:
-      //
+      user?: JwtPayload;
       // user?: { ... }
       /* ************************************************************************* */
     }

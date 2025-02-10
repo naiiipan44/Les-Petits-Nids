@@ -61,13 +61,14 @@ router.post("/api/booking", bookingActions.add);
 router.get("/api/parent", parentActions.browse);
 router.post(
   "/api/parent",
+  authentificationActions.verifyToken,
   parentFolderValidator,
   validate.validate,
   parentActions.add,
-  authentificationActions.verifyToken,
 );
-router.get("/api/user", userActions.browse);
+router.get("/api/parent/:id", parentActions.read);
 
+router.get("/api/user", userActions.browse);
 router.post(
   "/api/user/registration",
   userActions.validation,
