@@ -1,5 +1,5 @@
 export interface Parent {
-  id: number;
+  id?: string;
   firstName: string;
   lastName: string;
   job: string;

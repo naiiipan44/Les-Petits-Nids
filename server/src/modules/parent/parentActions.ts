@@ -2,15 +2,24 @@ import type { RequestHandler } from "express";
 
 import parentRepository from "./parentRepository";
 const browse: RequestHandler = async (req, res) => {
-  const userApp = await parentRepository.readAll();
+  try {
+    const userApp = await parentRepository.readAll();
 
-  res.json(userApp);
+    res.json(userApp);
+  } catch (error) {
+    res.status(404).send(error);
+  }
 };
-const read: RequestHandler = async (req, res) => {
-  const parentId = Number(req.params.id);
-  const userApp = await parentRepository.readById(parentId);
 
-  res.json(userApp);
+const read: RequestHandler = async (req, res) => {
+  try {
+    const parentId = Number(req.params.id);
+    const userApp = await parentRepository.readById(parentId);
+
+    res.json(userApp);
+  } catch (error) {
+    res.status(404).send(error);
+  }
 };
 
 const destroy: RequestHandler = async (req, res, next) => {
@@ -70,7 +79,11 @@ const add: RequestHandler = async (req, res, next) => {
     const insertId = await parentRepository.create(parent);
 
     if (insertId) {
-      res.status(201).json({ insertId });
+      const parentId = await parentRepository.readParentId(parent.mail);
+
+      if (parentId) {
+        res.status(201).json({ parentId, insertId });
+      }
     } else {
       res.status(400).send("les champs insérés ne sont pas valides");
     }
@@ -85,4 +98,46 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, destroy, add, read };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      job,
+      adress,
+      zipCode,
+      numTel,
+      mail,
+      birthDate,
+    } = req.body;
+
+    const { id } = req.params;
+
+    const editParent = await parentRepository.update({
+      firstName,
+      lastName,
+      job,
+      adress,
+      zipCode,
+      numTel,
+      mail,
+      birthDate,
+      id,
+    });
+    if (editParent) {
+      res.sendStatus(201);
+    } else {
+      res.status(403).send("An error occured");
+    }
+  } catch (err) {
+    const error = err as { code: string };
+    if (error.code === "ER_DUP_ENTRY") {
+      res.status(406).send("Cette adresse mail existe déjà");
+    } else {
+      res.status(404);
+      next(err);
+    }
+  }
+};
+
+export default { browse, destroy, add, read, edit };

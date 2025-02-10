@@ -27,7 +27,7 @@ create table user (
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-   hashed_password varchar(255) not null,
+  hashed_password varchar(255) not null,
   role varchar(80) not null
 );
 

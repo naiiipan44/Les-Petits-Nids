@@ -2,6 +2,20 @@ import type { RequestHandler } from "express";
 
 import nurseryRepository from "./nurseryRepository";
 
+const browse: RequestHandler = async (req, res) => {
+  try {
+    const nurseries = await nurseryRepository.readAll();
+
+    if (nurseries.length) {
+      res.status(200).json(nurseries);
+    } else {
+      res.sendStatus(403).json({ error: "Erreur interne du serveur" });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const read: RequestHandler = async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -27,14 +41,26 @@ const read: RequestHandler = async (req, res) => {
   }
 };
 
-const browse: RequestHandler = async (req, res, next) => {
+const add: RequestHandler = async (req, res, next) => {
   try {
-    const nurseries = await nurseryRepository.readAll();
-    res.json(nurseries);
+    const newNursery = {
+      name: req.body.name,
+      address: req.body.address,
+      zipCode: req.body.zipCode,
+      phoneNumber: req.body.phoneNumber,
+      capacity: req.body.capacity,
+      availability: req.body.availability,
+      gestion: req.body.gestion,
+      minAge: req.body.minAge,
+      maxAge: req.body.maxAge,
+      isDisabled: req.body.isDisabled,
+    };
+    const insertId = await nurseryRepository.create(newNursery);
+
+    res.status(201).json({ insertId });
   } catch (err) {
     next(err);
-    res.status(500).json({ error: "Erreur interne du serveur" });
   }
 };
 
-export default { read, browse };
+export default { browse, add, read };

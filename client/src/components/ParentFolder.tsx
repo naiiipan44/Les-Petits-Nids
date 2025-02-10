@@ -1,12 +1,24 @@
-import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
-import useToast from "../hooks/useToast";
+import ParentFolderForm from "./ParentFolderForm";
 import type { Auth } from "../types/Login";
 import type { Parent } from "../types/ParentFolder";
 import "./ParentFolder.css";
 
 function ParentFolder() {
   const { success, error } = useToast();
+  /********************************************************* */
+  const [edit, setEdit] = useState(false);
+  const [parentId, setParentId] = useState(0);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((parent) => setParentId(parent.user.id));
+  }, []);
+
+  /************************************************** */
 
   const [userData, setUserData] = useState<Auth | null>(null);
   const [loading, setLoading] = useState(true);
@@ -55,7 +67,6 @@ function ParentFolder() {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(data),
     })
       .then((response) => {
         if (!response.ok) {
@@ -170,6 +181,14 @@ function ParentFolder() {
               ? "Formulaire déjà complété"
               : "Valider le formulaire"}
           </button>
+          <button
+            className="button-secondary"
+            type="button"
+            onClick={() => setEdit(!edit)}
+          >
+            {edit ? "Création" : "Modification"}
+          </button>
+          <ParentFolderForm edit={edit} parentId={parentId} />
         </form>
       </section>
     </>
