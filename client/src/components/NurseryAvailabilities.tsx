@@ -1,19 +1,6 @@
 import { useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 
-interface BookingInfos {
-  bookingInfos: {
-    id: number;
-    email: string;
-    role: string;
-    first_name: string;
-    iat: number;
-    exp: number;
-    parent_id: number;
-    children_id: number;
-  };
-}
-
 function NurseryAvailabilities(bookingInfos: Readonly<BookingInfos>) {
   const { id } = useParams();
   const { success, error } = useToast();
