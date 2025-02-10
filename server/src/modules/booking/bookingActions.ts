@@ -51,7 +51,7 @@ const add: RequestHandler = async (req, res, next) => {
 
 const readByParentId: RequestHandler = async (req, res, next) => {
   try {
-    const parentId = req.body.parentId;
+    const parentId = Number(req.query.parentId);
     const bookings = await bookingRepository.readByParentId(parentId);
     res.json(bookings);
   } catch (err) {
@@ -62,7 +62,7 @@ const readByParentId: RequestHandler = async (req, res, next) => {
 
 const readByNurseryId: RequestHandler = async (req, res, next) => {
   try {
-    const nurseryId = req.body.nurseryId;
+    const nurseryId = Number(req.query.nurseryId);
     const bookings = await bookingRepository.readByNurseryId(nurseryId);
     res.json(bookings);
   } catch (err) {
