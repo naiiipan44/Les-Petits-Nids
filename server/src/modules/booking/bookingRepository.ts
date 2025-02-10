@@ -1,15 +1,6 @@
 import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
-
-interface Booking {
-  id: number;
-  parent_id: number;
-  nurseryId: number;
-  children_id: number;
-  bookingDate: string;
-  bookingRange: boolean;
-  status: string;
-}
+import type { Booking } from "../../types/modules/Booking";
 
 class BookingRepository {
   async readAll() {
