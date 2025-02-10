@@ -10,11 +10,11 @@ function ChildrenFolder() {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/children`,
       {
         method: "POST",
+        credentials: "include",
         headers: {
           "content-type": "application/json",
         },
@@ -64,8 +64,8 @@ function ChildrenFolder() {
             <option value="" disabled selected>
               Choisissez un genre
             </option>
-            <option value="Homme">Homme</option>
-            <option value="Femme">Femme</option>
+            <option value="homme">Homme</option>
+            <option value="femme">Femme</option>
           </select>
           <input
             type="text"
@@ -76,7 +76,7 @@ function ChildrenFolder() {
           <input
             type="text"
             name="parentId"
-            value="2"
+            value="1"
             style={{ display: "none" }}
           />
           <button type="submit" className="button-primary">

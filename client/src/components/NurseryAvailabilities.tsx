@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 
+import "./NurseryAvailabilities.css";
+
 function NurseryAvailabilities(bookingInfos: Readonly<BookingInfos>) {
   const { id } = useParams();
   const { success, error } = useToast();
