@@ -20,7 +20,7 @@ export const childrenFolderValidator = [
     min: 2,
   }),
   body("lastName", "cannot have less than two characters").isLength({ min: 2 }),
-  body("gender", "gender must be a boolean").isBoolean(),
+  body("gender", "cannot have less than two characters ").isLength({ min: 2 }),
   body("birthdate", "should be a valid date").isDate(),
   body("allergies", "cannot have less than two characters")
     .optional()
