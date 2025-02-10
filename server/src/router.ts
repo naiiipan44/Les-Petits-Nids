@@ -49,6 +49,7 @@ import bookingActions from "./modules/booking/bookingActions";
 import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
 import validate, {
+  bookingValidator,
   childrenFolderValidator,
   parentFolderValidator,
 } from "./service/validate";
@@ -104,10 +105,17 @@ router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
 
 // Booking routes --> need to be authenticated
-// router.get("/api/booking", bookingActions.browse);
+
+router.get("/api/booking", bookingActions.browse);
 router.get("/api/booking/parent", bookingActions.read);
+router.post(
+  "/api/booking/:id",
+  bookingValidator,
+  validate.validate,
+  bookingActions.add,
+);
 router.post("/api/booking", bookingActions.add);
-router.get("/api/booking", bookingActions.readByParentId);
-// router.get("/api/booking", bookingActions.readByNurseryId);
+router.get("/api/booking/parent", bookingActions.readByParentId);
+router.get("/api/booking/nursery", bookingActions.readByNurseryId);
 
 export default router;

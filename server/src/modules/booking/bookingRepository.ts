@@ -1,15 +1,6 @@
 import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
-
-interface Booking {
-  id: number;
-  parent_id: number;
-  nursery_id: number;
-  children_id: number;
-  booking_date: string;
-  booking_range: boolean;
-  status: string;
-}
+import type { Booking } from "../../types/modules/Booking";
 
 class BookingRepository {
   async readAll() {
@@ -43,15 +34,15 @@ class BookingRepository {
   async create(booking: Omit<Booking, "id">) {
     const {
       parent_id,
-      nursery_id,
+      nurseryId,
       children_id,
-      booking_date,
-      booking_range,
+      bookingDate,
+      bookingRange,
       status,
     } = booking;
     const [result] = await databaseClient.query<Result>(
       "insert into booking (parent_id, nursery_id, children_id, booking_date, booking_range, status) values (?, ?, ?, ?, ?, ?)",
-      [parent_id, nursery_id, children_id, booking_date, booking_range, status],
+      [parent_id, nurseryId, children_id, bookingDate, bookingRange, status],
     );
 
     return result.insertId;

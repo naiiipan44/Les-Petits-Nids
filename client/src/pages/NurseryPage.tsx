@@ -18,8 +18,6 @@ function NurseryPage() {
       .then((cookie) => setBookingInfos(cookie.user));
   }, []);
 
-  console.warn(bookingInfos); /* pour stocker le contenu du cookie temporairement 
-  --> le console.warn() sera enlevé dans la prochaine pull request !*/
   const handleButtonClick = () => {
     setShowModal(false);
   };
@@ -36,8 +34,6 @@ function NurseryPage() {
   }
   const [isClicked, setIsClicked] = useState(false);
   const { getStorage, handleStorage } = useStorage();
-
-  const [isLogged, setIsLogged] = useState<boolean>(false);
 
   useEffect(() => {
     const storage: NurseryDetails[] | null = getStorage();
@@ -109,11 +105,8 @@ function NurseryPage() {
             </ul>
           </section>
           <h2 className="availability">Disponibilités</h2>
-          <button type="button" onClick={() => setIsLogged(!isLogged)}>
-            Connectez-vous
-          </button>
-          {isLogged ? (
-            <NurseryAvailabilities />
+          {bookingInfos ? (
+            <NurseryAvailabilities bookingInfos={bookingInfos} />
           ) : (
             <section className="login-text">
               <p>
