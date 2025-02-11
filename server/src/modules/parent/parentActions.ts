@@ -109,6 +109,7 @@ const edit: RequestHandler = async (req, res, next) => {
       numTel,
       mail,
       birthDate,
+      userId,
     } = req.body;
 
     const { id } = req.params;
@@ -123,6 +124,7 @@ const edit: RequestHandler = async (req, res, next) => {
       mail,
       birthDate,
       id,
+      userId,
     });
     if (editParent) {
       res.sendStatus(201);

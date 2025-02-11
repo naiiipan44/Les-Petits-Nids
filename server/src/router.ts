@@ -59,24 +59,6 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /***************************************************************/
 
-// User routes
-router.get("/api/parent", parentActions.browse);
-
-router.put("/api/parent/:id", parentActions.edit);
-
-router.post(
-  "/api/parent",
-  authentificationActions.verifyToken,
-  authentificationActions.verifyToken,
-  parentFolderValidator,
-  validate.validate,
-  parentActions.add,
-);
-
-router.delete("/api/parent/:id", parentActions.destroy);
-
-router.get("/api/parent/:id", parentActions.read);
-
 router.get("/api/user", userActions.browse);
 router.post(
   "/api/user/registration",
@@ -93,7 +75,7 @@ router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 router.use(authentificationActions.verifyToken);
 
 // parent routes --> need to be authenticated
-router.get("/api/parent", parentActions.browse); // only for test purposes
+router.get("/api/parent", parentActions.browse);
 router.post(
   "/api/parent",
   parentFolderValidator,
@@ -101,6 +83,7 @@ router.post(
   parentActions.add,
 );
 router.delete("/api/parent/:id", parentActions.destroy);
+router.get("/api/parent/:id", parentActions.read);
 
 // children routes --> need to be authenticated
 router.get("/api/children/:id", childrenActions.browse);
