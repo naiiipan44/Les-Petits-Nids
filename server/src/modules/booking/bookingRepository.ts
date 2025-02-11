@@ -15,6 +15,22 @@ class BookingRepository {
     return rows;
   }
 
+  async readByParentId(parentId: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM booking WHERE parent_id = ?",
+      [parentId],
+    );
+    return rows;
+  }
+
+  async readByNurseryId(nurseryId: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM booking WHERE nursery_id = ?",
+      [nurseryId],
+    );
+    return rows;
+  }
+
   async create(booking: Omit<Booking, "id">) {
     const {
       parent_id,

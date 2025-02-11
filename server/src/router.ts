@@ -34,7 +34,6 @@ import validate, {
 // nursery routes
 router.get("/api/nursery", nurseryActions.browse);
 router.get("/api/nursery/:id", nurseryActions.read);
-router.post("/api/nursery", nurseryActions.add);
 
 /***************************************************************/
 
@@ -57,7 +56,8 @@ router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 router.use(authentificationActions.verifyToken);
 
 // parent routes --> need to be authenticated
-router.get("/api/parent", parentActions.browse); // only for test purposes
+router.put("/api/parent/:id", parentActions.edit);
+router.get("/api/parent", parentActions.browse);
 router.post(
   "/api/parent",
   parentFolderValidator,
@@ -77,6 +77,9 @@ router.post(
 router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
 
+// Nursery route
+router.post("/api/nursery", nurseryActions.add);
+
 // Booking routes --> need to be authenticated
 router.get("/api/booking", bookingActions.browse);
 router.get("/api/booking/parent", bookingActions.read);
@@ -86,5 +89,8 @@ router.post(
   validate.validate,
   bookingActions.add,
 );
+router.post("/api/booking", bookingActions.add);
+router.get("/api/booking/parent", bookingActions.readByParentId);
+router.get("/api/booking/nursery", bookingActions.readByNurseryId);
 
 export default router;
