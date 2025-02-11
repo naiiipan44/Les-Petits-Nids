@@ -14,7 +14,7 @@ class NurseryRepository {
 
   async readById(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT n_name FROM nursery WHERE id = ?",
+      "SELECT * FROM nursery WHERE id = ?",
       [id],
     );
 
@@ -23,9 +23,11 @@ class NurseryRepository {
 
   async create(nursery: Omit<Nursery, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into nursery (n_name, n_address, n_zipCode, n_phoneNumber, n_capacity, n_availability, n_gestion, n_minAge, n_maxAge, n_isDisabled) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into nursery (ns_name, ns_type, ns_mail, ns_address, ns_zip_postal, ns_num_tel, ns_capacity, ns_nb_place_dispo, ns_is_public, ns_age_min, ns_age_max, ns_is_disabled, ns_coord_long, ns_coord_lat, ns_description, ns_image, ns_price) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         nursery.name,
+        nursery.type,
+        nursery.mail,
         nursery.address,
         nursery.zipCode,
         nursery.phoneNumber,
@@ -35,6 +37,11 @@ class NurseryRepository {
         nursery.minAge,
         nursery.maxAge,
         nursery.isDisabled,
+        nursery.coordLong,
+        nursery.coordLat,
+        nursery.description,
+        nursery.image,
+        nursery.price,
       ],
     );
 
