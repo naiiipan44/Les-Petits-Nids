@@ -79,23 +79,23 @@ function NurseryFolder() {
           />
 
           <fieldset>
-            <label htmlFor="is-disabled">Gestion</label>
-            <input
-              type="radio"
-              id="gestion1"
-              name="gestion1"
-              value="Public"
-              className="input-field"
-            />
+            <label htmlFor="is-disabled">Gestion : </label>
             <label htmlFor="gestion1">Public</label>
             <input
               type="radio"
-              id="gestion2"
-              name="gestion2"
-              value="Privé"
+              id="gestion1"
+              name="gestion"
+              value="Public"
               className="input-field"
             />
             <label htmlFor="gestion2">Privé</label>
+            <input
+              type="radio"
+              id="gestion2"
+              name="gestion"
+              value="Privé"
+              className="input-field"
+            />
           </fieldset>
           <input
             type="number"
@@ -110,12 +110,12 @@ function NurseryFolder() {
             className="input-field"
           />
           <fieldset>
+            <label htmlFor="is-disabled">Accueil enfants handicapés</label>
             <input
               type="checkbox"
               name="isDisabled"
               className="input-field-disabled"
             />
-            <label htmlFor="is-disabled">Accueil enfants handicapés</label>
           </fieldset>
           <input
             type="text"
@@ -130,18 +130,15 @@ function NurseryFolder() {
             className="input-field"
           />
           <input
-            type="text"
-            name="picture"
-            placeholder="Photo de l'établissement"
-            className="input-field"
-          />
-          <FaDownload />
-          <input
             type="number"
             name="price"
             placeholder="Tarif horaire"
             className="input-field"
           />
+          <section className="fadownload">
+            <p>Photo de l'établissement : </p>
+            <FaDownload />
+          </section>
           <button type="submit" className="button-primary">
             Soumettre
           </button>
