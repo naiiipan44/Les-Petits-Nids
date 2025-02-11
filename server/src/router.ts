@@ -29,16 +29,6 @@ router.post("/api/nursery", nurseryActions.add);
 
 import childrenActions from "./modules/children/childrenActions";
 
-router.get("/api/children/:id", childrenActions.browse);
-router.post(
-  "/api/children",
-  childrenFolderValidator,
-  validate.validate,
-  childrenActions.add,
-);
-router.delete("/api/children/:id", childrenActions.destroy);
-router.put("/api/children/:id", childrenActions.edit);
-
 /* ************************************************************************* */
 
 // get userApp  from database
@@ -61,20 +51,6 @@ router.get("/api/nursery/:id", nurseryActions.read);
 /***************************************************************/
 
 // User routes
-router.get("/api/parent", parentActions.browse);
-
-router.put("/api/parent/:id", parentActions.edit);
-
-router.post(
-  "/api/parent",
-  authentificationActions.verifyToken,
-  parentFolderValidator,
-  validate.validate,
-  parentActions.add,
-  authentificationActions.verifyToken,
-);
-
-router.delete("/api/parent/:id", parentActions.destroy);
 
 router.get("/api/user", userActions.browse);
 
@@ -93,7 +69,9 @@ router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 router.use(authentificationActions.verifyToken);
 
 // parent routes --> need to be authenticated
-router.get("/api/parent", parentActions.browse); // only for test purposes
+
+router.put("/api/parent/:id", parentActions.edit);
+router.get("/api/parent", parentActions.browse);
 router.post(
   "/api/parent",
   parentFolderValidator,
@@ -123,5 +101,8 @@ router.post(
   validate.validate,
   bookingActions.add,
 );
+router.post("/api/booking", bookingActions.add);
+router.get("/api/booking/parent", bookingActions.readByParentId);
+router.get("/api/booking/nursery", bookingActions.readByNurseryId);
 
 export default router;
