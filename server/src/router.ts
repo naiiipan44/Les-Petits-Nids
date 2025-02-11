@@ -89,8 +89,11 @@ router.post(
 router.post("/api/user/login", authentificationActions.login);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
-/* Authentication wall */
+/***************************************** Authentication wall ************************************/
 router.use(authentificationActions.verifyToken);
+
+// déconnection  route(supression cookie)
+router.post("/api/logout", authentificationActions.logout);
 
 // parent routes --> need to be authenticated
 router.get("/api/parent", parentActions.browse); // only for test purposes
