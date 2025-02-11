@@ -26,6 +26,7 @@
   background-color: white;
   margin: 5%;
   border-radius: 1rem;
+  position: relative;
 }
 .nursery-details img {
   height: 50%;
@@ -119,6 +120,19 @@
   font-size: 11px;
   margin: 0.3rem 0 0.3rem 0;
 }
+.button-heart {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  width: 25px;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+}
+.button-heart:hover {
+  transform: scale(1.1);
+}
 
 /* animation popup informations */
 
@@ -132,19 +146,10 @@
     display: block;
   }
 }
-.nursery-details {
-  position: relative;
-}
-.button-heart {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  position: absolute;
-  width: 25px;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-}
-.button-heart:hover {
-  transform: scale(1.1);
+
+@media screen and (min-width: 1025px) {
+  .nursery-details {
+    width: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+  }
 }
