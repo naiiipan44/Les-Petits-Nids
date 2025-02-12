@@ -6,7 +6,11 @@ import type { NurseryDetails } from "../types/Nursery";
 
 function Nursery(dataNursery: Readonly<NurseryDetails>) {
   const { ns_type, ns_num_tel, ns_mail, ns_name, ns_image } = dataNursery;
-  const tel = ns_num_tel.replace(/(\d{2})/g, "$1 "); // permet d'afficher le téléphone avec 1 espace chaque 2 chiffres
+  const tel = ns_num_tel ? (
+    ns_num_tel.replace(/(\d{2})/g, "$1 ")
+  ) : (
+    <p>l'information n'est pas reçue</p>
+  ); // permet d'afficher le téléphone avec 1 espace chaque 2 chiffres
 
   return (
     <article className="nursery-section">

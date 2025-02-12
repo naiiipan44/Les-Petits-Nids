@@ -13,10 +13,14 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  width: 300px;
 }
 
-.logo > img,
-.mother2 > img {
+.logo-writing-white {
+  width: 170px;
+}
+.logo-writing-white,
+.mother2 {
   display: block;
   margin: 0 auto;
 }
@@ -25,35 +29,29 @@
   text-align: center;
 }
 
-.small-not {
-  color: white;
-  font-family: "Beth Ellen", sans-serif;
-}
-
-.welcome {
+.landing-page figcaption:last-of-type {
+  text-align: center;
   color: #133f63;
-  font-size: large;
   font-weight: bolder;
   margin-top: 1rem;
 }
 
-.landing-page > p {
+.landing-page > section > p {
   text-align: center;
   font-weight: bold;
+  margin-top: 20px;
   cursor: pointer;
-}
-
-.account-created {
-  font-weight: bold;
   color: #133f63;
+  font-size: 12px;
 }
 
 .round-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  margin-top: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #133f63;
   color: white;
   text-decoration: none;
@@ -63,51 +61,127 @@
   cursor: pointer;
   margin-bottom: 5rem;
 }
-
-button.round-button {
-  font-size: 1.5rem;
-}
-
 .round-button:hover {
   background-color: #133f64;
 }
+.logo-writing,
+.round-button-white,
+.small-not-blue {
+  display: none;
+}
 
-@media screen and (max-width: 380px), screen {
-  .landing-page {
-    padding: 1rem;
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .logo-writing-white,
+  .small-not,
+  .round-button,
+  .landing-page ~ .main-footer {
+    display: none;
   }
 
-  .landing-page > figure {
-    width: 100%;
+  .landing-page {
+    background: var(--mainColor);
+    justify-content: center;
+  }
+
+  .logo-writing {
+    display: block;
+    width: 170px;
+    overflow: hidden;
+  }
+
+  .landing-page figcaption:last-of-type {
+    color: var(--secondaryColor);
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 0;
   }
 
   .white-painting {
-    margin: 1.5rem;
-    padding: 3rem 0.5rem 1rem 0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 550px;
+  }
+  .landing-page img:last-of-type {
+    width: 230px;
+  }
+  .landing-page p:last-of-type {
+    margin-top: 0;
+    font-size: 12px;
   }
 
-  .logo img {
-    width: 25%;
-    margin-top: 16px;
+  .round-button-white {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #133f63;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .logo-writing-white,
+  .small-not,
+  .round-button,
+  .landing-page ~ .main-footer {
+    display: none;
   }
 
-  .small-not {
-    font-size: larger;
-    word-spacing: 5px;
-    letter-spacing: 0.3em;
-    line-height: 4px;
+  .landing-page {
+    background: var(--mainColor);
+    justify-content: center;
   }
 
-  .welcome {
-    text-align: center;
-    font-size: large;
-    margin: 0 0 0.5rem 0.5rem;
+  .logo-writing {
+    display: block;
+    width: 210px;
+    overflow: hidden;
   }
 
-  .account-created {
-    text-align: center;
-    font-size: large;
-    line-height: 1.4;
-    margin: 1rem 0rem 3rem 0.5rem;
+  .landing-page figcaption:last-of-type {
+    color: var(--secondaryColor);
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .white-painting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 650px;
+  }
+  .landing-page img:last-of-type {
+    width: 310px;
+  }
+  .landing-page p:last-of-type {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  .round-button-white {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #133f63;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    cursor: pointer;
   }
 }

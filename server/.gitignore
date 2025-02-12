@@ -1,4 +1,8 @@
 node_modules
 coverage
 .env
+client2.http
 test-routes.http
+requests.http
+request.http
+client2.httpschema.sql

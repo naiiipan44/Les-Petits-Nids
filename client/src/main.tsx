@@ -1,7 +1,12 @@
 // Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  redirect,
+} from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 
 /* ************************************************************************* */
 
@@ -9,16 +14,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
+
+import NotFound from "./components/NotFound";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
 import NurseryPage from "./pages/NurseryPage";
-import ParentsBookings from "./pages/ParentsProfils";
-import ProfilePage from "./pages/ProfilePage";
+import NurseryProfilePage from "./pages/NurseryProfilePage";
+import ParentProfilePage from "./pages/ParentProfilePage";
 import SearchPage from "./pages/SearchPage";
-
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
 
 /* ************************************************************************* */
 
@@ -31,10 +35,7 @@ const router = createBrowserRouter([
         path: "",
         element: <LandingPage />,
       },
-      {
-        path: "profile",
-        element: <ProfilePage />,
-      },
+
       {
         path: "search",
         element: <SearchPage />,
@@ -46,37 +47,39 @@ const router = createBrowserRouter([
           const response = await fetch(
             `${import.meta.env.VITE_API_URL}/api/nursery/${params.id}`,
           );
+          const data = await response.json();
 
-          if (!response.ok) {
-            throw new Error(
-              `Erreur lors de la récupération de la crèche avec l'ID ${params.id} : ${response.statusText}`,
-            );
+          if (data.error) {
+            return redirect("/not-found");
           }
-
-          return response.json();
+          return data;
         },
       },
       {
-        path: "loginandregister",
+        path: "login",
         element: <LoginAndRegisterPage />,
-      },
-      {
-        path: "profile",
-        element: <ProfilePage />,
       },
       {
         path: "favorites",
         element: <Favorites />,
       },
       {
-        path: "parentsbookings",
-        element: <ParentsBookings />,
+        path: "parent",
+        element: <ParentProfilePage />,
+      },
+      {
+        path: "nursery",
+        element: <NurseryProfilePage />,
       },
       {
         path: "map",
         element: <MapPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
@@ -92,9 +95,11 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <AuthProvider>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+    </AuthProvider>
   </StrictMode>,
 );
 

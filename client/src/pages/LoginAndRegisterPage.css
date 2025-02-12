@@ -1,9 +1,9 @@
-.logo {
-  width: 150px;
+.login-register-background > section > section > figure > img {
+  width: 6rem;
   height: auto;
 }
 
-.login-page-container {
+.login-register-background > section:first-of-type {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,44 +13,45 @@
 .login-title {
   font-size: 40px;
   color: var(--secondaryColor);
+  margin-bottom: 1.5rem;
+}
+
+.login-form {
+  margin-top: 32px;
 }
 
 /* Toggle button between nursery and parent display */
 
-.tab-container {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
+.user-type-toggle {
+  background-color: var(--secondaryColor);
+  padding: 14px 5px;
+  border-radius: 30px;
+  display: inline-block;
+  width: 100%;
 }
 
-.tab-button {
-  padding: 10px 25px;
-  font-size: 15px;
-  border: 2px solid var(--secondaryColor);
-  background: white;
-  position: relative;
-  z-index: 1;
-  transition: 1s;
-  font-family: "Nunito", sans-serif;
+.user-type-toggle [name="user-type"] {
+  display: none;
 }
 
-.tab-button.active-tab {
-  background: var(--secondaryColor);
+.user-type-toggle input[type="radio"] + label {
+  background-color: var(--secondaryColor);
   color: white;
+  padding: 7px 11px;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
 }
 
-.tab-button:first-child {
-  margin-right: -10px;
+.user-type-toggle input[type="radio"]:checked + label {
+  background-color: white;
+  color: var(--secondaryColor);
 }
-
-.tab-button:last-child {
-  margin-left: -10px;
-}
-
-/* Lien cliquable */
 
 .account-button {
   padding: 20px 0 0 0;
+  width: 100%;
+  margin: 1rem 0 1rem 0;
   border: none;
   background: none;
   text-decoration: underline;
@@ -63,9 +64,9 @@
 .links {
   padding: 10px 0;
   color: var(--secondaryColor);
+  text-align: center;
+  text-decoration: underline;
 }
-
-/* Retour en arrière */
 
 .button-return {
   display: flex;
@@ -74,32 +75,127 @@
   margin-bottom: 150px;
 }
 
-.back-button {
+.button-return > button {
+  z-index: -1;
   width: 35px;
   height: 35px;
-  background-color: var(--secondaryColor);
-  color: white;
+  background: none;
   border: none;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding-left: 20px;
+  margin-left: 1rem;
+}
+.button-return > button > img {
+  width: 2rem;
+  height: 2rem;
+  transform: rotate(90deg);
 }
 
-.arrow {
-  width: 10px;
-  height: 10px;
-  border-left: 3px solid var(--tertiaryColor);
-  border-bottom: 3px solid var(--tertiaryColor);
-  transform: rotate(45deg);
+.section-image-login {
+  display: none;
+}
+.login-register-background > section > section {
+  justify-items: center;
+  align-content: center;
+  padding: 1rem;
+  width: 100%;
 }
 
-.button-return p {
-  font-size: 16px;
+.login-register-background > a {
+  display: none;
+  text-decoration: none;
   color: var(--secondaryColor);
-  margin: 0;
+}
+
+.login-register-background > a > img {
+  transform: rotate(90deg);
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (min-width: 680px) {
+  .button-return {
+    display: none;
+  }
+  .login-register-background > a {
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .login-register-background > section:first-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    box-shadow: 0 2px 6px var(--shadowColor);
+    width: 1000px;
+    height: 750px;
+    text-align: center;
+    background: white;
+    padding: 0;
+    border-radius: 15px;
+    margin: 0.5rem;
+  }
+  .login-register-background > section > section {
+    height: 100%;
+    width: 50%;
+  }
+  .section-image-login {
+    display: block;
+    height: 100%;
+    width: 50%;
+    border-radius: 0 15px 15px 0;
+    object-fit: cover;
+  }
+
+  .login-register-background {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--mainColor);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .login-register-background > a {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    align-items: center;
+    margin-left: 5%;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  .login-register-background {
+    display: flex;
+  }
+  .login-register-background > section:first-of-type {
+    margin: 2rem;
+  }
+  .login-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .login-register-background {
+    display: block;
+  }
+  .button-return {
+    display: block;
+  }
+  .login-register-background > section > section {
+    padding: 0;
+  }
+  .login-register-background > section:first-of-type {
+    margin: 0;
+  }
+  .login-register-background > a {
+    display: none;
+  }
 }

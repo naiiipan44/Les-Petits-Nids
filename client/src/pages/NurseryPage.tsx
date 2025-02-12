@@ -1,52 +1,57 @@
 import { Link, useLoaderData } from "react-router-dom";
-import type { NurseryData } from "../types/Nursery";
+import type { NurseryDetails } from "../types/Nursery";
 import "./NurseryPage.css";
 import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
+import NurseryAvailabilities from "../components/NurseryAvailabilities";
 import useStorage from "../hooks/useStorage";
 
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
+  const [bookingInfos, setBookingInfos] = useState();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((cookie) => setBookingInfos(cookie.user));
+  }, []);
 
   const handleButtonClick = () => {
     setShowModal(false);
   };
-
   const [isVisible, setIsVisible] = useState(true);
 
   const toggleVisibility = () => {
     setIsVisible((prevState) => !prevState);
   };
 
-  const data = useLoaderData();
+  const data = useLoaderData() as NurseryDetails;
 
   if (!data) {
     return <p>Erreur : Impossible de charger les données pour cette crèche.</p>;
   }
-
   const [isClicked, setIsClicked] = useState(false);
-
   const { getStorage, handleStorage } = useStorage();
 
   useEffect(() => {
-    const storage: NurseryData[] | null = getStorage();
+    const storage: NurseryDetails[] | null = getStorage();
     if (!storage) return;
     const isNurseryInside = storage.find((el) => el.id === data.id);
     if (isNurseryInside) setIsClicked(true);
   }, [data.id, getStorage]);
-
   function handleClick() {
     setIsClicked(!isClicked);
     return handleStorage(data, isClicked);
   }
-
   return (
     <>
       <section className="back-to-nursery">
         <Link to={"/search"} className="back-button">
           <span className="arrow" />
         </Link>
-        <section className="nursery-name">
+        <section>
           <h1>Crèche {data.ns_name}</h1>
           <p>Mettre type de crèche ici</p>
         </section>
@@ -61,10 +66,17 @@ function NurseryPage() {
         </button>
         <section className="nursery-description">
           <h2 className="presentation">Présentation</h2>
-          <p>{data.ns_description}</p>
+          <p>
+            La crèche « {data.ns_name} » n’est pas qu’un lieu de garde c’est
+            surtout un lieu d’échange et d’accueil des enfants et des familles
+            dans une confiance réciproque où le respect, l’autonomie et la
+            sécurité sont des références privilégiées dans notre projet.
+          </p>
           <div className={isVisible ? "hidden" : "visible"}>
             <p>Informations suplémentaire:</p>
-            <p>Adresse : {data.ns_address}</p>
+            <p>
+              <strong>address :</strong> {data.ns_address}
+            </p>
           </div>
           <section className="contact">
             <button
@@ -76,36 +88,43 @@ function NurseryPage() {
             </button>
             <ul>
               <li>
-                <p>Horaires : Lundi-Samedi : 9h-16h</p>
+                <p>
+                  <strong>Horaires :</strong> Lundi-Samedi : 9h-16h
+                </p>
               </li>
               <li>
-                <p>Numéro de téléphone : {data.ns_num_tel}</p>
+                <p>
+                  <strong>Téléphone :</strong> {data.ns_num_tel}
+                </p>
               </li>
               <li>
-                <p>mail : {data.ns_mail}</p>
+                <p>
+                  <strong>Mail :</strong> {data.ns_mail}
+                </p>
               </li>
             </ul>
           </section>
           <h2 className="availability">Disponibilités</h2>
-          <section className="login-text">
-            <p>
-              Connectez-vous pour accéder aux disponibilités de cette crèche.
-            </p>
-            <Link to="/loginandregister">
+          {bookingInfos ? (
+            <NurseryAvailabilities bookingInfos={bookingInfos} />
+          ) : (
+            <section className="login-text">
+              <p>
+                Connectez-vous pour accéder aux disponibilités de cette crèche.
+              </p>
               <button
-                className="connect-button not-connected"
+                className="not-connected"
                 onClick={() => setShowModal(true)}
                 type="button"
               >
                 Pas Connecté ?
               </button>
-            </Link>
-            {showModal && <ModalConnexion onClose={handleButtonClick} />}
-          </section>
+              {showModal && <ModalConnexion onClose={handleButtonClick} />}
+            </section>
+          )}
         </section>
       </section>
     </>
   );
 }
-
 export default NurseryPage;

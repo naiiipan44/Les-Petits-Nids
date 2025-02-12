@@ -10,43 +10,11 @@ CREATE TABLE parent (
   p_birth_date DATE NOT NULL
 );
 
-INSERT INTO parent (
-  p_first_name,
-  p_last_name,
-  p_job,
-  p_address,
-  p_zip_code,
-  p_num_tel,
-  p_mail,
-  p_birth_date
-)
-VALUES
-(
-"Deschamps",
-"Paula",
-"Conseillère bancaire",
-"20 ALLEE DES DHUYS",
-44000,
-"0632000000",
-"paula.deschamps@gmail.com",
-"1986-01-01" -- Correct date format (YYYY-MM-DD)
-),
-(
-"Després",
-"Alexis",
-"Maquettiste",
-"53 BOULEVARD MALESHERBES",
-44300,
-"0755000000",
-"alexis.despres@yahoo.fr",
-"1974-05-07"
-);
-
 create table children (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 c_first_name VARCHAR(80) NOT NULL,
 c_last_name VARCHAR(80) NOT NULL,
-c_gender BOOLEAN DEFAULT NULL,
+c_gender VARCHAR(80) NOT NULL,
 c_birth_date DATE NOT NULL,
 c_allergies VARCHAR(150) NULL,
 parent_id INT NOT NULL,
@@ -59,15 +27,11 @@ create table user (
   first_name varchar(80) not null,
   last_name varchar(80) not null,
   email varchar(255) not null unique,
-  hashed_password varchar(255) not null
+  hashed_password varchar(255) not null,
+  role varchar(80) not null
 );
 
-INSERT INTO user
-  (first_name, last_name, email, hashed_password) 
-  VALUES 
-  ("Jean-Christophe", "Boulgour", "pouet@gmail.com", "$argon2d$v=19$m=12,t=3,p=1$cm02Z2JsMnN0dWgwMDAwMA$lllnKeEdx6K3smy+iqTsgA");
-
-CREATE TABLE nursery (
+  CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   ns_name VARCHAR(80) NOT NULL,
   ns_type VARCHAR(80) NOT NULL, 
@@ -87,8 +51,6 @@ CREATE TABLE nursery (
   ns_image VARCHAR(260) NOT NULL,
   ns_price DECIMAL(10,2) NOT NULL
 );
-
-
 INSERT INTO nursery (
   ns_name,
   ns_type,
@@ -128,7 +90,6 @@ VALUES
   "https://static.wixstatic.com/media/dc445c_9fb8a975972442eab252760838e90e32~mv2.png/v1/fill/w_980,h_436,q_90/dc445c_9fb8a975972442eab252760838e90e32~mv2.png", 
   1.47
   ),
-
   (
   "Babilou Colombes Barbusse",
   "Multi-accueil",
@@ -149,7 +110,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://babilou.fr/sites/default/files/styles/diaporama/public/2022-01/233-babilou-colombes-barbusse-8_0.jpg?h=82f92a78&itok=GDoBekte",
   2.73
   ),
-
   (
   "Les Barbusiens",
   "Micro-crèche",
@@ -169,7 +129,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.demain2pieds.com/wp-content/uploads/2018/05/Les-Barbusiens-4.jpg",
   2.50
   ),
-
   (
   "Saint Raphaël",
   "Multi-accueil",
@@ -189,7 +148,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.acis-asbl.be/wp-content/uploads/2023/07/2gp06473.jpg",
   1.47
   ),
-
   (
   "La Comptine - Arc en Ciel",
   "Multi-accueil",
@@ -210,11 +168,18 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   1.73
   );
 
-
-
-
-
-
-
-
-
+  CREATE TABLE booking (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  parent_id INT NOT NULL,
+  FOREIGN KEY (parent_id)
+  REFERENCES parent(id),
+  nursery_id INT NOT NULL,
+  FOREIGN KEY (nursery_id)
+  REFERENCES nursery(id),
+  children_id INT NOT NULL,
+  FOREIGN KEY (children_id)
+  REFERENCES children(id),
+  booking_date DATE UNIQUE NOT NULL,
+  booking_range BOOLEAN NOT NULL,
+  status VARCHAR(80) NOT NULL
+);

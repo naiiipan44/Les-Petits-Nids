@@ -1,20 +1,6 @@
-.header-gradient {
-  background: var(--mainColor);
-  padding: 30px;
-}
-
 .bottom-page {
   background: white;
-  min-height: 100vh;
   padding: 1px;
-}
-
-.return-form-profil {
-  color: var(--secondaryColor);
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .button-header-bookings {

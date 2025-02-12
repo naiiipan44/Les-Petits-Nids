@@ -1,37 +1,60 @@
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
+import { useAuth } from "../contexts/AuthContext";
 
 function NavBar() {
+  const { user } = useAuth();
+
   return (
-    <>
-      <nav className="nav-component">
-        <NavLink to="favorites">
-          <button type="button" className="nav-buttons">
-            <img src="/blueheart.svg" alt="link to the favorite page" />
-          </button>
+    <nav className="nav-component">
+      <figure className="logo-navbar">
+        <img
+          src="/logo-writing.png"
+          alt="Ceci est le logo des Petits Nids"
+          className="logo-navbar"
+        />
+      </figure>
+      <h1 className="menu-navbar">Menu</h1>
+      <NavLink to="favorites" className="nav-buttons">
+        <img src="/blueheart.svg" alt="lien vers la page favoris" />
+        <h2 className="title-navbar">Favoris</h2>
+      </NavLink>
+      <NavLink to="search" className="nav-buttons">
+        <img src="/search.svg" alt="lien vers la page recherche" />
+        <h2 className="title-navbar">Page de recherche</h2>
+      </NavLink>
+      {user ? (
+        <>
+          {user.role === "parent" && (
+            <NavLink to="profile" className="nav-buttons">
+              <img src="/user.svg" alt="lien vers mon dossier" />
+              <h2 className="title-navbar">Profil</h2>
+            </NavLink>
+          )}
+
+          {user.role === "nursery" && (
+            <NavLink to="nurseryprofile" className="nav-buttons">
+              <img src="/user.svg" alt="lien vers mon dossier" />
+              <h2 className="title-navbar">Profil</h2>
+            </NavLink>
+          )}
+        </>
+      ) : (
+        <NavLink to="login" className="nav-buttons">
+          <img src="/user.svg" alt="lien vers la page profil" />
+          <h2 className="title-navbar">Profil</h2>
         </NavLink>
-        <NavLink to="search">
-          <button type="button" className="nav-buttons">
-            <img src="/search.svg" alt="link to the search page" />
-          </button>
-        </NavLink>
-        <NavLink to="loginandregister">
-          <button type="button" className="nav-buttons">
-            <img src="/user.svg" alt="link to the profil of the user" />
-          </button>
-        </NavLink>
-        <NavLink to="parentsbookings">
-          <button type="button" className="nav-buttons">
-            <img src="/books.svg" alt="link to the book page" />
-          </button>
-        </NavLink>
-        <NavLink to="map">
-          <button type="button" className="nav-buttons">
-            <img src="/map.svg" alt="link to the map page" />
-          </button>
-        </NavLink>
-      </nav>
-    </>
+      )}
+      <NavLink to="map" className="nav-buttons">
+        <img src="/map.svg" alt="lien vers la carte" />
+        <h2 className="title-navbar">Carte</h2>
+      </NavLink>
+      <h1 className="menu-navbar">Suivi</h1>
+      <NavLink to="parentsbookings" className="nav-buttons">
+        <img src="/books.svg" alt="lien vers les réservations" />
+        <h2 className="title-navbar">Reservations</h2>
+      </NavLink>
+    </nav>
   );
 }
 

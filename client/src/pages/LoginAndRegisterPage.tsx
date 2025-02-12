@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./LoginAndRegisterPage.css";
 
-import { Link } from "react-router-dom";
 import LoginPageComponent from "../components/LoginPageComponent";
 import RegisterPageComponent from "../components/RegisterPageComponent";
 
@@ -9,53 +9,69 @@ function LoginAndRegisterPage() {
   const [isParent, setIsParent] = useState<boolean>(true);
   const [registration, setRegistration] = useState<boolean>(false);
 
-  function handleUser() {
-    setIsParent(!isParent);
-  }
-
   return (
-    <>
-      <section className="login-page-container">
-        <figure className="logo">
-          <img src="/logo.svg" alt="logo" />
-        </figure>
-        {registration ? (
-          <h1 className="login-title">Créer un compte</h1>
-        ) : (
-          <h1 className="login-title">Se connecter</h1>
-        )}
-        <section className="tab-container">
-          <button
-            type="button"
-            className={`tab-button ${isParent === true ? "active-tab" : ""}`}
-            onClick={handleUser}
-          >
-            En tant que Parent
-          </button>
-          <button
-            type="button"
-            className={`tab-button ${isParent === false ? "active-tab" : ""}`}
-            onClick={handleUser}
-          >
-            En tant que Crèche
-          </button>
-        </section>
-        {registration ? (
-          <RegisterPageComponent
-            isParent={isParent}
-            setIsParent={setIsParent}
-          />
-        ) : (
-          <LoginPageComponent />
-        )}
-        <Link to="" className="links">
+    <section className="login-register-background">
+      <Link to="/search">
+        <img src="/chevron.png" alt="fleche de retour" />
+        <figcaption>
+          <h1>Page d'accueil</h1>
+          <p>Retour</p>
+        </figcaption>
+      </Link>
+      <section>
+        <section>
+          <figure>
+            <img
+              src="/bluelogo.png"
+              alt="Logo d'oiseau qui représente le site Les Petits Nids"
+            />
+          </figure>
+          {registration ? (
+            <h1 className="login-title">Créer un compte</h1>
+          ) : (
+            <h1 className="login-title">Se connecter</h1>
+          )}
+          <section className="user-type-toggle">
+            <input
+              type="radio"
+              id="user-type-parent"
+              name="user-type"
+              value="parent"
+              checked={isParent} // Sélectionné par défaut
+              onChange={() => setIsParent(true)}
+            />
+            <label className="radio-button" htmlFor="user-type-parent">
+              En tant que parent
+            </label>
+
+            <input
+              type="radio"
+              id="user-type-nursery"
+              name="user-type"
+              value="nursery"
+              checked={!isParent} // Inversé par rapport à `isParent`
+              onChange={() => setIsParent(false)}
+            />
+            <label className="radio-button" htmlFor="user-type-nursery">
+              En tant que crèche
+            </label>
+          </section>
+
+          {registration ? (
+            <RegisterPageComponent
+              isParent={isParent}
+              setIsParent={setIsParent}
+            />
+          ) : (
+            <LoginPageComponent />
+          )}
           {registration ? (
             <button
               type="button"
               className="account-button"
               onClick={() => setRegistration(!registration)}
             >
-              Retour vers la connexion
+              Vous avez déjà un compte ? Se connecter
             </button>
           ) : (
             <button
@@ -66,19 +82,20 @@ function LoginAndRegisterPage() {
               Pas encore de compte ? Inscris-toi
             </button>
           )}
-        </Link>
-        {!registration && (
-          <Link to="" className="links">
-            Mot de passe oublié
-          </Link>
-        )}
+          {!registration && <p className="links">Mot de passe oublié</p>}
+        </section>
+        <img
+          className="section-image-login"
+          src="LoginAndRegister-Image.png"
+          alt="Desssin d'enfants dans une crèche"
+        />
       </section>
       <section className="button-return">
-        <button className="back-button" type="button">
-          <span className="arrow" />
+        <button type="button">
+          <img src="/chevron.png" alt="fleche de retour" />
         </button>
       </section>
-    </>
+    </section>
   );
 }
 
