@@ -64,7 +64,7 @@ router.post("/api/user/login", authentificationActions.login);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 /* Authentication wall */
-router.use(authentificationActions.verifyToken);
+// router.use(authentificationActions.verifyToken);
 
 // parent routes --> need to be authenticated
 
