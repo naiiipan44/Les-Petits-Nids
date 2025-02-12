@@ -32,10 +32,11 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+
 const add: RequestHandler = async (req, res, next) => {
   try {
     const { firstName, lastName, mail } = req.body;
-    const user = req.user;
+    const user = res.locals;
 
     if (!user) {
       res.status(401).send("Utilisateur non authentifié.");

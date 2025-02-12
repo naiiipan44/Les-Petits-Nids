@@ -116,20 +116,30 @@ const verifyToken: RequestHandler = (req, res, next) => {
   try {
     const cookie = req.cookies.auth_token;
 
+    // Si le cookie n'est pas identifié, on renvoie malgré tout un status 200, car on ne veut pas bloquer
+    // l'accès à la page d'accueil.
     if (!cookie) {
-      throw new Error("Missing cookie information");
+      throw new Error("A cookie must be present.");
     }
 
     const secretKey = process.env.APP_SECRET;
+
     if (!secretKey) {
       throw new Error("A secret key must be provided.");
     }
 
     const decoded = jwt.verify(cookie, secretKey) as jwt.JwtPayload;
-    req.user = decoded;
+
+    res.locals = decoded;
+
+    // Si besoin de renvoyer le payload décodé côté frontend, vous pouvez utiliser les lignes
+    // suivantes les middleware qui suivront le mur d'authentification :
+
+    // const user = res.locals;
+
     next();
   } catch (err) {
-    res.status(400).send({ message: err });
+    console.error(err);
   }
 };
 
