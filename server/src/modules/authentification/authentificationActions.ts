@@ -24,6 +24,7 @@ const login: RequestHandler = async (req, res, next) => {
         email: user.email,
         role: user.role,
         first_name: user.first_name,
+        last_name: user.last_name,
       };
 
       const secretKey = process.env.APP_SECRET;
@@ -83,7 +84,7 @@ const updateOrGetUserToken: RequestHandler = async (
 
     if (parent_id) {
       const children = await childrenRepository.getChildrenIdWhithParentId(
-        Number(parent.id),
+        Number(parent?.id),
       );
       children_id = children ? children.id : null;
     }
@@ -120,12 +121,12 @@ const verifyToken: RequestHandler = (req, res, next) => {
     }
 
     const secretKey = process.env.APP_SECRET;
-
     if (!secretKey) {
-      throw new Error("A secret key must be provided");
+      throw new Error("A secret key must be provided.");
     }
 
-    jwt.verify(cookie, secretKey);
+    const decoded = jwt.verify(cookie, secretKey) as jwt.JwtPayload;
+    req.user = decoded;
     next();
   } catch (err) {
     res.status(400).send({ message: err });

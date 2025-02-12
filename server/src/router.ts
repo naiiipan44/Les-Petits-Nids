@@ -21,7 +21,6 @@ import nurseryActions from "./modules/nursery/nurseryActions";
 
 router.get("/api/nursery", nurseryActions.browse);
 router.get("/api/nursery/:id", nurseryActions.read);
-router.post("/api/nursery", nurseryActions.add);
 
 /* ************************************************************************* */
 
@@ -53,7 +52,6 @@ router.get("/api/nursery/:id", nurseryActions.read);
 // User routes
 
 router.get("/api/user", userActions.browse);
-
 router.post(
   "/api/user/registration",
   userActions.validation,
@@ -79,6 +77,7 @@ router.post(
   parentActions.add,
 );
 router.delete("/api/parent/:id", parentActions.destroy);
+router.get("/api/parent/:id", parentActions.read);
 
 // children routes --> need to be authenticated
 router.get("/api/children/:id", childrenActions.browse);
@@ -90,6 +89,9 @@ router.post(
 );
 router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
+
+// nursery routes
+router.post("/api/nursery", nurseryActions.add);
 
 // Booking routes --> need to be authenticated
 

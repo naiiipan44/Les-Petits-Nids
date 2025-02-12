@@ -11,6 +11,17 @@ const browse: RequestHandler = async (req, res) => {
   }
 };
 
+const read: RequestHandler = async (req, res) => {
+  try {
+    const parentId = Number(req.params.id);
+    const userApp = await parentRepository.readById(parentId);
+
+    res.json(userApp);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+};
+
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const parentId = Number(req.params.id);
@@ -23,18 +34,50 @@ const destroy: RequestHandler = async (req, res, next) => {
 };
 const add: RequestHandler = async (req, res, next) => {
   try {
+    const { firstName, lastName, mail } = req.body;
+    const user = req.user;
+
+    if (!user) {
+      res.status(401).send("Utilisateur non authentifié.");
+      return;
+    }
+
+    if (
+      user.first_name.trim().toLowerCase() !== firstName.trim().toLowerCase() ||
+      user.last_name.trim().toLowerCase() !== lastName.trim().toLowerCase() ||
+      user.email.trim().toLowerCase() !== mail.trim().toLowerCase()
+    ) {
+      res
+        .status(400)
+        .send(
+          "Les informations saisies ne correspondent pas à celles de l'utilisateur.",
+        );
+      return;
+    }
+
+    const existingParent = await parentRepository.getParentByUserId(user.id);
+    if (existingParent) {
+      res
+        .status(400)
+        .send("Un dossier parent existe déjà pour cet utilisateur.");
+      return;
+    }
+
     const parent = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      id: req.body.id,
+      firstName,
+      lastName,
       job: req.body.job,
       adress: req.body.adress,
       zipCode: req.body.zipCode,
       numTel: req.body.numTel,
-      mail: req.body.mail,
+      mail,
       birthDate: req.body.birthDate,
+      userId: Number(user.id),
     };
 
     const insertId = await parentRepository.create(parent);
+
     if (insertId) {
       const parentId = await parentRepository.readParentId(parent.mail);
 
@@ -66,6 +109,7 @@ const edit: RequestHandler = async (req, res, next) => {
       numTel,
       mail,
       birthDate,
+      userId,
     } = req.body;
 
     const { id } = req.params;
@@ -80,6 +124,7 @@ const edit: RequestHandler = async (req, res, next) => {
       mail,
       birthDate,
       id,
+      userId,
     });
     if (editParent) {
       res.sendStatus(201);
@@ -97,4 +142,4 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, destroy, add, edit };
+export default { browse, destroy, add, read, edit };
