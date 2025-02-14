@@ -3,7 +3,7 @@ export type Auth = {
   token: string;
 };
 
-type User = {
+export type User = {
   id: number;
   first_name: string;
   last_name: string;

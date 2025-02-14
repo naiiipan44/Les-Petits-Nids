@@ -15,29 +15,16 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
-// get nursery  from database
+// Import files for routes
 import authentificationActions from "./modules/authentification/authentificationActions";
 import nurseryActions from "./modules/nursery/nurseryActions";
-
-router.get("/api/nursery", nurseryActions.browse);
-router.get("/api/nursery/:id", nurseryActions.read);
-router.post("/api/nursery", nurseryActions.add);
-
-/* ************************************************************************* */
-
-// get children from database
-
-import childrenActions from "./modules/children/childrenActions";
-
-/* ************************************************************************* */
-
-// get userApp  from database
-
-// Import files for routes
 
 import bookingActions from "./modules/booking/bookingActions";
 import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
+
+import childrenActions from "./modules/children/childrenActions";
+
 import validate, {
   bookingValidator,
   childrenFolderValidator,
@@ -50,9 +37,8 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /***************************************************************/
 
-// User routes
-
-router.get("/api/user", userActions.browse);
+// user routes
+router.get("/api/user", userActions.readUserById);
 
 router.post(
   "/api/user/registration",
@@ -65,10 +51,8 @@ router.post(
 router.post("/api/user/login", authentificationActions.login);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
-/* Authentication wall */
-router.use(authentificationActions.verifyToken);
-
 // parent routes --> need to be authenticated
+router.use("/api/parent", authentificationActions.verifyToken);
 
 router.put("/api/parent/:id", parentActions.edit);
 router.get("/api/parent", parentActions.browse);
@@ -79,8 +63,11 @@ router.post(
   parentActions.add,
 );
 router.delete("/api/parent/:id", parentActions.destroy);
+router.get("/api/parent/:id", parentActions.read);
 
 // children routes --> need to be authenticated
+router.use("/api/children", authentificationActions.verifyToken);
+
 router.get("/api/children/:id", childrenActions.browse);
 router.post(
   "/api/children",
@@ -91,7 +78,11 @@ router.post(
 router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
 
+// nursery routes
+router.post("/api/nursery", nurseryActions.add);
+
 // Booking routes --> need to be authenticated
+router.use("/api/booking", authentificationActions.verifyToken);
 
 router.get("/api/booking", bookingActions.browse);
 router.post(
