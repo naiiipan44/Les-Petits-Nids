@@ -13,6 +13,7 @@ function NurseryFolder() {
 
     fetch(`${import.meta.env.VITE_API_URL}/api/nursery`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "content-type": "application/json",
       },

@@ -72,6 +72,10 @@ function LoginPageComponent() {
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
+      <p>
+        * Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial (!,
+        @, #, etc.)
+      </p>
       <button className="button-secondary form-validation-button" type="submit">
         Connexion
       </button>

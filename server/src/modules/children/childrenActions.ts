@@ -37,6 +37,7 @@ const add: RequestHandler = async (req, res, next) => {
 
     res.status(201).json({ insertId });
   } catch (err) {
+    console.error(err);
     next(err);
   }
 };

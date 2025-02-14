@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import ParentFolderForm from "./ParentFolderForm";
+
 import "./ParentFolder.css";
+
 function ParentFolder() {
+  /********************************************************* */
   const [edit, setEdit] = useState(false);
   const [parentId, setParentId] = useState(0);
 
@@ -13,20 +16,21 @@ function ParentFolder() {
       .then((parent) => setParentId(parent.user.id));
   }, []);
 
+  /************************************************** */
+
   return (
     <>
-      <button
-        className="button-secondary"
-        type="button"
-        onClick={() => setEdit(!edit)}
-      >
-        {/* <img
-          alt=""
-          src={edit ? "/url_image_true.png" : "/url_image_false.png"}
-        /> */}
-        {edit ? "Création" : "Modification"}
-      </button>
-      <ParentFolderForm edit={edit} parentId={parentId} />
+      <h3 className="title-profile-parent">Dossier Parent</h3>
+      <section className="parent-folder">
+        <button
+          className="button-secondary"
+          type="button"
+          onClick={() => setEdit(!edit)}
+        >
+          {edit ? "Création" : "Modification"}
+        </button>
+        <ParentFolderForm edit={edit} parentId={parentId} />
+      </section>
     </>
   );
 }

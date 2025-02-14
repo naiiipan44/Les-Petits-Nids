@@ -3,7 +3,7 @@ export interface Children {
   firstName: string;
   lastName: string;
   birthdate: string;
-  gender: boolean;
+  gender: string;
   allergies: string;
   parentId: number;
 }
