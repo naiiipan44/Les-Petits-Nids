@@ -16,6 +16,7 @@ import UserProvider from "./contexts/UserProvider";
 import Favorites from "./pages/Favorites";
 
 import NotFound from "./components/NotFound";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
@@ -65,11 +66,19 @@ const router = createBrowserRouter([
       },
       {
         path: "parent",
-        element: <ParentProfilePage />,
+        element: (
+          <ProtectedRoutes>
+            <ParentProfilePage />
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "nursery",
-        element: <NurseryProfilePage />,
+        element: (
+          <ProtectedRoutes>
+            <NurseryProfilePage />
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "map",

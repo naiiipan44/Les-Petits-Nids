@@ -147,7 +147,7 @@
   }
 }
 
-@media screen and (min-width: 431px) and (max-width: 1024px) {
+/* @media screen and (min-width: 431px) and (max-width: 1024px) {
   .nursery-details {
     width: 80%;
 
@@ -179,4 +179,4 @@
   .contact > ul li {
     font-size: 0.5rem;
   }
-}
+} */

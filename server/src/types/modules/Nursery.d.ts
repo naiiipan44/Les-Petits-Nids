@@ -8,7 +8,7 @@ export interface Nursery {
   phoneNumber: string;
   capacity: number;
   availability: string;
-  gestion: boolean;
+  gestion: string;
   minAge: number;
   maxAge: number;
   isDisabled: boolean;
