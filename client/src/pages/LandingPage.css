@@ -29,11 +29,12 @@
   text-align: center;
 }
 
-.landing-page figcaption:last-of-type {
+.white-painting > h1 {
   text-align: center;
   color: #133f63;
   font-weight: bolder;
   margin-top: 1rem;
+  font-size: 16px;
 }
 
 .landing-page > section > p {
@@ -89,10 +90,10 @@
     overflow: hidden;
   }
 
-  .landing-page figcaption:last-of-type {
+  .white-painting > h1 {
     color: var(--secondaryColor);
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     margin-top: 0;
   }
 
@@ -147,7 +148,7 @@
     overflow: hidden;
   }
 
-  .landing-page figcaption:last-of-type {
+  .white-painting > h1 {
     color: var(--secondaryColor);
     font-weight: bold;
     font-size: 20px;
