@@ -37,8 +37,7 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /***************************************************************/
 
-// User routes
-// router.get("/api/user", userActions.browse);
+// user routes
 router.get("/api/user", userActions.readUserById);
 
 router.post(
@@ -52,10 +51,9 @@ router.post(
 router.post("/api/user/login", authentificationActions.login);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
-/* Authentication wall */
-router.use(authentificationActions.verifyToken);
-
 // parent routes --> need to be authenticated
+router.use("/api/parent", authentificationActions.verifyToken);
+
 router.put("/api/parent/:id", parentActions.edit);
 router.get("/api/parent", parentActions.browse);
 router.post(
@@ -65,8 +63,11 @@ router.post(
   parentActions.add,
 );
 router.delete("/api/parent/:id", parentActions.destroy);
+router.get("/api/parent/:id", parentActions.read);
 
 // children routes --> need to be authenticated
+router.use("/api/children", authentificationActions.verifyToken);
+
 router.get("/api/children/:id", childrenActions.browse);
 router.post(
   "/api/children",
@@ -77,10 +78,12 @@ router.post(
 router.delete("/api/children/:id", childrenActions.destroy);
 router.put("/api/children/:id", childrenActions.edit);
 
-// Nursery route
+// nursery routes
 router.post("/api/nursery", nurseryActions.add);
 
 // Booking routes --> need to be authenticated
+router.use("/api/booking", authentificationActions.verifyToken);
+
 router.get("/api/booking", bookingActions.browse);
 router.get("/api/booking/parent", bookingActions.read);
 router.post(

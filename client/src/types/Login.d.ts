@@ -3,10 +3,11 @@ export type Auth = {
   token: string;
 };
 
-type User = {
+export type User = {
   id: number;
   first_name: string;
   last_name: string;
   email: string;
   hashed_password: string;
+  parent_id: number;
 };
