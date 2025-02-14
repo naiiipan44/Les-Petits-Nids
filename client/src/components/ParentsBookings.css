@@ -1,59 +1,104 @@
-.button-reservation-status {
+.main-parent-booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-reservation-status-parent {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
-.button-all {
+.button-reservation-status-parent button {
+  height: 30px;
+  background: none;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.button-reservation-status-parent button:nth-of-type(1) {
   border-color: #7771af;
-  height: 30px;
-  width: 50px;
-  background: none;
   color: #7771af;
-  border-radius: 10px;
-  padding: 5px;
 }
-.button-waiting {
+
+.button-reservation-status-parent button:nth-of-type(2) {
   border-color: #ffa84c;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #ffa84c;
-  border-radius: 10px;
-  padding: 5px;
 }
 
-.button-accepted {
+.button-reservation-status-parent button:nth-of-type(3) {
   border-color: #2dcd7a;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #2dcd7a;
-  border-radius: 10px;
-  padding: 5px;
 }
 
-.button-refused {
+.button-reservation-status-parent button:nth-of-type(4) {
   border-color: #ea5455;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #ea5455;
-  border-radius: 10px;
-  padding: 5px;
 }
-.button-cancelled {
+
+.button-reservation-status-parent button:nth-of-type(5) {
   border-color: #1d0042;
-  font-size: 0.8rem;
-  height: 30px;
-  width: auto;
-  background: none;
   color: #1d0042;
-  border-radius: 10px;
-  padding: 5px;
+}
+
+.booking {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.booking img {
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+}
+
+.booking-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  list-style: none;
+  padding: 0;
+}
+
+.booking-content li {
+  font-size: 0.8rem;
+}
+.booking-content li strong {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.booking-content li:nth-child(2) {
+  font-size: 0.7rem;
+  color: grey;
+}
+
+.booking-content li:nth-child(3) {
+  font-size: 0.6rem;
+  color: grey;
+}
+
+.status-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  background: orange;
+  color: white;
+  border: none;
 }

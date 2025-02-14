@@ -9,4 +9,5 @@ type User = {
   last_name: string;
   email: string;
   hashed_password: string;
+  parent_id: number;
 };

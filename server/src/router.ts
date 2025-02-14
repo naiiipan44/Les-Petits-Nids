@@ -94,7 +94,6 @@ router.put("/api/children/:id", childrenActions.edit);
 // Booking routes --> need to be authenticated
 
 router.get("/api/booking", bookingActions.browse);
-router.get("/api/booking/parent", bookingActions.read);
 router.post(
   "/api/booking/:id",
   bookingValidator,
