@@ -1,4 +1,4 @@
-import type { UserData } from "../types/Booking";
+import type { UserData } from "../types/Booking.d.ts";
 import "./ParentsBookings.css";
 import { useEffect, useState } from "react";
 
