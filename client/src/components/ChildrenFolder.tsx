@@ -10,7 +10,6 @@ function ChildrenFolder() {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/children`,
       {
@@ -74,12 +73,7 @@ function ChildrenFolder() {
             placeholder="Allergies"
             className="input-field"
           />
-          <input
-            type="text"
-            name="parentId"
-            value="1"
-            style={{ display: "none" }}
-          />
+
           <button type="submit" className="button-primary">
             Soumettre
           </button>

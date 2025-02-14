@@ -22,14 +22,13 @@ class ChildrenRepository {
 
   async create(children: Omit<Children, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into children (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, parent_id) values (?, ?, ?, ?, ?, ?)",
+      "insert into children (c_first_name, c_last_name, c_gender, c_birth_date, c_allergies) values (?, ?, ?, ?, ?, ?)",
       [
         children.firstName,
         children.lastName,
         children.gender,
         children.birthdate,
         children.allergies,
-        children.parentId,
       ],
     );
 
@@ -54,7 +53,7 @@ class ChildrenRepository {
         children.gender,
         children.birthdate,
         children.allergies,
-        children.parentId,
+        // children.parentId,
         children.id,
       ],
     );
