@@ -10,6 +10,7 @@ function ChildrenFolder() {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
+
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/children`,
       {
