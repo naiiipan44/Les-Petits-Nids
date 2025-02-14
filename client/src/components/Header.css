@@ -4,7 +4,7 @@
 @media (min-width: 680px) and (max-width: 1024px) {
   .general-section {
     display: grid;
-    grid-template-columns: 25% 85%;
+    grid-template-columns: 20% 80%;
   }
   .outlet-section {
     order: 2;

@@ -35,18 +35,27 @@ function NavBar() {
         <img src="/search.svg" alt="lien vers la page recherche" />
         <h2 className="title-navbar">Page de recherche</h2>
       </NavLink>
+      {/* 
+      <NavLink to="login" className="nav-buttons">
+        <img
+          src={user ? "/logout.png" : "/user.svg"}
+          alt="lien vers la page profil"
+        />
+        <h2 className="title-navbar">Profil</h2>
+      </NavLink> */}
+
+      <h1 className="menu-navbar">Suivi</h1>
       {user ? (
         <>
           {user.role === "parent" && (
-            <NavLink to="profile" className="nav-buttons">
-              <img src="/user.svg" alt="lien vers mon dossier" />
+            <NavLink to="parent" className="nav-buttons">
+              <img src="/folder.png" alt="lien vers mon dossier" />
               <h2 className="title-navbar">Profil</h2>
             </NavLink>
           )}
-
           {user.role === "nursery" && (
-            <NavLink to="nurseryprofile" className="nav-buttons">
-              <img src="/user.svg" alt="lien vers mon dossier" />
+            <NavLink to="nursery" className="nav-buttons">
+              <img src="/folder.png" alt="lien vers mon dossier" />
               <h2 className="title-navbar">Profil</h2>
             </NavLink>
           )}
@@ -63,16 +72,11 @@ function NavBar() {
       </NavLink>
       <h1 className="menu-navbar">Suivi</h1>
 
-      {user ? (
+      {user && (
         <button type="button" onClick={handleLogout} className="nav-buttons">
-          <img src="/user.svg" alt="lien vers mon dossier" />
+          <img src="/logout.png" alt="lien vers mon dossier" />
           <h2 className="title-navbar">Profil</h2>
         </button>
-      ) : (
-        <NavLink to="parentsbookings" className="nav-buttons">
-          <img src="/books.svg" alt="lien vers les réservations" />
-          <h2 className="title-navbar">Reservations</h2>
-        </NavLink>
       )}
     </nav>
   );
