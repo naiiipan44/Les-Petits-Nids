@@ -20,6 +20,10 @@ function ParentFolder() {
         type="button"
         onClick={() => setEdit(!edit)}
       >
+        {/* <img
+          alt=""
+          src={edit ? "/url_image_true.png" : "/url_image_false.png"}
+        /> */}
         {edit ? "Création" : "Modification"}
       </button>
       <ParentFolderForm edit={edit} parentId={parentId} />

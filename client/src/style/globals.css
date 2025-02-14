@@ -69,6 +69,29 @@ main {
   display: block;
 }
 
+.delete-button {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.delete-button img {
+  width: 30px;
+  height: 30px;
+}
+
+.delete-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 @media (min-width: 680px) {
   body {
     background: var(--tertiaryColor);

@@ -72,12 +72,8 @@ function ParentFolderForm({ edit, parentId }: Readonly<ParentFolderProps>) {
             Valider
           </button>
         </form>
-        <button
-          className="button-secondary"
-          type="button"
-          onClick={handleDelete}
-        >
-          Supprimer les données
+        <button className="delete-button" type="button" onClick={handleDelete}>
+          <img src="/delete.png" alt="bouton de suppression" />
         </button>
       </section>
     </>

@@ -66,6 +66,7 @@
   color: var(--secondaryColor);
   text-align: center;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .button-return {

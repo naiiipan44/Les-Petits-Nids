@@ -40,7 +40,6 @@
   text-align: center;
   font-weight: bold;
   margin-top: 20px;
-  cursor: pointer;
   color: #133f63;
   font-size: 12px;
 }
@@ -183,5 +182,51 @@
     border-radius: 50%;
     box-shadow: 0 1px 3px var(--shadowColor);
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .parent-folder {
+    flex-direction: row; /* Passe les éléments en ligne */
+    justify-content: space-around; /* Répartit mieux les éléments */
+    padding: 50px; /* Plus d'espace */
+  }
+
+  .title-profile-parent {
+    font-size: 24px; /* Texte plus grand */
+    font-weight: bold;
+  }
+
+  .button-parent-folder {
+    width: 150px; /* Augmente la largeur */
+    height: 40px; /* Augmente la hauteur */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .button-parent-folder:hover {
+    background-color: #5a8de0; /* Effet au survol */
+  }
+
+  .login-form-parent {
+    width: 60%; /* Réduit la largeur */
+    max-width: 600px;
+  }
+
+  .input-container {
+    gap: 15px; /* Plus d'espacement */
+  }
+
+  .button-secondary {
+    width: 180px;
+    height: 45px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .button-secondary:hover {
+    background-color: #5a8de0;
   }
 }
