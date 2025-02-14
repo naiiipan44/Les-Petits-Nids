@@ -7,6 +7,19 @@ const browse: RequestHandler = async (req, res) => {
   res.json(user);
 };
 
+const readUserById: RequestHandler = async (req, res) => {
+  try {
+    const userId = Number(req.query.userId);
+
+    if (userId) {
+      const user = await userRepository.readById(userId);
+      res.json(user);
+    }
+  } catch (err) {
+    res.sendStatus(404);
+  }
+};
+
 const add: RequestHandler = async (req, res, next) => {
   try {
     const newUser = {
@@ -62,4 +75,4 @@ const validation: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, validation };
+export default { browse, add, validation, readUserById };

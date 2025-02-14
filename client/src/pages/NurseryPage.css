@@ -147,9 +147,36 @@
   }
 }
 
+@media screen and (min-width: 431px) and (max-width: 1024px) {
+  .nursery-details {
+    width: 80%;
+
+    box-shadow: 0 1px 3px var(--shadowColor);
+    margin: 5% auto;
+  }
+
+  .contact > ul li {
+    font-size: 1rem;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   .nursery-details {
     width: 50%;
     box-shadow: 0 1px 3px var(--shadowColor);
+    margin: 5% auto;
+  }
+
+  .contact button {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .nursery-description > p {
+    padding: 5%;
+  }
+  .contact > ul li {
+    font-size: 0.5rem;
   }
 }
