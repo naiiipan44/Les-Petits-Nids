@@ -84,7 +84,7 @@ function NurseryFolder() {
             <input
               type="radio"
               id="gestion1"
-              name="gestion"
+              name="public"
               value="Public"
               className="input-field"
             />
@@ -92,7 +92,7 @@ function NurseryFolder() {
             <input
               type="radio"
               id="gestion2"
-              name="gestion"
+              name="privé"
               value="Privé"
               className="input-field"
             />

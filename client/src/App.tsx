@@ -10,6 +10,7 @@ import type { Auth } from "./types/Login";
 function App() {
   const location = useLocation();
   const isLandingPageOrNoHeader = location.pathname === "/";
+  const isLogin = location.pathname === "/login";
 
   const [auth, setAuth] = useState<Auth | null>(null);
 
@@ -48,13 +49,13 @@ function App() {
       }
     >
       <section className="outlet-section">
-        {!isLandingPageOrNoHeader && <Header />}
+        {!isLandingPageOrNoHeader || (isLogin && <Header />)}
+        <Outlet context={{ setAuth }} />
         {auth ? (
           <p>Bienvenue, {auth.user.first_name} !</p>
         ) : (
           <p>Vous n'êtes pas connecté.</p>
         )}
-        <Outlet context={{ setAuth }} />
         <Footer />
       </section>
       <section className="navbar-section">

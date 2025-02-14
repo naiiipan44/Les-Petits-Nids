@@ -12,6 +12,15 @@ class UserRepository {
     return rows as User[];
   }
 
+  async readById(userId: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select first_name, last_name, role from user where id = ?",
+      [userId],
+    );
+
+    return rows as User[];
+  }
+
   async readEmailWithPassword(email: string) {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT id, first_name, last_name, role, email , hashed_password FROM user WHERE email = ?",

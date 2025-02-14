@@ -41,7 +41,7 @@ create table user (
   ns_num_tel VARCHAR(20),
   ns_capacity INT NOT NULL,
   ns_nb_place_dispo INT NOT NULL,
-  ns_is_public BOOLEAN DEFAULT FALSE,
+  ns_is_public VARCHAR(80) NOT NULL,
   ns_age_min INT NOT NULL,
   ns_age_max INT NOT NULL,
   ns_is_disabled BOOLEAN DEFAULT FALSE,
@@ -51,6 +51,9 @@ create table user (
   ns_image VARCHAR(260) NOT NULL,
   ns_price DECIMAL(10,2) NOT NULL
 );
+
+ALTER TABLE parent ADD COLUMN user_id INT NOT NULL;
+
 INSERT INTO nursery (
   ns_name,
   ns_type,
@@ -80,7 +83,7 @@ VALUES
   "0147819355", 
   60, 
   2, 
-  true, 
+  "public", 
   2.5, 
   4, 
   false, 
@@ -99,7 +102,7 @@ VALUES
   "0809103000",
   41,
   1,
-  false,
+  "privé",
   2.5,
   4,
   false,
@@ -119,7 +122,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "0185531378",
   12,
   0,
-  false,
+  "privé",
   2.5,
   4,
   false,
@@ -138,7 +141,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "0146664605",
   50,
   0,
-  false,
+  "privé",
   2.5,
   4,
   false,
@@ -157,7 +160,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "0146682577",
   55,
   0,
-  true,
+  "public",
   2.5,
   4,
   true,
@@ -167,6 +170,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.ville-antony.fr/images/Petite-Enfance/photos_multi-accueils/la_comptine/int/farandole/farandole_int_1_500.jpg",
   1.73
   );
+
   CREATE TABLE booking (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   parent_id INT NOT NULL,
@@ -178,6 +182,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   children_id INT NOT NULL,
   FOREIGN KEY (children_id)
   REFERENCES children(id),
-  booking_date DATE NOT NULL,
-  booking_range BOOLEAN NOT NULL
+  booking_date DATE UNIQUE NOT NULL,
+  booking_range BOOLEAN NOT NULL,
+  status VARCHAR(80) NOT NULL
 );
