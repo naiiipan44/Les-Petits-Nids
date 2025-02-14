@@ -8,4 +8,5 @@ export interface Parent {
   numTel: string;
   mail: string;
   birthDate: string;
+  userId: number;
 }

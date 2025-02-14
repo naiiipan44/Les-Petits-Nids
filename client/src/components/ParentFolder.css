@@ -1,14 +1,16 @@
 .parent-folder {
   background: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 1rem 1rem 0 1rem;
+  width: 100%;
 }
 
 .title-profile-parent {
   color: #76a3f6;
-  padding: 20px;
+  padding: 1rem;
   font-size: 20px;
 }
 
@@ -35,7 +37,12 @@
 }
 
 .button-secondary {
-  margin-top: 20px;
   background-color: var(--secondaryColor);
   color: white;
+}
+
+.valid-user-information {
+  border: 1.75px solid rgb(16, 219, 16);
+  color: black;
+  background-color: white;
 }
