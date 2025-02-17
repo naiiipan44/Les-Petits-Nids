@@ -31,7 +31,7 @@ class ParentRepository {
 
   async getParentByUserId(userId: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM parent WHERE user_id = ?",
+      "SELECT * FROM parent WHERE id = ?",
       [userId],
     );
 

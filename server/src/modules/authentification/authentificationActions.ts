@@ -86,6 +86,7 @@ const updateOrGetUserToken: RequestHandler = async (
     }
 
     const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
+
     if (!decoded.id) {
       res.status(401).json({ error: "Token invalide" });
       return;
