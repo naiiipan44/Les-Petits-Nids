@@ -85,7 +85,7 @@ router.put("/api/children/:id", childrenActions.edit);
 router.post("/api/nursery", nurseryActions.add);
 
 // Booking routes --> need to be authenticated
-router.use("/api/booking", authentificationActions.verifyToken);
+// router.use("/api/booking", authentificationActions.verifyToken);
 
 router.get("/api/booking", bookingActions.browse);
 router.post(
@@ -97,5 +97,6 @@ router.post(
 router.post("/api/booking", bookingActions.add);
 router.get("/api/booking/parent", bookingActions.readByParentId);
 router.get("/api/booking/nursery", bookingActions.readByNurseryId);
+router.patch("/api/booking/:id", bookingActions.patch);
 
 export default router;

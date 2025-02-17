@@ -8,6 +8,14 @@ class BookingRepository {
     return rows;
   }
 
+  async readById(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM booking WHERE id = ?",
+      [id],
+    );
+    return rows;
+  }
+
   async readBookParentAndChildren() {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT booking_range, booking_date, p_first_name, p_last_name, c_first_name, c_last_name FROM booking JOIN parent ON booking.parent_id = parent.id JOIN children ON booking.children_id = children.id",
@@ -29,6 +37,20 @@ class BookingRepository {
       [nurseryId],
     );
     return rows;
+  }
+
+  async updatedBooking(
+    status: string,
+    parent_id: number,
+    children_id: number,
+    nurseryId: number,
+  ) {
+    const [row] = await databaseClient.query<Result>(
+      "UPDATE booking SET status = ? WHERE id = ? AND parent_id = ? AND children_id = ?",
+      [status, nurseryId, parent_id, children_id],
+    );
+
+    return row.affectedRows;
   }
 
   async create(booking: Omit<Booking, "id">) {

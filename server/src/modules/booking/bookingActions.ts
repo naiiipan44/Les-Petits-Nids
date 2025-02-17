@@ -77,4 +77,26 @@ const readByNurseryId: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, read, readByNurseryId, readByParentId };
+const patch: RequestHandler = async (req, res, next) => {
+  try {
+    const { status, parent_id, children_id } = req.body;
+    const nurseryId = Number(req.params.id);
+
+    const updatedBooking = await bookingRepository.updatedBooking(
+      status,
+      parent_id,
+      children_id,
+      nurseryId,
+    );
+
+    if (updatedBooking) {
+      res.sendStatus(201);
+    }
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(400);
+    next(err);
+  }
+};
+
+export default { browse, add, read, readByNurseryId, readByParentId, patch };
