@@ -13,7 +13,6 @@ function App() {
   const isLogin = location.pathname === "/login";
 
   const [auth, setAuth] = useState<Auth | null>(null);
-
   useEffect(() => {
     const checkUser = async () => {
       try {
