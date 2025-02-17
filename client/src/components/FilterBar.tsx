@@ -12,12 +12,10 @@ function FilterBar({ userEntry, setUserEntry }: UserEntryProps) {
   }
 
   return (
-    <>
-      <section className="filter-head-section">
-        <img src="/search.svg" alt="magnifying glass" />
-        <input type="text" onChange={handleChange} value={userEntry} />
-      </section>
-    </>
+    <section className="filter-head-section">
+      <img src="/search.svg" alt="magnifying glass" />
+      <input type="text" onChange={handleChange} value={userEntry} />
+    </section>
   );
 }
 
