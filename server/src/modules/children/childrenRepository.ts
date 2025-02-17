@@ -53,7 +53,7 @@ class ChildrenRepository {
         children.gender,
         children.birthdate,
         children.allergies,
-        // children.parentId,
+        children.parentId,
         children.id,
       ],
     );

@@ -56,55 +56,44 @@ function NurseryBookings() {
   }
 
   return (
-    <>
-      <section className="reservation-status-nursery">
-        <button type="button">Tous</button>
-        <button type="button">En attente</button>
-        <button type="button">Accepté</button>
-        <button type="button">Refusé</button>
-        <button type="button">Annulé</button>
-      </section>
-      <section className="booking-container">
-        <article className="client-infos">
-          <ul>
-            <li>Enfant : {books?.c_last_name}</li>
-            <li>
-              Né le {books?.c_birth_date && transcriptDate(books?.c_birth_date)}
-            </li>
-            <li>
-              Parent : {books?.p_first_name} {books?.p_last_name}
-            </li>
-            <li>
-              <p>Infos supplémentaires</p>
-            </li>
-          </ul>
-        </article>
+    <section className="booking-container">
+      <article className="client-infos">
+        <ul>
+          <li>Enfant : {books?.c_last_name}</li>
+          <li>
+            Né le {books?.c_birth_date && transcriptDate(books?.c_birth_date)}
+          </li>
+          <li>
+            Parent : {books?.p_first_name} {books?.p_last_name}
+          </li>
+          <li>
+            <p>Infos supplémentaires</p>
+          </li>
+        </ul>
+      </article>
 
-        <article className="booking-infos">
-          <ul>
-            <li>
-              Statut de la réservation : {status ? status : books?.status}
-            </li>
-            <li>
-              Date de réservation :{" "}
-              {books ? transcriptDate(books.booking_date) : ""} |{" "}
-              {books?.booking_range === "1" ? "Matinée" : "Après-midi"}
-            </li>
-          </ul>
-        </article>
-        <form onSubmit={handleSubmit}>
-          <select id="statut" name="statut">
-            <option value="" disabled selected>
-              Changer le statut de la réservation
-            </option>
-            <option value="En attente">En attente</option>
-            <option value="Acceptée">Acceptée</option>
-            <option value="Refusée">Refusée</option>
-          </select>
-          <button type="submit">Valider la sélection</button>
-        </form>
-      </section>
-    </>
+      <article className="booking-infos">
+        <ul>
+          <li>Statut de la réservation : {status ? status : books?.status}</li>
+          <li>
+            Date de réservation :{" "}
+            {books ? transcriptDate(books.booking_date) : ""} |{" "}
+            {books?.booking_range === "1" ? "Matinée" : "Après-midi"}
+          </li>
+        </ul>
+      </article>
+      <form onSubmit={handleSubmit}>
+        <select id="statut" name="statut">
+          <option value="" disabled selected>
+            Changer le statut de la réservation
+          </option>
+          <option value="pending">En attente</option>
+          <option value="accepted">Acceptée</option>
+          <option value="refused">Refusée</option>
+        </select>
+        <button type="submit">Valider la sélection</button>
+      </form>
+    </section>
   );
 }
 
