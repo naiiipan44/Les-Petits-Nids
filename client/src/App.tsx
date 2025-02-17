@@ -49,8 +49,7 @@ function App() {
     >
       <section className="outlet-section">
         {isLandingPageOrNoHeader || isLogin ? "" : <Header />}
-        {auth ? <p>Bienvenue, {auth.user.first_name} !</p> : ""}
-        <Outlet context={{ setAuth }} />
+        <Outlet context={{ auth }} />
         <Footer />
       </section>
       <section className="navbar-section">
