@@ -53,19 +53,6 @@
   background-color: white;
 }
 
-<<<<<<< HEAD
-.delete-button {
-  position: fixed;
-  bottom: 60px;
-  right: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-=======
 .button-modified-create {
   align-self: flex-end;
   margin-right: 18%;
@@ -135,5 +122,4 @@
     margin-top: 1rem;
     text-align: center;
   }
->>>>>>> 8a1599e843134f6b19d33c4b20b537098788f048
 }
