@@ -34,7 +34,8 @@ import validate, {
 // nursery routes
 router.get("/api/nursery", nurseryActions.browse);
 router.get("/api/nursery/:id", nurseryActions.read);
-
+router.delete("/api/nursery/:id", nurseryActions.destroy);
+router.put("/api/nursery/:id", nurseryActions.edit);
 /***************************************************************/
 
 // user routes

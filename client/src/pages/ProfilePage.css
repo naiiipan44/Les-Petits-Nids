@@ -59,7 +59,7 @@
   opacity: 0.9;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 680px) and (max-width: 1024px) {
   .profile-page {
     display: flex;
     flex-direction: column;
@@ -124,7 +124,6 @@
     opacity: 0.9;
   }
 
-  /* Disposition des boutons horizontalement sur desktop */
   .profile-page > button {
     display: inline-block;
     margin: 10px;

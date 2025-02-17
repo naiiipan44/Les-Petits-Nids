@@ -70,4 +70,51 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, read };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+
+    if (!Number.isInteger(id) || id <= 0) {
+      res
+        .status(400)
+        .json({ error: "ID invalide. Un entier positif est attendu." });
+      return;
+    }
+
+    const updatedNursery = req.body;
+    const affectedRows = await nurseryRepository.update(id, updatedNursery);
+
+    if (affectedRows) {
+      res.status(200).json({ message: "Crèche mise à jour avec succès." });
+    } else {
+      res.status(404).json({ error: "Crèche non trouvée." });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+
+    if (!Number.isInteger(id)) {
+      res
+        .status(400)
+        .json({ error: "ID invalide. Un entier positif est attendu." });
+      return;
+    }
+
+    const affectedRows = await nurseryRepository.delete(id);
+
+    if (affectedRows) {
+      res.status(200).json({ message: "Crèche supprimée avec succès." });
+    } else {
+      res.status(404).json({ error: "Crèche non trouvée." });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, read, edit, destroy };

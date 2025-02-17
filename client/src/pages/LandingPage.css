@@ -187,35 +187,35 @@
 
 @media screen and (min-width: 680px) and (max-width: 1024px) {
   .parent-folder {
-    flex-direction: row; /* Passe les éléments en ligne */
-    justify-content: space-around; /* Répartit mieux les éléments */
-    padding: 50px; /* Plus d'espace */
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50px;
   }
 
   .title-profile-parent {
-    font-size: 24px; /* Texte plus grand */
+    font-size: 24px;
     font-weight: bold;
   }
 
   .button-parent-folder {
-    width: 150px; /* Augmente la largeur */
-    height: 40px; /* Augmente la hauteur */
+    width: 150px;
+    height: 40px;
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s ease;
   }
 
   .button-parent-folder:hover {
-    background-color: #5a8de0; /* Effet au survol */
+    background-color: #5a8de0;
   }
 
   .login-form-parent {
-    width: 60%; /* Réduit la largeur */
+    width: 60%;
     max-width: 600px;
   }
 
   .input-container {
-    gap: 15px; /* Plus d'espacement */
+    gap: 15px;
   }
 
   .button-secondary {
