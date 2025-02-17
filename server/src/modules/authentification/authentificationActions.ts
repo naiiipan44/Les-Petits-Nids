@@ -55,6 +55,19 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
+const logout: RequestHandler = async (req, res, next) => {
+  try {
+    res.clearCookie("auth_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
+    res.json({ message: "Logged out" });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const updateOrGetUserToken: RequestHandler = async (
   req,
   res,
@@ -163,4 +176,5 @@ export default {
   login,
   verifyToken,
   updateOrGetUserToken,
+  logout,
 };
