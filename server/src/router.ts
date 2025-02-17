@@ -15,28 +15,16 @@ const router = express.Router();
 
 /* ************************************************************************* */
 
-// get nursery  from database
+// Import files for routes
 import authentificationActions from "./modules/authentification/authentificationActions";
 import nurseryActions from "./modules/nursery/nurseryActions";
-
-router.get("/api/nursery", nurseryActions.browse);
-router.get("/api/nursery/:id", nurseryActions.read);
-
-/* ************************************************************************* */
-
-// get children from database
-
-import childrenActions from "./modules/children/childrenActions";
-
-/* ************************************************************************* */
-
-// get userApp  from database
-
-// Import files for routes
 
 import bookingActions from "./modules/booking/bookingActions";
 import parentActions from "./modules/parent/parentActions";
 import userActions from "./modules/user/userActions";
+
+import childrenActions from "./modules/children/childrenActions";
+
 import validate, {
   bookingValidator,
   childrenFolderValidator,
@@ -49,9 +37,9 @@ router.get("/api/nursery/:id", nurseryActions.read);
 
 /***************************************************************/
 
-// User routes
+// user routes
+router.get("/api/user", userActions.readUserById);
 
-router.get("/api/user", userActions.browse);
 router.post(
   "/api/user/registration",
   userActions.validation,
@@ -107,7 +95,5 @@ router.post(
 router.post("/api/booking", bookingActions.add);
 router.get("/api/booking/parent", bookingActions.readByParentId);
 router.get("/api/booking/nursery", bookingActions.readByNurseryId);
-
-/* Authentication wall */
 
 export default router;

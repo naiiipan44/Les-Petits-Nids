@@ -119,9 +119,9 @@
   .login-register-background > a {
     display: flex;
     align-items: center;
-    margin-left: 5%;
     gap: 1rem;
     font-size: 1.2rem;
+    margin: 1rem 1rem 1rem 5%;
   }
 
   .login-register-background > section:first-of-type {
@@ -176,7 +176,7 @@
     display: flex;
   }
   .login-register-background > section:first-of-type {
-    margin: 2rem;
+    margin: 6rem 2rem 2rem 2rem;
   }
   .login-title {
     font-size: 2.2rem;
