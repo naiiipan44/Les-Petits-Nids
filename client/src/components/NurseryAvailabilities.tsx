@@ -40,15 +40,27 @@ function NurseryAvailabilities(bookingInfos: Readonly<BookingInfos>) {
 
   return (
     <section className="nursery-availabilities-calendar">
-      <p>Tarifs: 3,5€/heure</p>
-
       <section className="calendar-area">
-        <p>Lun. 14</p>
-        <p>Mar. 15</p>
-        <p>Mer. 16</p>
-        <p>Jeu. 17</p>
-        <p>Ven. 18</p>
+        <button type="button" className="date-button">
+          Lun. 14
+        </button>
+        <button type="button" className="date-button">
+          Mar. 15
+        </button>
+        <button type="button" className="date-button">
+          Mer. 16
+        </button>
+        <button type="button" className="date-button">
+          Jeu. 17
+        </button>
+        <button type="button" className="date-button">
+          Ven. 18
+        </button>
+        <button type="button" className="date-button">
+          Sam. 19
+        </button>
       </section>
+      <p>Tarifs: 3,5€/heure</p>
       <button className="not-connected" type="button" onClick={handleSubmit}>
         Réserver
       </button>
