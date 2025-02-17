@@ -27,35 +27,37 @@ function LoginAndRegisterPage() {
             />
           </figure>
           <form>
-            {registration ? (
-              <legend className="login-title">Créer un compte</legend>
-            ) : (
-              <legend className="login-title">Se connecter</legend>
-            )}
             <fieldset className="user-type-toggle">
-              <input
-                type="radio"
-                id="user-type-parent"
-                name="user-type"
-                value="parent"
-                checked={isParent} // Sélectionné par défaut
-                onChange={() => setIsParent(true)}
-              />
-              <label className="radio-button" htmlFor="user-type-parent">
-                En tant que parent
-              </label>
+              {registration ? (
+                <legend className="login-title">Créer un compte</legend>
+              ) : (
+                <legend className="login-title">Se connecter</legend>
+              )}
+              <section>
+                <input
+                  type="radio"
+                  id="user-type-parent"
+                  name="user-type"
+                  value="parent"
+                  checked={isParent} // Sélectionné par défaut
+                  onChange={() => setIsParent(true)}
+                />
+                <label className="radio-button" htmlFor="user-type-parent">
+                  En tant que parent
+                </label>
 
-              <input
-                type="radio"
-                id="user-type-nursery"
-                name="user-type"
-                value="nursery"
-                checked={!isParent} // Inversé par rapport à `isParent`
-                onChange={() => setIsParent(false)}
-              />
-              <label className="radio-button" htmlFor="user-type-nursery">
-                En tant que crèche
-              </label>
+                <input
+                  type="radio"
+                  id="user-type-nursery"
+                  name="user-type"
+                  value="nursery"
+                  checked={!isParent} // Inversé par rapport à `isParent`
+                  onChange={() => setIsParent(false)}
+                />
+                <label className="radio-button" htmlFor="user-type-nursery">
+                  En tant que crèche
+                </label>
+              </section>
             </fieldset>
           </form>
 

@@ -12,6 +12,7 @@
 
 .login-title {
   font-size: 40px;
+  font-weight: bold;
   color: var(--secondaryColor);
   margin-bottom: 1.5rem;
 }
@@ -23,10 +24,15 @@
 /* Toggle button between nursery and parent display */
 
 .user-type-toggle {
+  border: none;
+}
+
+.user-type-toggle > section {
   background-color: var(--secondaryColor);
   padding: 14px 5px;
   border-radius: 30px;
-  display: inline-block;
+  border: none;
+  display: inline-flexbox;
   width: 100%;
 }
 
@@ -111,6 +117,13 @@
   height: 2rem;
 }
 
+@media screen and (max-width: 360px) {
+  .user-type-toggle input[type="radio"] + label {
+    padding: 8px 7px;
+    font-size: 14px;
+  }
+}
+
 @media screen and (min-width: 680px) {
   .button-return {
     display: none;
@@ -121,6 +134,10 @@
     gap: 1rem;
     font-size: 1.2rem;
     margin: 1rem 1rem 1rem 5%;
+  }
+
+  .login-type-button {
+    border: none;
   }
 
   .login-register-background > section:first-of-type {
