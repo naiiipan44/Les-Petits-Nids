@@ -1,21 +1,24 @@
 import "./ChildrenFolder.css";
-import type { FormEvent } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import "./LoginPageComponent.css";
-import { useAuth } from "../contexts/AuthContext";
 import useToast from "../hooks/useToast";
 
 function ChildrenFolder() {
   const { success, error } = useToast();
-  const { user } = useAuth();
+  const [parentId, setParentId] = useState(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((response) => setParentId(response.user.parent_id));
+  });
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    let parentId = null;
-    if (user) {
-      parentId = user.id;
-    }
 
     const { firstName, lastName, birthdate, gender, allergies } = formatedData;
     const response = await fetch(

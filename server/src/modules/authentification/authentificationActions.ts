@@ -94,7 +94,7 @@ const updateOrGetUserToken: RequestHandler = async (
       return;
     }
 
-    const parent = await parentRepository.getParentByUserId(decoded.id);
+    const parent = await parentRepository.getParentByUserId(decoded.email);
 
     let parent_id = null;
 
