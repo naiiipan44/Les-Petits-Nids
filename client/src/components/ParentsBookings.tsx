@@ -1,9 +1,9 @@
-import type { UserData } from "../types/Booking.d.ts";
+import type { BookingData } from "../types/Booking.d.ts";
 import "./ParentsBookings.css";
 import { useEffect, useState } from "react";
 
 function ParentsBookings() {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState<BookingData | null>(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
@@ -31,13 +31,6 @@ function ParentsBookings() {
 
   return (
     <main className="main-parent-booking">
-      <section className="button-reservation-status-parent">
-        <button type="button">Tous</button>
-        <button type="button">En attente</button>
-        <button type="button">Accepté</button>
-        <button type="button">Refusé</button>
-        <button type="button">Annulé</button>
-      </section>
       <article className="booking">
         <img src={userData?.ns_image} alt="Nursery" />
         <ul className="booking-content">

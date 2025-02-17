@@ -1,4 +1,4 @@
-export interface UserData {
+export interface BookingData {
   id: number;
   ns_image: string;
   ns_name: string;

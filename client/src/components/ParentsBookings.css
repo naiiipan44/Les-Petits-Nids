@@ -8,48 +8,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.button-reservation-status-parent {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.button-reservation-status-parent button {
-  height: 30px;
-  background: none;
-  border-radius: 10px;
-  padding: 5px;
-  border: 1px solid;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.button-reservation-status-parent button:nth-of-type(1) {
-  border-color: #7771af;
-  color: #7771af;
-}
-
-.button-reservation-status-parent button:nth-of-type(2) {
-  border-color: #ffa84c;
-  color: #ffa84c;
-}
-
-.button-reservation-status-parent button:nth-of-type(3) {
-  border-color: #2dcd7a;
-  color: #2dcd7a;
-}
-
-.button-reservation-status-parent button:nth-of-type(4) {
-  border-color: #ea5455;
-  color: #ea5455;
-}
-
-.button-reservation-status-parent button:nth-of-type(5) {
-  border-color: #1d0042;
-  color: #1d0042;
-}
-
 .booking {
   display: flex;
   align-items: center;
