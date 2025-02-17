@@ -4,6 +4,6 @@ export interface Booking {
   nurseryId: number;
   children_id: number;
   bookingDate: string;
-  bookingRange: boolean;
+  bookingRange: string;
   status: string;
 }

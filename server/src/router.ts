@@ -86,7 +86,6 @@ router.post("/api/nursery", nurseryActions.add);
 router.use("/api/booking", authentificationActions.verifyToken);
 
 router.get("/api/booking", bookingActions.browse);
-router.get("/api/booking/parent", bookingActions.read);
 router.post(
   "/api/booking/:id",
   bookingValidator,

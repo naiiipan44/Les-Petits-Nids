@@ -183,6 +183,6 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   FOREIGN KEY (children_id)
   REFERENCES children(id),
   booking_date DATE UNIQUE NOT NULL,
-  booking_range BOOLEAN NOT NULL,
+  booking_range VARCHAR(80) NOT NULL,
   status VARCHAR(80) NOT NULL
 );
