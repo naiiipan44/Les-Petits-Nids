@@ -9,9 +9,11 @@
 }
 
 .title-profile-parent {
-  color: #76a3f6;
+  color: var(--secondaryColor);
+  opacity: 0.9;
   padding: 1rem;
-  font-size: 20px;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 .button-parent-folder {
@@ -39,6 +41,10 @@
 .button-secondary {
   background-color: var(--secondaryColor);
   color: white;
+  max-width: 70%;
+  justify-self: center;
+  margin-top: 1rem;
+  padding: 0 1rem 0 1rem;
 }
 
 .valid-user-information {
@@ -47,6 +53,7 @@
   background-color: white;
 }
 
+<<<<<<< HEAD
 .delete-button {
   position: fixed;
   bottom: 60px;
@@ -58,4 +65,75 @@
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+=======
+.button-modified-create {
+  align-self: flex-end;
+  margin-right: 18%;
+  padding: 0 1rem 0 1rem;
+  max-width: 100%;
+  height: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.button-modified-create > img {
+  height: 2rem;
+  border: none;
+  opacity: 0.7;
+}
+.button-modified-create > img:hover {
+  opacity: 1;
+}
+
+.button-delete-parent {
+  position: absolute;
+  top: 21.8%;
+  right: 8%;
+  max-width: 100%;
+  padding: 0 1rem 0 1rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button-delete-parent > img {
+  height: 2rem;
+  border: none;
+  opacity: 0.7;
+}
+.button-delete-parent > img:hover {
+  opacity: 1;
+}
+
+@media (max-width: 680px) {
+  .button-secondary {
+    max-width: 100%;
+  }
+  .button-delete-parent {
+    position: absolute;
+    top: 32.5%;
+    right: 8%;
+    max-width: 100%;
+    padding: 0 1rem 0 1rem;
+    height: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 680px) {
+  .button-modified-create {
+    margin-right: 25%;
+  }
+  .title-profile-parent {
+    color: var(--secondaryColor);
+    opacity: 0.9;
+    padding: 1rem;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+>>>>>>> 8a1599e843134f6b19d33c4b20b537098788f048
 }

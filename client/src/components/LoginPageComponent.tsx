@@ -47,7 +47,7 @@ function LoginPageComponent() {
         setUser(user.user);
         setAuth(user);
         notify();
-        navigate("/");
+        navigate("/search");
       } else {
         error();
       }

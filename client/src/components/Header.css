@@ -24,13 +24,15 @@
     border-bottom: 2px solid #ddd;
   }
 
-  .profil-header > img {
+  .logo-login {
     width: 50px;
   }
-  .profil-header img:last-child {
-    width: 20px;
-    margin-right: 20px;
-    cursor: pointer;
+
+  .logo-not-login {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    margin-right: 3%;
   }
 
   .profil-header figcaption {
@@ -57,8 +59,15 @@
     cursor: pointer;
     font-size: 10px;
   }
-  .profil-header > img {
+  .logo-login {
     width: 50px;
+  }
+
+  .logo-not-login {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    margin-right: 3%;
   }
   .profil-header img:last-child {
     width: 20px;
