@@ -9,7 +9,7 @@ function NurseryAvailabilities(bookingInfos: Readonly<BookingInfos>) {
 
   function handleSubmit() {
     const bookingDate = "2025-03-11";
-    const bookingRange = true;
+    const bookingRange = "après-midi";
     const status = "en attente";
     const book = bookingInfos.bookingInfos;
     const { parent_id, children_id } = book;
