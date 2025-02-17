@@ -1,33 +1,28 @@
 import type { BookingData } from "../types/Booking.d.ts";
 import "./ParentsBookings.css";
 import { useEffect, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 function ParentsBookings() {
   const [userData, setUserData] = useState<BookingData | null>(null);
 
+  const { user } = useAuth();
+
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
+    fetch(
+      `${import.meta.env.VITE_API_URL}/api/booking/parent?parentId=${user?.parent_id}`,
+      {
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+      },
+    )
       .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          fetch(
-            `${import.meta.env.VITE_API_URL}/api/booking/parent?parentId=${data.user.parent_id}`,
-            {
-              headers: {
-                "content-type": "application/json",
-              },
-              credentials: "include",
-            },
-          )
-            .then((res) => res.json())
-            .then((booking) => {
-              setUserData(booking[0]);
-            });
-        }
+      .then((booking) => {
+        setUserData(booking[0]);
       });
-  }, []);
+  }, [user?.parent_id]);
 
   return (
     <main className="main-parent-booking">

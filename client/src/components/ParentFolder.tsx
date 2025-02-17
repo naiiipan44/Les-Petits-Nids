@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 import ParentFolderForm from "./ParentFolderForm";
 
 import "./ParentFolder.css";
+// import { useOutletContext } from "react-router-dom";
 
 function ParentFolder() {
   /********************************************************* */
   const [edit, setEdit] = useState(false);
   const [parentId, setParentId] = useState(0);
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((parent) => setParentId(parent.user.id));
-  }, []);
+    if (user) {
+      setParentId(user.id);
+    }
+  }, [user]);
 
   /************************************************** */
 

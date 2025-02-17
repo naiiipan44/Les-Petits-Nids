@@ -2,19 +2,22 @@ import { useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 
 import "./NurseryAvailabilities.css";
+import { useAuth } from "../contexts/AuthContext";
 
-function NurseryAvailabilities(bookingInfos: Readonly<BookingInfos>) {
+function NurseryAvailabilities() {
   const { id } = useParams();
   const { success, error } = useToast();
 
+  const { user } = useAuth();
+
   function handleSubmit() {
-    const bookingDate = "2025-03-11";
+    const bookingDate = "2025-03-1";
     const bookingRange = "après-midi";
     const status = "en attente";
-    const book = bookingInfos.bookingInfos;
+    const book = user;
     const { parent_id, children_id } = book;
 
-    if (bookingDate && bookingRange && bookingInfos) {
+    if (bookingDate && bookingRange && user) {
       fetch(`${import.meta.env.VITE_API_URL}/api/booking/${id}`, {
         method: "POST",
         headers: {

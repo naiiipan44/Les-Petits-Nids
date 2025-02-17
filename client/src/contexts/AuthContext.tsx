@@ -5,7 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import type { AuthContextType, User } from "../types/AuthContext";
+import type { AuthContextType } from "../types/AuthContext";
+import type { BookingInfos } from "../types/BookingInfos";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
@@ -15,7 +16,7 @@ const AuthContext = createContext<AuthContextType>({
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<BookingInfos | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
