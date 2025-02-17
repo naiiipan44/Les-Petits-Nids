@@ -40,6 +40,7 @@
 }
 .presentation {
   padding: 3% 0 0 5%;
+  font-size: 1.2rem;
 }
 .contact {
   background: linear-gradient(
@@ -54,6 +55,7 @@
 .contact > ul li {
   font-size: 0.8rem;
 }
+
 .information {
   color: var(--tertiaryColor);
   background: var(--secondaryColor);
@@ -69,7 +71,8 @@
   justify-items: start;
 }
 .nursery-description > p {
-  padding: 4% 6% 2% 6%;
+  padding: 4% 6% 6% 6%;
+  font-size: 0.9rem;
 }
 .nursery-description > section > p {
   text-align: center;
@@ -77,6 +80,7 @@
 }
 .availability {
   margin: 5%;
+  font-size: 1.2rem;
 }
 .login-text {
   flex-direction: column;
@@ -90,8 +94,7 @@
   background: var(--secondaryColor);
   box-shadow: 0 2px 6px var(--shadowColor);
   border: none;
-  font-size: 20px;
-  margin: 10%;
+  font-size: 1rem;
   width: 229px;
   height: 55px;
   border-radius: 10px;
@@ -147,20 +150,31 @@
   }
 }
 
-/* @media screen and (min-width: 431px) and (max-width: 1024px) {
+@media screen and (min-width: 680px) and (max-width: 1024px) {
   .nursery-details {
-    width: 80%;
-
+    width: 70%;
     box-shadow: 0 1px 3px var(--shadowColor);
     margin: 5% auto;
   }
 
   .contact > ul li {
+    font-size: 0.8rem;
+  }
+  .contact > ul li p {
+    font-size: 0.9rem;
+  }
+  .not-connected {
+    margin-bottom: 5%;
+  }
+  .nursery-description > p {
     font-size: 1rem;
   }
 }
 
 @media screen and (min-width: 1025px) {
+  .back-to-nursery h1 {
+    font-size: 1.3rem;
+  }
   .nursery-details {
     width: 50%;
     box-shadow: 0 1px 3px var(--shadowColor);
@@ -175,8 +189,18 @@
 
   .nursery-description > p {
     padding: 5%;
+    font-size: 1.2rem;
   }
   .contact > ul li {
     font-size: 0.5rem;
   }
-} */
+  .contact > ul li p {
+    font-size: 1rem;
+  }
+  .contact {
+    justify-content: flex-start;
+  }
+  .not-connected {
+    margin-bottom: 5%;
+  }
+}
