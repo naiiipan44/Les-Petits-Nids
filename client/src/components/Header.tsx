@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { User } from "../types/AuthContext";
 import "./Header.css";
+import { toast } from "react-toastify";
 
 function Header() {
   const [user, setUser] = useState<User>(null);
@@ -23,9 +24,8 @@ function Header() {
           setUser(null);
         }
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération de l'utilisateur :",
-          error,
+        toast.error(
+          `Erreur lors de la récupération de l'utilisateur : ${error}`,
         );
         setUser(null);
       }

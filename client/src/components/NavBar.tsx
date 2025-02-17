@@ -1,19 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import { toast } from "react-toastify";
 import { useAuth } from "../contexts/AuthContext";
 
 function NavBar() {
   const { user } = useAuth();
-
+  const navigate = useNavigate();
   const handleLogout = async () => {
     try {
       await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
         method: "POST",
         credentials: "include",
       });
-      window.location.href = "/login";
+      toast.success("Déconnexion réussie ! Redirection en cours...");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     } catch (error) {
-      console.error("Erreur lors de la déconnexion :", error);
+      toast.error(`Erreur lors de la déconnexion : ${error}`);
     }
   };
 
@@ -35,14 +39,6 @@ function NavBar() {
         <img src="/search.svg" alt="lien vers la page recherche" />
         <h2 className="title-navbar">Page de recherche</h2>
       </NavLink>
-      {/* 
-      <NavLink to="login" className="nav-buttons">
-        <img
-          src={user ? "/logout.png" : "/user.svg"}
-          alt="lien vers la page profil"
-        />
-        <h2 className="title-navbar">Profil</h2>
-      </NavLink> */}
 
       <h1 className="menu-navbar">Suivi</h1>
       {user ? (
