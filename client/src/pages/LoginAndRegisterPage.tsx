@@ -26,36 +26,38 @@ function LoginAndRegisterPage() {
               alt="Logo d'oiseau qui représente le site Les Petits Nids"
             />
           </figure>
-          {registration ? (
-            <h1 className="login-title">Créer un compte</h1>
-          ) : (
-            <h1 className="login-title">Se connecter</h1>
-          )}
-          <section className="user-type-toggle">
-            <input
-              type="radio"
-              id="user-type-parent"
-              name="user-type"
-              value="parent"
-              checked={isParent} // Sélectionné par défaut
-              onChange={() => setIsParent(true)}
-            />
-            <label className="radio-button" htmlFor="user-type-parent">
-              En tant que parent
-            </label>
+          <form>
+            {registration ? (
+              <legend className="login-title">Créer un compte</legend>
+            ) : (
+              <legend className="login-title">Se connecter</legend>
+            )}
+            <fieldset className="user-type-toggle">
+              <input
+                type="radio"
+                id="user-type-parent"
+                name="user-type"
+                value="parent"
+                checked={isParent} // Sélectionné par défaut
+                onChange={() => setIsParent(true)}
+              />
+              <label className="radio-button" htmlFor="user-type-parent">
+                En tant que parent
+              </label>
 
-            <input
-              type="radio"
-              id="user-type-nursery"
-              name="user-type"
-              value="nursery"
-              checked={!isParent} // Inversé par rapport à `isParent`
-              onChange={() => setIsParent(false)}
-            />
-            <label className="radio-button" htmlFor="user-type-nursery">
-              En tant que crèche
-            </label>
-          </section>
+              <input
+                type="radio"
+                id="user-type-nursery"
+                name="user-type"
+                value="nursery"
+                checked={!isParent} // Inversé par rapport à `isParent`
+                onChange={() => setIsParent(false)}
+              />
+              <label className="radio-button" htmlFor="user-type-nursery">
+                En tant que crèche
+              </label>
+            </fieldset>
+          </form>
 
           {registration ? (
             <RegisterPageComponent
@@ -87,7 +89,7 @@ function LoginAndRegisterPage() {
         <img
           className="section-image-login"
           src="LoginAndRegister-Image.png"
-          alt="Desssin d'enfants dans une crèche"
+          alt="Dessin d'enfants dans une crèche"
         />
       </section>
       <section className="button-return">
