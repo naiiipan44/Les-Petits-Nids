@@ -1,9 +1,25 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import { toast } from "react-toastify";
 import { useAuth } from "../contexts/AuthContext";
 
 function NavBar() {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      toast.success("Déconnexion réussie ! Redirection en cours...");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    } catch (error) {
+      toast.error(`Erreur lors de la déconnexion : ${error}`);
+    }
+  };
 
   return (
     <nav className="nav-component">
@@ -24,19 +40,8 @@ function NavBar() {
         <h2 className="title-navbar">Page de recherche</h2>
       </NavLink>
 
-      <NavLink to="login" className="nav-buttons">
-        <img
-          src={user ? "/logout.png" : "/user.svg"}
-          alt="lien vers la page profil"
-        />
-        <h2 className="title-navbar">Profil</h2>
-      </NavLink>
-      <NavLink to="map" className="nav-buttons">
-        <img src="/map.svg" alt="lien vers la carte" />
-        <h2 className="title-navbar">Carte</h2>
-      </NavLink>
       <h1 className="menu-navbar">Suivi</h1>
-      {user && (
+      {user ? (
         <>
           {user.role === "parent" && (
             <NavLink to="parent" className="nav-buttons">
@@ -51,6 +56,23 @@ function NavBar() {
             </NavLink>
           )}
         </>
+      ) : (
+        <NavLink to="login" className="nav-buttons">
+          <img src="/user.svg" alt="lien vers la page profil" />
+          <h2 className="title-navbar">Profil</h2>
+        </NavLink>
+      )}
+      <NavLink to="map" className="nav-buttons">
+        <img src="/map.svg" alt="lien vers la carte" />
+        <h2 className="title-navbar">Carte</h2>
+      </NavLink>
+      <h1 className="menu-navbar">Suivi</h1>
+
+      {user && (
+        <button type="button" onClick={handleLogout} className="nav-buttons">
+          <img src="/logout.png" alt="lien vers mon dossier" />
+          <h2 className="title-navbar">Profil</h2>
+        </button>
       )}
     </nav>
   );

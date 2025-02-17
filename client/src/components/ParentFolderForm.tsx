@@ -1,4 +1,5 @@
 import { type FormEvent, useEffect, useState } from "react";
+import "./ParentFolder.css";
 import { useAuth } from "../contexts/AuthContext";
 import useFetch from "../hooks/useFetch";
 import useToast from "../hooks/useToast";
@@ -66,6 +67,13 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
   return (
     <section className="parent-folder">
       <form onSubmit={handleSubmit} className="login-form-parent">
+        <button
+          className="button-delete-parent"
+          type="button"
+          onClick={handleDelete}
+        >
+          <img src="public/trash.png" alt="supprimé son dossier parent" />
+        </button>
         <input
           type="text"
           placeholder="Prénom"
@@ -153,9 +161,6 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
             : "Valider le formulaire"}
         </button>
       </form>
-      <button className="button-secondary" type="button" onClick={handleDelete}>
-        Supprimer les données
-      </button>
     </section>
   );
 }

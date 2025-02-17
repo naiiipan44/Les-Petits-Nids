@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import type { AuthContextType } from "../types/AuthContext";
-import type { BookingInfos } from "../types/BookingInfos";
+import type { User } from "../types/BookingInfos";
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
@@ -16,7 +16,8 @@ const AuthContext = createContext<AuthContextType>({
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<BookingInfos | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -31,6 +32,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         if (response.ok) {
           const data = await response.json();
+
           setUser(data.user);
         } else {
           setUser(null);
@@ -41,15 +43,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           error,
         );
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUser();
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  if (!loading)
+    return (
+      <AuthContext.Provider value={{ user, setUser }}>
+        {children}
+      </AuthContext.Provider>
+    );
 }

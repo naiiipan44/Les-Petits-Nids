@@ -50,4 +50,19 @@
 
 .button-primary {
   margin-top: 20px;
+  width: 60%;
+  justify-self: center;
+}
+
+@media (max-width: 680px) {
+  .button-primary {
+    width: 100%;
+  }
+}
+@media (min-width: 680px) {
+  .input-field {
+    width: 75%;
+    margin: 0.2rem 0 0.2rem 0;
+    justify-self: center;
+  }
 }

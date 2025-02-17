@@ -1,4 +1,4 @@
-export interface BookingInfos {
+export interface User {
   id: number;
   email: string;
   role: "parent" | "nursery";

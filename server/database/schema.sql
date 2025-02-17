@@ -31,7 +31,17 @@ create table user (
   role varchar(80) not null
 );
 
-  CREATE TABLE nursery (
+INSERT INTO user (
+  first_name, last_name, email, hashed_password, role
+) VALUES (
+  "Jean-Charles", "Passereaux", "creche-les-passereaux@wanadoo.fr", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$7aEMFgo/0z0vNR6EVtDKhg", "nursery"
+), 
+("Anne", "Babilou", "contact@babilou.com", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$juN7KG181Cl/yMHgbiqn5Q", "nursery"), 
+("François", "Barbusiens", "rpe-orves@mairie-colombes.fr", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$6XFoX1kaoJooVJ4/FYjEJQ", "nursery"),
+("Claire", "Raphaël", "creche@association-saint-raphael.com", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$4cOvlrBG2HL6W5snZzLO8g", "nursery"),
+("Constance", "Comptine", "petite_enfance@ville-antony.fr", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$Og+ZhKN9v3q2XurOAPE6ig", "nursery");
+
+CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   ns_name VARCHAR(80) NOT NULL,
   ns_type VARCHAR(80) NOT NULL, 
