@@ -73,12 +73,7 @@ function ChildrenFolder() {
             placeholder="Allergies"
             className="input-field"
           />
-          <input
-            type="text"
-            name="parentId"
-            value="1"
-            style={{ display: "none" }}
-          />
+
           <button type="submit" className="button-primary">
             Soumettre
           </button>

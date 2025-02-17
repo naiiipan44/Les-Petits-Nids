@@ -4,15 +4,24 @@
   align-items: center;
   text-align: center;
   gap: 30px;
-
   width: 100%;
-  max-width: 380px;
   padding: 40px 20px;
-
   box-sizing: border-box;
   background: var(--mainColor);
   color: var(--secondaryColor);
 }
+
+.profile-page > a > img {
+  transform: rotate(90deg);
+  width: 3.5rem;
+  height: auto;
+}
+
+.profile-page > a {
+  display: none;
+  align-self: self-start;
+}
+
 .profile-page p {
   font-size: 15px;
   font-weight: bolder;
@@ -57,4 +66,27 @@
 
 .profile-page button:hover {
   opacity: 0.9;
+}
+
+@media (min-width: 680px) {
+  .child-button {
+    max-width: 50%;
+  }
+
+  .parents-button {
+    max-width: 50%;
+  }
+
+  .reservations-button {
+    max-width: 50%;
+  }
+
+  .profile-page {
+    background: #f6f6f6;
+  }
+
+  .profile-page > a {
+    display: block;
+    align-self: self-start;
+  }
 }

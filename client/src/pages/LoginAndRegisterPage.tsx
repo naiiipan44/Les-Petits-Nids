@@ -65,6 +65,7 @@ function LoginAndRegisterPage() {
             <RegisterPageComponent
               isParent={isParent}
               setIsParent={setIsParent}
+              setRegistration={setRegistration}
             />
           ) : (
             <LoginPageComponent />

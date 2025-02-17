@@ -8,51 +8,87 @@ import ParentsBookings from "../components/ParentsBookings";
 function ParentProfilePage() {
   const [display, setDisplay] = useState(true);
   const [isVisible, setIsVisible] = useState("parent");
+
   return (
     <main className="main-parents-profils">
-      {display ? (
+      <section className="mobile">
+        {display ? (
+          <ParentProfile
+            display={display}
+            setDisplay={setDisplay}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+          />
+        ) : (
+          <>
+            <button type="button" onClick={() => setDisplay(true)}>
+              Retour
+            </button>
+            <section className="button-header-bookings">
+              <button
+                type="button"
+                onClick={() => setIsVisible("parent")}
+                className="button-parents"
+              >
+                Parents
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsVisible("children")}
+                className="button-children"
+              >
+                Enfants
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsVisible("booking")}
+                className="button-reservation"
+              >
+                Réservation
+              </button>
+            </section>
+
+            <section className="bottom-page">
+              {isVisible === "parent" ? (
+                <ParentFolder />
+              ) : isVisible === "children" ? (
+                <ChildrenFolder />
+              ) : (
+                <ParentsBookings />
+              )}
+            </section>
+          </>
+        )}
+      </section>
+      <section className="desktop-layout">
         <ParentProfile
           display={display}
           setDisplay={setDisplay}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
         />
-      ) : (
-        <>
-          <button
-            type="button"
-            onClick={() => setDisplay(true)}
-            className="button-secondary"
-          >
-            Retour
-          </button>
+        <section className="right-section">
           <section className="button-header-bookings">
             <button
-              onClick={() => {
-                setIsVisible("parent");
-              }}
-              className="button-parents"
               type="button"
+              onClick={() => setIsVisible("parent")}
+              className="button-parents"
             >
               Parents
             </button>
             <button
-              onClick={() => {
-                setIsVisible("children");
-              }}
-              className="button-children"
               type="button"
+              onClick={() => setIsVisible("children")}
+              className="button-children"
             >
               Enfants
             </button>
             <button
-              className="button-reservation"
               type="button"
-              onClick={() => {
-                setIsVisible("booking");
-              }}
+              onClick={() => setIsVisible("booking")}
+              className="button-reservation"
             >
-              Reservation
+              Réservation
             </button>
           </section>
 
@@ -65,8 +101,8 @@ function ParentProfilePage() {
               <ParentsBookings />
             )}
           </section>
-        </>
-      )}
+        </section>
+      </section>
     </main>
   );
 }

@@ -17,7 +17,7 @@ class BookingRepository {
 
   async readByParentId(parentId: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM booking WHERE parent_id = ?",
+      "SELECT parent_id,nursery_id, children_id, booking_date, booking_range, status, ns_name, ns_image FROM booking INNER JOIN nursery ON nursery.id=booking.nursery_id WHERE parent_id = ?",
       [parentId],
     );
     return rows;
@@ -25,7 +25,7 @@ class BookingRepository {
 
   async readByNurseryId(nurseryId: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM booking WHERE nursery_id = ?",
+      "SELECT booking_date, booking_range, status, c_first_name, c_last_name, c_gender, c_birth_date, c_allergies, p_first_name, p_last_name, p_job, p_address, p_zip_code, p_num_tel, p_mail, p_birth_date FROM booking JOIN parent ON parent.id = booking.parent_id JOIN children ON children.id = booking.children_id WHERE nursery_id = ?",
       [nurseryId],
     );
     return rows;

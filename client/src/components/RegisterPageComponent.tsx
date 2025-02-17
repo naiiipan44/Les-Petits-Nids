@@ -6,6 +6,7 @@ import ModalConditions from "./ModalConditions";
 
 function RegisterPageComponent({
   isParent,
+  setRegistration,
 }: Readonly<RegisterPageComponentProps>) {
   const [indication, setIndication] = useState("");
 
@@ -35,6 +36,7 @@ function RegisterPageComponent({
         if (!result.message) {
           success("Bravo, votre compte a été créé ! 🎉");
           setIndication("");
+          setRegistration(false);
         } else {
           error("Les informations ne sont pas valides 🤔");
           setIndication(result.message);
