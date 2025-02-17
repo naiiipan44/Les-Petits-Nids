@@ -33,7 +33,9 @@ export const childrenFolderValidator = [
 // let bookingStatus = "en attente" || "acceptée" || "refusée";
 export const bookingValidator = [
   body("bookingDate", "Should be a valid date").isDate(),
-  body("bookingRange", "Should be a boolean").isBoolean(),
+  body("bookingRange", "cannot have less than two characters").isLength({
+    min: 2,
+  }),
   // body(
   //   "status",
   //   "Should be exact status between : en attente, acceptée, refusée",

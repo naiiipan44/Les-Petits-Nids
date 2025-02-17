@@ -17,7 +17,7 @@ class BookingRepository {
 
   async readByParentId(parentId: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM booking WHERE parent_id = ?",
+      "SELECT parent_id,nursery_id, children_id, booking_date, booking_range, status, ns_name, ns_image FROM booking INNER JOIN nursery ON nursery.id=booking.nursery_id WHERE parent_id = ?",
       [parentId],
     );
     return rows;
