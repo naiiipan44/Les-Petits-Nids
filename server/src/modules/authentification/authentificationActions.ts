@@ -56,6 +56,19 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
+const logout: RequestHandler = async (req, res, next) => {
+  try {
+    res.clearCookie("auth_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
+    res.json({ message: "Logged out" });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const updateOrGetUserToken: RequestHandler = async (
   req,
   res,
@@ -75,6 +88,7 @@ const updateOrGetUserToken: RequestHandler = async (
     }
 
     const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
+
     if (!decoded.id) {
       res.status(401).json({ error: "Token invalide" });
       return;
@@ -176,4 +190,5 @@ export default {
   login,
   verifyToken,
   updateOrGetUserToken,
+  logout,
 };

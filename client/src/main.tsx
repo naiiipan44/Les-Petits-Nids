@@ -106,9 +106,7 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <AuthProvider>
-      {/* <UserProvider> */}
       <RouterProvider router={router} />
-      {/* </UserProvider> */}
     </AuthProvider>
   </StrictMode>,
 );

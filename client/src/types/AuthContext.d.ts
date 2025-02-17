@@ -9,5 +9,6 @@ type User = {
   last_name: string;
   email: string;
   role: "parent" | "nursery";
-  nursary_id?: number;
+  nursery_id: string;
+  parent_id: string;
 } | null;
