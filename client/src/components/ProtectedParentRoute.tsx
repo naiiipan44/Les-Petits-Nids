@@ -4,16 +4,13 @@ import { useAuth } from "../contexts/AuthContext";
 
 function ProtectedParentRoute({ children }: { children: ReactNode }) {
   const { user } = useAuth();
-  // console.log(user, "user ?");
+
   const navigate = useNavigate();
-  function checkUser() {
-    useEffect(() => {
-      if (!user || user.role !== "parent") {
-        navigate("/search");
-      }
-    }, []);
-  }
-  setTimeout(checkUser, 3000);
+  useEffect(() => {
+    if (!user || user.role !== "parent") {
+      navigate("/search");
+    }
+  }, [user, navigate]);
 
   return user && children;
 }

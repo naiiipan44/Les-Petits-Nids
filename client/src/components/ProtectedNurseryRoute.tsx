@@ -4,16 +4,13 @@ import { useAuth } from "../contexts/AuthContext";
 
 function ProtectedNurseryRoute({ children }: { children: ReactNode }) {
   const { user } = useAuth();
-
   const navigate = useNavigate();
-  function checkUser() {
-    useEffect(() => {
-      if (!user) {
-        navigate("/search");
-      }
-    }, []);
-  }
-  setTimeout(checkUser, 3000);
+
+  useEffect(() => {
+    if (!user || user.role !== "nursery") {
+      navigate("/search");
+    }
+  }, [user, navigate]);
 
   return user && children;
 }

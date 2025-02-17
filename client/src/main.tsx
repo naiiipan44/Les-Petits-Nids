@@ -12,7 +12,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 // Import the main app component
 import App from "./App";
-import UserProvider from "./contexts/UserProvider";
+
 import Favorites from "./pages/Favorites";
 
 import NotFound from "./components/NotFound";
@@ -106,9 +106,9 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <AuthProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
+      {/* <UserProvider> */}
+      <RouterProvider router={router} />
+      {/* </UserProvider> */}
     </AuthProvider>
   </StrictMode>,
 );
