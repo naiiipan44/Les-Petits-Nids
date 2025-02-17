@@ -52,6 +52,9 @@ router.post(
 router.post("/api/user/login", authentificationActions.login);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
+// déconnection  route(supression cookie)
+router.post("/api/logout", authentificationActions.logout);
+
 // parent routes --> need to be authenticated
 router.use("/api/parent", authentificationActions.verifyToken);
 
@@ -86,7 +89,6 @@ router.post("/api/nursery", nurseryActions.add);
 router.use("/api/booking", authentificationActions.verifyToken);
 
 router.get("/api/booking", bookingActions.browse);
-router.get("/api/booking/parent", bookingActions.read);
 router.post(
   "/api/booking/:id",
   bookingValidator,

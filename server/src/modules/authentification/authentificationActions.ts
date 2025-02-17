@@ -2,6 +2,7 @@ import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import jwt, { sign } from "jsonwebtoken";
 import childrenRepository from "../children/childrenRepository";
+import nurseryRepository from "../nursery/nurseryRepository";
 import parentRepository from "../parent/parentRepository";
 import userRepository from "../user/userRepository";
 
@@ -55,6 +56,19 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
+const logout: RequestHandler = async (req, res, next) => {
+  try {
+    res.clearCookie("auth_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
+    res.json({ message: "Logged out" });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const updateOrGetUserToken: RequestHandler = async (
   req,
   res,
@@ -62,6 +76,7 @@ const updateOrGetUserToken: RequestHandler = async (
 ): Promise<void> => {
   try {
     const token = req.cookies.auth_token;
+
     if (!token) {
       res.status(401).json({ error: "Token manquant" });
       return;
@@ -73,27 +88,39 @@ const updateOrGetUserToken: RequestHandler = async (
     }
 
     const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
+
     if (!decoded.id) {
       res.status(401).json({ error: "Token invalide" });
       return;
     }
 
-    const parent = await parentRepository.getParentByUserId(decoded.id);
-    const parent_id = parent ? parent.id : null;
-    let children_id = null;
+    let newPayload = {};
 
-    if (parent_id) {
-      const children = await childrenRepository.getChildrenIdWhithParentId(
-        Number(parent?.id),
-      );
-      children_id = children ? children.id : null;
+    if (decoded.role === "parent") {
+      const parent = await parentRepository.getParentByUserId(decoded.id);
+      const parent_id = parent ? parent.id : null;
+      let children_id = null;
+      if (parent_id) {
+        const children = await childrenRepository.getChildrenIdWhithParentId(
+          Number(parent?.id),
+        );
+        children_id = children ? children.id : null;
+      }
+      newPayload = {
+        ...decoded,
+        parent_id,
+        children_id,
+      };
     }
 
-    const newPayload = {
-      ...decoded,
-      parent_id,
-      children_id,
-    };
+    if (decoded.role === "nursery") {
+      const nursery = await nurseryRepository.readById(decoded.id);
+      const nursery_id = nursery ? nursery.id : null;
+      newPayload = {
+        ...decoded,
+        nursery_id,
+      };
+    }
 
     const newToken = jwt.sign(newPayload, secretKey);
 
@@ -163,4 +190,5 @@ export default {
   login,
   verifyToken,
   updateOrGetUserToken,
+  logout,
 };

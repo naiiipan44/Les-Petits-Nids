@@ -25,7 +25,6 @@ function LoginPageComponent() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData); // Se console warn va partir (uniquement utile pour passer biome actuellement et garder les 2 const au dessus)
 
     try {
       const response = await fetch(
@@ -47,7 +46,7 @@ function LoginPageComponent() {
         setUser(user.user);
         setAuth(user);
         notify();
-        navigate("/");
+        navigate("/search");
       } else {
         error();
       }

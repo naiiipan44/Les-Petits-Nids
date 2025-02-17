@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../pages/ProfilePage.css";
+import { Link } from "react-router-dom";
 import type { ParentProfileProps } from "../types/ParentProfile";
 import type { UserParent } from "../types/UserParent";
 
@@ -30,6 +31,12 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
     <section className="profile-page">
       {userId > 0 && parent ? (
         <>
+          <Link to="/search">
+            <img
+              src="public/chevron.png"
+              alt="boutton retour vers page d'accueil"
+            />
+          </Link>
           <figure className="profile">
             <img src="/profile.svg" alt="portrait de profil" />
             <figcaption>
