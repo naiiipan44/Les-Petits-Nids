@@ -13,7 +13,6 @@ function App() {
   const isLogin = location.pathname === "/login";
 
   const [auth, setAuth] = useState<Auth | null>(null);
-
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -49,13 +48,9 @@ function App() {
       }
     >
       <section className="outlet-section">
-        {!isLandingPageOrNoHeader || (isLogin && <Header />)}
+        {isLandingPageOrNoHeader || isLogin ? "" : <Header />}
+        {auth ? <p>Bienvenue, {auth.user.first_name} !</p> : ""}
         <Outlet context={{ setAuth }} />
-        {auth ? (
-          <p>Bienvenue, {auth.user.first_name} !</p>
-        ) : (
-          <p>Vous n'êtes pas connecté.</p>
-        )}
         <Footer />
       </section>
       <section className="navbar-section">
