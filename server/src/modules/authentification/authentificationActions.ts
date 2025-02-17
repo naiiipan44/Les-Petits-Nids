@@ -75,6 +75,7 @@ const updateOrGetUserToken: RequestHandler = async (
 ): Promise<void> => {
   try {
     const token = req.cookies.auth_token;
+
     if (!token) {
       res.status(401).json({ error: "Token manquant" });
       return;
@@ -93,7 +94,13 @@ const updateOrGetUserToken: RequestHandler = async (
     }
 
     const parent = await parentRepository.getParentByUserId(decoded.id);
-    const parent_id = parent ? parent.id : null;
+
+    let parent_id = null;
+
+    if (parent) {
+      parent_id = parent.id;
+    }
+
     let children_id = null;
 
     if (parent_id) {

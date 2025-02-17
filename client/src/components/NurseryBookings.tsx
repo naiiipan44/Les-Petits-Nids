@@ -1,34 +1,18 @@
 import { type FormEvent, useEffect, useState } from "react";
 import "./NurseryBookings.css";
+import { useAuth } from "../contexts/AuthContext";
+import type { BookingProps } from "../types/BookingProps";
 
 function NurseryBookings() {
-  const nurseryId = 4;
-  const [booking, setBooking] = useState<BookProps[] | []>([]);
-  const [status, setStatus] = useState<string>("en attente");
+  const { user } = useAuth();
 
-  interface BookProps {
-    booking_date: string;
-    booking_range: string;
-    status: string;
-    c_first_name: string;
-    c_last_name: string;
-    c_gender: string;
-    c_birth_date: string;
-    c_allergies: string;
-    p_first_name: string;
-    p_last_name: string;
-    p_job: string;
-    p_address: string;
-    p_zip_code: number;
-    p_num_tel: number;
-    p_mail: string;
-    p_birth_date: string;
-  }
+  const [booking, setBooking] = useState<BookingProps[] | []>([]);
+  const [status, setStatus] = useState<string>("pending");
 
-  if (nurseryId) {
+  if (user) {
     useEffect(() => {
       fetch(
-        `${import.meta.env.VITE_API_URL}/api/booking/nursery?nurseryId=${nurseryId}`,
+        `${import.meta.env.VITE_API_URL}/api/booking/nursery?nurseryId=${user.id}`,
         {
           credentials: "include",
         },
@@ -37,10 +21,10 @@ function NurseryBookings() {
         .then((resp) => {
           setBooking(resp);
         });
-    }, []);
+    }, [user]);
   }
 
-  const books: BookProps | null = booking.length ? booking[0] : null;
+  const books: BookingProps | null = booking.length ? booking[0] : null;
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
