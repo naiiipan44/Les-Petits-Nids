@@ -2,13 +2,12 @@ import { type ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-function ProtectedRoutes({ children }: { children: ReactNode }) {
+function ProtectedParentRoute({ children }: { children: ReactNode }) {
   const { user } = useAuth();
 
   const navigate = useNavigate();
-
   useEffect(() => {
-    if (!user) {
+    if (!user || user.role !== "parent") {
       navigate("/search");
     }
   }, [user, navigate]);
@@ -16,4 +15,4 @@ function ProtectedRoutes({ children }: { children: ReactNode }) {
   return user && children;
 }
 
-export default ProtectedRoutes;
+export default ProtectedParentRoute;
