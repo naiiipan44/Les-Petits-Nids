@@ -30,14 +30,14 @@ function ParentProfilePage() {
                 onClick={() => setIsVisible("parent")}
                 className="button-parents"
               >
-                Parents
+                Parent
               </button>
               <button
                 type="button"
                 onClick={() => setIsVisible("children")}
                 className="button-children"
               >
-                Enfants
+                Enfant
               </button>
               <button
                 type="button"
@@ -74,14 +74,14 @@ function ParentProfilePage() {
               onClick={() => setIsVisible("parent")}
               className="button-parents"
             >
-              Parents
+              Parent
             </button>
             <button
               type="button"
               onClick={() => setIsVisible("children")}
               className="button-children"
             >
-              Enfants
+              Enfant
             </button>
             <button
               type="button"
