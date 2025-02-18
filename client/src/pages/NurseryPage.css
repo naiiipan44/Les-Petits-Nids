@@ -29,7 +29,7 @@
   position: relative;
 }
 .nursery-details img {
-  height: 50%;
+  max-height: 10rem;
   width: 100%;
   border-radius: 1rem 1rem 0 0;
 }
