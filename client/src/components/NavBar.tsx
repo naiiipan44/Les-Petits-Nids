@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { toast } from "react-toastify";
@@ -7,7 +7,7 @@ import { useAuth } from "../contexts/AuthContext";
 function NavBar() {
   const { user, setUser } = useAuth();
   const navigate = useNavigate();
-  const [showPopup, setShowPopup] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const handleLogout = async () => {
     try {
@@ -17,7 +17,7 @@ function NavBar() {
       });
       toast.success("Déconnexion réussie ! Redirection en cours...");
       setUser(null);
-      setShowPopup(false);
+      dialogRef.current?.close();
       setTimeout(() => {
         navigate("/login");
       }, 1500);
@@ -74,7 +74,7 @@ function NavBar() {
         {user && (
           <button
             type="button"
-            onClick={() => setShowPopup(true)}
+            onClick={() => dialogRef.current?.showModal()}
             className="nav-buttons"
           >
             <img src="/logout.png" alt="lien vers mon dossier" />
@@ -82,46 +82,31 @@ function NavBar() {
           </button>
         )}
       </nav>
-      {showPopup && (
-        <section
-          className="popup-overlay"
-          onClick={() => setShowPopup(false)}
-          onKeyDown={(e) => {
-            if (e.key === "Escape") {
-              setShowPopup(false);
-            }
-          }}
-          tabIndex={-1}
-        >
-          <section
-            className="popup-content"
-            onClick={(e) => e.stopPropagation()}
-            aria-labelledby="popup-title"
-            onKeyDown={(e) => {
-              if (e.key === "Escape") {
-                setShowPopup(false);
-              }
+      <dialog
+        className="popup-content"
+        ref={dialogRef}
+        onPointerDown={(e) => {
+          if (e.currentTarget === e.target) dialogRef.current?.close();
+        }}
+      >
+        <section>
+          <h2 id="popup-title">
+            Voulez-vous vraiment supprimé votre dossier ?
+          </h2>
+          <button type="button" onClick={handleLogout} className="confirm-btn">
+            Oui
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              dialogRef.current?.close();
             }}
-            tabIndex={-1}
+            className="cancel-btn"
           >
-            <h2 id="popup-title">Voulez-vous vraiment vous déconnecter ?</h2>
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="confirm-btn"
-            >
-              Oui
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowPopup(false)}
-              className="cancel-btn"
-            >
-              Non
-            </button>
-          </section>
+            Non
+          </button>
         </section>
-      )}
+      </dialog>
     </>
   );
 }
