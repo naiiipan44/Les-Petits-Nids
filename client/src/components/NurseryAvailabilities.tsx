@@ -8,7 +8,7 @@ function NurseryAvailabilities(bookingInfos: Readonly<BookingInfos>) {
   const { success, error } = useToast();
 
   function handleSubmit() {
-    const bookingDate = "2025-03-11";
+    const bookingDate = "2025-05-11";
     const bookingRange = "après-midi";
     const status = "en attente";
     const book = bookingInfos.bookingInfos;

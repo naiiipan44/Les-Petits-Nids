@@ -47,6 +47,7 @@ const LeafletMap: React.FC<Props> = ({ markers, userPosition }) => {
           icon={customIcon}
           key={`${marker.lat}-${marker.lng}`}
           position={[marker.lat, marker.lng]}
+          title={`Crèche : ${marker.name}`}
         >
           <Popup className="popup">
             <section className="nursery-popup">

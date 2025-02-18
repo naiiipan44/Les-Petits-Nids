@@ -16,6 +16,7 @@ export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,6 +31,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         if (response.ok) {
           const data = await response.json();
+
           setUser(data.user);
         } else {
           setUser(null);
@@ -40,15 +42,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           error,
         );
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUser();
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  if (!loading)
+    return (
+      <AuthContext.Provider value={{ user, setUser }}>
+        {children}
+      </AuthContext.Provider>
+    );
 }

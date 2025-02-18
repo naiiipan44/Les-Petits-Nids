@@ -50,13 +50,13 @@ function NavBar() {
           <>
             {user.role === "parent" && (
               <NavLink to="parent" className="nav-buttons">
-                <img src="/folder.png" alt="lien vers mon dossier" />
+                <img src="/folder.png" alt="lien vers mon dossier parent" />
                 <h2 className="title-navbar">Dossier</h2>
               </NavLink>
             )}
             {user.role === "nursery" && (
               <NavLink to="nursery" className="nav-buttons">
-                <img src="/folder.png" alt="lien vers mon dossier" />
+                <img src="/folder.png" alt="lien vers mon dossier crèche" />
                 <h2 className="title-navbar">Profil</h2>
               </NavLink>
             )}
@@ -90,9 +90,7 @@ function NavBar() {
         }}
       >
         <section>
-          <h2 id="popup-title">
-            Voulez-vous vraiment supprimé votre dossier ?
-          </h2>
+          <h2 id="popup-title">Voulez-vous vraiment vous déconnecter ?</h2>
           <button type="button" onClick={handleLogout} className="confirm-btn">
             Oui
           </button>

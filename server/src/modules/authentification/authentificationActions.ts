@@ -2,6 +2,7 @@ import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import jwt, { sign } from "jsonwebtoken";
 import childrenRepository from "../children/childrenRepository";
+import nurseryRepository from "../nursery/nurseryRepository";
 import parentRepository from "../parent/parentRepository";
 import userRepository from "../user/userRepository";
 
@@ -75,6 +76,7 @@ const updateOrGetUserToken: RequestHandler = async (
 ): Promise<void> => {
   try {
     const token = req.cookies.auth_token;
+
     if (!token) {
       res.status(401).json({ error: "Token manquant" });
       return;
@@ -92,8 +94,14 @@ const updateOrGetUserToken: RequestHandler = async (
       return;
     }
 
-    const parent = await parentRepository.getParentByUserId(decoded.id);
-    const parent_id = parent ? parent.id : null;
+    const parent = await parentRepository.getParentByUserId(decoded.email);
+
+    let parent_id = null;
+
+    if (parent) {
+      parent_id = parent.id;
+    }
+
     let children_id = null;
 
     if (parent_id) {
