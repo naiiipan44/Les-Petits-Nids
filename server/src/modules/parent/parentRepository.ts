@@ -29,10 +29,10 @@ class ParentRepository {
     return rows[0] as Parent;
   }
 
-  async getParentByUserId(userId: number) {
+  async getParentByUserId(email: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM parent WHERE id = ?",
-      [userId],
+      "SELECT * FROM parent WHERE p_mail = ?",
+      [email],
     );
 
     return rows[0] as Parent | null;

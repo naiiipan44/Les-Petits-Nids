@@ -94,33 +94,28 @@ const updateOrGetUserToken: RequestHandler = async (
       return;
     }
 
-    let newPayload = {};
+    const parent = await parentRepository.getParentByUserId(decoded.email);
 
-    if (decoded.role === "parent") {
-      const parent = await parentRepository.getParentByUserId(decoded.id);
-      const parent_id = parent ? parent.id : null;
-      let children_id = null;
-      if (parent_id) {
-        const children = await childrenRepository.getChildrenIdWhithParentId(
-          Number(parent?.id),
-        );
-        children_id = children ? children.id : null;
-      }
-      newPayload = {
-        ...decoded,
-        parent_id,
-        children_id,
-      };
+    let parent_id = null;
+
+    if (parent) {
+      parent_id = parent.id;
     }
 
-    if (decoded.role === "nursery") {
-      const nursery = await nurseryRepository.readById(decoded.id);
-      const nursery_id = nursery ? nursery.id : null;
-      newPayload = {
-        ...decoded,
-        nursery_id,
-      };
+    let children_id = null;
+
+    if (parent_id) {
+      const children = await childrenRepository.getChildrenIdWhithParentId(
+        Number(parent?.id),
+      );
+      children_id = children ? children.id : null;
     }
+
+    const newPayload = {
+      ...decoded,
+      parent_id,
+      children_id,
+    };
 
     const newToken = jwt.sign(newPayload, secretKey);
 

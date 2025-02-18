@@ -48,7 +48,6 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
     if (isParentFilled) return;
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.warn(data); // se console.warn sert à garder les 2 variables du dessus
 
     fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
       method: "POST",
