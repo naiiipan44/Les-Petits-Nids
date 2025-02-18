@@ -88,7 +88,6 @@ const updateOrGetUserToken: RequestHandler = async (
     }
 
     const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
-
     if (!decoded.id) {
       res.status(401).json({ error: "Token invalide" });
       return;
@@ -97,7 +96,7 @@ const updateOrGetUserToken: RequestHandler = async (
     let newPayload = {};
 
     if (decoded.role === "parent") {
-      const parent = await parentRepository.getParentByUserId(decoded.id);
+      const parent = await parentRepository.getParentByUserId(decoded.email);
       const parent_id = parent ? parent.id : null;
       let children_id = null;
       if (parent_id) {

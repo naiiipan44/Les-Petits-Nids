@@ -2,23 +2,35 @@ import { useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 
 import "./NurseryAvailabilities.css";
-import { useAuth } from "../contexts/AuthContext";
+import { useEffect, useState } from "react";
+import type { User } from "../types/Login";
 
 function NurseryAvailabilities() {
   const { id } = useParams();
   const { success, error } = useToast();
-
-  const { user } = useAuth();
+  const [userData, setUserData] = useState<User | null>(null);
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((result) => setUserData(result.user));
+  }, []);
 
   function handleSubmit() {
     const bookingDate = "2025-03-1";
     const bookingRange = "après-midi";
     const status = "en attente";
-    const book = user;
-    const { parent_id, children_id } = book;
+    let parentId = null;
+    let childrenId = null;
 
-    if (bookingDate && bookingRange && user) {
-      fetch(`${import.meta.env.VITE_API_URL}/api/booking/${id}`, {
+    if (userData) {
+      parentId = userData.parent_id;
+      childrenId = userData.children_id;
+    }
+
+    if (bookingDate && bookingRange) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/booking`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -27,9 +39,10 @@ function NurseryAvailabilities() {
         body: JSON.stringify({
           bookingDate,
           bookingRange,
-          parent_id,
-          children_id,
+          parentId,
+          childrenId,
           status,
+          id,
         }),
       }).then((response) => {
         if (response.ok) {

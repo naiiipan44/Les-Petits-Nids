@@ -1,15 +1,32 @@
 import "./ChildrenFolder.css";
-import type { FormEvent } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import "./LoginPageComponent.css";
 import useToast from "../hooks/useToast";
+import type { User } from "../types/BookingInfos";
 
 function ChildrenFolder() {
   const { success, error } = useToast();
+  const [userData, setUserData] = useState<User | null>(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((result) => setUserData(result.user));
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
+
+    const { allergies, birthdate, firstName, gender, lastName } = formatedData;
+    let parentId = null;
+    if (userData) {
+      parentId = userData.parent_id;
+    }
+
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/children`,
       {
@@ -18,7 +35,14 @@ function ChildrenFolder() {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(formatedData),
+        body: JSON.stringify({
+          allergies,
+          birthdate,
+          firstName,
+          gender,
+          lastName,
+          parentId,
+        }),
       },
     );
     if (response.ok) {

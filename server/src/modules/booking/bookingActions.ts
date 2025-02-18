@@ -23,14 +23,15 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const nurseryId = Number(req.params.id);
-    const { parent_id, children_id, bookingDate, bookingRange, status } =
+    const { parentId, childrenId, bookingDate, bookingRange, status } =
       req.body;
+
+    const nurseryId = req.body.id;
 
     const insertId = await bookingRepository.create({
       nurseryId,
-      parent_id,
-      children_id,
+      parentId,
+      childrenId,
       bookingDate,
       bookingRange,
       status,
