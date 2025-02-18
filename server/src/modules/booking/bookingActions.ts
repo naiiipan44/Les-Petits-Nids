@@ -65,6 +65,7 @@ const readByNurseryId: RequestHandler = async (req, res, next) => {
     const nurseryId = Number(req.query.nurseryId);
 
     const bookings = await bookingRepository.readByNurseryId(nurseryId);
+
     res.json(bookings);
   } catch (err) {
     const error = err as { code: string };
@@ -79,14 +80,12 @@ const readByNurseryId: RequestHandler = async (req, res, next) => {
 
 const patch: RequestHandler = async (req, res, next) => {
   try {
-    const { status, parent_id, children_id } = req.body;
-    const nurseryId = Number(req.params.id);
+    const { status } = req.body;
+    const childrenId = Number(req.query.childrenId);
 
     const updatedBooking = await bookingRepository.updatedBooking(
       status,
-      parent_id,
-      children_id,
-      nurseryId,
+      childrenId,
     );
 
     if (updatedBooking) {

@@ -1,4 +1,6 @@
 export interface BookingProps {
+  id: number;
+  children_id: number;
   booking_date: string;
   booking_range: string;
   status: string;

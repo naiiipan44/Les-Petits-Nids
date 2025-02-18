@@ -97,6 +97,6 @@ router.post(
 router.post("/api/booking", bookingActions.add);
 router.get("/api/booking/parent", bookingActions.readByParentId);
 router.get("/api/booking/nursery", bookingActions.readByNurseryId);
-router.patch("/api/booking/:id", bookingActions.patch);
+router.patch("/api/booking", bookingActions.patch);
 
 export default router;
