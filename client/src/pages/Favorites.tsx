@@ -24,44 +24,57 @@ function Favorite() {
   };
 
   return (
-    <main className="main-search-page-favorites">
-      <section className="back-to-search-page">
-        <Link to={"/search"} className="back-button">
-          <span className="arrow" />
-        </Link>
-        <h1 className="title-favorites">Favoris</h1>
-      </section>
-      <section className="card-wrapper-favorite">
-        {data.length > 0 ? (
-          data.map((el) => {
-            return (
-              <section className="button-close-favorites" key={el.id}>
-                <Link to={`/search/${el.id}`} className="favorites-button-link">
-                  <Nursery
-                    ns_name={el.ns_name}
-                    ns_image={el.ns_image}
-                    id={el.id}
-                    ns_capacity={0}
-                    ns_address={""}
-                    ns_mail={el.ns_mail}
-                    ns_num_tel={el.ns_num_tel}
-                  />
-                </Link>
-                <button
-                  type="button"
-                  className="remove-favorite-button"
-                  onClick={() => removeFavorite(el.id)}
-                >
-                  <img src="/redheart.svg" alt="Remove from favorites" />
-                </button>
-              </section>
-            );
-          })
-        ) : (
-          <p>Vous n'avez aucune crèche en favoris</p>
-        )}
-      </section>
-    </main>
+    <>
+      <meta
+        name="description"
+        content="Page de favoris de l'application Les Petits Nids. Les Petits Nids est une application conçue pour permettre aux parents de réserver en urgence une place en crèche du lundi au vendredi de 9h à 17h pour leur enfant. Cette page liste les crèches que le parent aura mis en favoris après avoir cliqué sur l'icône représentant un coeur présente sur la carte de chaque crèche"
+      />
+      <main className="main-search-page-favorites">
+        <section className="back-to-search-page">
+          <Link
+            to={"/search"}
+            className="back-to-search-page-button"
+            aria-label="Cliquez ici pour revenir à la page de recherche"
+          >
+            <span className="arrow" />
+          </Link>
+          <h1 className="title-favorites">Favoris</h1>
+        </section>
+        <section className="card-wrapper-favorite">
+          {data.length > 0 ? (
+            data.map((el) => {
+              return (
+                <section className="button-close-favorites" key={el.id}>
+                  <Link
+                    to={`/search/${el.id}`}
+                    className="favorites-button-link"
+                  >
+                    <Nursery
+                      ns_name={el.ns_name}
+                      ns_image={el.ns_image}
+                      id={el.id}
+                      ns_capacity={0}
+                      ns_address={""}
+                      ns_mail={el.ns_mail}
+                      ns_num_tel={el.ns_num_tel}
+                    />
+                  </Link>
+                  <button
+                    type="button"
+                    className="remove-favorite-button"
+                    onClick={() => removeFavorite(el.id)}
+                  >
+                    <img src="/redheart.svg" alt="Remove from favorites" />
+                  </button>
+                </section>
+              );
+            })
+          ) : (
+            <p>Vous n'avez aucune crèche en favoris</p>
+          )}
+        </section>
+      </main>
+    </>
   );
 }
 
