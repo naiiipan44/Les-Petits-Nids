@@ -43,7 +43,6 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
     if (isParentFilled) return;
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.warn(data); // se console.warn sert à garder les 2 variables du dessus
 
     fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
       method: "POST",
@@ -80,9 +79,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           className={`input-field ${user.first_name ? "valid-user-information" : ""}`}
           name="firstName"
           aria-label="Prénom"
-          defaultValue={
-            userData?.user.first_name || parentData?.p_first_name || ""
-          }
+          defaultValue={user.first_name || parentData?.p_first_name || ""}
           readOnly={true}
           required
         />
@@ -92,9 +89,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           className={`input-field ${user.last_name ? "valid-user-information" : ""}`}
           name="lastName"
           aria-label="Nom"
-          defaultValue={
-            userData?.user.last_name || parentData?.p_last_name || ""
-          }
+          defaultValue={user.last_name || parentData?.p_last_name || ""}
           readOnly={true}
           required
         />
@@ -149,7 +144,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           className={`input-field ${user.email ? "valid-user-information" : ""}`}
           name="mail"
           aria-label="Email"
-          defaultValue={userData.user.email}
+          defaultValue={user.email}
           readOnly={true}
           required
         />

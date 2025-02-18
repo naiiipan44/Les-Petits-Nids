@@ -27,7 +27,7 @@ export const childrenFolderValidator = [
     .isLength({
       min: 2,
     }),
-  body("parentId", "should be an integer").isInt(),
+  // body("user_id", "should be an integer").isInt(),
 ];
 
 // let bookingStatus = "en attente" || "acceptée" || "refusée";

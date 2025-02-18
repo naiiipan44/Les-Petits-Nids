@@ -1,21 +1,12 @@
 import type { FormEvent, FormEventHandler } from "react";
-import { toast } from "react-toastify";
-
-import { useNavigate, useOutletContext } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import "./LoginPageComponent.css";
 import "../style/globals.css";
 import { useAuth } from "../contexts/AuthContext";
-import type { Auth } from "../types/Login";
+import useToast from "../hooks/useToast";
 
 function LoginPageComponent() {
-  const notify = () => toast.success("Vous vous êtes bien connecté !");
-  const error = () =>
-    toast.error("Les informations renseignées ne sont pas valides");
-
-  const { setAuth } = useOutletContext() as {
-    setAuth: (auth: Auth | null) => void;
-  };
+  const { success, error } = useToast();
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
@@ -44,11 +35,10 @@ function LoginPageComponent() {
       if (response.status === 200) {
         const user = await response.json();
         setUser(user.user);
-        setAuth(user);
-        notify();
+        success("Vous vous êtes bien connecté !");
         navigate("/search");
       } else {
-        error();
+        error("Les informations renseignées ne sont pas valides");
       }
     } catch (err) {
       console.error(err);

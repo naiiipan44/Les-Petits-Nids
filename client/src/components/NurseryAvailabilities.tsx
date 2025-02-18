@@ -18,7 +18,7 @@ function NurseryAvailabilities() {
   }, []);
 
   function handleSubmit() {
-    const bookingDate = "2025-03-1";
+    const bookingDate = "2025-05-11";
     const bookingRange = "après-midi";
     const status = "en attente";
     let parentId = null;
