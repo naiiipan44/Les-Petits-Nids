@@ -50,11 +50,10 @@ function ParentProfile({
             />
           </Link>
           <figure className="profile">
-            <img src="/profile.svg" alt="portrait de profil" />
+            <img src="/upload.png" alt="portrait de profil" />
             <figcaption>
               {parent.first_name} {parent.last_name}
             </figcaption>
-            <h2>{parent.role}</h2>
           </figure>
           <h3>Mettez toutes les chances de votre côté</h3>
           <p>Un profil complet est nécessaire pour un accueil en crèche</p>
