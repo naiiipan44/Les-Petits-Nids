@@ -29,13 +29,7 @@ function SearchPage() {
       />
       <header className="head-section">
         <FilterBar userEntry={userEntry} setUserEntry={setUserEntry} />
-        <section className="options-head-section">
-          <section className="filter-and-sort-options">
-            {/* Both figures above should triger a modal to fill filter or sort criteria*/}
-          </section>
-        </section>
       </header>
-
       <main className="main-search-page">
         {filteredData?.length ? (
           filteredData.map((el) => (
