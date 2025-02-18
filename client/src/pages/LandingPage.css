@@ -54,12 +54,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   background-color: #133f63;
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 50%;
   box-shadow: 0 1px 3px var(--shadowColor);
   cursor: pointer;
@@ -119,7 +119,7 @@
     background-color: #133f63;
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border-radius: 50%;
     box-shadow: 0 1px 3px var(--shadowColor);
     cursor: pointer;
