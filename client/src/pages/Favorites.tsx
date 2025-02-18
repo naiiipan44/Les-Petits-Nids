@@ -31,7 +31,11 @@ function Favorite() {
       />
       <main className="main-search-page-favorites">
         <section className="back-to-search-page">
-          <Link to={"/search"} className="back-button">
+          <Link
+            to={"/search"}
+            className="back-to-search-page-button"
+            aria-label="Cliquez ici pour revenir à la page de recherche"
+          >
             <span className="arrow" />
           </Link>
           <h1 className="title-favorites">Favoris</h1>
