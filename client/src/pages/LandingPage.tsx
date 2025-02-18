@@ -1,4 +1,7 @@
+// React librairies
 import { Link } from "react-router-dom";
+
+// Style
 import "./LandingPage.css";
 
 function LandingPage() {

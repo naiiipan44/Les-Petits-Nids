@@ -1,10 +1,22 @@
+// React tools
 import { useEffect, useState } from "react";
-import "../pages/ProfilePage.css";
+
+// React librairies
 import { Link } from "react-router-dom";
+
+// Interfaces and types TS
 import type { ParentProfileProps } from "../types/ParentProfile";
 import type { UserParent } from "../types/UserParent";
 
-function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
+// Style
+import "../pages/ProfilePage.css";
+
+function ParentProfile({
+  setDisplay,
+  setIsVisible,
+  check,
+  setCheck,
+}: Readonly<ParentProfileProps>) {
   const [userId, setUserId] = useState(0);
 
   const [parent, setParent] = useState<UserParent | null>(null);
@@ -46,9 +58,22 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
           </figure>
           <h3>Mettez toutes les chances de votre côté</h3>
           <p>Un profil complet est nécessaire pour un accueil en crèche</p>
+
           <button
             type="button"
-            className="child-button"
+            className="parents-button"
+            onClick={() => {
+              setDisplay(false);
+              setIsVisible("parent");
+              setCheck(false);
+            }}
+          >
+            Dossier Parents
+          </button>
+          <button
+            type="button"
+            className={`child-button ${check && "lock"}`}
+            disabled={check}
             onClick={() => {
               setDisplay(false);
               setIsVisible("children");
@@ -58,17 +83,8 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
           </button>
           <button
             type="button"
-            className="parents-button"
-            onClick={() => {
-              setDisplay(false);
-              setIsVisible("parent");
-            }}
-          >
-            Dossier Parents
-          </button>
-          <button
-            type="button"
-            className="reservations-button"
+            className={`reservations-button ${check && "lock"}`}
+            disabled={check}
             onClick={() => {
               setDisplay(false);
               setIsVisible("booking");

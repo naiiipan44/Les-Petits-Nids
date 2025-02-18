@@ -68,6 +68,15 @@
   opacity: 0.9;
 }
 
+.lock {
+  background-color: gray;
+  pointer-events: none;
+}
+
+.lock:hover {
+  cursor: auto;
+}
+
 @media (min-width: 680px) {
   .child-button {
     max-width: 50%;
