@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   min-height: 100vh;
+  background: var(--mainColor);
 }
 
 .white-painting {
@@ -12,17 +13,21 @@
   box-shadow: 0 1px 3px var(--shadowColor);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem;
+  width: 90%;
+  max-width: 500px;
+  height: auto;
 }
 
-.logo-writing-white {
-  width: 170px;
+.logo-writing {
+  width: 130px;
 }
-.logo-writing-white,
-.mother2 {
-  display: block;
-  margin: 0 auto;
+
+.landing-page img:last-of-type {
+  width: 100%;
+  max-width: 310px;
 }
 
 .landing-page > figure {
@@ -41,40 +46,33 @@
   text-align: center;
   font-weight: bold;
   margin-top: 20px;
-  cursor: pointer;
   color: #133f63;
   font-size: 12px;
 }
 
-.round-button {
+.round-button-white {
+  display: block;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: #133f63;
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 50%;
   box-shadow: 0 1px 3px var(--shadowColor);
   cursor: pointer;
-  margin-bottom: 5rem;
+  margin: 5%;
 }
-.round-button:hover {
-  background-color: #133f64;
-}
-.logo-writing,
-.round-button-white,
+
 .small-not-blue {
   display: none;
 }
 
 @media screen and (min-width: 680px) and (max-width: 1024px) {
-  .logo-writing-white,
   .small-not,
-  .round-button,
   .landing-page ~ .main-footer {
     display: none;
   }
@@ -122,7 +120,7 @@
     background-color: #133f63;
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border-radius: 50%;
     box-shadow: 0 1px 3px var(--shadowColor);
     cursor: pointer;
@@ -184,5 +182,51 @@
     border-radius: 50%;
     box-shadow: 0 1px 3px var(--shadowColor);
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .parent-folder {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50px;
+  }
+
+  .title-profile-parent {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .button-parent-folder {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .button-parent-folder:hover {
+    background-color: #5a8de0;
+  }
+
+  .login-form-parent {
+    width: 60%;
+    max-width: 600px;
+  }
+
+  .input-container {
+    gap: 15px;
+  }
+
+  .button-secondary {
+    width: 180px;
+    height: 45px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .button-secondary:hover {
+    background-color: #5a8de0;
   }
 }
