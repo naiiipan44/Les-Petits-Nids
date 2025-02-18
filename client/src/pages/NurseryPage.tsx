@@ -53,7 +53,6 @@ function NurseryPage() {
         </Link>
         <section>
           <h1>Crèche {data.ns_name}</h1>
-          <p>Mettre type de crèche ici</p>
         </section>
       </section>
       <section className="nursery-details">
