@@ -1,21 +1,17 @@
 import type { FormEvent, FormEventHandler } from "react";
 import { toast } from "react-toastify";
 
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./LoginPageComponent.css";
 import "../style/globals.css";
 import { useAuth } from "../contexts/AuthContext";
-import type { Auth } from "../types/Login";
 
 function LoginPageComponent() {
   const notify = () => toast.success("Vous vous êtes bien connecté !");
   const error = () =>
     toast.error("Les informations renseignées ne sont pas valides");
 
-  const { setAuth } = useOutletContext() as {
-    setAuth: (auth: Auth | null) => void;
-  };
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
@@ -25,7 +21,6 @@ function LoginPageComponent() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
-    console.warn(formatedData); // Se console warn va partir (uniquement utile pour passer biome actuellement et garder les 2 const au dessus)
 
     try {
       const response = await fetch(
@@ -45,7 +40,6 @@ function LoginPageComponent() {
       if (response.status === 200) {
         const user = await response.json();
         setUser(user.user);
-        setAuth(user);
         notify();
         navigate("/search");
       } else {

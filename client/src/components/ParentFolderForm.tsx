@@ -12,6 +12,8 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
   const [loading, setLoading] = useState(true);
   const [parentData, setParentData] = useState<Parent | null>(null);
 
+  const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
       credentials: "include",
@@ -48,7 +50,6 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
     if (isParentFilled) return;
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.warn(data); // se console.warn sert à garder les 2 variables du dessus
 
     fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
       method: "POST",
@@ -76,16 +77,64 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
       });
   }
 
+  const handleDeleteAndClosePopup = () => {
+    handleDelete();
+    setParentData(null);
+    setShowPopup(false);
+  };
+
   return (
     <section className="parent-folder">
       <form onSubmit={handleSubmit} className="login-form-parent">
         <button
           className="button-delete-parent"
           type="button"
-          onClick={handleDelete}
+          onClick={() => setShowPopup(true)}
         >
           <img src="public/trash.png" alt="supprimé son dossier parent" />
         </button>
+        {showPopup && (
+          <section
+            className="popup-overlay"
+            onClick={() => setShowPopup(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                setShowPopup(false);
+              }
+            }}
+            tabIndex={-1}
+          >
+            <section
+              className="popup-content"
+              onClick={(e) => e.stopPropagation()}
+              aria-labelledby="popup-title"
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  setShowPopup(false);
+                }
+              }}
+              tabIndex={-1}
+            >
+              <h2 id="popup-title">
+                Voulez-vous vraiment supprimé votre dossier ?
+              </h2>
+              <button
+                type="button"
+                onClick={handleDeleteAndClosePopup}
+                className="confirm-btn"
+              >
+                Oui
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowPopup(false)}
+                className="cancel-btn"
+              >
+                Non
+              </button>
+            </section>
+          </section>
+        )}
         <input
           type="text"
           placeholder="Prénom"
