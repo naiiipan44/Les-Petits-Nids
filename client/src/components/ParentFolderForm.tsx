@@ -48,7 +48,6 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
     if (isParentFilled) return;
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.warn(data); // se console.warn sert à garder les 2 variables du dessus
 
     fetch(`${import.meta.env.VITE_API_URL}/api/parent`, {
       method: "POST",
@@ -91,6 +90,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="Prénom"
           className={`input-field ${userData.user.first_name ? "valid-user-information" : ""}`}
           name="firstName"
+          aria-label="Prénom"
           defaultValue={
             userData?.user.first_name || parentData?.p_first_name || ""
           }
@@ -102,6 +102,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="Nom"
           className={`input-field ${userData.user.last_name ? "valid-user-information" : ""}`}
           name="lastName"
+          aria-label="Nom"
           defaultValue={
             userData?.user.last_name || parentData?.p_last_name || ""
           }
@@ -113,6 +114,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="Métier"
           className={`input-field ${parentData?.p_job ? "valid-user-information" : ""}`}
           name="job"
+          aria-label="Métier"
           defaultValue={parentData?.p_job || ""}
           readOnly={!!parentData}
           required
@@ -122,15 +124,17 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="Adresse postale"
           className={`input-field ${parentData?.p_address ? "valid-user-information" : ""}`}
           name="adress"
+          aria-label="Adresse"
           defaultValue={parentData?.p_address || ""}
           readOnly={!!parentData}
           required
         />
         <input
           type="number"
-          placeholder="Département"
+          placeholder="Code Postal"
           className={`input-field ${parentData?.p_zip_code ? "valid-user-information" : ""}`}
           name="zipCode"
+          aria-label="Code postal"
           defaultValue={parentData?.p_zip_code || ""}
           readOnly={!!parentData}
           required
@@ -140,6 +144,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="Numéro de téléphone"
           className={`input-field ${parentData?.p_num_tel ? "valid-user-information" : ""}`}
           name="numTel"
+          aria-label="Numéro de téléphone"
           defaultValue={
             parentData?.p_num_tel
               .toString()
@@ -154,6 +159,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="email"
           className={`input-field ${userData.user.email ? "valid-user-information" : ""}`}
           name="mail"
+          aria-label="Email"
           defaultValue={userData.user.email}
           readOnly={true}
           required
@@ -163,6 +169,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
           placeholder="Date de naissance"
           className={`input-field ${parentData?.p_birth_date ? "valid-user-information" : ""}`}
           name="birthDate"
+          aria-label="Date de naissance"
           defaultValue={
             parentData?.p_birth_date
               ? new Date(parentData.p_birth_date).toISOString().split("T")[0]
