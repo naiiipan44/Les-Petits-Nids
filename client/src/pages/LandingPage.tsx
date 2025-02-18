@@ -4,12 +4,6 @@ import "./LandingPage.css";
 function LandingPage() {
   return (
     <section className="landing-page">
-      <img
-        src="/logo-writing-white.png"
-        alt="Ceci est le logo des Petits Nids"
-        className="logo-writing-white"
-      />
-
       <section className="white-painting">
         <img
           src="/logo-writing.png"
@@ -30,9 +24,6 @@ function LandingPage() {
           &gt;
         </Link>
       </section>
-      <Link to="search" className="round-button">
-        &gt;
-      </Link>
     </section>
   );
 }
