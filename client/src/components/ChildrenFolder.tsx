@@ -69,24 +69,30 @@ function ChildrenFolder() {
           <input
             type="text"
             name="firstName"
+            aria-label="Prénom"
             placeholder="Prénom"
             className="input-field"
           />
           <input
             type="text"
             name="lastName"
+            aria-label="Nom"
             placeholder="Nom"
             className="input-field"
           />
           <input
             type="date"
             name="birthdate"
+            aria-label="Date de naissance"
             placeholder="Date de naissance"
             className="input-field"
           />
+          <label htmlFor="gender-choice" id="gender-choice">
+            Choisissez un genre
+          </label>
           <select id="gender" name="gender" className="input-field">
             <option value="" disabled selected>
-              Choisissez un genre
+              --
             </option>
             <option value="homme">Homme</option>
             <option value="femme">Femme</option>
@@ -94,6 +100,7 @@ function ChildrenFolder() {
           <input
             type="text"
             name="allergies"
+            aria-label="Allergies"
             placeholder="Allergies"
             className="input-field"
           />

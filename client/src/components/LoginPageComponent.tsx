@@ -60,17 +60,21 @@ function LoginPageComponent() {
       <input
         type="email"
         name="email"
+        aria-label="email"
         placeholder="Email"
         className="input-field"
         pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
       />
+
       <input
         type="password"
         name="password"
+        aria-label="email"
         placeholder="Mot de passe"
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
+
       <p>
         * Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial (!,
         @, #, etc.)
