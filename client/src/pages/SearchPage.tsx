@@ -23,6 +23,10 @@ function SearchPage() {
 
   return (
     <>
+      <meta
+        name="description"
+        content="Page de recherche de l'application Les Petits Nids. Les Petits Nids est une application conçue pour permettre aux parents de réserver en urgence une place en crèche du lundi au vendredi de 9h à 17h pour leur enfant. Sur cette page, se présentant comme une carte interactive, les parents ont la possibilité de géolocaliser les crèches ainsi que d'afficher des informations importantes telles que leur adresse, leur numéro de téléphone, leur email et le type de structure que c'est. Les parents ont également la possibilité d'accéder à une présentation du projet pédagogique de chaque crèche en cliquant sur sa carte de présentation. "
+      />
       <header className="head-section">
         <FilterBar userEntry={userEntry} setUserEntry={setUserEntry} />
         <section className="options-head-section">
