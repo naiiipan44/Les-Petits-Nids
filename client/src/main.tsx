@@ -12,11 +12,12 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 // Import the main app component
 import App from "./App";
-import UserProvider from "./contexts/UserProvider";
+
 import Favorites from "./pages/Favorites";
 
 import NotFound from "./components/NotFound";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+import ProtectedNurseryRoute from "./components/ProtectedNurseryRoute";
+import ProtectedParentRoute from "./components/ProtectedParentRoute";
 import LandingPage from "./pages/LandingPage";
 import LoginAndRegisterPage from "./pages/LoginAndRegisterPage";
 import MapPage from "./pages/MapPage";
@@ -67,17 +68,17 @@ const router = createBrowserRouter([
       {
         path: "parent",
         element: (
-          <ProtectedRoutes>
+          <ProtectedParentRoute>
             <ParentProfilePage />
-          </ProtectedRoutes>
+          </ProtectedParentRoute>
         ),
       },
       {
         path: "nursery",
         element: (
-          <ProtectedRoutes>
+          <ProtectedNurseryRoute>
             <NurseryProfilePage />
-          </ProtectedRoutes>
+          </ProtectedNurseryRoute>
         ),
       },
       {
@@ -105,9 +106,7 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <AuthProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
+      <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>,
 );
