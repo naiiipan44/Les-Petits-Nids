@@ -49,7 +49,7 @@ function ChildrenFolder() {
   return (
     <main className="main-children-folder">
       <section className="header-children-folder">
-        <h1 className="title-profile-children"> Dossier enfants </h1>
+        <h1 className="title-profile-children"> Dossier enfant </h1>
 
         <button type="button" className="button-children-folder">
           Enfant 1
@@ -88,8 +88,9 @@ function ChildrenFolder() {
             <option value="" disabled selected>
               --
             </option>
-            <option value="homme">Homme</option>
-            <option value="femme">Femme</option>
+            <option value="boy">Garçon</option>
+            <option value="girl">Fille</option>
+            <option value="not-filled">Non-renseigné</option>
           </select>
           <input
             type="text"

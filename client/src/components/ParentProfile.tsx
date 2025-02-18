@@ -90,7 +90,7 @@ function ParentProfile({
               setIsVisible("booking");
             }}
           >
-            Mes reservations
+            Mes Réservations
           </button>
         </>
       ) : (
