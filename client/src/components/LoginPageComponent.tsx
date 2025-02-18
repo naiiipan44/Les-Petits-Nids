@@ -1,9 +1,17 @@
+// 1. Les imports de base
 import type { FormEvent, FormEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
+
+// 2. Les composants et modules
+// Contexts
+import { useAuth } from "../contexts/AuthContext";
+
+// Hooks
+import useToast from "../hooks/useToast";
+
+// 3. Les styles et assets
 import "./LoginPageComponent.css";
 import "../style/globals.css";
-import { useAuth } from "../contexts/AuthContext";
-import useToast from "../hooks/useToast";
 
 function LoginPageComponent() {
   const { success, error } = useToast();

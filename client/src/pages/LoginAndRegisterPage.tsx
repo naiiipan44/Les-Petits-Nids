@@ -1,9 +1,12 @@
+//1. Les imports de base
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./LoginAndRegisterPage.css";
-
+//2. Les composants et modules
+// composants parents
 import LoginPageComponent from "../components/LoginPageComponent";
 import RegisterPageComponent from "../components/RegisterPageComponent";
+//3. Les styles et assets
+import "./LoginAndRegisterPage.css";
 
 function LoginAndRegisterPage() {
   const [isParent, setIsParent] = useState<boolean>(true);
