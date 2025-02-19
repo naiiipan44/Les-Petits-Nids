@@ -1,10 +1,17 @@
+// React tools
 import { type FormEvent, useEffect, useRef, useState } from "react";
-import "./ParentFolder.css";
+
+// React components
 import { useAuth } from "../contexts/AuthContext";
 import useFetch from "../hooks/useFetch";
 import useToast from "../hooks/useToast";
+
+// Types and interfaces TS
 import type { Auth } from "../types/Login";
 import type { Parent } from "../types/ParentFolder";
+
+// Style
+import "./ParentFolder.css";
 
 function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
   const { success } = useToast();
@@ -168,6 +175,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
                 ? new Date(parentData.p_birth_date).toISOString().split("T")[0]
                 : ""
             }
+            max={"2007-02-01"}
             readOnly={!!parentData}
             required
           />

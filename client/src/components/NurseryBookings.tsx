@@ -1,10 +1,19 @@
+// React tools
 import { type FormEvent, useEffect, useState } from "react";
-import "./NurseryBookings.css";
+
+// React components
 import { useAuth } from "../contexts/AuthContext";
+import useToast from "../hooks/useToast";
+
+// Types and interfaces TS
 import type { BookingProps } from "../types/BookingProps";
+
+// Style
+import "./NurseryBookings.css";
 
 function NurseryBookings() {
   const { user } = useAuth();
+  const { success, error } = useToast();
 
   const [booking, setBooking] = useState<BookingProps[] | []>([]);
   const [status, setStatus] = useState<string>("En attente");
@@ -51,9 +60,13 @@ function NurseryBookings() {
         credentials: "include",
         body: JSON.stringify({ status }),
       },
-    )
-      .then((res) => res.json())
-      .then((response) => console.log(response));
+    ).then((res) => {
+      if (res.ok) {
+        success("La réservation a été mise à jour");
+      } else {
+        error("Échec de la mise à jour de la réservation");
+      }
+    });
   }
 
   function transcriptDate(date: string) {

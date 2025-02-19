@@ -77,6 +77,8 @@ function ChildrenFolder() {
             aria-label="Date de naissance"
             placeholder="Date de naissance"
             className="input-field"
+            min={"2022-02-01"}
+            max={"2025-08-01"}
           />
           <select id="gender" name="gender" className="input-field">
             <option value="" disabled selected>

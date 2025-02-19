@@ -40,6 +40,10 @@ function ParentProfile({
     }
   }, [userId]);
 
+  if (user.parent_id) {
+    setCheck(false);
+  }
+
   return (
     <section className="profile-page">
       {userId > 0 && parent ? (
@@ -68,7 +72,7 @@ function ParentProfile({
               setCheck(false);
             }}
           >
-            Dossier Parents
+            Dossier Parent
           </button>
           <button
             type="button"
@@ -79,7 +83,7 @@ function ParentProfile({
               setIsVisible("children");
             }}
           >
-            Dossier Enfants
+            Dossier Enfant
           </button>
           <button
             type="button"
