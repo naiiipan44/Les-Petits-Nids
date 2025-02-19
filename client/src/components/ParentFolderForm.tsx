@@ -13,16 +13,16 @@ import type { Parent } from "../types/ParentFolder";
 // Style
 import "./ParentFolder.css";
 
-function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
+function ParentFolderForm() {
   const { success } = useToast();
-
-  const { handleDelete } = useFetch(parentId);
+  const { user } = useAuth();
+  const { handleDelete } = useFetch(user.parent_id);
   const [userData, setUserData] = useState<Auth | null>(null);
   const [loading, setLoading] = useState(true);
   const [parentData, setParentData] = useState<Parent | null>(null);
+  const [refresh, setRefresh] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
@@ -32,15 +32,17 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
   }, [user]);
 
   useEffect(() => {
-    if (user.parent_id) {
+    if (user.parent_id || refresh === true) {
       fetch(`${import.meta.env.VITE_API_URL}/api/parent/${user.parent_id}`, {
         credentials: "include",
       })
         .then((res) => res.json())
-        .then((data) => setParentData(data[0]))
+        .then((data) => {
+          setParentData(data[0]);
+        })
         .catch((err) => console.error("Erreur de récupération parent:", err));
     }
-  }, [user]);
+  }, [user, refresh]);
 
   if (loading) return <p>Chargement...</p>;
   if (!userData) return <p>Erreur lors du chargement des données.</p>;
@@ -74,7 +76,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
 
   const handleDeleteAndClosePopup = () => {
     setParentData(null);
-    handleDelete();
+    handleDelete({ refresh, setRefresh });
     dialogRef.current?.close();
   };
 

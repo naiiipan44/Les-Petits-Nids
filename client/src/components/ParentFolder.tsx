@@ -1,7 +1,7 @@
 // React tools
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
 //React components
-import { useAuth } from "../contexts/AuthContext";
 import ParentFolderForm from "./ParentFolderForm";
 
 // Style
@@ -9,14 +9,6 @@ import "./ParentFolder.css";
 
 function ParentFolder() {
   const [edit, setEdit] = useState(false);
-  const [parentId, setParentId] = useState(0);
-  const { user } = useAuth();
-
-  useEffect(() => {
-    if (user) {
-      setParentId(user.id);
-    }
-  }, [user]);
 
   return (
     <>
@@ -36,7 +28,7 @@ function ParentFolder() {
             />
           )}
         </button>
-        <ParentFolderForm edit={edit} parentId={parentId} />
+        <ParentFolderForm />
       </section>
     </>
   );

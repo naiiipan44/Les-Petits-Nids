@@ -25,9 +25,13 @@ const read: RequestHandler = async (req, res) => {
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const parentId = Number(req.params.id);
-    await parentRepository.delete(parentId);
 
-    res.sendStatus(204);
+    const affectedRows = await parentRepository.delete(parentId);
+    if (affectedRows) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(400);
+    }
   } catch (err) {
     next(err);
   }
