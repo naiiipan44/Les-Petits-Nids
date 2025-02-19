@@ -4,12 +4,22 @@ import nurseryRepository from "./nurseryRepository";
 
 const browse: RequestHandler = async (req, res) => {
   try {
-    const nurseries = await nurseryRepository.readAll();
+    const nurseryId = Number(req.query.nurseryId);
 
-    if (nurseries.length) {
-      res.status(200).json(nurseries);
+    if (nurseryId) {
+      const nursery = await nurseryRepository.readById(nurseryId);
+      if (nursery) {
+        res.status(200).json(nursery);
+      } else {
+        res.sendStatus(403).json({ error: "Erreur interne du serveur" });
+      }
     } else {
-      res.sendStatus(403).json({ error: "Erreur interne du serveur" });
+      const nurseries = await nurseryRepository.readAll();
+      if (nurseries.length) {
+        res.status(200).json(nurseries);
+      } else {
+        res.sendStatus(403).json({ error: "Erreur interne du serveur" });
+      }
     }
   } catch (err) {
     console.error(err);

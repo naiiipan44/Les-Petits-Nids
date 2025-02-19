@@ -1,7 +1,11 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
-import type { User } from "../types/BookingInfos";
-import "./Header.css";
+// 2.Les composants et modules
+// Hooks
 import { toast } from "react-toastify";
+import type { User } from "../types/BookingInfos";
+// 3. Les Styles et assets
+import "./Header.css";
 
 function Header() {
   const [user, setUser] = useState<User | null>(null);

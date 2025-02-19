@@ -4,6 +4,7 @@ import { useState } from "react";
 // Components
 import ChildrenFolder from "../components/ChildrenFolder";
 import ParentFolder from "../components/ParentFolder";
+//Composant parents
 import ParentProfile from "../components/ParentProfile";
 import ParentsBookings from "../components/ParentsBookings";
 
@@ -30,7 +31,7 @@ function ParentProfilePage() {
         ) : (
           <>
             <button type="button" onClick={() => setDisplay(true)}>
-              Retour
+              <img src="/chevron.png" alt="" />
             </button>
             <section className="button-header-bookings">
               <button

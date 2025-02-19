@@ -7,9 +7,9 @@
 .back-to-nursery section {
   margin-left: 5%;
 }
-.back-to-nursery section h1,
-.back-to-nursery p {
+.back-to-nursery section h1 {
   color: var(--secondaryColor);
+  font-size: 1.2rem;
 }
 .back-button {
   background: none;
@@ -125,7 +125,6 @@
   box-shadow: 0 4px 12px var(--shadowColor);
 }
 
-/* state class pour informations suplémentaire */
 .my-component {
   transition: opacity 0.5s ease-in-out;
 }
