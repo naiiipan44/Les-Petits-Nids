@@ -9,6 +9,7 @@ function NurseryAvailabilities() {
   const { id } = useParams();
   const { success, error } = useToast();
   const [userData, setUserData] = useState<User | null>(null);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
       credentials: "include",
@@ -57,24 +58,21 @@ function NurseryAvailabilities() {
   return (
     <section className="nursery-availabilities-calendar">
       <section className="calendar-area">
-        <button type="button" className="date-button">
-          Lun. 14
-        </button>
-        <button type="button" className="date-button">
-          Mar. 15
-        </button>
-        <button type="button" className="date-button">
-          Mer. 16
-        </button>
-        <button type="button" className="date-button">
-          Jeu. 17
-        </button>
-        <button type="button" className="date-button">
-          Ven. 18
-        </button>
-        <button type="button" className="date-button">
-          Sam. 19
-        </button>
+        <input
+          type="date"
+          name="birthdate"
+          aria-label="Date de naissance"
+          placeholder="Date de naissance"
+          className="input-field-calendar"
+        />
+        <select id="durée" name="durée" className="input-field-calendar">
+          <option value="" disabled selected>
+            Durée
+          </option>
+          <option value="Matin">Matin</option>
+          <option value="Après-midi">Après-midi</option>
+          <option value="Journée">Journée</option>
+        </select>
       </section>
       <p>Tarifs: 3,5€/heure</p>
       <button className="not-connected" type="button" onClick={handleSubmit}>

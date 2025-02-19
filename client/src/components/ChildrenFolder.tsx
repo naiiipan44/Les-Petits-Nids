@@ -81,12 +81,9 @@ function ChildrenFolder() {
             placeholder="Date de naissance"
             className="input-field"
           />
-          <label htmlFor="gender-choice" id="gender-choice">
-            Choisissez un genre
-          </label>
           <select id="gender" name="gender" className="input-field">
             <option value="" disabled selected>
-              --
+              Choisissez un genre
             </option>
             <option value="homme">Homme</option>
             <option value="femme">Femme</option>
