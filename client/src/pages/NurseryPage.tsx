@@ -102,7 +102,8 @@ function NurseryPage() {
           ) : (
             <section className="login-text">
               <p>
-                Connectez-vous pour accéder aux disponibilités de cette crèche.
+                Connectez-vous pour accéder aux <br /> disponibilités de cette
+                crèche.
               </p>
               <button
                 className="not-connected"

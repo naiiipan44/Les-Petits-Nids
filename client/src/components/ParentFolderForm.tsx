@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import "./ParentFolder.css";
 import { useAuth } from "../contexts/AuthContext";
 import useFetch from "../hooks/useFetch";
@@ -13,6 +13,8 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
   const [userData, setUserData] = useState<Auth | null>(null);
   const [loading, setLoading] = useState(true);
   const [parentData, setParentData] = useState<Parent | null>(null);
+
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -63,112 +65,149 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
       });
   }
 
+  const handleDeleteAndClosePopup = () => {
+    setParentData(null);
+    handleDelete();
+    dialogRef.current?.close();
+  };
+
   return (
-    <section className="parent-folder">
-      <form onSubmit={handleSubmit} className="login-form-parent">
-        <button
-          className="button-delete-parent"
-          type="button"
-          onClick={handleDelete}
-        >
-          <img src="public/trash.png" alt="supprimé son dossier parent" />
-        </button>
-        <input
-          type="text"
-          placeholder="Prénom"
-          className={`input-field ${user.first_name ? "valid-user-information" : ""}`}
-          name="firstName"
-          aria-label="Prénom"
-          defaultValue={user.first_name || parentData?.p_first_name || ""}
-          readOnly={true}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Nom"
-          className={`input-field ${user.last_name ? "valid-user-information" : ""}`}
-          name="lastName"
-          aria-label="Nom"
-          defaultValue={user.last_name || parentData?.p_last_name || ""}
-          readOnly={true}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Métier"
-          className={`input-field ${parentData?.p_job ? "valid-user-information" : ""}`}
-          name="job"
-          aria-label="Métier"
-          defaultValue={parentData?.p_job || ""}
-          readOnly={!!parentData}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Adresse postale"
-          className={`input-field ${parentData?.p_address ? "valid-user-information" : ""}`}
-          name="adress"
-          aria-label="Adresse"
-          defaultValue={parentData?.p_address || ""}
-          readOnly={!!parentData}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Code Postal"
-          className={`input-field ${parentData?.p_zip_code ? "valid-user-information" : ""}`}
-          name="zipCode"
-          aria-label="Code postal"
-          defaultValue={parentData?.p_zip_code || ""}
-          readOnly={!!parentData}
-          required
-        />
-        <input
-          type="tel"
-          placeholder="Numéro de téléphone"
-          className={`input-field ${parentData?.p_num_tel ? "valid-user-information" : ""}`}
-          name="numTel"
-          aria-label="Numéro de téléphone"
-          defaultValue={
-            parentData?.p_num_tel
-              .toString()
-              .replace(/\D/g, "")
-              .replace(/(\d{2})(?=\d)/g, "$1 ") ?? ""
-          }
-          readOnly={!!parentData}
-          required
-        />
-        <input
-          type="email"
-          placeholder="email"
-          className={`input-field ${user.email ? "valid-user-information" : ""}`}
-          name="mail"
-          aria-label="Email"
-          defaultValue={user.email}
-          readOnly={true}
-          required
-        />
-        <input
-          type="date"
-          placeholder="Date de naissance"
-          className={`input-field ${parentData?.p_birth_date ? "valid-user-information" : ""}`}
-          name="birthDate"
-          aria-label="Date de naissance"
-          defaultValue={
-            parentData?.p_birth_date
-              ? new Date(parentData.p_birth_date).toISOString().split("T")[0]
-              : ""
-          }
-          readOnly={!!parentData}
-          required
-        />
-        <button type="submit" className="button-secondary">
-          {isParentFilled
-            ? "Formulaire déjà complété"
-            : "Valider le formulaire"}
-        </button>
-      </form>
-    </section>
+    <>
+      <section className="parent-folder">
+        <form onSubmit={handleSubmit} className="login-form-parent">
+          <button
+            className="button-delete-parent"
+            type="button"
+            onClick={() => dialogRef.current?.showModal()}
+          >
+            <img src="public/trash.png" alt="supprimé son dossier parent" />
+          </button>
+          <input
+            type="text"
+            placeholder="Prénom"
+            className={`input-field ${user.first_name ? "valid-user-information" : ""}`}
+            name="firstName"
+            aria-label="Prénom"
+            defaultValue={user.first_name || parentData?.p_first_name || ""}
+            readOnly={true}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Nom"
+            className={`input-field ${user.last_name ? "valid-user-information" : ""}`}
+            name="lastName"
+            aria-label="Nom"
+            defaultValue={user.last_name || parentData?.p_last_name || ""}
+            readOnly={true}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Métier"
+            className={`input-field ${parentData?.p_job ? "valid-user-information" : ""}`}
+            name="job"
+            aria-label="Métier"
+            defaultValue={parentData?.p_job || ""}
+            readOnly={!!parentData}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Adresse postale"
+            className={`input-field ${parentData?.p_address ? "valid-user-information" : ""}`}
+            name="adress"
+            aria-label="Adresse"
+            defaultValue={parentData?.p_address || ""}
+            readOnly={!!parentData}
+            required
+          />
+          <input
+            type="number"
+            placeholder="Code Postal"
+            className={`input-field ${parentData?.p_zip_code ? "valid-user-information" : ""}`}
+            name="zipCode"
+            aria-label="Code postal"
+            defaultValue={parentData?.p_zip_code || ""}
+            readOnly={!!parentData}
+            required
+          />
+          <input
+            type="tel"
+            placeholder="Numéro de téléphone"
+            className={`input-field ${parentData?.p_num_tel ? "valid-user-information" : ""}`}
+            name="numTel"
+            aria-label="Numéro de téléphone"
+            defaultValue={
+              parentData?.p_num_tel
+                .toString()
+                .replace(/\D/g, "")
+                .replace(/(\d{2})(?=\d)/g, "$1 ") ?? ""
+            }
+            readOnly={!!parentData}
+            required
+          />
+          <input
+            type="email"
+            placeholder="email"
+            className={`input-field ${user.email ? "valid-user-information" : ""}`}
+            name="mail"
+            aria-label="Email"
+            defaultValue={user.email}
+            readOnly={true}
+            required
+          />
+          <input
+            type="date"
+            placeholder="Date de naissance"
+            className={`input-field ${parentData?.p_birth_date ? "valid-user-information" : ""}`}
+            name="birthDate"
+            aria-label="Date de naissance"
+            defaultValue={
+              parentData?.p_birth_date
+                ? new Date(parentData.p_birth_date).toISOString().split("T")[0]
+                : ""
+            }
+            readOnly={!!parentData}
+            required
+          />
+          <button type="submit" className="button-secondary">
+            {isParentFilled
+              ? "Formulaire déjà complété"
+              : "Valider le formulaire"}
+          </button>
+        </form>
+      </section>
+      <dialog
+        className="popup-content"
+        ref={dialogRef}
+        onPointerDown={(e) => {
+          if (e.currentTarget === e.target) dialogRef.current?.close();
+        }}
+      >
+        <section>
+          <h2 id="popup-title">
+            Voulez-vous vraiment supprimé votre dossier ?
+          </h2>
+          <button
+            type="button"
+            onClick={handleDeleteAndClosePopup}
+            className="confirm-btn"
+          >
+            Oui
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              dialogRef.current?.close();
+            }}
+            className="cancel-btn"
+          >
+            Non
+          </button>
+        </section>
+      </dialog>
+    </>
   );
 }
 
