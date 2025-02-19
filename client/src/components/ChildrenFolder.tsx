@@ -1,7 +1,11 @@
-import "./ChildrenFolder.css";
+//1. Les imports de base
 import { type FormEvent, useEffect, useState } from "react";
-import "./LoginPageComponent.css";
+// 2.Les composants et modules
+// Hooks
 import useToast from "../hooks/useToast";
+// 3. Les Styles et assets
+import "./ChildrenFolder.css";
+import "./LoginPageComponent.css";
 
 function ChildrenFolder() {
   const { success, error } = useToast();

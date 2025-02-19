@@ -1,9 +1,14 @@
-import "./ParentProfilePage.css";
+//1. Les imports de base
 import { useState } from "react";
+// 2.Les composants et modules
+//Composant enfants
 import ChildrenFolder from "../components/ChildrenFolder";
 import ParentFolder from "../components/ParentFolder";
+//Composant parents
 import ParentProfile from "../components/ParentProfile";
 import ParentsBookings from "../components/ParentsBookings";
+// 3. Les Styles et assets
+import "./ParentProfilePage.css";
 
 function ParentProfilePage() {
   const [display, setDisplay] = useState(true);

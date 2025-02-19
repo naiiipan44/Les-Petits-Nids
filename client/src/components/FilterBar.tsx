@@ -1,4 +1,7 @@
+// 1.Les composants et modules
+//Hooks
 import type { FormEvent } from "react";
+// 2. Les Styles et assets
 import "./FilterBar.css";
 
 interface UserEntryProps {

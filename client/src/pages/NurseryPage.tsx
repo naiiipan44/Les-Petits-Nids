@@ -1,9 +1,16 @@
-import { Link, useLoaderData } from "react-router-dom";
-import type { NurseryDetails } from "../types/Nursery";
-import "./NurseryPage.css";
+//1. Les imports de base
 import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+// 2.Les composants et modules
+//Composant parents
 import ModalConnexion from "../components/ModalConnexion";
+//Composant enfants
 import NurseryAvailabilities from "../components/NurseryAvailabilities";
+// Types
+import type { NurseryDetails } from "../types/Nursery";
+// 3. Les Styles et assets
+import "./NurseryPage.css";
+
 import { useAuth } from "../contexts/AuthContext";
 import useStorage from "../hooks/useStorage";
 

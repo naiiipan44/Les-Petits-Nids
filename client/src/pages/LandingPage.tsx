@@ -1,4 +1,6 @@
+//1. Les imports de base
 import { Link } from "react-router-dom";
+// 2. Les Styles et assets
 import "./LandingPage.css";
 
 function LandingPage() {
