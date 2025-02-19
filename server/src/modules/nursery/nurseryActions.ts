@@ -4,10 +4,10 @@ import nurseryRepository from "./nurseryRepository";
 
 const browse: RequestHandler = async (req, res) => {
   try {
-    const nureseryId = Number(req.query.nureseryId);
+    const nurseryId = Number(req.query.nurseryId);
 
-    if (nureseryId) {
-      const nursery = await nurseryRepository.readById(nureseryId);
+    if (nurseryId) {
+      const nursery = await nurseryRepository.readById(nurseryId);
       if (nursery) {
         res.status(200).json(nursery);
       } else {
