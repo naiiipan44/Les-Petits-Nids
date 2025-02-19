@@ -125,7 +125,6 @@
   box-shadow: 0 4px 12px var(--shadowColor);
 }
 
-/* state class pour informations suplémentaire */
 .my-component {
   transition: opacity 0.5s ease-in-out;
 }
