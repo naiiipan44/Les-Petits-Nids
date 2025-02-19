@@ -1,18 +1,20 @@
-//1. Les imports de base
+// React tools
 import { useState } from "react";
-// 2.Les composants et modules
-//Composant enfants
+
+// Components
 import ChildrenFolder from "../components/ChildrenFolder";
 import ParentFolder from "../components/ParentFolder";
 //Composant parents
 import ParentProfile from "../components/ParentProfile";
 import ParentsBookings from "../components/ParentsBookings";
-// 3. Les Styles et assets
+
+// Style
 import "./ParentProfilePage.css";
 
 function ParentProfilePage() {
   const [display, setDisplay] = useState(true);
   const [isVisible, setIsVisible] = useState("parent");
+  const [check, setCheck] = useState(true);
 
   return (
     <main className="main-parents-profils">
@@ -23,6 +25,8 @@ function ParentProfilePage() {
             setDisplay={setDisplay}
             isVisible={isVisible}
             setIsVisible={setIsVisible}
+            check={check}
+            setCheck={setCheck}
           />
         ) : (
           <>
@@ -71,6 +75,8 @@ function ParentProfilePage() {
           setDisplay={setDisplay}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          check={check}
+          setCheck={setCheck}
         />
         <section className="right-section">
           <section className="button-header-bookings">

@@ -92,8 +92,9 @@ function ChildrenFolder() {
             <option value="" disabled selected>
               --
             </option>
-            <option value="homme">Homme</option>
-            <option value="femme">Femme</option>
+            <option value="boy">Garçon</option>
+            <option value="girl">Fille</option>
+            <option value="not-filled">Non-renseigné</option>
           </select>
           <input
             type="text"

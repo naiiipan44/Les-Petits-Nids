@@ -1,6 +1,7 @@
-//1. Les imports de base
+// React librairies
 import { Link } from "react-router-dom";
-// 2. Les Styles et assets
+
+// Style
 import "./LandingPage.css";
 
 function LandingPage() {
@@ -11,12 +12,6 @@ function LandingPage() {
         content="Page d'accueil et de présentation de l'application Les Petits Nids. Les Petits Nids est une application conçue pour permettre aux parents de réserver en urgence une place en crèche du lundi au vendredi de 9h à 17h pour leur enfant"
       />
       <section className="landing-page">
-        <img
-          src="/logo-writing-white.png"
-          alt="Ceci est le logo des Petits Nids"
-          className="logo-writing-white"
-        />
-
         <section className="white-painting">
           <img
             src="/logo-writing.png"
@@ -41,9 +36,6 @@ function LandingPage() {
             &gt;
           </Link>
         </section>
-        <Link to="search" className="round-button">
-          &gt;
-        </Link>
       </section>
     </>
   );
