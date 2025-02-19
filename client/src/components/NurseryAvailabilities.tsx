@@ -9,6 +9,7 @@ function NurseryAvailabilities() {
   const { id } = useParams();
   const { success, error } = useToast();
   const [userData, setUserData] = useState<User | null>(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
@@ -17,6 +18,18 @@ function NurseryAvailabilities() {
       .then((response) => response.json())
       .then((result) => setUserData(result.user));
   }, []);
+
+  function handleDateChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const date = event.target.value;
+    const day = new Date(date).getDay();
+
+    if (day === 0) {
+      error("Les réservations ne sont pas possibles le dimanche.");
+      setSelectedDate("");
+    } else {
+      setSelectedDate(date);
+    }
+  }
 
   function handleSubmit() {
     const bookingDate = "2025-05-11";
@@ -64,14 +77,16 @@ function NurseryAvailabilities() {
           aria-label="Date de naissance"
           placeholder="Date de naissance"
           className="input-field-calendar"
+          value={selectedDate}
+          onChange={handleDateChange}
         />
         <select id="durée" name="durée" className="input-field-calendar">
           <option value="" disabled selected>
             Durée
           </option>
-          <option value="Matin">Matin</option>
-          <option value="Après-midi">Après-midi</option>
-          <option value="Journée">Journée</option>
+          <option value="Morning">Matin</option>
+          <option value="Afternoon">Après-midi</option>
+          <option value="All-day">Journée</option>
         </select>
       </section>
       <p>Tarifs: 3,5€/heure</p>
