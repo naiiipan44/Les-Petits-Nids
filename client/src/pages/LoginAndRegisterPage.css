@@ -112,9 +112,14 @@
 }
 
 @media screen and (min-width: 680px) {
+  .logo-navbar {
+    display: none;
+  }
+
   .button-return {
     display: none;
   }
+
   .login-register-background > a {
     display: flex;
     align-items: center;
@@ -161,6 +166,13 @@
     width: 100vw;
     height: 100vh;
     background: var(--mainColor);
+    z-index: 15;
+  }
+
+  .user-registration input[placeholder="Nom"],
+  .user-registration input[placeholder="Prénom"],
+  .user-registration input[placeholder="Nom de l'établissement"] {
+    width: 75%;
   }
 }
 
