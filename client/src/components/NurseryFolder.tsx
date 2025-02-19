@@ -70,7 +70,7 @@ function NurseryFolder() {
       </section>
       <section className="nursery-folder">
         <form onSubmit={handleSubmit} className="login-form-nursery">
-          <label htmlFor="name">Nom de l'établissement :</label>
+          <label htmlFor="name">Nom de l'établissement</label>
           <input
             type="text"
             name="name"
@@ -80,7 +80,7 @@ function NurseryFolder() {
             disabled={isNursery}
           />
 
-          <label htmlFor="nursery-type-choice">Type de crèche :</label>
+          <label htmlFor="nursery-type-choice">Type de crèche</label>
           <select
             name="nursery-type-choice"
             defaultValue={nursery?.ns_type}
@@ -89,7 +89,7 @@ function NurseryFolder() {
             <option value="Micro-crèche">Micro-crèche</option>
             <option value="Multi-accueil">Multi-accueil</option>
           </select>
-          <label htmlFor="naddress">Adresse postale :</label>
+          <label htmlFor="naddress">Adresse postale</label>
           <input
             defaultValue={nursery?.ns_address}
             disabled={isNursery}
@@ -98,7 +98,7 @@ function NurseryFolder() {
             placeholder="Adresse"
             className="input-field"
           />
-          <label htmlFor="zipCode">Code postale :</label>
+          <label htmlFor="zipCode">Code postale</label>
           <input
             defaultValue={nursery?.ns_zip_postal}
             disabled={isNursery}
@@ -107,7 +107,7 @@ function NurseryFolder() {
             placeholder="Code Postal"
             className="input-field"
           />
-          <label htmlFor="phoneNumber">Numéro de téléphone :</label>
+          <label htmlFor="phoneNumber">Numéro de téléphone</label>
           <input
             defaultValue={nursery?.ns_num_tel}
             disabled={isNursery}
@@ -116,7 +116,7 @@ function NurseryFolder() {
             placeholder="Téléphone"
             className="input-field"
           />
-          <label htmlFor="capacity">Capacité d'accueil:</label>
+          <label htmlFor="capacity">Capacité d'accueil</label>
           <input
             defaultValue={nursery?.ns_capacity}
             disabled={isNursery}
@@ -125,7 +125,7 @@ function NurseryFolder() {
             placeholder="Capacité"
             className="input-field"
           />
-          <label htmlFor="availability">Nombre de places disponibles :</label>
+          <label htmlFor="availability">Nombre de places disponibles</label>
           <input
             defaultValue={nursery?.ns_nb_place_dispo}
             disabled={isNursery}
@@ -135,7 +135,7 @@ function NurseryFolder() {
             className="input-field"
           />
 
-          <label htmlFor="gestion">Gestion de la crèche :</label>
+          <label htmlFor="gestion">Gestion de la crèche</label>
           <fieldset>
             <label htmlFor="public">Public</label>
             <input
@@ -156,7 +156,7 @@ function NurseryFolder() {
               checked={!nursery?.ns_is_public}
             />
           </fieldset>
-          <label htmlFor="minAge">Age minimum accueilli :</label>
+          <label htmlFor="minAge">Age minimum accueilli</label>
           <input
             type="text"
             name="minAge"
@@ -165,7 +165,7 @@ function NurseryFolder() {
             defaultValue={nursery?.ns_age_min && `${nursery?.ns_age_min} mois`}
             disabled={isNursery}
           />
-          <label htmlFor="maxAge">Age maximum accueilli :</label>
+          <label htmlFor="maxAge">Age maximum accueilli</label>
           <input
             type="text"
             name="maxAge"
@@ -188,7 +188,7 @@ function NurseryFolder() {
               disabled={isNursery}
             />
           </fieldset>
-          <label htmlFor="description">Description de la crèche :</label>
+          <label htmlFor="description">Description de la crèche</label>
           <textarea
             name="description"
             placeholder="Description"
@@ -196,7 +196,7 @@ function NurseryFolder() {
             defaultValue={nursery?.ns_description}
             disabled={isNursery}
           />
-          <label htmlFor="price">Tarif horaire : </label>
+          <label htmlFor="price">Tarif horaire</label>
           <input
             type="text"
             name="price"
@@ -211,8 +211,12 @@ function NurseryFolder() {
             <p>Photo de l'établissement : </p>
             <FaDownload />
           </section>
-          <button type="submit" className="button-primary" disabled={isNursery}>
-            Soumettre
+          <button
+            type="submit"
+            className={`button-primary ${isNursery && "lock-form"}`}
+            disabled={isNursery}
+          >
+            {isNursery ? "Formulaire complet" : "Soumettre"}
           </button>
         </form>
       </section>
