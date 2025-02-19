@@ -85,7 +85,7 @@ function ParentsBookings() {
       ) : (
         <p>
           Aucune réservation n'a été effectuée pour le moment : effectuer une
-          nouvelle résevration <Link to={"/search"}>ici</Link>.
+          nouvelle réservation <Link to={"/search"}>ici</Link>.
         </p>
       )}
     </main>
