@@ -25,7 +25,7 @@ function NurseryProfilePage() {
             onClick={() => setDisplay(!display)}
             className="button-secondary"
           >
-            Retour
+            <img src="/chevron.png" alt="" />
           </button>
           <section className="button-header-nursery-bookings">
             <button
