@@ -1,10 +1,9 @@
-// React tools
+//1. Les imports de base
 import { type FormEvent, useEffect, useState } from "react";
-
-// React libraries
+// 2.Les composants et modules
+// Hooks
 import useToast from "../hooks/useToast";
-
-// Style
+// 3. Les Styles et assets
 import "./ChildrenFolder.css";
 import "./LoginPageComponent.css";
 

@@ -1,11 +1,15 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
-import FilterBar from "../components/FilterBar";
-import "./SearchPage.css";
-
 import { Link } from "react-router-dom";
-
+// 2.Les composants et modules
+// Composant enfants
+import FilterBar from "../components/FilterBar";
+//Composant parents
 import Nursery from "../components/Nursery";
+// Types
 import type { NurseryDetails } from "../types/Nursery";
+// 3. Les Styles et assets
+import "./SearchPage.css";
 
 function SearchPage() {
   const [data, setData] = useState<null | NurseryDetails[]>(null);

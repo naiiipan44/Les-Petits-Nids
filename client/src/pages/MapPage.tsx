@@ -1,7 +1,12 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
+// 2.Les composants et modules
+// Composant enfant
 import LeafletMap from "../components/Map";
-import "./MapPage.css";
+// Hooks
 import type { InterfaceMap } from "../types/Nursery";
+// 3. Les Styles et assets
+import "./MapPage.css";
 
 function MapPage() {
   const [data, setData] = useState<null | InterfaceMap[]>(null);
