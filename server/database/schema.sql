@@ -1,9 +1,45 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE parent (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  p_first_name VARCHAR(80) NOT NULL,
+  p_last_name VARCHAR(80) NOT NULL,
+  p_job VARCHAR(80),
+  p_address VARCHAR(120) NOT NULL,
+  p_zip_code INT NOT NULL,
+  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
+  p_mail VARCHAR(100) NOT NULL,
+  p_birth_date DATE NOT NULL
 );
 
+create table children (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+c_first_name VARCHAR(80) NOT NULL,
+c_last_name VARCHAR(80) NOT NULL,
+c_gender VARCHAR(80) NOT NULL,
+c_birth_date DATE NOT NULL,
+c_allergies VARCHAR(150) NULL,
+parent_id INT NOT NULL,
+ FOREIGN KEY (parent_id) 
+ REFERENCES parent(id)
+);
+
+create table user (
+  id int unsigned primary key auto_increment not null,
+  first_name varchar(80) not null,
+  last_name varchar(80) not null,
+  email varchar(255) not null unique,
+  hashed_password varchar(255) not null,
+  role varchar(80) not null
+);
+
+INSERT INTO user (
+  first_name, last_name, email, hashed_password, role
+) VALUES (
+  "Jean-Charles", "Passereaux", "creche-les-passereaux@wanadoo.fr", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$7aEMFgo/0z0vNR6EVtDKhg", "nursery"
+), 
+("Anne", "Babilou", "contact@babilou.com", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$juN7KG181Cl/yMHgbiqn5Q", "nursery"), 
+("François", "Barbusiens", "rpe-orves@mairie-colombes.fr", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$6XFoX1kaoJooVJ4/FYjEJQ", "nursery"),
+("Claire", "Raphaël", "creche@association-saint-raphael.com", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$4cOvlrBG2HL6W5snZzLO8g", "nursery"),
+("Constance", "Comptine", "petite_enfance@ville-antony.fr", "$argon2i$v=19$m=16,t=2,p=1$c3h3Zmd5M3FHRkJza3NrUg$Og+ZhKN9v3q2XurOAPE6ig", "nursery");
 
 CREATE TABLE nursery (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -15,7 +51,7 @@ CREATE TABLE nursery (
   ns_num_tel VARCHAR(20),
   ns_capacity INT NOT NULL,
   ns_nb_place_dispo INT NOT NULL,
-  ns_is_public BOOLEAN DEFAULT FALSE,
+  ns_is_public VARCHAR(80) NOT NULL,
   ns_age_min INT NOT NULL,
   ns_age_max INT NOT NULL,
   ns_is_disabled BOOLEAN DEFAULT FALSE,
@@ -26,9 +62,9 @@ CREATE TABLE nursery (
   ns_price DECIMAL(10,2) NOT NULL
 );
 
+ALTER TABLE parent ADD COLUMN user_id INT NOT NULL;
 
 INSERT INTO nursery (
-  id,
   ns_name,
   ns_type,
   ns_mail,
@@ -49,7 +85,6 @@ INSERT INTO nursery (
   )
 VALUES
 (
-  1,
   "Les Passereaux", 
   "Multi-accueil", 
   "creche-les-passereaux@wanadoo.fr",
@@ -58,7 +93,7 @@ VALUES
   "0147819355", 
   60, 
   2, 
-  true, 
+  "public", 
   2.5, 
   4, 
   false, 
@@ -68,9 +103,7 @@ VALUES
   "https://static.wixstatic.com/media/dc445c_9fb8a975972442eab252760838e90e32~mv2.png/v1/fill/w_980,h_436,q_90/dc445c_9fb8a975972442eab252760838e90e32~mv2.png", 
   1.47
   ),
-
   (
-  2,
   "Babilou Colombes Barbusse",
   "Multi-accueil",
   "contact@babilou.com",
@@ -79,7 +112,7 @@ VALUES
   "0809103000",
   41,
   1,
-  false,
+  "privé",
   2.5,
   4,
   false,
@@ -90,9 +123,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://babilou.fr/sites/default/files/styles/diaporama/public/2022-01/233-babilou-colombes-barbusse-8_0.jpg?h=82f92a78&itok=GDoBekte",
   2.73
   ),
-
   (
-  3,
   "Les Barbusiens",
   "Micro-crèche",
   "rpe-orves@mairie-colombes.fr",
@@ -101,7 +132,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "0185531378",
   12,
   0,
-  false,
+  "privé",
   2.5,
   4,
   false,
@@ -111,9 +142,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.demain2pieds.com/wp-content/uploads/2018/05/Les-Barbusiens-4.jpg",
   2.50
   ),
-
   (
-  4,
   "Saint Raphaël",
   "Multi-accueil",
   "creche@association-saint-raphael.com",
@@ -122,7 +151,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "0146664605",
   50,
   0,
-  false,
+  "privé",
   2.5,
   4,
   false,
@@ -132,9 +161,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "https://www.acis-asbl.be/wp-content/uploads/2023/07/2gp06473.jpg",
   1.47
   ),
-
   (
-  5,
   "La Comptine - Arc en Ciel",
   "Multi-accueil",
   "petite_enfance@ville-antony.fr",
@@ -143,7 +170,7 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   "0146682577",
   55,
   0,
-  true,
+  "public",
   2.5,
   4,
   true,
@@ -154,56 +181,18 @@ Votre activité professionnelle pouvant vous imposer différentes contraintes ho
   1.73
   );
 
-
-CREATE TABLE userApp (
+  CREATE TABLE booking (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  p_first_name VARCHAR(80) NOT NULL,
-  p_last_name VARCHAR(80) NOT NULL,
-  p_job VARCHAR(80),
-  p_address VARCHAR(120) NOT NULL,
-  p_zip_code INT NOT NULL,
-  p_num_tel VARCHAR(20), -- Changed INT to VARCHAR to accommodate phone number formatting
-  p_mail VARCHAR(100) NOT NULL,
-  p_birth_date DATE NOT NULL
+  parent_id INT NOT NULL,
+  FOREIGN KEY (parent_id)
+  REFERENCES parent(id),
+  nursery_id INT NOT NULL,
+  FOREIGN KEY (nursery_id)
+  REFERENCES nursery(id),
+  children_id INT NOT NULL,
+  FOREIGN KEY (children_id)
+  REFERENCES children(id),
+  booking_date DATE UNIQUE NOT NULL,
+  booking_range VARCHAR(80) NOT NULL,
+  status VARCHAR(80) NOT NULL
 );
-
-INSERT INTO userApp (
-  id,
-  p_first_name,
-  p_last_name,
-  p_job,
-  p_address,
-  p_zip_code,
-  p_num_tel,
-  p_mail,
-  p_birth_date
-)
-VALUES
-(
-1,
-"Deschamps",
-"Paula",
-"Conseillère bancaire",
-"20 ALLEE DES DHUYS",
-44000,
-"0632000000",
-"paula.deschamps@gmail.com",
-"1986-01-01" -- Correct date format (YYYY-MM-DD)
-),
-(
-2,
-"Després",
-"Alexis",
-"Maquettiste",
-"53 BOULEVARD MALESHERBES",
-44300,
-"0755000000",
-"alexis.despres@yahoo.fr",
-"1974-05-07"
-);
-
-
-
-
-
-

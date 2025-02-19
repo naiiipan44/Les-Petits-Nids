@@ -1,24 +1,19 @@
 /* CSS du boutton retour */
-
 .back-to-nursery {
   display: flex;
   margin: 5%;
   align-items: center;
 }
-
 .back-to-nursery section {
   margin-left: 5%;
 }
-
 .back-to-nursery section h1,
 .back-to-nursery p {
   color: var(--secondaryColor);
 }
-
 .back-button {
   background: none;
 }
-
 .back-button .arrow {
   width: 10px;
   height: 10px;
@@ -26,32 +21,28 @@
   border-bottom: 2px solid var(--secondaryColor);
   transform: rotate(45deg);
 }
-
 /* CSS de la page detaile de la crèche */
-
 .nursery-details {
   background-color: white;
   margin: 5%;
-  border-radius: 4%;
+  margin-bottom: 25%;
+  border-radius: 1rem;
+  position: relative;
 }
-
 .nursery-details img {
-  height: 50%;
+  max-height: 10rem;
   width: 100%;
-  border-top-left-radius: 4%;
-  border-top-right-radius: 4%;
+  border-radius: 1rem 1rem 0 0;
 }
-
 .nursery-description section {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 .presentation {
-  padding-left: 5%;
-  padding-top: 3%;
+  padding: 3% 0 0 5%;
+  font-size: 1.2rem;
 }
-
 .contact {
   background: linear-gradient(
     90deg,
@@ -62,6 +53,19 @@
   width: 100%;
   padding: 2.5%;
 }
+.contact > ul li {
+  font-size: 0.8rem;
+}
+
+.nursery-time,
+.nursery-tel,
+.nursery-mail,
+.presentation,
+.nursery-description > p,
+.availability,
+.login-text > p {
+  color: #1d0042;
+}
 
 .information {
   color: var(--tertiaryColor);
@@ -71,24 +75,28 @@
   text-align: center;
   border-radius: 50%;
   font-weight: 700;
+  border: none;
 }
-
 .nursery-description section ul {
   list-style: none;
   justify-items: start;
 }
-
 .nursery-description > p {
-  padding: 4% 6% 2% 6%;
+  padding: 4% 6% 6% 6%;
+  font-size: 0.9rem;
 }
-
 .nursery-description > section > p {
   text-align: center;
-  font-size: 13px;
+  font-size: 1rem;
+}
+
+.contact > ul > li > p {
+  color: #133f63;
 }
 
 .availability {
   margin: 5%;
+  font-size: 1.2rem;
 }
 
 .login-text {
@@ -98,52 +106,140 @@
 .login-text > p {
   text-align: center;
   max-width: 75%;
+  margin-bottom: 5%;
 }
 
-.login-text button {
+.not-connected {
   color: var(--tertiaryColor);
   background: var(--secondaryColor);
   box-shadow: 0 2px 6px var(--shadowColor);
   border: none;
-  font-size: 20px;
-  margin: 10%;
-  width: 229px;
-  height: 55px;
+  font-size: 1rem;
+  width: 200px;
+  height: 50px;
   border-radius: 10px;
+  margin-bottom: 5%;
+}
 
-  .my-component {
-    transition: opacity 0.5s ease-in-out;
-  }
+.not-connected :hover {
+  box-shadow: 0 4px 12px var(--shadowColor);
+}
 
-  .hidden {
+.my-component {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  background-color: rgba(255, 255, 255, 0.863);
+  border-radius: 8px;
+  padding: 5px;
+  margin: 0 10px 10px 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  font-weight: 500;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.visible > p {
+  font-size: 11px;
+  margin: 0.3rem 0 0.3rem 0;
+}
+
+.button-heart {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  width: 25px;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+}
+
+.button-heart:hover {
+  transform: scale(1.1);
+}
+
+/* animation popup informations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
     display: none;
   }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
 
-  .visible {
-    background-color: rgba(255, 255, 255, 0.863);
-    border-radius: 8px;
-    padding: 5px;
-    margin: 0 10px 10px 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-    font-weight: 500;
-    animation: fadeIn 0.6s ease-out forwards;
+@media screen and (max-width: 680px) {
+  .outlet-section {
+    width: 95%;
+    justify-self: center;
+    margin-top: 74px;
   }
 
-  .visible > p {
-    font-size: 11px;
+  .login-text {
+    padding-bottom: 46px;
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .nursery-details {
+    width: 70%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    margin: 5% auto;
   }
 
-  /* animation popup informations */
+  .contact > ul li {
+    font-size: 0.8rem;
+  }
+  .contact > ul li p {
+    font-size: 0.9rem;
+  }
+  .not-connected {
+    margin-bottom: 5%;
+  }
+  .nursery-description > p {
+    font-size: 1rem;
+  }
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      display: none;
-    }
-    to {
-      opacity: 1;
-      display: block;
-    }
+@media screen and (min-width: 1025px) {
+  .back-to-nursery h1 {
+    font-size: 1.3rem;
+  }
+  .nursery-details {
+    width: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    margin: 5% auto;
+  }
+
+  .contact button {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .nursery-description > p {
+    padding: 5%;
+    font-size: 1.2rem;
+  }
+  .contact > ul li {
+    font-size: 0.5rem;
+  }
+  .contact > ul li p {
+    font-size: 1rem;
+  }
+  .contact {
+    justify-content: flex-start;
+  }
+  .not-connected {
+    margin-bottom: 5%;
   }
 }

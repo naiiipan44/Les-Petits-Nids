@@ -1,0 +1,68 @@
+.map-container {
+  height: 90vh;
+  width: 100%;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+}
+.nursery-popup {
+  display: grid;
+  width: 209px;
+  height: 278px;
+}
+
+.nursery-popup > h2 {
+  font-size: 17px;
+}
+
+.nursery-popup > img {
+  height: 100px;
+  width: 123%;
+  object-fit: cover;
+  justify-self: center;
+  margin-left: 2.25%;
+  margin-top: -6.5%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.nursery-popup > ul {
+  list-style: none;
+}
+.popup-information {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 12px 0;
+}
+
+.popup-information-mail {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 12px 0;
+}
+
+.nursery-popup > ul > li p {
+  font-size: 12px;
+  margin: 0;
+}
+.nursery-popup > ul > li > img {
+  height: 15px;
+  width: auto;
+}
+
+/* modification des styles prédéfinis par leaflet */
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: white;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.308);
+  border-radius: 50%;
+}
+
+.leaflet-popup-tip-container {
+  top: 100%;
+}

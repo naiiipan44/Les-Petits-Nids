@@ -1,0 +1,67 @@
+.main-nursery-folder > section > h1 {
+  color: #76a3f6;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.header-nursery-folder {
+  align-self: flex-start;
+}
+
+.nursery-folder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-nursery {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+}
+.login-form-nursery input {
+  font-size: 14px;
+}
+
+.login-form-nursery select {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: grey;
+}
+
+.login-form-nursery fieldset {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: grey;
+}
+
+.login-form-nursery fieldset input {
+  width: auto;
+}
+
+.fadownload {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4%;
+  padding: 4.5%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.fadownload p {
+  font-size: 14px;
+  color: grey;
+}
+
+.fadownload svg {
+  cursor: pointer;
+  color: var(--secondaryColor);
+  font-size: 15px;
+}

@@ -1,0 +1,232 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--mainColor);
+}
+
+.white-painting {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px var(--shadowColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem;
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+}
+
+.logo-writing {
+  width: 130px;
+}
+
+.landing-page img:last-of-type {
+  width: 100%;
+  max-width: 310px;
+}
+
+.landing-page > figure {
+  text-align: center;
+}
+
+.white-painting > h1 {
+  text-align: center;
+  color: #133f63;
+  font-weight: bolder;
+  margin-top: 1rem;
+  font-size: 16px;
+}
+
+.landing-page > section > p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #133f63;
+  font-size: 12px;
+}
+
+.round-button-white {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: #133f63;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px var(--shadowColor);
+  cursor: pointer;
+  margin: 5%;
+}
+
+.small-not-blue {
+  display: none;
+}
+
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .small-not,
+  .landing-page ~ .main-footer {
+    display: none;
+  }
+
+  .landing-page {
+    background: var(--mainColor);
+    justify-content: center;
+  }
+
+  .logo-writing {
+    display: block;
+    width: 170px;
+    overflow: hidden;
+  }
+
+  .white-painting > h1 {
+    color: var(--secondaryColor);
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 0;
+  }
+
+  .white-painting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 550px;
+  }
+  .landing-page img:last-of-type {
+    width: 230px;
+  }
+  .landing-page p:last-of-type {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  .round-button-white {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #133f63;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .logo-writing-white,
+  .small-not,
+  .round-button,
+  .landing-page ~ .main-footer {
+    display: none;
+  }
+
+  .landing-page {
+    background: var(--mainColor);
+    justify-content: center;
+  }
+
+  .logo-writing {
+    display: block;
+    width: 210px;
+    overflow: hidden;
+  }
+
+  .white-painting > h1 {
+    color: var(--secondaryColor);
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .white-painting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 650px;
+  }
+  .landing-page img:last-of-type {
+    width: 310px;
+  }
+  .landing-page p:last-of-type {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  .round-button-white {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #133f63;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px var(--shadowColor);
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 1024px) {
+  .parent-folder {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50px;
+  }
+
+  .title-profile-parent {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .button-parent-folder {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .button-parent-folder:hover {
+    background-color: #5a8de0;
+  }
+
+  .login-form-parent {
+    width: 60%;
+    max-width: 600px;
+  }
+
+  .input-container {
+    gap: 15px;
+  }
+
+  .button-secondary {
+    width: 180px;
+    height: 45px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .button-secondary:hover {
+    background-color: #5a8de0;
+  }
+}

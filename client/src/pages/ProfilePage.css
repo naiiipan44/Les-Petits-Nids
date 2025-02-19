@@ -1,0 +1,108 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  width: 100%;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  background: var(--mainColor);
+  color: var(--secondaryColor);
+}
+
+.profile-page > a > img {
+  transform: rotate(90deg);
+  width: 3.5rem;
+  height: auto;
+}
+
+.profile-page > a {
+  display: none;
+  align-self: self-start;
+}
+
+.profile-page p {
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.profile img {
+  width: 125px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 2px;
+  margin: 0 0 10px 0;
+}
+
+.profile img:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.profile figcaption,
+.profile h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.profile-page > button {
+  width: 100%;
+  padding: 26px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.child-button {
+  background-color: #037fb0;
+  color: white;
+}
+
+.parents-button {
+  background-color: #067d6f;
+  color: white;
+}
+
+.reservations-button {
+  background-color: #776eb3;
+  color: white;
+}
+
+.profile-page button:hover {
+  opacity: 0.9;
+}
+
+.lock {
+  background-color: gray;
+  pointer-events: none;
+}
+
+.lock:hover {
+  cursor: auto;
+}
+
+@media (min-width: 680px) {
+  .child-button {
+    max-width: 50%;
+  }
+
+  .parents-button {
+    max-width: 50%;
+  }
+
+  .reservations-button {
+    max-width: 50%;
+  }
+
+  .profile-page {
+    background: #f6f6f6;
+  }
+
+  .profile-page > a {
+    display: block;
+    align-self: self-start;
+  }
+}

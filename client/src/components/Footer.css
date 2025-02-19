@@ -1,0 +1,18 @@
+.main-footer {
+  display: none;
+}
+
+@media (min-width: 680px) {
+  .main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #555;
+  }
+}

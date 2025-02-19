@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /favorites
+Allow: /search
+Allow: /login
+
+Disallow: /parent
+Disallow: /parent/protectedroute/
+Disallow: /parent/parentprotectedroute/parentprofilepage
+Disallow: /nursery
+Disallow: /nursery/protectedroute
+Disallow: /nursery/protectedroute/nurseryprofile
