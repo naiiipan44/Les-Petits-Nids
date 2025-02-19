@@ -1,9 +1,12 @@
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+// 1.Les composants et modules
 import L from "leaflet";
-import "./Map.css";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Link } from "react-router-dom";
+// Type
 import type { Props } from "../types/Map";
+// 2. Les Styles et assets
+import "leaflet/dist/leaflet.css";
+import "./Map.css";
 
 const customIcon = new L.Icon({
   iconUrl: "/Logo-marker-icon pink.png",

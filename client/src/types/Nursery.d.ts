@@ -12,6 +12,17 @@ interface NurseryDetails extends NurseryData {
   ns_num_tel: string;
 }
 
+interface CompleteNurseryProps extends NurseryDetails {
+  ns_zip_postal: string;
+  ns_nb_place_dispo: number;
+  ns_is_disabled: boolean;
+  ns_is_public: boolean;
+  ns_age_min: number;
+  ns_age_max: number;
+  ns_description: string;
+  ns_price: number;
+}
+
 interface InterfaceMap extends NurseryData {
   ns_coord_lat: number;
   ns_coord_long: number;

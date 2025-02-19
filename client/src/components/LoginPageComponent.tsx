@@ -1,5 +1,6 @@
 // 1. Les imports de base
 import type { FormEvent, FormEventHandler } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 // 2. Les composants et modules

@@ -1,12 +1,19 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+// 2.Les composants et modules
+//Composant enfants
+//Composant parents
 import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import "./style/globals.css";
 import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+// Context
 import { useAuth } from "./contexts/AuthContext";
+// Type
 import type { Auth } from "./types/Login";
+// 3. Les Styles et assets
+import "./style/globals.css";
 
 function App() {
   const location = useLocation();
