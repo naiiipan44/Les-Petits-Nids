@@ -24,11 +24,11 @@ body {
   font-family: var(--general-font);
   background: var(--mainColor);
   background-repeat: no-repeat;
-  min-height: 90vh;
+  min-height: 92vh;
 }
 
 main {
-  min-height: 90vh;
+  min-height: 85vh;
 }
 
 .button-primary {
