@@ -86,6 +86,7 @@ function NurseryAvailabilities() {
           className="input-field-calendar"
           value={bookingDate}
           onChange={handleDateChange}
+          min={"2025-02-21"}
         />
         <select
           id="durée"

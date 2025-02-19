@@ -67,7 +67,13 @@ function ParentsBookings() {
                   })
                 : ""}
             </li>
-            <li>{booking?.booking_range}</li>
+            <li>
+              {booking?.booking_range === "afternoon"
+                ? "Après-midi"
+                : booking?.booking_range === "morning"
+                  ? "Matin"
+                  : "Toute la journée"}
+            </li>
           </ul>
           <button
             type="button"
