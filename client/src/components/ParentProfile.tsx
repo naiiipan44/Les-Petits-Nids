@@ -1,21 +1,34 @@
+// React tools
 import { useEffect, useState } from "react";
-import "../pages/ProfilePage.css";
+
+// React librairies
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import type { ParentProfileProps } from "../types/ParentProfile";
 import type { UserParent } from "../types/UserParent";
 
-function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
+// Style
+import "../pages/ProfilePage.css";
+
+function ParentProfile({
+  setDisplay,
+  setIsVisible,
+  check,
+  setCheck,
+}: Readonly<ParentProfileProps>) {
   const [userId, setUserId] = useState(0);
 
   const [parent, setParent] = useState<UserParent | null>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((user) => setUserId(user.user.id));
+    if (user) {
+      setParent(user);
+      setUserId(user.id);
+    }
+  }, [user]);
 
+  useEffect(() => {
     if (userId) {
       fetch(`${import.meta.env.VITE_API_URL}/api/user?userId=${userId}`)
         .then((response) => response.json())
@@ -38,17 +51,29 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
             />
           </Link>
           <figure className="profile">
-            <img src="/profile.svg" alt="portrait de profil" />
+            <img src="/upload.png" alt="portrait de profil" />
             <figcaption>
               {parent.first_name} {parent.last_name}
             </figcaption>
-            <h2>{parent.role}</h2>
           </figure>
           <h3>Mettez toutes les chances de votre côté</h3>
           <p>Un profil complet est nécessaire pour un accueil en crèche</p>
+
           <button
             type="button"
-            className="child-button"
+            className="parents-button"
+            onClick={() => {
+              setDisplay(false);
+              setIsVisible("parent");
+              setCheck(false);
+            }}
+          >
+            Dossier Parents
+          </button>
+          <button
+            type="button"
+            className={`child-button ${check && "lock"}`}
+            disabled={check}
             onClick={() => {
               setDisplay(false);
               setIsVisible("children");
@@ -58,23 +83,14 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
           </button>
           <button
             type="button"
-            className="parents-button"
-            onClick={() => {
-              setDisplay(false);
-              setIsVisible("parent");
-            }}
-          >
-            Dossier Parents
-          </button>
-          <button
-            type="button"
-            className="reservations-button"
+            className={`reservations-button ${check && "lock"}`}
+            disabled={check}
             onClick={() => {
               setDisplay(false);
               setIsVisible("booking");
             }}
           >
-            Mes reservations
+            Mes Réservations
           </button>
         </>
       ) : (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import type { User } from "../types/AuthContext";
+import type { User } from "../types/BookingInfos";
 import "./Header.css";
 import { toast } from "react-toastify";
 
 function Header() {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -49,7 +49,7 @@ function Header() {
           alt="Logo du profile non connecté"
         />
       )}
-      <figcaption>{`${user?.first_name || ""} ${user?.last_name || ""}`}</figcaption>
+      <figcaption>{`${user?.first_name ?? ""} ${user?.last_name ?? ""}`}</figcaption>
       {user ? <img src="/chevron.png" alt="chevron pour menu déroulant" /> : ""}
     </header>
   );

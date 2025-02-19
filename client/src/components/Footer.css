@@ -2,7 +2,7 @@
   display: none;
 }
 
-@media (min-width: 431px) {
+@media (min-width: 680px) {
   .main-footer {
     display: flex;
     justify-content: space-between;
