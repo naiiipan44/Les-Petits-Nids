@@ -180,9 +180,8 @@
 
 @media screen and (max-width: 680px) {
   .outlet-section {
-    width: 95%;
+    width: 100%;
     justify-self: center;
-    margin-top: 74px;
   }
 
   .login-text {
