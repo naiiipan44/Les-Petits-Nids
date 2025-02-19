@@ -9,6 +9,8 @@ function NurseryAvailabilities() {
   const { id } = useParams();
   const { success, error } = useToast();
   const [userData, setUserData] = useState<User | null>(null);
+  const [selectedDate, setSelectedDate] = useState("");
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
       credentials: "include",
@@ -16,6 +18,18 @@ function NurseryAvailabilities() {
       .then((response) => response.json())
       .then((result) => setUserData(result.user));
   }, []);
+
+  function handleDateChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const date = event.target.value;
+    const day = new Date(date).getDay();
+
+    if (day === 0) {
+      error("Les réservations ne sont pas possibles le dimanche.");
+      setSelectedDate("");
+    } else {
+      setSelectedDate(date);
+    }
+  }
 
   function handleSubmit() {
     const bookingDate = "2025-05-11";
@@ -57,24 +71,23 @@ function NurseryAvailabilities() {
   return (
     <section className="nursery-availabilities-calendar">
       <section className="calendar-area">
-        <button type="button" className="date-button">
-          Lun. 14
-        </button>
-        <button type="button" className="date-button">
-          Mar. 15
-        </button>
-        <button type="button" className="date-button">
-          Mer. 16
-        </button>
-        <button type="button" className="date-button">
-          Jeu. 17
-        </button>
-        <button type="button" className="date-button">
-          Ven. 18
-        </button>
-        <button type="button" className="date-button">
-          Sam. 19
-        </button>
+        <input
+          type="date"
+          name="birthdate"
+          aria-label="Date de naissance"
+          placeholder="Date de naissance"
+          className="input-field-calendar"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+        <select id="durée" name="durée" className="input-field-calendar">
+          <option value="" disabled selected>
+            Durée
+          </option>
+          <option value="Morning">Matin</option>
+          <option value="Afternoon">Après-midi</option>
+          <option value="All-day">Journée</option>
+        </select>
       </section>
       <p>Tarifs: 3,5€/heure</p>
       <button className="not-connected" type="button" onClick={handleSubmit}>
