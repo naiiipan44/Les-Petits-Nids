@@ -10,4 +10,5 @@ export type User = {
   email: string;
   hashed_password: string;
   parent_id: number;
+  children_id?: number;
 };

@@ -1,11 +1,19 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+// 2.Les composants et modules
+//Composant enfants
+//Composant parents
 import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import "./style/globals.css";
 import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+// Context
+import { useAuth } from "./contexts/AuthContext";
+// Type
 import type { Auth } from "./types/Login";
+// 3. Les Styles et assets
+import "./style/globals.css";
 
 function App() {
   const location = useLocation();
@@ -13,33 +21,13 @@ function App() {
   const isLogin = location.pathname === "/login";
 
   const [auth, setAuth] = useState<Auth | null>(null);
+  const { user } = useAuth();
+
   useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/user/me`,
-          {
-            method: "GET",
-            credentials: "include",
-          },
-        );
-
-        if (response.status === 200) {
-          const user = await response.json();
-          setAuth(user);
-        } else {
-          setAuth(null);
-        }
-      } catch (error) {
-        console.error(
-          "Erreur lors de la récupération de l'utilisateur :",
-          error,
-        );
-      }
-    };
-
-    checkUser();
-  }, []);
+    if (user) {
+      setAuth(user);
+    }
+  }, [user]);
 
   return (
     <section

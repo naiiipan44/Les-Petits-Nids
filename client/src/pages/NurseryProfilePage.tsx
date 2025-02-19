@@ -1,9 +1,12 @@
+//1. Les imports de base
 import { useState } from "react";
-
-import "./NurseryProfilePage.css";
+// 2.Les composants et modules
+//Composant enfants
 import NurseryBookings from "../components/NurseryBookings";
 import NurseryFolder from "../components/NurseryFolder";
 import NurseryProfile from "../components/NurseryProfile";
+// 3. Les Styles et assets
+import "./NurseryProfilePage.css";
 
 function NurseryProfilePage() {
   const [folder, setFolder] = useState(true);
@@ -25,7 +28,7 @@ function NurseryProfilePage() {
             onClick={() => setDisplay(!display)}
             className="button-secondary"
           >
-            Retour
+            <img src="/chevron.png" alt="" />
           </button>
           <section className="button-header-nursery-bookings">
             <button

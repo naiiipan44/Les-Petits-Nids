@@ -17,11 +17,16 @@
 .login-form-nursery {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 8px;
   width: 90%;
 }
 .login-form-nursery input {
   font-size: 14px;
+}
+
+.login-form-nursery > label {
+  margin: 12px 0 0 0;
+  color: var(--secondaryColor);
 }
 
 .login-form-nursery select {
@@ -64,4 +69,9 @@
   cursor: pointer;
   color: var(--secondaryColor);
   font-size: 15px;
+}
+
+.lock-form {
+  cursor: auto;
+  background-color: grey;
 }

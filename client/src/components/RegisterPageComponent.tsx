@@ -1,8 +1,14 @@
+// 1. Les imports de base
 import { type FormEvent, useState } from "react";
-import "./LoginPageComponent.css";
+// 2. Les composants et modules
+// Hooks
 import useToast from "../hooks/useToast";
+// Types
 import type { RegisterPageComponentProps } from "../types/RegisterPageComponentProps";
+// Composants enfants
 import ModalConditions from "./ModalConditions";
+// 3. Les styles et assets
+import "./LoginPageComponent.css";
 
 function RegisterPageComponent({
   isParent,

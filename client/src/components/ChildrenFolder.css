@@ -41,6 +41,7 @@
 @media (max-width: 680px) {
   .button-primary {
     width: 100%;
+    margin-bottom: 1.5rem;
   }
 }
 @media (min-width: 680px) {

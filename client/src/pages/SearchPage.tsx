@@ -1,11 +1,15 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
-import FilterBar from "../components/FilterBar";
-import "./SearchPage.css";
-
 import { Link } from "react-router-dom";
-
+// 2.Les composants et modules
+// Composant enfants
+import FilterBar from "../components/FilterBar";
+//Composant parents
 import Nursery from "../components/Nursery";
+// Types
 import type { NurseryDetails } from "../types/Nursery";
+// 3. Les Styles et assets
+import "./SearchPage.css";
 
 function SearchPage() {
   const [data, setData] = useState<null | NurseryDetails[]>(null);
@@ -29,13 +33,7 @@ function SearchPage() {
       />
       <header className="head-section">
         <FilterBar userEntry={userEntry} setUserEntry={setUserEntry} />
-        <section className="options-head-section">
-          <section className="filter-and-sort-options">
-            {/* Both figures above should triger a modal to fill filter or sort criteria*/}
-          </section>
-        </section>
       </header>
-
       <main className="main-search-page">
         {filteredData?.length ? (
           filteredData.map((el) => (

@@ -1,22 +1,22 @@
-import { Link, useLoaderData } from "react-router-dom";
-import type { NurseryDetails } from "../types/Nursery";
-import "./NurseryPage.css";
+//1. Les imports de base
 import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+// 2.Les composants et modules
+//Composant parents
 import ModalConnexion from "../components/ModalConnexion";
+//Composant enfants
 import NurseryAvailabilities from "../components/NurseryAvailabilities";
+// Types
+import type { NurseryDetails } from "../types/Nursery";
+// 3. Les Styles et assets
+import "./NurseryPage.css";
+
+import { useAuth } from "../contexts/AuthContext";
 import useStorage from "../hooks/useStorage";
 
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
-  const [bookingInfos, setBookingInfos] = useState();
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((cookie) => setBookingInfos(cookie.user));
-  }, []);
+  const { user } = useAuth();
 
   const handleButtonClick = () => {
     setShowModal(false);
@@ -104,12 +104,13 @@ function NurseryPage() {
             </ul>
           </section>
           <h2 className="availability">Disponibilités</h2>
-          {bookingInfos ? (
-            <NurseryAvailabilities bookingInfos={bookingInfos} />
+          {user ? (
+            <NurseryAvailabilities />
           ) : (
             <section className="login-text">
               <p>
-                Connectez-vous pour accéder aux disponibilités de cette crèche.
+                Connectez-vous pour accéder aux <br /> disponibilités de cette
+                crèche.
               </p>
               <button
                 className="not-connected"

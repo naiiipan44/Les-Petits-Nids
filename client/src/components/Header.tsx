@@ -1,10 +1,14 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
-import type { User } from "../types/AuthContext";
-import "./Header.css";
+// 2.Les composants et modules
+// Hooks
 import { toast } from "react-toastify";
+import type { User } from "../types/BookingInfos";
+// 3. Les Styles et assets
+import "./Header.css";
 
 function Header() {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -49,7 +53,7 @@ function Header() {
           alt="Logo du profile non connecté"
         />
       )}
-      <figcaption>{`${user?.first_name || ""} ${user?.last_name || ""}`}</figcaption>
+      <figcaption>{`${user?.first_name ?? ""} ${user?.last_name ?? ""}`}</figcaption>
       {user ? <img src="/chevron.png" alt="chevron pour menu déroulant" /> : ""}
     </header>
   );
