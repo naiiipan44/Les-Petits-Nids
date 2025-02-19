@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../pages/ProfilePage.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import type { ParentProfileProps } from "../types/ParentProfile";
 import type { UserParent } from "../types/UserParent";
 
@@ -8,14 +9,16 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
   const [userId, setUserId] = useState(0);
 
   const [parent, setParent] = useState<UserParent | null>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((user) => setUserId(user.user.id));
+    if (user) {
+      setParent(user);
+      setUserId(user.id);
+    }
+  }, [user]);
 
+  useEffect(() => {
     if (userId) {
       fetch(`${import.meta.env.VITE_API_URL}/api/user?userId=${userId}`)
         .then((response) => response.json())

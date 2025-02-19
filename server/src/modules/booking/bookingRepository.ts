@@ -50,16 +50,16 @@ class BookingRepository {
 
   async create(booking: Omit<Booking, "id">) {
     const {
-      parent_id,
+      parentId,
       nurseryId,
-      children_id,
+      childrenId,
       bookingDate,
       bookingRange,
       status,
     } = booking;
     const [result] = await databaseClient.query<Result>(
       "insert into booking (parent_id, nursery_id, children_id, booking_date, booking_range, status) values (?, ?, ?, ?, ?, ?)",
-      [parent_id, nurseryId, children_id, bookingDate, bookingRange, status],
+      [parentId, nurseryId, childrenId, bookingDate, bookingRange, status],
     );
 
     return result.insertId;
