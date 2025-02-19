@@ -1,3 +1,8 @@
+.nursery-bookings-page {
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
 .reservation-status-nursery {
   display: flex;
   justify-content: center;
@@ -52,39 +57,6 @@
   cursor: pointer;
 }
 
-.reservation-status-nursery > button:nth-of-type(2),
-.reservation-status-nursery > button:nth-of-type(3),
-.reservation-status-nursery > button:nth-of-type(4),
-.reservation-status-nursery > button:last-of-type {
-  font-size: 0.8rem;
-  width: auto;
-}
-
-.reservation-status-nursery > button:first-of-type {
-  border-color: #7771af;
-  width: 50px;
-  color: #7771af;
-}
-.reservation-status-nursery > button:nth-of-type(2) {
-  border-color: #ffa84c;
-  color: #ffa84c;
-}
-
-.reservation-status-nursery > button:nth-of-type(3) {
-  border-color: #2dcd7a;
-  color: #2dcd7a;
-}
-
-.reservation-status-nursery > button:nth-of-type(4) {
-  border-color: #ea5455;
-  color: #ea5455;
-}
-
-.reservation-status-nursery > button:last-of-type {
-  border-color: #1d0042;
-  color: #1d0042;
-}
-
 .booking-container {
   display: flex;
   flex-wrap: wrap;
@@ -93,4 +65,23 @@
 .client-infos {
   display: flex;
   flex-direction: column;
+}
+
+.booking-container button {
+  background: green;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.booking-container select {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.child-info {
+  display: flex;
+  justify-content: space-between;
+}
+.child-info button {
+  background: orange;
 }

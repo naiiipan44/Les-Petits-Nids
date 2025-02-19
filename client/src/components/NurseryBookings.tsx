@@ -7,7 +7,7 @@ function NurseryBookings() {
   const { user } = useAuth();
 
   const [booking, setBooking] = useState<BookingProps[] | []>([]);
-  const [status, setStatus] = useState<string>("pending");
+  const [status, setStatus] = useState<string>("En attente");
   const [childrenId, setChildrenId] = useState<number | null>(null);
 
   if (user) {
@@ -60,35 +60,60 @@ function NurseryBookings() {
     return new Date(date).toISOString().split("T")[0];
   }
   return (
-    <>
+    <main className="nursery-bookings-page">
       {booking ? (
         booking.map((el) => {
           return (
             <section className="booking-container" key={el.id}>
               <article className="client-infos">
+                <button
+                  type="button"
+                  className={`status-button ${status}`}
+                  disabled
+                >
+                  {status}
+                </button>
                 <ul>
-                  <li>Enfant : {el.c_last_name}</li>
+                  <li className="child-info">
+                    <strong> Enfant : </strong>
+                    {el.c_last_name}
+                  </li>
+
                   <li>
-                    Né le {el.c_birth_date && transcriptDate(el.c_birth_date)}
+                    <strong> Né le : </strong>
+                    {el.c_birth_date && transcriptDate(el.c_birth_date)}
                   </li>
                   <li>
-                    Parent : {el.p_first_name} {el.p_last_name}
+                    <strong> Parent : </strong> {el.p_first_name}
+                    {el.p_last_name}
                   </li>
-                  <li>
-                    <p>Infos supplémentaires</p>
-                  </li>
+                  {/* <li>
+                    <p>
+                      <strong> Infos supplémentaires : </strong>
+                    </p>
+                  </li> */}
                 </ul>
               </article>
 
               <article className="booking-infos">
                 <ul>
-                  <li>Statut de la réservation : {status}</li>
+                  {/* <li>
+                    <strong> Statut de la réservation : </strong> {status}
+                  </li> */}
                   <li>
-                    Date de réservation : {transcriptDate(el.booking_date)}
+                    <strong> Date de réservation : </strong>
+                    {transcriptDate(el.booking_date)}
                   </li>
-                  <li>Tranche horaire : {el.booking_range}</li>
+                  <li>
+                    <strong> Tranche horaire : </strong> {el.booking_range}
+                  </li>
                 </ul>
               </article>
+              <ul>
+                <p>
+                  <strong> Infos supplémentaires : </strong>
+                </p>
+              </ul>
               <form onSubmit={handleSubmit}>
                 <select id="statut" name="statut">
                   <option value="" disabled selected>
@@ -103,7 +128,7 @@ function NurseryBookings() {
                   value={el.children_id}
                   onClick={() => setChildrenId(el.children_id)}
                 >
-                  Valider la sélection
+                  Valider
                 </button>
               </form>
             </section>
@@ -112,7 +137,7 @@ function NurseryBookings() {
       ) : (
         <p>Aucune réservation en cours</p>
       )}
-    </>
+    </main>
   );
 }
 
