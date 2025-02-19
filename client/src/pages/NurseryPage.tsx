@@ -4,19 +4,12 @@ import "./NurseryPage.css";
 import { useEffect, useState } from "react";
 import ModalConnexion from "../components/ModalConnexion";
 import NurseryAvailabilities from "../components/NurseryAvailabilities";
+import { useAuth } from "../contexts/AuthContext";
 import useStorage from "../hooks/useStorage";
 
 function NurseryPage() {
   const [showModal, setShowModal] = useState(false);
-  const [bookingInfos, setBookingInfos] = useState();
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((cookie) => setBookingInfos(cookie.user));
-  }, []);
+  const { user } = useAuth();
 
   const handleButtonClick = () => {
     setShowModal(false);
@@ -104,8 +97,8 @@ function NurseryPage() {
             </ul>
           </section>
           <h2 className="availability">Disponibilités</h2>
-          {bookingInfos ? (
-            <NurseryAvailabilities bookingInfos={bookingInfos} />
+          {user ? (
+            <NurseryAvailabilities />
           ) : (
             <section className="login-text">
               <p>
