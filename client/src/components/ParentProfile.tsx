@@ -72,7 +72,7 @@ function ParentProfile({
               setCheck(false);
             }}
           >
-            Dossier Parents
+            Dossier Parent
           </button>
           <button
             type="button"
@@ -83,7 +83,7 @@ function ParentProfile({
               setIsVisible("children");
             }}
           >
-            Dossier Enfants
+            Dossier Enfant
           </button>
           <button
             type="button"
