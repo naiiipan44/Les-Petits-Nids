@@ -54,7 +54,7 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
               setIsVisible("children");
             }}
           >
-            Dossier Enfants
+            Dossier Enfant
           </button>
           <button
             type="button"
@@ -64,7 +64,7 @@ function ParentProfile({ setDisplay, setIsVisible }: ParentProfileProps) {
               setIsVisible("parent");
             }}
           >
-            Dossier Parents
+            Dossier Parent
           </button>
           <button
             type="button"

@@ -21,9 +21,15 @@ function ParentProfilePage() {
           />
         ) : (
           <>
-            <button type="button" onClick={() => setDisplay(true)}>
-              <span className="arrow" />
-            </button>
+            <section className="back-to-nursery">
+              <button
+                className="folder-arrow"
+                type="button"
+                onClick={() => setDisplay(true)}
+              >
+                <span className="arrow" />
+              </button>
+            </section>
 
             <section className="button-header-bookings">
               <button
