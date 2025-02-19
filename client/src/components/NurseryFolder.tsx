@@ -1,10 +1,36 @@
-import "./NurseryFolder.css";
-import type { FormEvent } from "react";
+// React tools
+import { type FormEvent, useEffect } from "react";
+
+// React libraries
 import { FaDownload } from "react-icons/fa";
 import useToast from "../hooks/useToast";
 
+// Component
+import { useAuth } from "../contexts/AuthContext";
+
+// Style
+import "./NurseryFolder.css";
+
 function NurseryFolder() {
   const { success, error } = useToast();
+  const { user } = useAuth();
+
+  let nureseryId = null;
+
+  if (user) {
+    nureseryId = user.id;
+  }
+
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_API_URL}/api/nursery?nurseryId=${nureseryId}`,
+      {
+        credentials: "include",
+      },
+    )
+      .then((res) => res.json())
+      .then((response) => console.log(response));
+  }, [nureseryId]);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
