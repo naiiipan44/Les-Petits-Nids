@@ -1,87 +1,76 @@
 .nursery-bookings-page {
-  background-color: #f9f9f9;
-  min-height: 100vh;
-}
-
-.reservation-status-nursery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 30px;
-}
-
-.reservation-status-nursery button {
-  height: 30px;
-  background: none;
-  border-radius: 10px;
-  padding: 5px;
-  cursor: pointer;
+  background: #f9f9f9;
 }
 
 .booking-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border: none;
+  flex-wrap: wrap;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border-radius: 15px;
-  margin: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.client-infos ul,
+.booking-infos ul {
+  list-style: none;
+  padding: 0;
+}
+
+.client-infos li,
+.booking-infos li {
+  margin: 10px 0;
+}
+
+.child-info {
+  align-items: center;
+}
+
+.client-infos button.status-button {
+  background: orange;
+  color: white;
+  width: 80px;
+  height: 30px;
+  padding: 5px 10px;
+}
+
+.client-infos button.En-attente {
+  background: #ffcc00;
+}
+
+.client-infos button.Acceptée {
+  background: #4caf50;
+}
+
+.client-infos button.Refusée {
+  background: #f44336;
 }
 
 .booking-container form {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 16px;
-}
-
-.booking-container article {
-  padding: 20px 0 0 15px;
-}
-
-.booking-container article ul {
-  list-style: none;
+  margin-top: 20px;
 }
 
 .booking-container select,
 .booking-container button {
-  height: 30px;
+  height: 40px;
   border-radius: 10px;
-  margin: 10px 0;
-  padding: 5px;
-  width: 40%;
-  border: none;
-  text-align: center;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
   cursor: pointer;
 }
 
-.booking-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.client-infos {
-  display: flex;
-  flex-direction: column;
-}
-
 .booking-container button {
-  background: green;
+  background: var(--secondaryColor);
   color: white;
+  border: none;
   font-weight: bold;
-  transition: all 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
 }
-
-.booking-container select {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.child-info {
-  display: flex;
-  justify-content: space-between;
-}
-.child-info button {
-  background: orange;
+.booking-container button:hover {
+  background: rgb(78, 80, 137);
 }

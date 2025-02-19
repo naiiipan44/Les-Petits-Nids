@@ -65,20 +65,12 @@ function NurseryBookings() {
         booking.map((el) => {
           return (
             <section className="booking-container" key={el.id}>
-              <article className="client-infos">
-                <button
-                  type="button"
-                  className={`status-button ${status}`}
-                  disabled
-                >
-                  {status}
-                </button>
+              <article className="booking-infos">
                 <ul>
                   <li className="child-info">
                     <strong> Enfant : </strong>
                     {el.c_last_name}
                   </li>
-
                   <li>
                     <strong> Né le : </strong>
                     {el.c_birth_date && transcriptDate(el.c_birth_date)}
@@ -87,19 +79,6 @@ function NurseryBookings() {
                     <strong> Parent : </strong> {el.p_first_name}
                     {el.p_last_name}
                   </li>
-                  {/* <li>
-                    <p>
-                      <strong> Infos supplémentaires : </strong>
-                    </p>
-                  </li> */}
-                </ul>
-              </article>
-
-              <article className="booking-infos">
-                <ul>
-                  {/* <li>
-                    <strong> Statut de la réservation : </strong> {status}
-                  </li> */}
                   <li>
                     <strong> Date de réservation : </strong>
                     {transcriptDate(el.booking_date)}
@@ -108,12 +87,20 @@ function NurseryBookings() {
                     <strong> Tranche horaire : </strong> {el.booking_range}
                   </li>
                 </ul>
-              </article>
-              <ul>
                 <p>
                   <strong> Infos supplémentaires : </strong>
                 </p>
-              </ul>
+              </article>
+
+              <article className="client-infos">
+                <button
+                  type="button"
+                  className={`status-button ${status}`}
+                  disabled
+                >
+                  {status}
+                </button>
+              </article>
               <form onSubmit={handleSubmit}>
                 <select id="statut" name="statut">
                   <option value="" disabled selected>
