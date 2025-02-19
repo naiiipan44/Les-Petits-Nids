@@ -30,25 +30,30 @@ function RegisterPageComponent({
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
 
-    const { email, firstName, lastName, password, role } = formatedData;
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ email, firstName, lastName, password, role }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (!result.message) {
-          success("Bravo, votre compte a été créé ! 🎉");
-          setIndication("");
-          setRegistration(false);
-        } else {
-          error("Les informations ne sont pas valides 🤔");
-          setIndication(result.message);
-        }
-      });
+    const { email, firstName, lastName, password, role, confirmPassword } =
+      formatedData;
+    if (password === confirmPassword) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ email, firstName, lastName, password, role }),
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (!result.message) {
+            success("Bravo, votre compte a été créé ! 🎉");
+            setIndication("");
+            setRegistration(false);
+          } else {
+            error("Les informations ne sont pas valides 🤔");
+            setIndication(result.message);
+          }
+        });
+    } else {
+      alert("Les mots de passes ne sont pas identiques 🤔");
+    }
   }
 
   return (
@@ -120,7 +125,7 @@ function RegisterPageComponent({
       />
       <input
         type="password"
-        name="confirm-password"
+        name="confirmPassword"
         placeholder="Confirmez le mot de passe"
         aria-label="Confirmez le mot de passe"
         className="input-field"

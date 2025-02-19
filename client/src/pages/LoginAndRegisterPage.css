@@ -112,8 +112,18 @@
 }
 
 @media screen and (min-width: 680px) {
-  .logo-navbar {
-    display: none;
+  .login-form {
+    margin-top: 0.5rem;
+    width: 70%;
+    gap: 5px;
+  }
+
+  .login-title {
+    margin-bottom: 0.25rem;
+  }
+
+  .account-button {
+    padding: 0;
   }
 
   .button-return {
@@ -173,6 +183,14 @@
   .user-registration input[placeholder="Prénom"],
   .user-registration input[placeholder="Nom de l'établissement"] {
     width: 75%;
+  }
+
+  .general-conditions {
+    margin-top: 0.25rem;
+  }
+
+  .button-secondary-register {
+    margin-top: 8px;
   }
 }
 
