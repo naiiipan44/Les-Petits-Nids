@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1rem;
   width: 100%;
 }
 
@@ -96,6 +96,7 @@
 @media (max-width: 680px) {
   .button-secondary {
     max-width: 100%;
+    padding: 0.8rem;
   }
   .button-delete-parent {
     position: absolute;
