@@ -75,8 +75,8 @@ router.use("/api/children", authentificationActions.verifyToken);
 router.get("/api/children/:id", childrenActions.browse);
 router.post(
   "/api/children",
-  childrenFolderValidator,
-  validate.validate,
+  // childrenFolderValidator,
+  // validate.validate,
   childrenActions.add,
 );
 router.delete("/api/children/:id", childrenActions.destroy);

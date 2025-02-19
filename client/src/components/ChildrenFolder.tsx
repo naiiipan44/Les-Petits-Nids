@@ -49,7 +49,7 @@ function ChildrenFolder() {
   return (
     <main className="main-children-folder">
       <section className="header-children-folder">
-        <h1 className="title-profile-children"> Dossier enfants </h1>
+        <h1 className="title-profile-children"> Dossier enfant </h1>
 
         <button type="button" className="button-children-folder">
           Enfant 1
