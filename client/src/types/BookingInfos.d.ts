@@ -1,12 +1,11 @@
-interface BookingInfos {
-  bookingInfos: {
-    id: number;
-    email: string;
-    role: string;
-    first_name: string;
-    iat: number;
-    exp: number;
-    parent_id: number;
-    children_id: number;
-  };
+export interface User {
+  id: number;
+  email: string;
+  role: "parent" | "nursery";
+  first_name: string;
+  iat: number;
+  exp: number;
+  parent_id: number;
+  children_id: number;
+  last_name: string;
 }
