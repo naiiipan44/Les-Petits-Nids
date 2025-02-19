@@ -40,6 +40,10 @@ function ParentProfile({
     }
   }, [userId]);
 
+  if (user.parent_id) {
+    setCheck(false);
+  }
+
   return (
     <section className="profile-page">
       {userId > 0 && parent ? (
