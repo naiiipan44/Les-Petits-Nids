@@ -1,8 +1,15 @@
+// React tools
+import { useEffect, useState } from "react";
+
+// React libraries
 import { Link } from "react-router-dom";
+
+// Types and interfaces TS
 import type { BookingData } from "../types/Booking";
 import type { User } from "../types/Login";
+
+// Style
 import "./ParentsBookings.css";
-import { useEffect, useState } from "react";
 
 function ParentsBookings() {
   const [userData, setUserData] = useState<User | null>(null);
