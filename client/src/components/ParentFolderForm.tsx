@@ -1,42 +1,37 @@
 import { type FormEvent, useEffect, useState } from "react";
 import "./ParentFolder.css";
+import { useAuth } from "../contexts/AuthContext";
 import useFetch from "../hooks/useFetch";
 import useToast from "../hooks/useToast";
 import type { Auth } from "../types/Login";
 import type { Parent } from "../types/ParentFolder";
+
 function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
-  const { success, error } = useToast();
+  const { success } = useToast();
 
   const { handleDelete } = useFetch(parentId);
   const [userData, setUserData] = useState<Auth | null>(null);
   const [loading, setLoading] = useState(true);
   const [parentData, setParentData] = useState<Parent | null>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUserData(data);
-        setLoading(false);
+    if (user) {
+      setUserData(user);
+      setLoading(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user.parent_id) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/parent/${user.parent_id}`, {
+        credentials: "include",
       })
-      .catch(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    if (userData?.user.parent_id) {
-      fetch(
-        `${import.meta.env.VITE_API_URL}/api/parent/${userData.user.parent_id}`,
-        {
-          credentials: "include",
-        },
-      )
         .then((res) => res.json())
         .then((data) => setParentData(data[0]))
         .catch((err) => console.error("Erreur de récupération parent:", err));
     }
-  }, [userData]);
+  }, [user]);
 
   if (loading) return <p>Chargement...</p>;
   if (!userData) return <p>Erreur lors du chargement des données.</p>;
@@ -65,13 +60,6 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
       })
       .then(() => {
         success("Vous avez bien complété votre dossier !");
-        fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
-          method: "GET",
-          credentials: "include",
-        });
-      })
-      .catch((err) => {
-        error(err.message);
       });
   }
 
@@ -88,24 +76,20 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
         <input
           type="text"
           placeholder="Prénom"
-          className={`input-field ${userData.user.first_name ? "valid-user-information" : ""}`}
+          className={`input-field ${user.first_name ? "valid-user-information" : ""}`}
           name="firstName"
           aria-label="Prénom"
-          defaultValue={
-            userData?.user.first_name || parentData?.p_first_name || ""
-          }
+          defaultValue={user.first_name || parentData?.p_first_name || ""}
           readOnly={true}
           required
         />
         <input
           type="text"
           placeholder="Nom"
-          className={`input-field ${userData.user.last_name ? "valid-user-information" : ""}`}
+          className={`input-field ${user.last_name ? "valid-user-information" : ""}`}
           name="lastName"
           aria-label="Nom"
-          defaultValue={
-            userData?.user.last_name || parentData?.p_last_name || ""
-          }
+          defaultValue={user.last_name || parentData?.p_last_name || ""}
           readOnly={true}
           required
         />
@@ -149,7 +133,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
             parentData?.p_num_tel
               .toString()
               .replace(/\D/g, "")
-              .replace(/(\d{2})(?=\d)/g, "$1 ") || ""
+              .replace(/(\d{2})(?=\d)/g, "$1 ") ?? ""
           }
           readOnly={!!parentData}
           required
@@ -157,10 +141,10 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
         <input
           type="email"
           placeholder="email"
-          className={`input-field ${userData.user.email ? "valid-user-information" : ""}`}
+          className={`input-field ${user.email ? "valid-user-information" : ""}`}
           name="mail"
           aria-label="Email"
-          defaultValue={userData.user.email}
+          defaultValue={user.email}
           readOnly={true}
           required
         />

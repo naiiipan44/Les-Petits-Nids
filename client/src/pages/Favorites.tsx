@@ -1,8 +1,14 @@
+//1. Les imports de base
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// 2.Les composants et modules
+//Composant parents
 import Nursery from "../components/Nursery";
+// Hooks
 import useStorage from "../hooks/useStorage";
+// Types
 import type { NurseryDetails } from "../types/Nursery";
+// 3. Les Styles et assets
 import "./Favorites.css";
 
 function Favorite() {
