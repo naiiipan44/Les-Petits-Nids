@@ -50,13 +50,6 @@ function ChildrenFolder() {
     <main className="main-children-folder">
       <section className="header-children-folder">
         <h1 className="title-profile-children"> Dossier enfants </h1>
-
-        <button type="button" className="button-children-folder">
-          Enfant 1
-        </button>
-        <button type="button" className="button-add">
-          +
-        </button>
       </section>
       <section className="children-folder">
         <form onSubmit={onSubmit} className="login-form-children">

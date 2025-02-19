@@ -22,22 +22,23 @@ function ParentProfilePage() {
         ) : (
           <>
             <button type="button" onClick={() => setDisplay(true)}>
-              Retour
+              <span className="arrow" />
             </button>
+
             <section className="button-header-bookings">
               <button
                 type="button"
                 onClick={() => setIsVisible("parent")}
                 className="button-parents"
               >
-                Parents
+                Parent
               </button>
               <button
                 type="button"
                 onClick={() => setIsVisible("children")}
                 className="button-children"
               >
-                Enfants
+                Enfant
               </button>
               <button
                 type="button"
@@ -74,14 +75,14 @@ function ParentProfilePage() {
               onClick={() => setIsVisible("parent")}
               className="button-parents"
             >
-              Parents
+              Parent
             </button>
             <button
               type="button"
               onClick={() => setIsVisible("children")}
               className="button-children"
             >
-              Enfants
+              Enfant
             </button>
             <button
               type="button"

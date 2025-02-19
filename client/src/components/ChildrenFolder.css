@@ -20,26 +20,6 @@
   text-align: center;
 }
 
-.button-add {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: white;
-  color: var(--secondaryColor);
-  border-color: var(--secondaryColor);
-  margin-left: 10px;
-}
-
-.button-children-folder {
-  border-radius: 20px;
-  width: 100px;
-  height: 30px;
-  background-color: var(--secondaryColor);
-  color: white;
-  border: none;
-  margin-left: 50px;
-}
-
 .login-form-children {
   display: grid;
   gap: 12px;
