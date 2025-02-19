@@ -30,7 +30,7 @@ function ParentProfilePage() {
         ) : (
           <>
             <button type="button" onClick={() => setDisplay(true)}>
-              Retour
+              <img src="/chevron.png" alt="" />
             </button>
             <section className="button-header-bookings">
               <button

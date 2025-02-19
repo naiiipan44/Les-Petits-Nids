@@ -3,6 +3,20 @@
   padding: 1px;
 }
 
+.main-nursery-profile > button {
+  border: none;
+  background: none;
+  box-shadow: none;
+  height: 25px;
+  width: 25px;
+}
+.main-nursery-profile > button > img {
+  height: 40px;
+  width: 40px;
+  rotate: 90deg;
+  filter: brightness(0);
+}
+
 .return-form-nursery-profil {
   color: var(--secondaryColor);
   display: flex;
@@ -27,6 +41,7 @@
   border-radius: 20%;
   box-shadow: 0 2px 6px var(--shadowColor);
   cursor: pointer;
+  margin: 0.5rem 0 2rem 0;
 }
 
 .nursery-profile {
