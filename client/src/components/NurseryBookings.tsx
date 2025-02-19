@@ -1,10 +1,19 @@
+// React tools
 import { type FormEvent, useEffect, useState } from "react";
-import "./NurseryBookings.css";
+
+// React components
 import { useAuth } from "../contexts/AuthContext";
+import useToast from "../hooks/useToast";
+
+// Types and interfaces TS
 import type { BookingProps } from "../types/BookingProps";
+
+// Style
+import "./NurseryBookings.css";
 
 function NurseryBookings() {
   const { user } = useAuth();
+  const { success, error } = useToast();
 
   const [booking, setBooking] = useState<BookingProps[] | []>([]);
   const [status, setStatus] = useState<string>("pending");
@@ -51,9 +60,13 @@ function NurseryBookings() {
         credentials: "include",
         body: JSON.stringify({ status }),
       },
-    )
-      .then((res) => res.json())
-      .then((response) => console.log(response));
+    ).then((res) => {
+      if (res.ok) {
+        success("La réservation a été mise à jour");
+      } else {
+        error("Échec de la mise à jour de la réservation");
+      }
+    });
   }
 
   function transcriptDate(date: string) {
@@ -82,11 +95,25 @@ function NurseryBookings() {
 
               <article className="booking-infos">
                 <ul>
-                  <li>Statut de la réservation : {status}</li>
+                  <li>
+                    Statut de la réservation :{" "}
+                    {status === "accepted"
+                      ? "Acceptée"
+                      : status === "refused"
+                        ? "Refusée"
+                        : "En attente"}
+                  </li>
                   <li>
                     Date de réservation : {transcriptDate(el.booking_date)}
                   </li>
-                  <li>Tranche horaire : {el.booking_range}</li>
+                  <li>
+                    Tranche horaire :{" "}
+                    {el.booking_range === "afternoon"
+                      ? "Après-midi"
+                      : el.booking_range === "morning"
+                        ? "Matin"
+                        : "Toute la journée"}
+                  </li>
                 </ul>
               </article>
               <form onSubmit={handleSubmit}>

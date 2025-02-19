@@ -30,12 +30,13 @@ function RegisterPageComponent({
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
 
+    const { email, firstName, lastName, password, role } = formatedData;
     fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(formatedData),
+      body: JSON.stringify({ email, firstName, lastName, password, role }),
     })
       .then((response) => response.json())
       .then((result) => {
