@@ -52,7 +52,7 @@ function RegisterPageComponent({
           }
         });
     } else {
-      alert("Les mots de passes ne sont pas identiques 🤔");
+      error("Les mots de passe ne sont pas identiques 🤔");
     }
   }
 
