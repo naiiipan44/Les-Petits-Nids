@@ -168,6 +168,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
                 ? new Date(parentData.p_birth_date).toISOString().split("T")[0]
                 : ""
             }
+            max={"2007-02-01"}
             readOnly={!!parentData}
             required
           />

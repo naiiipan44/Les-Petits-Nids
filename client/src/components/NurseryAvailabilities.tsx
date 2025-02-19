@@ -2,14 +2,15 @@ import { useParams } from "react-router-dom";
 import useToast from "../hooks/useToast";
 
 import "./NurseryAvailabilities.css";
-import { useEffect, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import type { User } from "../types/Login";
 
 function NurseryAvailabilities() {
   const { id } = useParams();
   const { success, error } = useToast();
   const [userData, setUserData] = useState<User | null>(null);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [bookingDate, setbookingDate] = useState("");
+  const [bookingRange, setbookingRange] = useState("");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
@@ -19,21 +20,27 @@ function NurseryAvailabilities() {
       .then((result) => setUserData(result.user));
   }, []);
 
-  function handleDateChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const date = event.target.value;
+  function handleDateChange(event: ChangeEvent<HTMLInputElement>) {
+    const date = event.currentTarget.value;
     const day = new Date(date).getDay();
 
     if (day === 0) {
       error("Les réservations ne sont pas possibles le dimanche.");
-      setSelectedDate("");
+      setbookingDate("");
     } else {
-      setSelectedDate(date);
+      setbookingDate(date);
+    }
+  }
+
+  function handleSelectChange(event: ChangeEvent<HTMLSelectElement>) {
+    const range = event.target.value;
+
+    if (range) {
+      setbookingRange(range);
     }
   }
 
   function handleSubmit() {
-    const bookingDate = "2025-05-11";
-    const bookingRange = "après-midi";
     const status = "en attente";
     let parentId = null;
     let childrenId = null;
@@ -77,16 +84,21 @@ function NurseryAvailabilities() {
           aria-label="Date de naissance"
           placeholder="Date de naissance"
           className="input-field-calendar"
-          value={selectedDate}
+          value={bookingDate}
           onChange={handleDateChange}
         />
-        <select id="durée" name="durée" className="input-field-calendar">
+        <select
+          id="durée"
+          name="range"
+          className="input-field-calendar"
+          onChange={handleSelectChange}
+        >
           <option value="" disabled selected>
             Durée
           </option>
-          <option value="Morning">Matin</option>
-          <option value="Afternoon">Après-midi</option>
-          <option value="All-day">Journée</option>
+          <option value="morning">Matin</option>
+          <option value="afternoon">Après-midi</option>
+          <option value="all-day">Journée</option>
         </select>
       </section>
       <p>Tarifs: 3,5€/heure</p>
