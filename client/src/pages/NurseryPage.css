@@ -2,6 +2,12 @@
   display: flex;
   margin: 5%;
   align-items: center;
+  text-decoration: none;
+}
+.back-to-nursery > img {
+  height: 30px;
+  width: 30px;
+  rotate: 90deg;
 }
 .back-to-nursery section {
   margin-left: 5%;

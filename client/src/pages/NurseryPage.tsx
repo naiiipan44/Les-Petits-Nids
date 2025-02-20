@@ -47,14 +47,12 @@ function NurseryPage() {
   }
   return (
     <>
-      <section className="back-to-nursery">
-        <Link to={"/search"} className="back-button">
-          <span className="arrow" />
-        </Link>
+      <Link to={"/search"} className="back-to-nursery">
+        <img src="/chevron.png" alt="flèche de retour" />
         <section>
           <h1>Crèche {data.ns_name}</h1>
         </section>
-      </section>
+      </Link>
       <section className="nursery-details">
         <img src={data.ns_image} alt={`L'image de ${data.ns_name}`} />
         <button type="button" className="button-heart" onClick={handleClick}>
