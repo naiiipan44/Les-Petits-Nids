@@ -60,3 +60,15 @@
   color: white;
   border: none;
 }
+
+.status-button.accepted {
+  background-color: green;
+}
+
+.status-button.pending {
+  background-color: orange;
+}
+
+.status-button.refused {
+  background-color: red;
+}
