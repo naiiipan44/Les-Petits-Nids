@@ -77,7 +77,15 @@ function ParentsBookings() {
           </ul>
           <button
             type="button"
-            className={`status-button ${booking?.status?.toLowerCase()}`}
+            className={`status-button ${
+              booking?.status === "Acceptée"
+                ? "accepted"
+                : booking?.status === "En attente"
+                  ? "pending"
+                  : booking?.status === "Refusée"
+                    ? "refused"
+                    : ""
+            }`}
           >
             {booking?.status}
           </button>

@@ -144,7 +144,7 @@ function ParentFolderForm({ edit }: Readonly<{ edit: boolean }>) {
             name="job"
             aria-label="Métier"
             defaultValue={parentData?.p_job ?? ""}
-            readOnly={!!parentData}
+            readOnly={!!parentData && !edit}
             required
           />
           <input
@@ -154,7 +154,7 @@ function ParentFolderForm({ edit }: Readonly<{ edit: boolean }>) {
             name="adress"
             aria-label="Adresse"
             defaultValue={parentData?.p_address ?? ""}
-            readOnly={!!parentData}
+            readOnly={!!parentData && !edit}
             required
           />
           <input
@@ -164,7 +164,7 @@ function ParentFolderForm({ edit }: Readonly<{ edit: boolean }>) {
             name="zipCode"
             aria-label="Code postal"
             defaultValue={parentData?.p_zip_code ?? ""}
-            readOnly={!!parentData}
+            readOnly={!!parentData && !edit}
             required
           />
           <input
@@ -179,7 +179,7 @@ function ParentFolderForm({ edit }: Readonly<{ edit: boolean }>) {
                 .replace(/\D/g, "")
                 .replace(/(\d{2})(?=\d)/g, "$1 ") ?? ""
             }
-            readOnly={!!parentData}
+            readOnly={!!parentData && !edit}
             required
           />
           <input
@@ -204,7 +204,7 @@ function ParentFolderForm({ edit }: Readonly<{ edit: boolean }>) {
                 : ""
             }
             max={"2007-02-01"}
-            readOnly={!!parentData}
+            readOnly={!!parentData && !edit}
             required
           />
           <button
