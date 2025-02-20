@@ -32,7 +32,7 @@ function ModalConnexion({ onClose }: Readonly<ModalConnexionProps>) {
           Veuillez créer un compte ou vous connecter pour effectuer une
           réservation
         </p>
-        <Link to={"/loginandregister"} className="get-connected" type="button">
+        <Link to={"/login"} className="get-connected" type="button">
           Se connecter
         </Link>
         <p className="not-connected-yet"> Pas encore de compte ? </p>
