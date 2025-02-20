@@ -13,12 +13,12 @@ import type { Parent } from "../types/ParentFolder";
 // Style
 import "./ParentFolder.css";
 
-function ParentFolderForm() {
-  const { success } = useToast();
+function ParentFolderForm({ edit }: { edit: boolean }) {
+  const { success, error } = useToast();
   const { user } = useAuth();
   const { handleDelete } = useFetch(user.parent_id);
   const [userData, setUserData] = useState<Auth | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(edit);
   const [parentData, setParentData] = useState<Parent | null>(null);
   const [refresh, setRefresh] = useState(false);
 
@@ -32,7 +32,7 @@ function ParentFolderForm() {
   }, [user]);
 
   useEffect(() => {
-    if (user.parent_id || refresh === true) {
+    if (user.parent_id) {
       fetch(`${import.meta.env.VITE_API_URL}/api/parent/${user.parent_id}`, {
         credentials: "include",
       })
@@ -42,12 +42,34 @@ function ParentFolderForm() {
         })
         .catch((err) => console.error("Erreur de récupération parent:", err));
     }
-  }, [user, refresh]);
+  }, [user]);
 
   if (loading) return <p>Chargement...</p>;
   if (!userData) return <p>Erreur lors du chargement des données.</p>;
 
   const isParentFilled = !!parentData;
+
+  function handleEdit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/parent/${user.parent_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        success("Vous avez bien mis à jour votre dossier !");
+        setRefresh(edit);
+      } else {
+        error("La demande de modification n'a pas abouti");
+      }
+    });
+  }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -83,7 +105,10 @@ function ParentFolderForm() {
   return (
     <>
       <section className="parent-folder">
-        <form onSubmit={handleSubmit} className="login-form-parent">
+        <form
+          onSubmit={edit ? handleEdit : handleSubmit}
+          className="login-form-parent"
+        >
           <button
             className="button-delete-parent"
             type="button"
@@ -98,7 +123,7 @@ function ParentFolderForm() {
             name="firstName"
             aria-label="Prénom"
             defaultValue={user.first_name || parentData?.p_first_name || ""}
-            readOnly={true}
+            readOnly={!edit}
             required
           />
           <input
@@ -108,7 +133,7 @@ function ParentFolderForm() {
             name="lastName"
             aria-label="Nom"
             defaultValue={user.last_name || parentData?.p_last_name || ""}
-            readOnly={true}
+            readOnly={!edit}
             required
           />
           <input
@@ -163,7 +188,7 @@ function ParentFolderForm() {
             name="mail"
             aria-label="Email"
             defaultValue={user.email}
-            readOnly={true}
+            readOnly={!edit}
             required
           />
           <input
@@ -181,10 +206,15 @@ function ParentFolderForm() {
             readOnly={!!parentData}
             required
           />
-          <button type="submit" className="button-secondary">
-            {isParentFilled
-              ? "Formulaire déjà complété"
-              : "Valider le formulaire"}
+          <button
+            type="submit"
+            className={`button-secondary ${isParentFilled && !edit && "lock-submission"}`}
+          >
+            {!isParentFilled
+              ? "Créer dossier"
+              : !edit
+                ? "Formulaire complet"
+                : "Éditer"}
           </button>
         </form>
       </section>

@@ -28,7 +28,7 @@ function ParentFolder() {
             />
           )}
         </button>
-        <ParentFolderForm />
+        <ParentFolderForm edit={edit} />
       </section>
     </>
   );
