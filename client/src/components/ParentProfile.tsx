@@ -35,15 +35,10 @@ function ParentProfile({
         .then((user) => {
           if (user.length) {
             setParent(user[0]);
-            setCheck(false);
           }
         });
     }
-  }, [userId, setCheck]);
-
-  if (user.parent_id) {
-    setCheck(false);
-  }
+  }, [userId]);
 
   return (
     <section className="profile-page">
@@ -78,7 +73,7 @@ function ParentProfile({
           <button
             type="button"
             className={`child-button ${check && "lock"}`}
-            disabled={check}
+            disabled={!check}
             onClick={() => {
               setDisplay(false);
               setIsVisible("children");
@@ -89,7 +84,7 @@ function ParentProfile({
           <button
             type="button"
             className={`reservations-button ${check && "lock"}`}
-            disabled={check}
+            disabled={!check}
             onClick={() => {
               setDisplay(false);
               setIsVisible("booking");

@@ -39,6 +39,7 @@ function ParentFolderForm({ edit }: { edit: boolean }) {
         .then((res) => res.json())
         .then((data) => {
           setParentData(data[0]);
+          setRefresh(true);
         })
         .catch((err) => console.error("Erreur de récupération parent:", err));
     }
