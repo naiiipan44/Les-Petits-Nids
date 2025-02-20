@@ -58,13 +58,9 @@ function ParentProfilePage() {
             </section>
 
             <section className="bottom-page">
-              {isVisible === "parent" ? (
-                <ParentFolder />
-              ) : isVisible === "children" ? (
-                <ChildrenFolder />
-              ) : (
-                <ParentsBookings />
-              )}
+              {isVisible === "parent" && <ParentFolder />}
+              {isVisible === "children" && <ChildrenFolder />}
+              {isVisible === "booking" && <ParentsBookings />}
             </section>
           </>
         )}
@@ -104,13 +100,9 @@ function ParentProfilePage() {
           </section>
 
           <section className="bottom-page">
-            {isVisible === "parent" ? (
-              <ParentFolder />
-            ) : isVisible === "children" ? (
-              <ChildrenFolder />
-            ) : (
-              <ParentsBookings />
-            )}
+            {isVisible === "parent" && <ParentFolder />}
+            {isVisible === "children" && <ChildrenFolder />}
+            {isVisible === "booking" && <ParentsBookings />}
           </section>
         </section>
       </section>

@@ -13,7 +13,7 @@ import type { Parent } from "../types/ParentFolder";
 // Style
 import "./ParentFolder.css";
 
-function ParentFolderForm({ edit }: { edit: boolean }) {
+function ParentFolderForm({ edit }: Readonly<{ edit: boolean }>) {
   const { success, error } = useToast();
   const { user } = useAuth();
   const { handleDelete } = useFetch(user.parent_id);
@@ -143,7 +143,7 @@ function ParentFolderForm({ edit }: { edit: boolean }) {
             className={`input-field ${parentData?.p_job ? "valid-user-information" : ""}`}
             name="job"
             aria-label="Métier"
-            defaultValue={parentData?.p_job || ""}
+            defaultValue={parentData?.p_job ?? ""}
             readOnly={!!parentData}
             required
           />
@@ -153,7 +153,7 @@ function ParentFolderForm({ edit }: { edit: boolean }) {
             className={`input-field ${parentData?.p_address ? "valid-user-information" : ""}`}
             name="adress"
             aria-label="Adresse"
-            defaultValue={parentData?.p_address || ""}
+            defaultValue={parentData?.p_address ?? ""}
             readOnly={!!parentData}
             required
           />
@@ -163,7 +163,7 @@ function ParentFolderForm({ edit }: { edit: boolean }) {
             className={`input-field ${parentData?.p_zip_code ? "valid-user-information" : ""}`}
             name="zipCode"
             aria-label="Code postal"
-            defaultValue={parentData?.p_zip_code || ""}
+            defaultValue={parentData?.p_zip_code ?? ""}
             readOnly={!!parentData}
             required
           />
@@ -211,11 +211,9 @@ function ParentFolderForm({ edit }: { edit: boolean }) {
             type="submit"
             className={`button-secondary ${isParentFilled && !edit && "lock-submission"}`}
           >
-            {!isParentFilled
-              ? "Créer dossier"
-              : !edit
-                ? "Formulaire complet"
-                : "Éditer"}
+            {!isParentFilled && "Créer dossier"}
+            {isParentFilled && !edit && "Formulaire complet"}
+            {edit && "Éditer"}
           </button>
         </form>
       </section>
