@@ -112,9 +112,24 @@
 }
 
 @media screen and (min-width: 680px) {
+  .login-form {
+    margin-top: 0.5rem;
+    width: 70%;
+    gap: 5px;
+  }
+
+  .login-title {
+    margin-bottom: 0.25rem;
+  }
+
+  .account-button {
+    padding: 0;
+  }
+
   .button-return {
     display: none;
   }
+
   .login-register-background > a {
     display: flex;
     align-items: center;
@@ -161,6 +176,21 @@
     width: 100vw;
     height: 100vh;
     background: var(--mainColor);
+    z-index: 15;
+  }
+
+  .user-registration input[placeholder="Nom"],
+  .user-registration input[placeholder="Prénom"],
+  .user-registration input[placeholder="Nom de l'établissement"] {
+    width: 75%;
+  }
+
+  .general-conditions {
+    margin-top: 0.25rem;
+  }
+
+  .button-secondary-register {
+    margin-top: 8px;
   }
 }
 

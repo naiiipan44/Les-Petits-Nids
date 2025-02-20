@@ -30,25 +30,30 @@ function RegisterPageComponent({
     const form = new FormData(e.currentTarget);
     const formatedData = Object.fromEntries(form.entries());
 
-    const { email, firstName, lastName, password, role } = formatedData;
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ email, firstName, lastName, password, role }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (!result.message) {
-          success("Bravo, votre compte a été créé ! 🎉");
-          setIndication("");
-          setRegistration(false);
-        } else {
-          error("Les informations ne sont pas valides 🤔");
-          setIndication(result.message);
-        }
-      });
+    const { email, firstName, lastName, password, role, confirmPassword } =
+      formatedData;
+    if (password === confirmPassword) {
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/registration`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ email, firstName, lastName, password, role }),
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (!result.message) {
+            success("Bravo, votre compte a été créé ! 🎉");
+            setIndication("");
+            setRegistration(false);
+          } else {
+            error("Les informations ne sont pas valides 🤔");
+            setIndication(result.message);
+          }
+        });
+    } else {
+      error("Les mots de passe ne sont pas identiques 🤔");
+    }
   }
 
   return (
@@ -115,6 +120,14 @@ function RegisterPageComponent({
         name="password"
         placeholder="Mot de passe"
         aria-label="Mot de passe"
+        className="input-field"
+        pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
+      />
+      <input
+        type="password"
+        name="confirmPassword"
+        placeholder="Confirmez le mot de passe"
+        aria-label="Confirmez le mot de passe"
         className="input-field"
         pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&\-_])[A-Za-z\d@$!%*?&\-_]{8,}$"
       />
