@@ -35,10 +35,11 @@ function ParentProfile({
         .then((user) => {
           if (user.length) {
             setParent(user[0]);
+            setCheck(false);
           }
         });
     }
-  }, [userId]);
+  }, [userId, setCheck]);
 
   if (user.parent_id) {
     setCheck(false);

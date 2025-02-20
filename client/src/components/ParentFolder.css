@@ -8,6 +8,12 @@
   width: 100%;
 }
 
+.lock-submission {
+  cursor: auto;
+  background-color: grey;
+  opacity: 0.2;
+}
+
 .title-profile-parent {
   color: var(--secondaryColor);
   opacity: 0.9;

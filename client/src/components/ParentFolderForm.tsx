@@ -13,16 +13,16 @@ import type { Parent } from "../types/ParentFolder";
 // Style
 import "./ParentFolder.css";
 
-function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
-  const { success } = useToast();
-
-  const { handleDelete } = useFetch(parentId);
+function ParentFolderForm({ edit }: { edit: boolean }) {
+  const { success, error } = useToast();
+  const { user } = useAuth();
+  const { handleDelete } = useFetch(user.parent_id);
   const [userData, setUserData] = useState<Auth | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(edit);
   const [parentData, setParentData] = useState<Parent | null>(null);
+  const [refresh, setRefresh] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
@@ -37,7 +37,9 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
         credentials: "include",
       })
         .then((res) => res.json())
-        .then((data) => setParentData(data[0]))
+        .then((data) => {
+          setParentData(data[0]);
+        })
         .catch((err) => console.error("Erreur de récupération parent:", err));
     }
   }, [user]);
@@ -46,6 +48,28 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
   if (!userData) return <p>Erreur lors du chargement des données.</p>;
 
   const isParentFilled = !!parentData;
+
+  function handleEdit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/parent/${user.parent_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        success("Vous avez bien mis à jour votre dossier !");
+        setRefresh(edit);
+      } else {
+        error("La demande de modification n'a pas abouti");
+      }
+    });
+  }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -74,14 +98,17 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
 
   const handleDeleteAndClosePopup = () => {
     setParentData(null);
-    handleDelete();
+    handleDelete({ refresh, setRefresh });
     dialogRef.current?.close();
   };
 
   return (
     <>
       <section className="parent-folder">
-        <form onSubmit={handleSubmit} className="login-form-parent">
+        <form
+          onSubmit={edit ? handleEdit : handleSubmit}
+          className="login-form-parent"
+        >
           <button
             className="button-delete-parent"
             type="button"
@@ -96,7 +123,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
             name="firstName"
             aria-label="Prénom"
             defaultValue={user.first_name || parentData?.p_first_name || ""}
-            readOnly={true}
+            readOnly={!edit}
             required
           />
           <input
@@ -106,7 +133,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
             name="lastName"
             aria-label="Nom"
             defaultValue={user.last_name || parentData?.p_last_name || ""}
-            readOnly={true}
+            readOnly={!edit}
             required
           />
           <input
@@ -161,7 +188,7 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
             name="mail"
             aria-label="Email"
             defaultValue={user.email}
-            readOnly={true}
+            readOnly={!edit}
             required
           />
           <input
@@ -179,10 +206,15 @@ function ParentFolderForm({ parentId }: Readonly<ParentFolderProps>) {
             readOnly={!!parentData}
             required
           />
-          <button type="submit" className="button-secondary">
-            {isParentFilled
-              ? "Formulaire déjà complété"
-              : "Valider le formulaire"}
+          <button
+            type="submit"
+            className={`button-secondary ${isParentFilled && !edit && "lock-submission"}`}
+          >
+            {!isParentFilled
+              ? "Créer dossier"
+              : !edit
+                ? "Formulaire complet"
+                : "Éditer"}
           </button>
         </form>
       </section>
