@@ -95,7 +95,7 @@ function NurseryAvailabilities() {
           onChange={handleSelectChange}
         >
           <option value="" disabled selected>
-            Durée
+            Période
           </option>
           <option value="morning">Matin</option>
           <option value="afternoon">Après-midi</option>
