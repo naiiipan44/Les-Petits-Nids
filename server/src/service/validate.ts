@@ -22,6 +22,16 @@ export const parentFolderValidator = [
   body("job", "Should be a string").isString(),
 ];
 
+export const loginValidator = [
+  body("email", "Should be a valid email and not empty")
+    .isEmail()
+    .not()
+    .isEmpty(),
+  body("password", "Should be a valid password")
+    .isLength({ min: 8 })
+    .matches(/^(?=.*?[A-Z])(?=.*?\d)(?=.*?[#?!@$%^&*-]).{8,}$/),
+];
+
 export const childrenFolderValidator = [
   body("firstName", "cannot have less than two characters").isLength({
     min: 2,

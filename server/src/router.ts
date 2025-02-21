@@ -28,6 +28,7 @@ import childrenActions from "./modules/children/childrenActions";
 import validate, {
   bookingValidator,
   childrenFolderValidator,
+  loginValidator,
   parentFolderValidator,
 } from "./service/validate";
 
@@ -49,7 +50,12 @@ router.post(
 );
 
 // login feature
-router.post("/api/user/login", authentificationActions.login);
+router.post(
+  "/api/user/login",
+  loginValidator,
+  validate.validate,
+  authentificationActions.login,
+);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 // déconnection  route(supression cookie)
