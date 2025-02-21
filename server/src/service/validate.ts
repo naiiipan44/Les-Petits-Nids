@@ -44,7 +44,7 @@ export const childrenFolderValidator = [
     .isLength({
       min: 2,
     }),
-  body("user_id", "should be an integer").isInt().not().isEmpty(),
+  body("parentId", "should be an integer").not().isEmpty(),
 ];
 
 export const bookingValidator = [

@@ -91,7 +91,12 @@ router.post(
   childrenActions.add,
 );
 router.delete("/api/children/:id", childrenActions.destroy);
-router.put("/api/children/:id", childrenActions.edit);
+router.put(
+  "/api/children/:id",
+  childrenFolderValidator,
+  validate.validate,
+  childrenActions.edit,
+);
 
 // nursery routes
 router.post("/api/nursery", nurseryActions.add);

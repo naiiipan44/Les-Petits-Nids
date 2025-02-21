@@ -33,6 +33,7 @@ const add: RequestHandler = async (req, res, next) => {
       allergies: req.body.allergies,
       parentId: req.body.parentId,
     };
+
     const insertId = await childrenRepository.create(newChildren);
 
     res.status(201).json({ insertId });
