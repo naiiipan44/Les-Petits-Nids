@@ -51,3 +51,8 @@
     justify-self: center;
   }
 }
+
+.main-children-folder > h2 {
+  text-align: center;
+  margin-top: 1rem;
+}
