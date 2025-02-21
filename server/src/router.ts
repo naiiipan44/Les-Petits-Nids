@@ -30,6 +30,7 @@ import validate, {
   childrenFolderValidator,
   loginValidator,
   parentFolderValidator,
+  patchValidator,
 } from "./service/validate";
 
 // nursery routes
@@ -105,15 +106,20 @@ router.post("/api/nursery", nurseryActions.add);
 // router.use("/api/booking", authentificationActions.verifyToken);
 
 router.get("/api/booking", bookingActions.browse);
+
 router.post(
-  "/api/booking/:id",
+  "/api/booking",
   bookingValidator,
   validate.validate,
   bookingActions.add,
 );
-router.post("/api/booking", bookingActions.add);
 router.get("/api/booking/parent", bookingActions.readByParentId);
 router.get("/api/booking/nursery", bookingActions.readByNurseryId);
-router.patch("/api/booking", bookingActions.patch);
+router.patch(
+  "/api/booking",
+  patchValidator,
+  validate.validate,
+  bookingActions.patch,
+);
 
 export default router;

@@ -97,7 +97,10 @@ function NurseryBookings() {
                     {transcriptDate(el.booking_date)}
                   </li>
                   <li>
-                    <strong> Tranche horaire : </strong> {el.booking_range}
+                    <strong> Tranche horaire : </strong>
+                    {el.booking_range === "morning" && "Matin"}
+                    {el.booking_range === "afternoon" && "Après-midi"}
+                    {el.booking_range === "all-day" && "Journée"}
                   </li>
                 </ul>
                 <p>

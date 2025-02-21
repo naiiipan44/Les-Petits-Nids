@@ -49,8 +49,22 @@ export const childrenFolderValidator = [
 
 export const bookingValidator = [
   body("bookingDate", "Should be a valid date").isDate(),
-  body("bookingRange", "cannot have less than two characters").isLength({
+  body("bookingRange", "cannot have less than two characters")
+    .isString()
+    .isLength({
+      min: 2,
+      max: 15,
+    }),
+  body("status", "should be a valid string").isString().isLength({
     min: 2,
+    max: 15,
+  }),
+];
+
+export const patchValidator = [
+  body("status", "should be a valid string").isString().isLength({
+    min: 2,
+    max: 15,
   }),
 ];
 
