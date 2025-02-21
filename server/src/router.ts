@@ -58,7 +58,12 @@ router.post("/api/logout", authentificationActions.logout);
 // parent routes --> need to be authenticated
 router.use("/api/parent", authentificationActions.verifyToken);
 
-router.put("/api/parent/:id", parentActions.edit);
+router.put(
+  "/api/parent/:id",
+  parentFolderValidator,
+  validate.validate,
+  parentActions.edit,
+);
 router.get("/api/parent", parentActions.browse);
 router.post(
   "/api/parent",
@@ -75,8 +80,8 @@ router.use("/api/children", authentificationActions.verifyToken);
 router.get("/api/children/:id", childrenActions.browse);
 router.post(
   "/api/children",
-  // childrenFolderValidator,
-  // validate.validate,
+  childrenFolderValidator,
+  validate.validate,
   childrenActions.add,
 );
 router.delete("/api/children/:id", childrenActions.destroy);
