@@ -28,7 +28,9 @@ import childrenActions from "./modules/children/childrenActions";
 import validate, {
   bookingValidator,
   childrenFolderValidator,
+  loginValidator,
   parentFolderValidator,
+  patchValidator,
 } from "./service/validate";
 
 // nursery routes
@@ -49,7 +51,12 @@ router.post(
 );
 
 // login feature
-router.post("/api/user/login", authentificationActions.login);
+router.post(
+  "/api/user/login",
+  loginValidator,
+  validate.validate,
+  authentificationActions.login,
+);
 router.get("/api/user/me", authentificationActions.updateOrGetUserToken);
 
 // déconnection  route(supression cookie)
@@ -58,7 +65,12 @@ router.post("/api/logout", authentificationActions.logout);
 // parent routes --> need to be authenticated
 router.use("/api/parent", authentificationActions.verifyToken);
 
-router.put("/api/parent/:id", parentActions.edit);
+router.put(
+  "/api/parent/:id",
+  parentFolderValidator,
+  validate.validate,
+  parentActions.edit,
+);
 router.get("/api/parent", parentActions.browse);
 router.post(
   "/api/parent",
@@ -75,12 +87,17 @@ router.use("/api/children", authentificationActions.verifyToken);
 router.get("/api/children/:id", childrenActions.browse);
 router.post(
   "/api/children",
-  // childrenFolderValidator,
-  // validate.validate,
+  childrenFolderValidator,
+  validate.validate,
   childrenActions.add,
 );
 router.delete("/api/children/:id", childrenActions.destroy);
-router.put("/api/children/:id", childrenActions.edit);
+router.put(
+  "/api/children/:id",
+  childrenFolderValidator,
+  validate.validate,
+  childrenActions.edit,
+);
 
 // nursery routes
 router.post("/api/nursery", nurseryActions.add);
@@ -89,15 +106,20 @@ router.post("/api/nursery", nurseryActions.add);
 // router.use("/api/booking", authentificationActions.verifyToken);
 
 router.get("/api/booking", bookingActions.browse);
+
 router.post(
-  "/api/booking/:id",
+  "/api/booking",
   bookingValidator,
   validate.validate,
   bookingActions.add,
 );
-router.post("/api/booking", bookingActions.add);
 router.get("/api/booking/parent", bookingActions.readByParentId);
 router.get("/api/booking/nursery", bookingActions.readByNurseryId);
-router.patch("/api/booking", bookingActions.patch);
+router.patch(
+  "/api/booking",
+  patchValidator,
+  validate.validate,
+  bookingActions.patch,
+);
 
 export default router;

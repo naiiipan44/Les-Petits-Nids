@@ -25,6 +25,7 @@ function ChildrenFolder() {
     const formatedData = Object.fromEntries(form.entries());
 
     const { firstName, lastName, birthdate, gender, allergies } = formatedData;
+
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/api/children`,
       {

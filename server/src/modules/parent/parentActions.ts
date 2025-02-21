@@ -131,6 +131,7 @@ const edit: RequestHandler = async (req, res, next) => {
       id,
       userId,
     });
+
     if (editParent) {
       res.sendStatus(201);
     } else {
