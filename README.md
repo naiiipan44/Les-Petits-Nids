@@ -1,5 +1,6 @@
 ## Les Petits Nids est une application qui permet d'optimiser les places disponibles en crèche. 
 
+![Screenshot Figma Mobile Les Petits Nids](https://github.com/user-attachments/assets/d1079a14-4f33-4a44-bc6f-dea3e0e35539)
 ![Screenshot Figma Desktop Les Petits Nids](https://github.com/user-attachments/assets/09688bd1-4802-43dd-b27a-a7da800b36ba)
 ![Charte Graphique Les Petits Nids](https://github.com/user-attachments/assets/1c1fc99e-405c-4690-9005-0baae78eecc4)
 
